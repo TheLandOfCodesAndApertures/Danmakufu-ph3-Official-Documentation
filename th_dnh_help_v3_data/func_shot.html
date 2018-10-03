@@ -1,7 +1,7 @@
 <HTML>
  <HEAD>
-  <TITLE>�e����J�X�^���X�N���v�g��p�֐�</TITLE>
-  <META HTTP-EQUIV="Content-Type"CONTENT="text/html;charset=Shift_JIS">
+  <TITLE>弾動作カスタムスクリプト専用関数</TITLE>
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/html;charset=UTF-8">
   <META HTTP-EQUIV="Content-Type"CONTENT="text/css">
   <LINK rel="stylesheet" href="style.css" type="text/css">
  </HEAD>
@@ -13,19 +13,19 @@
  <DIV class="allbody">
 
  <HR>
- <SPAN class = "section_title"><A name="sec_shot">���e�J�X�^���X�N���v�g��p�֐�</A></SPAN><BR>
-  �e�J�X�^���X�N���v�g��p�̊֐��ł��B
+ <SPAN class = "section_title"><A name="sec_shot">■弾カスタムスクリプト専用関数</A></SPAN><BR>
+  弾カスタムスクリプト専用の関数です。
  <BR><HR>
 
  <P>
-  <SPAN class = "function_name"><A name="SetShotDeleteEventEnable">SetShotDeleteEventEnable(�����F2)</A></SPAN><BR>
-  <SPAN class = "function_arg">�@1) real:�C�x���g���<BR>
-  �@�@EV_DELETE_SHOT_IMMEDIATE�@�@�@ �F�e�폜�C�x���g(����)<BR>
-  �@�@EV_DELETE_SHOT_FADE�@�@�@      �F�e�폜�C�x���g(�t�F�[�h�A�E�g)<BR>
+  <SPAN class = "function_name"><A name="SetShotDeleteEventEnable">SetShotDeleteEventEnable(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:イベント種別<BR>
+  　　EV_DELETE_SHOT_IMMEDIATE　　　 ：弾削除イベント(即時)<BR>
+  　　EV_DELETE_SHOT_FADE　　　      ：弾削除イベント(フェードアウト)<BR>
   </SPAN><BR>
-  <SPAN class = "function_arg">�@2) bool:�C�x���g�z�M�L�^��</SPAN><BR>
-  �e����J�X�^���X�N���v�g�ւ́A�e�폜�C�x���g�L����ݒ肵�܂��B<BR>
-  �f�t�H���g�ł͑S��false�ł��B<BR>
+  <SPAN class = "function_arg">　2) bool:イベント配信有／無</SPAN><BR>
+  弾動作カスタムスクリプトへの、弾削除イベント有無を設定します。<BR>
+  デフォルトでは全てfalseです。<BR>
  </P><HR>
 
  </DIV></BODY>
