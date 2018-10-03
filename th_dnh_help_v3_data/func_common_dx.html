@@ -1,0 +1,646 @@
+<HTML>
+ <HEAD>
+  <TITLE>共通関数</TITLE>
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/html;charset=Shift_JIS">
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/css">
+  <LINK rel="stylesheet" href="style.css" type="text/css">
+ </HEAD>
+
+ <STYLE TYPE="text/css">
+
+ </STYLE>
+
+ <BODY link="#0000ff" alink="#0000ff" vlink="#0000ff">
+ <DIV class="allbody">
+
+ <HR>
+ <SPAN class = "section_title"><A name = "sec_sound">■音声操作関数</A></SPAN><BR>
+  音声の再生を簡易で行うための関数です。<BR>
+  詳細な動作を行う場合はObjSound_XXX関数を使用します。<BR>
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="LoadSound">LoadSound(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:音声ファイルのパス</SPAN><BR>
+  指定した音声ファイルをロードします。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="RemoveSound">RemoveSound(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:音声ファイルのパス</SPAN><BR>
+  指定した音声ファイルを解放します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="PlayBGM">PlayBGM(引数：3)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:音声ファイルのパス</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:BGMループ開始秒</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:BGMループ終端秒</SPAN><BR>
+  指定した音声ファイルをBGMとしてループ再生します。<BR>
+  ループ時間は小数点以下の値が指定可能です。<BR>
+  (例えば2.5秒目からループしたい場合は2.5としていします。)<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="PlaySE">PlaySE(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:音声ファイルのパス</SPAN><BR>
+  指定した音声ファイルを効果音として再生します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="StopSound">StopSound(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:音声ファイルのパス</SPAN><BR>
+  指定した音声を停止します。<BR>
+ </P><HR>
+
+
+ <HR>
+ <SPAN class = "section_title"><A name = "sec_input">■キー入力</A></SPAN><BR>
+  キー入力の有無を判定する関数です。<BR>
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetVirtualKeyState">GetVirtualKeyState(引数：1、返り値：定数)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) 状態を取得する仮想キー<BR>
+　　VK_LEFT ：左移動キー<BR>
+　　VK_RIGHT ：右移動キー<BR>
+　　VK_UP ：上移動キー<BR>
+　　VK_DOWN ：下移動キー<BR>
+　　VK_SHOT ：ショットキー<BR>
+　　VK_SPELL ：スペル(ボム)キー<BR>
+　　VK_SLOWMOVE：低速移動キー<BR>
+　　VK_USER1：ユーザ定義キー1<BR>
+　　VK_USER2：ユーザ定義キー2<BR>
+　　VK_OK：決定キー<BR>
+　　VK_CANCEL：キャンセルキー<BR>
+　　VK_PAUSE：一時停止キー (リプレイ保存対象外)<BR>
+  </SPAN>
+  指定した仮想キー(キーボードのキーとパッドボタン)の状態を取得します。<BR>
+　　KEY_FREE：キーが離されている状態<BR>
+　　KEY_PUSH：キーが押された瞬間<BR>
+　　KEY_HOLD：キーが押され続けている状態<BR>
+　　KEY_PULL：キーが離された瞬間<BR>
+  が返ります。
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetVirtualKeyState">SetVirtualKeyState(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) 状態を設定する仮想キー</SPAN><BR>
+  <SPAN class = "function_arg">　2) 設定する状態</SPAN><BR>
+  指定した仮想キー(キーボードのキーとパッドボタン)の状態を設定します。<BR>
+　　KEY_FREE：キーが離されている状態<BR>
+　　KEY_PUSH：キーが押された瞬間<BR>
+　　KEY_HOLD：キーが押され続けている状態<BR>
+　　KEY_PULL：キーが離された瞬間<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="AddVirtualKey">AddVirtualKey(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) 登録する仮想キーのID<BR>
+　　ステージスクリプト ：VK_USER_ID_STAGE ～ VK_USER_ID_STAGE + 255 の範囲内の値<BR>
+　　自機スクリプト ：VK_USER_ID_PLAYER ～ VK_USER_ID_PLAYER + 255 の範囲内の値<BR>
+  </SPAN>
+  <SPAN class = "function_arg">　2) キーボードのキー</SPAN><BR>
+  <SPAN class = "function_arg">　3) パッドのボタン番号(不要な場合はKEY_INVALIDを指定する)</SPAN><BR>
+  仮想キーを登録します。<BR>
+  登録した仮想キーの状態はGetVirtualKeyStateで取得可能になります。<BR>
+  既存の仮想キーを上書きすることもできます。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="AddReplayTargetVirtualKey">AddReplayTargetVirtualKey(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) リプレイ対象にする仮想キーのID</SPAN><BR>
+  リプレイ対象の仮想キーを追加します。<BR>
+  AddVirtualKeyで追加した仮想キーである必要があります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetKeyState">GetKeyState(引数：1、返り値：定数)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) 状態を取得するキーボードのキー<BR>
+　　KEY_0 ... KEY_9：0-9のキー<BR>
+　　KEY_A ... KEY_Z：A-Zのキー<BR>
+　　KEY_F1 ... KEY_F10：F1-10のキー<BR>
+　　KEY_ESCAPE：Esc<BR>
+　　KEY_MINUS：-<BR>
+　　KEY_EQUALS：=<BR>
+　　KEY_SLASH：/<BR>
+　　KEY_BACK：Back Space<BR>
+　　KEY_TAB：Tab<BR>
+　　KEY_SPACE：Space<BR>
+　　KEY_LBRACKET：[<BR>
+　　KEY_RBRACKET：]<BR>
+　　KEY_SEMICOLON：;<BR>
+　　KEY_APOSTROPHE：'<BR>
+　　KEY_GRAVE：`<BR>
+　　KEY_BACKSLASH：\<BR>
+　　KEY_AT：@<BR>
+　　KEY_COLON：:<BR>
+　　KEY_UNDERLINE：_<BR>
+　　KEY_CIRCUMFLEX：^<BR>
+　　KEY_COMMA：,<BR>
+　　KEY_PERIOD：.<BR>
+　　KEY_YEN：\<BR>
+　　KEY_INSERT：Insert<BR>
+　　KEY_DELETE：Delete<BR>
+　　KEY_RETURN：Enter<BR>
+　　KEY_LCONTROL：Ctrl (Left)<BR>
+　　KEY_RCONTROL：Ctrl (Right)<BR>
+　　KEY_LSHIFT：Shift (Left)<BR>
+　　KEY_RSHIFT：Shift (Right)<BR>
+　　KEY_LEFT：←<BR>
+　　KEY_RIGHT：→<BR>
+　　KEY_UP：↑<BR>
+　　KEY_DOWN：↓<BR>
+　　KEY_NUMPAD0 ... KEY_NUMPAD9：0-9(Numpad)のキー<BR>
+　　KEY_ADD：+(Numpad)<BR>
+　　KEY_SUBTRACT：-(Numpad)<BR>
+　　KEY_MULTIPLY：*(Numpad)<BR>
+　　KEY_DIVIDE：/(Numpad)<BR>
+　　KEY_DECIMAL：.(Numpad)<BR>
+　　KEY_NUMPADEQUALS：=(Numpad)<BR>
+  </SPAN>
+  指定したキーボードのキーの状態を取得します。<BR>
+　　KEY_FREE：キーが離されている状態<BR>
+　　KEY_PUSH：キーが押された瞬間<BR>
+　　KEY_HOLD：キーが押され続けている状態<BR>
+　　KEY_PULL：キーが離された瞬間<BR>
+  が返ります。<BR>
+  取得したキー状態は必ずしもリプレイ対象となっているとは限りません。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetMouseState">GetMouseState(引数：1、返り値：定数)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) 状態を取得する仮想キー<BR>
+　　MOUSE_LEFT ：左ボタン<BR>
+　　MOUSE_RIGHT ：右ボタン<BR>
+　　MOUSE_MIDDLE ：中ボタン<BR>
+  </SPAN>
+  指定したマウスボタンの状態を取得します。<BR>
+　　KEY_FREE：キーが離されている状態<BR>
+　　KEY_PUSH：キーが押された瞬間<BR>
+　　KEY_HOLD：キーが押され続けている状態<BR>
+　　KEY_PULL：キーが離された瞬間<BR>
+  が返ります。
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetMouseX">GetMouseX(引数：0、返り値：real型)</A></SPAN><BR>
+   マウスカーソルのX座標を取得します。<BR>
+   ウィンドウの左上が座標(0,0)です。<BR>
+   ウィンドウが拡大/縮小されていても適切な位置を返します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetMouseY">GetMouseY(引数：0、返り値：real型)</A></SPAN><BR>
+   マウスカーソルのY座標を取得します。<BR>
+   ウィンドウの左上が座標(0,0)です。<BR>
+   ウィンドウが拡大/縮小されていても適切な位置を返します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetMouseMoveZ">GetMouseMoveZ(引数：0、返り値：real型)</A></SPAN><BR>
+   マウスのZ軸変化量を返します。<BR>
+   Z軸は通常はホイールです。マウスに Z 軸がない場合、この値は 0 です。<BR> 
+   ホイールの場合、奥側に回転させると+、手前に回転させると-の値になります。<BR> 
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetSkipModeKey">SetSkipModeKey(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) 高速再生モードにするキーボードのキー(不要な場合はKEY_INVALIDを指定する)</SPAN><BR>
+   高速再生モードにするキーを指定します。<BR>
+   デフォルトは、KEY_LCONTROL です。<BR>
+ </P><HR>
+
+ <HR>
+ <SPAN class = "section_title"><A name = "sec_render">■描画系</A></SPAN><BR>
+  描画関連の関数です。<BR>
+  リソースの扱いについては「<A href = "other_spec.html#Resource">リソースの扱い</A>」を参照お願いします。<BR>
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="LoadTexture">LoadTexture(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:画像ファイルへのパス</SPAN><BR>
+   画像ファイルを読みこんで、テクスチャを作製します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="LoadTextureInLoadThread">LoadTextureInLoadThread(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:画像ファイルへのパス</SPAN><BR>
+   別スレッドで画像ファイルを読みこんで、テクスチャを作製します。<BR>
+   ただし、@Loading内の場合はすでに別スレッドのため、LoadTextureと同じです。<BR>
+   ロード完了していない画像を描画しようとした場合は、ロード完了までブロックします。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="RemoveTexture">RemoveTexture(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:画像ファイルへのパス</SPAN><BR>
+   画像ファイルを解放します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetTextureWidth">GetTextureWidth(引数：1、返り値：real型)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:画像ファイルへのパス</SPAN><BR>
+   テクスチャの横幅を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetTextureHeight">GetTextureHeight(引数：1、返り値：real型)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:画像ファイルへのパス(文字列)</SPAN><BR>
+   テクスチャの高さを取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetFogEnable">SetFogEnable(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) bool:フォグの有効／無効</SPAN><BR>
+   フォグの有効／無効を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetFogParam">SetFogParam(引数：5)</A></SPAN><BR>
+　<SPAN class = "function_arg">　1) real:開始点(視点からの距離)</SPAN><BR>
+　<SPAN class = "function_arg">　2) real:終了点(視点からの距離)</SPAN><BR>
+　<SPAN class = "function_arg">　3) real:フォグの色(R)</SPAN><BR>
+　<SPAN class = "function_arg">　4) real:フォグの色(G)</SPAN><BR>
+　<SPAN class = "function_arg">　5) rea:フォグの色(B)</SPAN><BR>
+   フォグを発生させます。<BR>
+   例えば遠くを暗く見せる場合は、<BR>
+   SetFog(250, 700, 0, 0 ,0 );<BR>
+   のように指定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ClearInvalidRenderPriority">ClearInvalidRenderPriority(引数：0)</A></SPAN><BR>
+   描画無効優先度をクリアします。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetInvalidRenderPriorityA1">SetInvalidRenderPriorityA1(引数：2)</A></SPAN><BR>
+　<SPAN class = "function_arg">　1) real:描画無効優先度(開始)</SPAN><BR>
+　<SPAN class = "function_arg">　2) real:描画無効優先度(終了)</SPAN><BR>
+   描画無効優先度を設定します。<BR>
+   この関数で指定した範囲の優先度は、描画が行われなくなります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetReservedRenderTargetName">GetReservedRenderTargetName(引数：1)</A></SPAN><BR>
+　<SPAN class = "function_arg">　1) real:インデックス(0-2)</SPAN><BR>
+   弾幕風の起動時に確保されたレンダリングターゲットテクスチャ名を取得します。<BR>
+   この関数での取得できるテクスチャは必ず存在します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="CreateRenderTarget">CreateRenderTarget(引数：1、返り値：bool)</A></SPAN><BR>
+　<SPAN class = "function_arg">　1) char:テクスチャ名称</SPAN><BR>
+   レンダリングターゲットのテクスチャを作成します。<BR>
+   成功した場合trueが返ります。<BR>
+   この関数で作成したテクスチャは、RenderToTextureA1などに使用可能です。<BR>
+   <BR>
+   このテクスチャは必ずVRAM上に作成する必要があるため、<BR>
+   VRAMが足りないと失敗する可能性があります。<BR>
+   1枚あたりVRAMを 1024*512*4 = 2.1MB　使用します。<BR>
+   <BR>
+   VRAM残が多い状態(他の画像の読み込み前)に作成すると失敗する可能性が減ります。<BR>
+   (LoadTextureなどファイルから読み込んで作成するテクスチャは、<BR>
+    VRAMが足りない場合はシステムメモリに配置されるため失敗しません。<BR>
+    ただし、システムメモリに配置されると、描画速度が低下します。)
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="RenderToTextureA1">RenderToTextureA1(引数：4)</A></SPAN><BR>
+　<SPAN class = "function_arg">　1) char:レンダリングターゲットテクスチャ名</SPAN><BR>
+　<SPAN class = "function_arg">　2) real:描画優先度(開始)</SPAN><BR>
+　<SPAN class = "function_arg">　3) real:描画優先度(終了)</SPAN><BR>
+　<SPAN class = "function_arg">　4) bool:レンダリングターゲットクリア有無</SPAN><BR>
+  レンダリングターゲットテクスチャに、指定した優先度間の描画を行います。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="RenderToTextureB1">RenderToTextureB1(引数：3)</A></SPAN><BR>
+　<SPAN class = "function_arg">　1) char:レンダリングターゲットテクスチャ名</SPAN><BR>
+　<SPAN class = "function_arg">　2) real:オブジェクトID</SPAN><BR>
+　<SPAN class = "function_arg">　3) bool:レンダリングターゲットクリア有無</SPAN><BR>
+   レンダリングターゲットテクスチャに、指定したオブジェクトを描画します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SaveRenderedTextureA1">SaveRenderedTextureA1(引数：2)</A></SPAN><BR>
+　<SPAN class = "function_arg">　1) char:レンダリングターゲットテクスチャ名</SPAN><BR>
+　<SPAN class = "function_arg">　2) real:ファイル名</SPAN><BR>
+   レンダリングターゲットテクスチャをファイルに保存します。<BR>
+   保存した画像ファイルは、関数実行直後に読み込んで使用可能です。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SaveRenderedTextureA2">SaveRenderedTextureA2(引数：6)</A></SPAN><BR>
+　<SPAN class = "function_arg">　1) char:レンダリングターゲットテクスチャ名</SPAN><BR>
+　<SPAN class = "function_arg">　2) char:ファイル名</SPAN><BR>
+　<SPAN class = "function_arg">　3) real:保存矩形(左)</SPAN><BR>
+　<SPAN class = "function_arg">　4) real:保存矩形(上)</SPAN><BR>
+　<SPAN class = "function_arg">　5) real:保存矩形(右)</SPAN><BR>
+　<SPAN class = "function_arg">　6) real:保存矩形(下)</SPAN><BR>
+   レンダリングターゲットテクスチャをファイルに保存します。<BR>
+   保存する範囲を指定できます。<BR>
+   保存した画像ファイルは、関数実行直後に読み込んで使用可能です。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SaveSnapShotA1">SaveSnapShotA1(引数：1)</A></SPAN><BR>
+　<SPAN class = "function_arg">　1) char:ファイル名</SPAN><BR>
+   STG画面をファイルに保存します。<BR>
+   保存した画像ファイルは、関数実行直後に読み込んで使用可能です。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SaveSnapShotA2">SaveSnapShotA2(引数：5)</A></SPAN><BR>
+　<SPAN class = "function_arg">　1) char:ファイル名</SPAN><BR>
+　<SPAN class = "function_arg">　2) real:保存矩形(左)</SPAN><BR>
+　<SPAN class = "function_arg">　3) real:保存矩形(上)</SPAN><BR>
+　<SPAN class = "function_arg">　4) real:保存矩形(右)</SPAN><BR>
+　<SPAN class = "function_arg">　5) real:保存矩形(下)</SPAN><BR>
+   STG画面をファイルに保存します。<BR>
+   保存する範囲を指定できます。<BR>
+   保存した画像ファイルは、関数実行直後に読み込んで使用可能です。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="IsPixelShaderSupported">IsPixelShaderSupported(引数：2、返り値：bool)</A></SPAN><BR>
+　<SPAN class = "function_arg">　1) real:メジャーバージョン</SPAN><BR>
+　<SPAN class = "function_arg">　2) real:マイナーバージョン</SPAN><BR>
+   ビデオカードがピクセルシェーダに対応しているかを調べます。<BR>
+   例えば、ピクセルシェーダ3.0に対応しているか調べる場合は、<BR>
+   IsPixelShaderSupported(3, 0)<BR>
+   になります。<BR>
+   対応している場合はtrueが返ります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetShader">SetShader(引数：3)</A></SPAN><BR>
+　<SPAN class = "function_arg">　1) real:シェーダオブジェクトID</SPAN><BR>
+　<SPAN class = "function_arg">　2) real:シェーダ設定優先度(開始：0.0-1.0)</SPAN><BR>
+　<SPAN class = "function_arg">　3) real:シェーダ設定優先度(開始：0.0-1.0)</SPAN><BR>
+   引数2-3の間の描画優先度にシェーダを設定します。<BR>
+   描画優先度は0.0-1.0で指定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetShaderI">SetShaderI(引数：3)</A></SPAN><BR>
+　<SPAN class = "function_arg">　1) real:シェーダオブジェクトID</SPAN><BR>
+　<SPAN class = "function_arg">　2) real:シェーダ設定優先度(開始：0-100)</SPAN><BR>
+　<SPAN class = "function_arg">　3) real:シェーダ設定優先度(開始：0-100)</SPAN><BR>
+   引数2-3の間の描画優先度にシェーダを設定します。<BR>
+   描画優先度は0-100で指定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ResetShader">ResetShader(引数：2)</A></SPAN><BR>
+　<SPAN class = "function_arg">　1) real:シェーダ設定優先度(開始：0.0-1.0)</SPAN><BR>
+　<SPAN class = "function_arg">　2) real:シェーダ設定優先度(開始：0.0-1.0)</SPAN><BR>
+   引数1-2の間の描画優先度のシェーダを解除します。<BR>
+   描画優先度は0.0-1.0で指定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ResetShaderI">ResetShaderI(引数：2)</A></SPAN><BR>
+　<SPAN class = "function_arg">　1) real:シェーダ設定優先度(開始：0-100)</SPAN><BR>
+　<SPAN class = "function_arg">　2) real:シェーダ設定優先度(開始：0-100)</SPAN><BR>
+   引数1-2の間の描画優先度のシェーダを解除します。<BR>
+   描画優先度は0-100で指定します。<BR>
+ </P><HR>
+
+
+ <HR>
+ <SPAN class = "section_title"><A name = "sec_camera_3d">■3Dカメラ</A></SPAN><BR>
+  3D空間のカメラを操作する関数です。<BR>
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetCameraFocusX">SetCameraFocusX(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:カメラの焦点x座標</SPAN><BR>
+   カメラの焦点x座標を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetCameraFocusY">SetCameraFocusY(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:カメラの焦点y座標</SPAN><BR>
+   カメラの焦点y座標を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetCameraFocusZ">SetCameraFocusZ(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:カメラの焦点z座標</SPAN><BR>
+   カメラの焦点z座標を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetCameraFocusXYZ">SetCameraFocusXYZ(引数：3)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:カメラの焦点x座標</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:カメラの焦点y座標</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:カメラの焦点z座標</SPAN><BR>
+   カメラの焦点x,y,z座標を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetCameraRadius">SetCameraRadius(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:カメラと焦点の距離</SPAN><BR>
+   カメラと焦点の距離を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetCameraAzimuthAngle">SetCameraAzimuthAngle(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:カメラの焦点からの方位角</SPAN><BR>
+   カメラの焦点からの方位角を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetCameraElevationAngle">SetCameraElevationAngle(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:カメラの焦点からの仰角</SPAN><BR>
+   カメラの焦点からの仰角を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetCameraYaw">SetCameraYaw(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:カメラのYaw 水平角(Y軸回転)</SPAN><BR>
+   カメラのYaw 水平角(Y軸回転)を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetCameraPitch">SetCameraPitch(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:カメラのPitch 垂直角(X軸回転)</SPAN><BR>
+   カメラのPitch 垂直角(X軸回転)を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetCameraRoll">SetCameraRoll(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:カメラのRoll 回転角(Z軸回転)</SPAN><BR>
+   カメラのRoll 回転角(Z軸回転)を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetCameraX">GetCameraX(引数：0、返り値：real)</A></SPAN><BR>
+   カメラのx座標を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetCameraY">GetCameraY(引数：0、返り値：real)</A></SPAN><BR>
+   カメラのy座標を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetCameraZ">GetCameraZ(引数：0、返り値：real)</A></SPAN><BR>
+   カメラのz座標を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetCameraFocusX">GetCameraFocusX(引数：0、返り値：real)</A></SPAN><BR>
+   カメラの焦点x座標を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetCameraFocusY">GetCameraFocusY(引数：0、返り値：real)</A></SPAN><BR>
+   カメラの焦点y座標を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetCameraFocusZ">GetCameraFocusZ(引数：0、返り値：real)</A></SPAN><BR>
+   カメラの焦点z座標を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetCameraRadius">GetCameraRadius(引数：0、返り値：real)</A></SPAN><BR>
+   カメラと焦点の距離を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetCameraAzimuthAngle">GetCameraAzimuthAngle(引数：0、返り値：real)</A></SPAN><BR>
+   カメラの焦点からの方位角を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetCameraElevationAngle">GetCameraElevationAngle(引数：0、返り値：real)</A></SPAN><BR>
+   カメラの焦点からの仰角を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetCameraYaw">GetCameraYaw(引数：0、返り値：real)</A></SPAN><BR>
+   カメラのYaw 水平角(Y軸回転)を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetCameraPitch">GetCameraPitch(引数：0、返り値：real)</A></SPAN><BR>
+   カメラのPitch 垂直角(X軸回転)を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetCameraRoll">GetCameraRoll(引数：0、返り値：real)</A></SPAN><BR>
+   カメラのRoll 回転角(Z軸回転)を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetCameraPerspectiveClip">SetCameraPerspectiveClip(引数：2)</A></SPAN><BR>
+　<SPAN class = "function_arg">　1) 近クリッピング距離 (初期値10)</SPAN><BR>
+　<SPAN class = "function_arg">　2) 遠クリッピング距離 (初期値2000)</SPAN><BR>
+   パースペクティブ射影行列変換時のクリップ距離を指定します。<BR>
+   近クリップより近いものと遠クリップより遠くのものは描画されません。
+<BR>
+ </P><HR>
+
+ <HR>
+ <SPAN class = "section_title"><A name = "sec_camera_2d">■2Dカメラ</A></SPAN><BR>
+  2D空間のカメラを操作する関数です。<BR>
+  おそらく主に画面を振動させるのに用います。<BR>
+  (カメラのフォーカス位置を変え続ければ振動しているように見えます。)<BR>
+  2Dカメラの有効範囲については「<A href = "other_spec.html#RenderPriority">描画優先度</A>」を参照お願いします。<BR>
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="Set2DCameraFocusX">Set2DCameraFocusX(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:カメラの焦点x座標</SPAN><BR>
+   カメラの焦点x座標を設定します。<BR>
+   通常はSTG空間の中心になります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="Set2DCameraAngleZ">Set2DCameraAngleZ(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:カメラのz回転角度</SPAN><BR>
+   カメラのz回転角度を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="Set2DCameraFocusY">Set2DCameraFocusY(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:カメラの焦点x座標</SPAN><BR>
+   カメラの焦点y座標を設定します。<BR>
+   通常はSTG空間の中心になります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="Set2DCameraRatio">Set2DCameraRatio(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:カメラの拡大率</SPAN><BR>
+   カメラの拡大率を設定します。<BR>
+   例えば2に設定すると、焦点の位置を中心にして2倍に拡大した画面を表示します。<BR>
+   通常は1です。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="Set2DCameraRatioX">Set2DCameraRatioX(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:カメラのx拡大率</SPAN><BR>
+   カメラのx拡大率を設定します。<BR>
+   例えば2に設定すると、焦点の位置を中心にしてx方向に2倍に拡大した画面を表示します。<BR>
+   通常は1です。<BR>
+   負の値を指定すると左右反転します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="Set2DCameraRatioY">Set2DCameraRatioY(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:カメラt拡大率</SPAN><BR>
+   カメラのt拡大率を設定します。<BR>
+   例えば2に設定すると、焦点の位置を中心にしてt方向に2倍に拡大した画面を表示します。<BR>
+   通常は1です。<BR>
+   負の値を指定すると上下反転します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="Set2DCameraRatio">Set2DCameraRatio(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:カメラの拡大率</SPAN><BR>
+   カメラの拡大率を設定します。<BR>
+   例えば2に設定すると、焦点の位置を中心にして2倍に拡大した画面を表示します。<BR>
+   通常は1です。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="Reset2DCamera">Reset2DCamera(引数：0)</A></SPAN><BR>
+   カメラの焦点や拡大率をリセットします。<BR>
+   焦点をSTG空間の中心にし、拡大率を1にします。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="Get2DCameraX">Get2DCameraX(引数：0、返り値：real)</A></SPAN><BR>
+   カメラのx座標を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="Get2DCameraY">Get2DCameraY(引数：0、返り値：real)</A></SPAN><BR>
+   カメラのy座標を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="Get2DCameraAngleZ">Get2DCameraAngleZ(引数：0、返り値：real)</A></SPAN><BR>
+   カメラのz回転角度を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="Get2DCameraRatio">Get2DCameraRatio(引数：0、返り値：real)</A></SPAN><BR>
+   カメラの拡大率を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="Get2DCameraRatioX">Get2DCameraRatioX(引数：0、返り値：real)</A></SPAN><BR>
+   カメラのx拡大率を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="Get2DCameraRatioY">Get2DCameraRatioY(引数：0、返り値：real)</A></SPAN><BR>
+   カメラのy拡大率を取得します。<BR>
+ </P><HR>
+
+ </DIV></BODY>
+</HTML>

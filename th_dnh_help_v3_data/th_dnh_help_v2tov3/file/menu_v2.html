@@ -1,0 +1,457 @@
+<!DOCTYPE HTML PUBLIC"-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<HTML>
+ <HEAD>
+  <TITLE>東方弾幕風メニュー</TITLE>
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/html;charset=Shift_JIS">
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/css">
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/lavascript">
+  <LINK REL="stylesheet"HREF="style.css"TYPE="text/css">
+ </HEAD>
+
+ <BODY BGCOLOR="#FFFFFF" LINK="#0000ff" ALINK="#ff00ff" VLINK="#222288">
+ <TABLE width="280"><TR><TD>
+  <FONT color="#800040"><STRONG>■組み込み関数■</STRONG></FONT><BR> 
+  <A href="function_v2.html#IAllFunction" target="right"><STRONG>共通の関数</STRONG></A><BR>
+  <BR>
+  <A href="function_v2.html#FuncMove" target="right">移動系関数</A><BR>
+  　<A href="function_v2.html#FuncSetX" target="right">SetX</A><BR>
+  　<A href="function_v2.html#FuncSetY" target="right">SetY</A><BR>
+  　<A href="function_v2.html#FuncSetSpeed" target="right">SetSpeed</A><BR>
+  　<A href="function_v2.html#FuncSetAngle" target="right">SetAngle</A><BR>
+  　<A href="function_v2.html#FuncSetMovePosition01" target="right">SetMovePosition01</A><BR>
+  　<A href="function_v2.html#FuncSetMovePosition02" target="right">SetMovePosition02</A><BR>
+  　<A href="function_v2.html#FuncSetMovePosition03" target="right">SetMovePosition03</A><BR>
+  　<A href="function_v2.html#FuncSetMovePositionHermite" target="right">SetMovePositionHermite</A><BR>
+  　<A href="function_v2.html#FuncSetMovePositionRandom01" target="right">SetMovePositionRandom01</A><BR> 
+  　<A href="function_v2.html#FuncSetPlayerX" target="right">SetPlayerX</A><BR>
+  　<A href="function_v2.html#FuncSetPlayerY" target="right">SetPlayerY</A><BR>
+  　<A href="function_v2.html#FuncSetCoordinateType" target="right">SetCoordinateType</A><BR>
+  　<A href="function_v2.html#FuncSetOrigin" target="right">SetOrigin</A><BR>
+  <BR>
+  <A href="function_v2.html#FuncEnemyShot" target="right">敵弾を制御する関数</A><BR>
+  　<A href="function_v2.html#FuncSetShotDirectionType" target="right">SetShotDirectionType</A><BR>
+  　<A href="function_v2.html#FuncSetShotKillTime" target="right">SetShotKillTime</A><BR>
+  　<A href="function_v2.html#FuncCreateShot01" target="right">CreateShot01</A><BR>	
+  　<A href="function_v2.html#FuncCreateShot02" target="right">CreateShot02</A><BR>
+  　<A href="function_v2.html#FuncCreateShot11" target="right">CreateShot11</A><BR>	
+  　<A href="function_v2.html#FuncCreateShot12" target="right">CreateShot12</A><BR>
+  　<A href="function_v2.html#FuncCreateShotA" target="right">CreateShotA</A><BR>
+  　<A href="function_v2.html#FuncSetShotDataA" target="right">SetShotDataA</A><BR>
+  　<A href="function_v2.html#FuncSetShotDataA_XY" target="right">SetShotDataA_XY</A><BR>
+  　<A href="function_v2.html#FuncCreateLaser01" target="right">CreateLaser01</A><BR>
+  　<A href="function_v2.html#FuncCreateLaserA" target="right">CreateLaserA</A><BR>
+  　<A href="function_v2.html#FuncSetLaserDataA" target="right">SetLaserDataA</A><BR>
+  　<A href="function_v2.html#FuncCreateLaserB" target="right">CreateLaserB</A><BR>
+  　<A href="function_v2.html#FuncSetLaserDataB" target="right">SetLaserDataB</A><BR>
+  　<A href="function_v2.html#FuncCreateLaserC" target="right">CreateLaserC</A><BR>
+  　<A href="function_v2.html#FuncSetLaserDataC" target="right">SetLaserDataC</A><BR>
+  　<A href="function_v2.html#FuncAddShot" target="right">AddShot</A><BR>
+  　<A href="function_v2.html#FuncFireShot" target="right">FireShot</A><BR>
+  　<A href="function_v2.html#FuncCreateShotFromScript" target="right">CreateShotFromScript</A><BR>
+  　<A href="function_v2.html#FuncDeleteEnemyShot" target="right">DeleteEnemyShot</A><BR>
+  　<A href="function_v2.html#FuncDeleteEnemyShotInCircle" target="right">DeleteEnemyShotInCircle</A><BR>
+  　<A href="function_v2.html#FuncDeleteEnemyShotImmediatelyInCircle" target="right">DeleteEnemyShotImmediatelyInCircle</A><BR>
+  　<A href="function_v2.html#FuncDeleteEnemyShotToItem" target="right">DeleteEnemyShotToItem</A><BR>
+  　<A href="function_v2.html#FuncDeleteEnemyShotToItemInCircle" target="right">DeleteEnemyShotToItemInCircle</A><BR>
+  　<A href="function_v2.html#FuncSetShotColor" target="right">SetShotColor</A><BR>
+  　<A href="function_v2.html#FuncLoadUserShotData" target="right">LoadUserShotData</A><BR>
+  　<A href="function_v2.html#FuncSetShotAutoDeleteClip" target="right">SetShotAutoDeleteClip</A><BR>	
+  <BR>  
+  <A href="function_v2.html#FuncDraw" target="right">描画系関数</A><BR>
+  　<A href="function_v2.html#FuncDrawGraphic" target="right">DrawGraphic</A><BR>
+  　<A href="function_v2.html#FuncLoadGraphic" target="right">LoadGraphic</A><BR>
+  　<A href="function_v2.html#FuncDeleteGraphic" target="right">DeleteGraphic</A><BR>
+  　<A href="function_v2.html#FuncSetTexture" target="right">SetTexture</A><BR>
+  　<A href="function_v2.html#FuncSetGraphicRect" target="right">SetGraphicRect</A><BR>
+  　<A href="function_v2.html#FuncSetGraphicScale" target="right">SetGraphicScale</A><BR>
+  　<A href="function_v2.html#FuncSetGraphicAngle" target="right">SetGraphicAngle</A><BR>
+  　<A href="function_v2.html#FuncSetAlpha" target="right">SetAlpha</A><BR>
+  　<A href="function_v2.html#FuncSetColor" target="right">SetColor</A><BR>
+  　<A href="function_v2.html#FuncSetRenderState" target="right">SetRenderState</A><BR>
+  　<A href="function_v2.html#FuncDrawText" target="right">DrawText</A><BR>
+  　<A href="function_v2.html#FuncSetFontColor" target="right">SetFontColor</A><BR>
+  　<A href="function_v2.html#FuncCreateRenderTarget" target="right">CreateRenderTarget</A><BR>
+  　<A href="function_v2.html#FuncSetRenderTarget" target="right">SetRenderTarget</A><BR>
+  　<A href="function_v2.html#FuncClearRenderTarget" target="right">ClearRenderTarget</A><BR>	
+  <BR>
+  <A href="function_v2.html#FuncSound" target="right">音声系関数</A><BR>
+  　<A href="function_v2.html#FuncLoadMusic" target="right">LoadMusic</A><BR>
+  　<A href="function_v2.html#FuncPlayMusic" target="right">PlayMusic</A><BR>
+  　<A href="function_v2.html#FuncDeleteMusic" target="right">DeleteMusic</A><BR>
+  　<A href="function_v2.html#FuncFadeOutMusic" target="right">FadeOutMusic</A><BR>
+  　<A href="function_v2.html#FuncLoadSE" target="right">LoadSE</A><BR>
+  　<A href="function_v2.html#FuncPlaySE" target="right">PlaySE</A><BR>
+  　<A href="function_v2.html#FuncStopSE" target="right">StopSE</A><BR>
+  　<A href="function_v2.html#FuncDeleteSE" target="right">DeleteSE</A><BR>
+  <BR>
+  <A href="function_v2.html#FuncGet" target="right">特定の値を取得する関数</A><BR>
+  　<A href="function_v2.html#FuncCos" target="right">cos</A><BR>
+  　<A href="function_v2.html#FuncSin" target="right">sin</A><BR>
+  　<A href="function_v2.html#FuncTan" target="right">tan</A><BR>
+  　<A href="function_v2.html#FuncAcos" target="right">acos</A><BR>
+  　<A href="function_v2.html#FuncAsin" target="right">asin</A><BR>
+  　<A href="function_v2.html#FuncAtan" target="right">atan</A><BR>
+  　<A href="function_v2.html#FuncAtan2" target="right">atan2</A><BR>
+  　<A href="function_v2.html#FuncLog" target="right">log</A><BR>
+  　<A href="function_v2.html#FuncLog10" target="right">log10</A><BR>
+  　<A href="function_v2.html#FuncRand" target="right">rand</A><BR>
+  　<A href="function_v2.html#FuncRand_Int" target="right">rand_int</A><BR>
+  　<A href="function_v2.html#FuncPRand" target="right">prand</A><BR>
+  　<A href="function_v2.html#FuncPRand_Int" target="right">prand_int</A><BR>
+  　<A href="function_v2.html#FuncPSRand" target="right">psrand</A><BR>	
+  　<A href="function_v2.html#FuncInt" target="right">int</A><BR>
+  　<A href="function_v2.html#FuncTruncate" target="right">truncate</A><BR>
+  　<A href="function_v2.html#FuncRound" target="right">round</A><BR>
+  　<A href="function_v2.html#FuncCeil" target="right">ceil</A><BR>
+  　<A href="function_v2.html#FuncFloor" target="right">floor</A><BR>
+  　<A href="function_v2.html#FuncAbsolute" target="right">absolute</A><BR>
+  　<A href="function_v2.html#FuncLength" target="right">length</A><BR>
+  　<A href="function_v2.html#FuncIntegral" target="right">integral</A><BR>	
+  　<A href="function_v2.html#FuncToString" target="right">ToString</A><BR>
+  　<A href="function_v2.html#FuncCollision_Line_Circle" target="right">Collision_Line_Circle</A><BR>	
+  　<A href="function_v2.html#FuncCollision_Obj_Obj" target="right">Collision_Obj_Obj</A><BR>	
+	
+  　<A href="function_v2.html#FuncGetX" target="right">GetX</A><BR>
+  　<A href="function_v2.html#FuncGetY" target="right">GetY</A><BR>
+  　<A href="function_v2.html#FuncGetSpeed" target="right">GetSpeed</A><BR>
+  　<A href="function_v2.html#FuncGetAngle" target="right">GetAngle</A><BR>
+  　<A href="function_v2.html#FuncGetEnemyX" target="right">GetEnemyX</A><BR>
+  　<A href="function_v2.html#FuncGetEnemyY" target="right">GetEnemyY</A><BR>
+  　<A href="function_v2.html#FuncGetEnemyLife" target="right">GetEnemyLife</A><BR>
+  　<A href="function_v2.html#FuncGetTimer" target="right">GetTimer</A><BR>
+  　<A href="function_v2.html#FuncGetEnemyNum" target="right">GetEnemyNum</A><BR>
+  　<A href="function_v2.html#FuncGetEnemyShotCount" target="right">GetEnemyShotCount</A><BR>
+  　<A href="function_v2.html#FuncGetEnemyShotCountEx" target="right">GetEnemyShotCountEx</A><BR>
+  　<A href="function_v2.html#FuncEnumEnemyBegin" target="right">EnumEnemyBegin</A><BR>
+  　<A href="function_v2.html#FuncEnumEnemyEnd" target="right">EnumEnemyEnd</A><BR>
+  　<A href="function_v2.html#FuncEnumEnemyGetID" target="right">EnumEnemyGetID</A><BR>
+  　<A href="function_v2.html#FuncGetEnemyInfo" target="right">GetEnemyInfo</A><BR>
+  　<A href="function_v2.html#FuncGetEnemyInfoDefault" target="right">GetEnemyInfoDefault</A><BR>
+  　<A href="function_v2.html#FuncGetPlayerX" target="right">GetPlayerX</A><BR>
+  　<A href="function_v2.html#FuncGetPlayerY" target="right">GetPlayerY</A><BR>
+  　<A href="function_v2.html#FuncGetAngleToPlayer" target="right">GetAngleToPlayer</A><BR>
+  　<A href="function_v2.html#FuncGetPlayerType" target="right">GetPlayerType</A><BR>
+  　<A href="function_v2.html#FuncGetPlayerScriptName" target="right">GetPlayerScriptName</A><BR>
+  　<A href="function_v2.html#FuncGetPlayerLife" target="right">GetPlayerLife</A><BR>
+  　<A href="function_v2.html#FuncGetPlayerBomb" target="right">GetPlayerBomb</A><BR>
+  　<A href="function_v2.html#FuncGetPlayerMoveState" target="right">GetPlayerMoveState</A><BR>
+  　<A href="function_v2.html#FuncGetPlayerInfo" target="right">GetPlayerInfo</A><BR>
+  　<A href="function_v2.html#FuncGetTimeOfPlayerInvincibility" target="right">GetTimeOfPlayerInvincibility</A><BR>	
+  　<A href="function_v2.html#FuncGetTimeOfSuperNaturalBorder" target="right">GetTimeOfSuperNaturalBorder</A><BR>
+  　<A href="function_v2.html#FuncGetMissCount" target="right">GetMissCount</A><BR>
+  　<A href="function_v2.html#FuncGetMissCountInThisSpell" target="right">GetMissCountInThisSpell</A><BR>
+  　<A href="function_v2.html#FuncGetBombCount" target="right">GetBombCount</A><BR>
+  　<A href="function_v2.html#FuncGetBombCountInThisSpell" target="right">GetBombCountInThisSpell</A><BR>
+  　<A href="function_v2.html#FuncGetScore" target="right">GetScore</A><BR>
+  　<A href="function_v2.html#FuncGetGraze" target="right">GetGraze</A><BR>
+  　<A href="function_v2.html#FuncGetPoint" target="right">GetPoint</A><BR>
+  　<A href="function_v2.html#FuncContinued" target="right">Continued</A><BR>
+  　<A href="function_v2.html#FuncGetAllowedContinueCount" target="right">GetAllowedContinueCount</A><BR>	
+  　<A href="function_v2.html#FuncOnPlayerMissed" target="right">OnPlayerMissed</A><BR>
+  　<A href="function_v2.html#FuncOnBomb" target="right">OnBomb</A><BR>
+  　<A href="function_v2.html#FuncOnEnemySpell" target="right">OnEnemySpell</A><BR>
+  　<A href="function_v2.html#FuncOnEnemyLastSpell" target="right">OnEnemyLastSpell</A><BR>
+  　<A href="function_v2.html#FuncIsBossExisting" target="right">IsBossExisting</A><BR>
+  　<A href="function_v2.html#FuncIsBGStopping" target="right">IsBGStopping</A><BR>
+  　<A href="function_v2.html#FuncIsReplay" target="right">IsReplay</A><BR>
+  　<A href="function_v2.html#FuncGetCenterX" target="right">GetCenterX</A><BR>
+  　<A href="function_v2.html#FuncGetCenterY" target="right">GetCenterY</A><BR>
+  　<A href="function_v2.html#FuncGetClipMinX" target="right">GetClipMinX</A><BR>
+  　<A href="function_v2.html#FuncGetClipMaxX" target="right">GetClipMaxX</A><BR>
+  　<A href="function_v2.html#FuncGetClipMinY" target="right">GetClipMinY</A><BR>
+  　<A href="function_v2.html#FuncGetClipMaxY" target="right">GetClipMaxY</A><BR>
+  　<A href="function_v2.html#FuncGetCurrentScriptDirectory" target="right">GetCurrentScriptDirectory</A><BR>
+  　<A href="function_v2.html#FuncUsedDebugKey" target="right">UsedDebugKey</A><BR>
+  　<A href="function_v2.html#FuncGetKeyState" target="right">GetKeyState</A><BR>
+  　<A href="function_v2.html#FuncGetFps" target="right">GetFps</A><BR>
+  　<A href="function_v2.html#FuncGetTime" target="right">GetTime</A><BR>
+  　<A href="function_v2.html#FuncIsRenderFrame" target="right">IsRenderFrame</A><BR>
+  <BR>
+  <A href="function_v2.html#FuncCommonData" target="right">スクリプト間共通データ用関数</A><BR>
+  　<A href="function_v2.html#FuncSetCommonData" target="right">SetCommonData</A><BR>
+  　<A href="function_v2.html#FuncGetCommonData" target="right">GetCommonData</A><BR>
+  　<A href="function_v2.html#FuncGetCommonDataDefault" target="right">GetCommonDataDefault</A><BR>
+  　<A href="function_v2.html#FuncClearCommonData" target="right">ClearCommonData</A><BR>
+  　<A href="function_v2.html#FuncDeleteCommonData" target="right">DeleteCommonData</A><BR>
+  　<A href="function_v2.html#FuncSaveCommonData" target="right">SaveCommonData</A><BR>
+  　<A href="function_v2.html#FuncSaveCommonDataInReplayFile" target="right">SaveCommonDataInReplayFile</A><BR>
+  　<A href="function_v2.html#FuncLoadCommonData" target="right">LoadCommonData</A><BR>
+  　<A href="function_v2.html#FuncLoadCommonDataFromReplayFile" target="right">LoadCommonDataFromReplayFile</A><BR>
+  　<A href="function_v2.html#FuncCreateCommonDataArea" target="right">CreateCommonDataArea</A><BR>
+  　<A href="function_v2.html#FuncSetCommonDataEx" target="right">SetCommonDataEx</A><BR>
+  　<A href="function_v2.html#FuncGetCommonDataEx" target="right">GetCommonDataEx</A><BR>
+  　<A href="function_v2.html#FuncGetCommonDataDefaultEx" target="right">GetCommonDataDefaultEx</A><BR>
+  　<A href="function_v2.html#FuncClearCommonDataEx" target="right">ClearCommonDataEx</A><BR>
+  　<A href="function_v2.html#FuncDeleteCommonDataEx" target="right">DeleteCommonDataEx</A><BR>
+  　<A href="function_v2.html#FuncSaveCommonDataEx" target="right">SaveCommonDataEx</A><BR>
+  　<A href="function_v2.html#FuncSaveCommonDataInReplayFileEx" target="right">SaveCommonDataInReplayFileEx</A><BR>
+  　<A href="function_v2.html#FuncLoadCommonDataEx" target="right">LoadCommonDataEx</A><BR>
+  　<A href="function_v2.html#FuncLoadCommonDataFromReplayFileEx" target="right">LoadCommonDataFromReplayFileEx</A><BR>	
+  　<A href="function_v2.html#FuncIsCommonDataAreaExists" target="right">IsCommonDataAreaExists</A><BR>
+  <BR>
+  <A href="function_v2.html#FuncDebug" target="right">デバッグ用関数</A><BR>
+  　<A href="function_v2.html#FuncCreateDebugWindow" target="right">CreateDebugWindow</A><BR>
+  　<A href="function_v2.html#FuncOutputDebugString" target="right">OutputDebugString</A><BR>
+  <BR>
+  <A href="function_v2.html#FuncOthers" target="right">その他の関数</A><BR>
+  　<A href="function_v2.html#FuncDeleteAllEnemyWithoutBoss" target="right">DeleteAllEnemyWithoutBoss</A><BR>	
+  　<A href="function_v2.html#FuncSetPlayerInvincibility" target="right">SetPlayerInvincibility</A><BR>		
+  　<A href="function_v2.html#FuncExtendPlayer" target="right">ExtendPlayer</A><BR>
+  　<A href="function_v2.html#FuncSuperNaturalBorder" target="right">SuperNaturalBorder</A><BR>
+  　<A href="function_v2.html#FuncShootDownPlayer" target="right">ShootDownPlayer</A><BR>
+  　<A href="function_v2.html#FuncSetEffectLayer" target="right">SetEffectLayer</A><BR>	   
+  　<A href="function_v2.html#FuncCollectItems" target="right">CollectItems</A><BR>
+  　<A href="function_v2.html#FuncAddScore" target="right">AddScore</A><BR>
+  　<A href="function_v2.html#FuncAddPoint" target="right">AddPoint</A><BR>	
+  　<A href="function_v2.html#FuncAddGraze" target="right">AddGraze</A><BR>
+  　<A href="function_v2.html#FuncAddBomb" target="right">AddBomb</A><BR>
+  　<A href="function_v2.html#FuncSetLifeZeroToAllEnemy" target="right">SetLifeZeroToAllEnemy</A><BR>	
+  　<A href="function_v2.html#FuncSetAllowedContinueCount" target="right">SetAllowedContinueCount</A><BR>
+  　<A href="function_v2.html#FuncSetRateScoreSystemEnable" target="right">SetRateScoreSystemEnable</A><BR>
+  　<A href="function_v2.html#FuncSetDefaultStatusVisible" target="right">SetDefaultStatusVisible</A><BR>
+  　<A href="function_v2.html#FuncSetNormPoint" target="right">SetNormPoint</A><BR>
+  　<A href="function_v2.html#FuncForbidShot" target="right">ForbidShot</A><BR>
+  　<A href="function_v2.html#FuncForbidBomb" target="right">ForbidBomb</A><BR>
+  　<A href="function_v2.html#FuncSlow" target="right">Slow</A><BR>
+  　<A href="function_v2.html#FuncSaveSnapShot" target="right">SaveSnapShot</A><BR>
+  　<A href="function_v2.html#FuncAddArchiveFile" target="right">AddArchiveFile</A><BR>
+  　<A href="function_v2.html#FuncRaiseError" target="right">RaiseError</A><BR>
+  　<A href="function_v2.html#FuncRetry" target="right">Retry</A><BR>
+  　<A href="function_v2.html#FuncAssert" target="right">assert</A><BR>
+  　<A href="function_v2.html#FuncGetVersion" target="right">GetVersion</A><BR>
+
+  <BR>
+  <HR><BR>
+  
+  <A href="function_v2.html#IEnemyFunction" target="right"><STRONG>敵動作専用関数</STRONG></A><BR>
+  <BR>
+  <A href="function_v2.html#FuncEnemyControl" target="right">敵を制御する関数</A><BR>
+  　<A href="function_v2.html#FuncEnemySetLife" target="right">SetLife</A><BR>
+  　<A href="function_v2.html#FuncEnemyAddLife" target="right">AddLife</A><BR>
+  　<A href="function_v2.html#FuncEnemySetTimer" target="right">SetTimer</A><BR>
+  　<A href="function_v2.html#FuncEnemySetInvincibility" target="right">SetInvincibility</A><BR>
+  　<A href="function_v2.html#FuncEnemySetDamageRate" target="right">SetDamageRate</A><BR>
+  　<A href="function_v2.html#FuncEnemySetDamageRateEx" target="right">SetDamageRateEx</A><BR>
+  　<A href="function_v2.html#FuncEnemySetDurableSpellCard" target="right">SetDurableSpellCard</A><BR>
+  　<A href="function_v2.html#FuncEnemySetCollisionA" target="right">SetCollisionA</A><BR>
+  　<A href="function_v2.html#FuncEnemySetCollisionB" target="right">SetCollisionB</A><BR>
+  　<A href="function_v2.html#FuncEnemySetScore" target="right">SetScore</A><BR>
+  　<A href="function_v2.html#FuncEnemyCreateEnemyFromScript" target="right">CreateEnemyFromScript</A><BR>
+  　<A href="function_v2.html#FuncEnemyCreateEnemyFromFile" target="right">CreateEnemyFromFile</A><BR>
+  　<A href="function_v2.html#FuncEnemyVanishEnemy" target="right">VanishEnemy</A><BR>
+  　<A href="function_v2.html#FuncEnemySetEnemyMarker" target="right">SetEnemyMarker</A><BR>
+  　<A href="function_v2.html#FuncEnemyLastSpell" target="right">LastSpell</A><BR>		
+  <BR>
+  <A href="function_v2.html#FuncEnemyEffect" target="right">エフェクト系(その他)関数</A><BR>
+  　<A href="function_v2.html#FuncEnemyConcentration01" target="right">Concentration01</A><BR>
+  　<A href="function_v2.html#FuncEnemyConcentration02" target="right">Concentration02</A><BR>
+  　<A href="function_v2.html#FuncEnemyExplosion01" target="right">Explosion01</A><BR>	
+  　<A href="function_v2.html#FuncEnemyMotionBlur" target="right">MotionBlur</A><BR>
+  　<A href="function_v2.html#FuncEnemyMotionBlurEx" target="right">MotionBlurEx</A><BR>
+  　<A href="function_v2.html#FuncEnemyTimeStop" target="right">TimeStop</A><BR>
+  　<A href="function_v2.html#FuncEnemyCutIn" target="right">CutIn</A><BR>	
+  　<A href="function_v2.html#FuncEnemySetText" target="right">SetText</A><BR>
+  　<A href="function_v2.html#FuncEnemyMagicCircle" target="right">MagicCircle</A><BR>
+  　<A href="function_v2.html#FuncEnemySetEffectForZeroLife" target="right">SetEffectForZeroLife</A><BR>
+  　<A href="function_v2.html#FuncEnemyCreateEventFromScript" target="right">CreateEventFromScript</A><BR>
+  　<A href="function_v2.html#FuncEnemyCreateItem" target="right">CreateItem</A><BR>
+  　<A href="function_v2.html#FuncEnemyExpert" target="right">Expert</A><BR>
+  <BR>
+  <A href="function_v2.html#FuncEnemyGet" target="right">特定の値を取得する関数</A><BR>
+  　<A href="function_v2.html#FuncEnemyGetSpeedX" target="right">GetSpeedX</A><BR>
+  　<A href="function_v2.html#FuncEnemyGetSpeedY" target="right">GetSpeedY</A><BR>
+  　<A href="function_v2.html#FuncEnemyGetLife" target="right">GetLife</A><BR>
+  　<A href="function_v2.html#FuncEnemyGetHitCount" target="right">GetHitCount</A><BR>
+  　<A href="function_v2.html#FuncEnemyGetTimeOfInvincibility" target="right">GetTimeOfInvincibility</A><BR>
+  　<A href="function_v2.html#FuncEnemyBeVanished" target="right">BeVanished</A><BR>
+  　<A href="function_v2.html#FuncEnemyBeParentVanished" target="right">BeParentVanished</A><BR>
+  　<A href="function_v2.html#FuncEnemyIsMaster" target="right">IsMaster</A><BR>
+  　<A href="function_v2.html#FuncEnemyIsTimeOut" target="right">IsTimeOut</A><BR>
+  　<A href="function_v2.html#FuncEnemyGetSpellCardBonusScore" target="right">GetSpellCardBonusScore</A><BR>	
+  　<A href="function_v2.html#FuncEnemyGotSpellCardBonus" target="right">GotSpellCardBonus</A><BR>	
+  　<A href="function_v2.html#FuncEnemyOnEvent" target="right">OnEvent</A><BR>
+  　<A href="function_v2.html#FuncEnemyGetEventStep" target="right">GetEventStep</A><BR>
+  　<A href="function_v2.html#FuncEnemyGetArgument" target="right">GetArgument</A><BR>
+  　<A href="function_v2.html#FuncEnemyGetArgumentDefault" target="right">GetArgumentDefault</A><BR>
+  <BR>
+  <HR><BR>
+  
+  <A href="function_v2.html#IShotFunction" target="right"><STRONG>弾動作専用関数</STRONG></A><BR>
+  <BR>
+  <A href="function_v2.html#FuncShotControl" target="right">弾を制御する関数</A><BR>
+  　<A href="function_v2.html#FuncShotSetDefault" target="right">SetDefault</A><BR>
+  　<A href="function_v2.html#FuncShotSetLaser" target="right">SetLaser</A><BR>
+  　<A href="function_v2.html#FuncShotSetCollisionB" target="right">SetCollisionB</A><BR>
+  　<A href="function_v2.html#FuncShotSetCollisionBDefault" target="right">SetCollisionBDefault</A><BR>
+  　<A href="function_v2.html#FuncShotSetCollisionLaser" target="right">SetCollisionLaser</A><BR>
+  　<A href="function_v2.html#FuncSetShotBombResist" target="right">SetBombResist</A><BR>
+  　<A href="function_v2.html#FuncShotEnd" target="right">End</A><BR>
+  <BR>
+  <A href="function_v2.html#FuncShotDraw" target="right">描画系関数</A><BR>
+  　<A href="function_v2.html#FuncShotDrawGraphicDefault" target="right">DrawGraphicDefault</A><BR>
+  　<A href="function_v2.html#FuncShotDrawLaser" target="right">DrawLaser</A><BR>
+  <BR>
+  <A href="function_v2.html#FuncShotGet" target="right">特定の値を取得する関数</A><BR>
+  　<A href="function_v2.html#FuncShotGetArgument" target="right">GetArgument</A><BR>
+  　<A href="function_v2.html#FuncShotOnDelay" target="right">OnDelay</A><BR>
+  　<A href="function_v2.html#FuncShotGetDelayTime" target="right">GetDelayTime</A><BR>
+  <BR> 
+  <HR><BR>
+
+  <A href="function_v2.html#IEventFunction" target="right"><STRONG>会話イベント専用関数</STRONG></A><BR>
+  <BR>
+  　<A href="function_v2.html#FuncEventSetChar" target="right">SetChar</A><BR>
+  　<A href="function_v2.html#FuncEventDeleteChar" target="right">DeleteChar</A><BR>
+  　<A href="function_v2.html#FuncEventMoveChar" target="right">MoveChar</A><BR>
+  　<A href="function_v2.html#FuncEventSetGraphicRect" target="right">SetGraphicRect</A><BR>
+  　<A href="function_v2.html#FuncEventSetNameFromText" target="right">SetNameFromText</A><BR>
+  　<A href="function_v2.html#FuncEventSetNameFromTexture" target="right">SetNameFromTexture</A><BR>
+  　<A href="function_v2.html#FuncEventDeleteName" target="right">DeleteName</A><BR>
+  　<A href="function_v2.html#FuncEventSetStep" target="right">SetStep</A><BR>
+  　<A href="function_v2.html#FuncEventTextOutA" target="right">TextOutA</A><BR>
+  　<A href="function_v2.html#FuncEventTextOutB" target="right">TextOutB</A><BR>
+  　<A href="function_v2.html#FuncEventTextOutC" target="right">TextOutC</A><BR>
+  　<A href="function_v2.html#FuncEventSelect" target="right">Select</A><BR>
+  　<A href="function_v2.html#FuncEventWait" target="right">Wait</A><BR>
+  　<A href="function_v2.html#FuncEventEnd" target="right">End</A><BR>
+  　<A href="function_v2.html#FuncEventStageClear" target="right">StageClear</A><BR>
+  <HR><BR>
+
+  <A href="function_v2.html#IStageFunction" target="right"><STRONG>ステージ専用関数</STRONG></A><BR>
+  <BR>
+  <A href="function_v2.html#FuncStageControl" target="right">ステージを制御する関数</A><BR>
+  　<A href="function_v2.html#FuncStageCreateEnemyFromScript" target="right">CreateEnemyFromScript</A><BR>
+  　<A href="function_v2.html#FuncStageCreateEnemyFromFile" target="right">CreateEnemyFromFile</A><BR>
+  　<A href="function_v2.html#FuncStageCreateEnemyBossFromFile" target="right">CreateEnemyBossFromFile</A><BR>
+  　<A href="function_v2.html#FuncStageCompileEnemyFromFile" target="right">CompileEnemyFromFile</A><BR>
+  　<A href="function_v2.html#FuncStageClearByteCodeCache" target="right">ClearByteCodeCash</A><BR>	
+  　<A href="function_v2.html#FuncStageCreateEventFromScript" target="right">CreateEventFromScript</A><BR>
+  　<A href="function_v2.html#FuncStageClearStage" target="right">ClearStage</A><BR>
+  　<A href="function_v2.html#FuncStageIsClear" target="right">IsClear</A><BR>
+  　<A href="function_v2.html#FuncStageSetRenderFrame" target="right">SetRenderFrame</A><BR>
+  　<A href="function_v2.html#FuncStageSetClearFrameEffectEnable" target="right">SetClearFrameEffectEnable</A><BR>	
+  　<A href="function_v2.html#FuncStageExpert" target="right">Expert</A><BR>
+  　<A href="function_v2.html#FuncStageExpertEx" target="right">ExpertEx</A><BR>
+  　<A href="function_v2.html#FuncStageExtendPlayer" target="right">ExtendPlayer</A><BR> 
+  　<A href="function_v2.html#FuncStageSuperNaturalBorder" target="right">SuperNaturalBorder</A><BR>
+  <BR>
+  <A href="function_v2.html#FuncStageDraw" target="right">描画系関数</A><BR>
+  　<A href="function_v2.html#FuncStageDrawGraphic3D" target="right">DrawGraphic3D</A><BR>
+  　<A href="function_v2.html#FuncStageSetViewTo" target="right">SetViewTo</A><BR>
+  　<A href="function_v2.html#FuncStageSetViewFrom" target="right">SetViewFrom</A><BR>
+  　<A href="function_v2.html#FuncStageSetPerspectiveClip" target="right">SetPerspectiveClip</A><BR>
+  　<A href="function_v2.html#FuncStageWriteZBuffer" target="right">WriteZBuffer</A><BR>
+  　<A href="function_v2.html#FuncStageUseZBuffer" target="right">UseZBuffer</A><BR>
+  　<A href="function_v2.html#FuncStageSetFog" target="right">SetFog</A><BR>
+  <HR><BR>
+
+  <A href="function_v2.html#IPlayerFunction" target="right"><STRONG>自機専用関数</STRONG></A><BR>
+  <BR>
+  <A href="function_v2.html#FuncPlayerControl" target="right">自機を制御する関数</A><BR>
+  　<A href="function_v2.html#FuncPlayerSetX" target="right">SetX</A><BR>
+  　<A href="function_v2.html#FuncPlayerSetY" target="right">SetY</A><BR>
+  　<A href="function_v2.html#FuncPlayerSetSpeed" target="right">SetSpeed</A><BR>
+  　<A href="function_v2.html#FuncPlayerSetIntersectionCircle" target="right">SetIntersectionCircle</A><BR>
+  　<A href="function_v2.html#FuncPlayerSetGrazeCircle" target="right">SetGrazeCircle</A><BR>
+  　<A href="function_v2.html#FuncPlayerSetRebirthFrame" target="right">SetRebirthFrame</A><BR>
+  　<A href="function_v2.html#FuncPlayerSetRebirthFrameReduction" target="right">SetRebirthFrameReduction</A><BR>
+  　<A href="function_v2.html#FuncPlayerSetInitialBombCount" target="right">SetInitialBombCount</A><BR>
+  <BR>
+  <A href="function_v2.html#FuncPlayerShot" target="right">自弾を制御する関数</A><BR>
+  　<A href="function_v2.html#FuncPlayerLoadPlayerShotData" target="right">LoadPlayerShotData</A><BR>
+  　<A href="function_v2.html#FuncPlayerCreatePlayerShot01" target="right">CreatePlayerShot01</A><BR>
+  <BR>
+  <A href="function_v2.html#FuncPlayerOther" target="right">自機その他の関数</A><BR>
+  　<A href="function_v2.html#FuncPlayerSetPlayerLifeImage" target="right">SetPlayerLifeImage</A><BR>
+  　<A href="function_v2.html#FuncPlayerCutIn" target="right">CutIn</A><BR>
+  　<A href="function_v2.html#FuncPlayerUseSpellCard" target="right">UseSpellCard</A><BR>
+  　<A href="function_v2.html#FuncPlayerCallSpellCard" target="right">CallSpellCard</A><BR>	
+  　<A href="function_v2.html#FuncPlayerSetItemCollectLine" target="right">SetItemCollectLine</A><BR>
+  　<A href="function_v2.html#FuncPlayerSetAutoEffect" target="right">SetAutoEffect</A><BR>
+  　<A href="function_v2.html#FuncPlayerGetRebirthFrame" target="right">GetRebirthFrame</A><BR>
+  　<A href="function_v2.html#FuncPlayerIsLastSpell" target="right">IsLastSpell</A><BR>
+  　<A href="function_v2.html#FuncPlayerIsForbidBomb" target="right">IsForbidBomb</A><BR>
+  　<A href="function_v2.html#FuncPlayerOnMissed" target="right">OnMissed</A><BR>
+  　<A href="function_v2.html#FuncPlayerOnBorderOfLife" target="right">OnBorderOfLife</A><BR>
+  <HR><BR>
+
+  <A href="function_v2.html#IPlayerSpellFunction" target="right"><STRONG>自機スペルカード専用関数</STRONG></A><BR>
+  <BR>
+  <A href="function_v2.html#FuncPlayerSpellControl" target="right">自機スペルカードを制御する関数</A><BR>
+  　<A href="function_v2.html#FuncPlayerSpellEnd" target="right">End</A><BR>
+  　<A href="function_v2.html#FuncPlayerSpellSetSpeed" target="right">SetSpeed</A><BR>
+  　<A href="function_v2.html#FuncPlayerSpellSetPlayerX" target="right">SetPlayerX</A><BR>
+  　<A href="function_v2.html#FuncPlayerSpellSetPlayerY" target="right">SetPlayerY</A><BR>
+  　<A href="function_v2.html#FuncPlayerSpellSetIntersectionCircle" target="right">SetIntersectionCircle</A><BR>	
+  　<A href="function_v2.html#FuncPlayerSpellGetArgument" target="right">GetArgument</A><BR>
+  <BR>		
+  <HR><BR>
+
+  <FONT color="#800040"><STRONG>■オブジェクト操作用関数■</STRONG></FONT><BR> 
+  <A href="function_v2.html#IObjFunction" target="right"><STRONG>オブジェクト操作共通関数</STRONG></A><BR>
+  <BR>
+  <A href="function_v2.html#FuncObj" target="right">オブジェクト操作共通関数</A><BR>
+  　<A href="function_v2.html#FuncObj_Create" target="right">Obj_Create</A><BR>
+  　<A href="function_v2.html#FuncObj_Delete" target="right">Obj_Delete</A><BR>
+  　<A href="function_v2.html#FuncObj_BeDeleted" target="right">Obj_BeDeleted</A><BR>
+  　<A href="function_v2.html#FuncObj_SetX" target="right">Obj_SetX</A><BR>
+  　<A href="function_v2.html#FuncObj_SetY" target="right">Obj_SetY</A><BR>
+  　<A href="function_v2.html#FuncObj_SetPosition" target="right">Obj_SetPosition</A><BR>	
+  　<A href="function_v2.html#FuncObj_SetSpeed" target="right">Obj_SetSpeed</A><BR>
+  　<A href="function_v2.html#FuncObj_SetAngle" target="right">Obj_SetAngle</A><BR>
+  　<A href="function_v2.html#FuncObj_SetAutoDelete" target="right">Obj_SetAutoDelete</A><BR>
+  　<A href="function_v2.html#FuncObj_SetAlpha" target="right">Obj_SetAlpha</A><BR>
+  　<A href="function_v2.html#FuncObj_IsIntersected" target="right">Obj_IsIntersected</A><BR>
+  　<A href="function_v2.html#FuncObj_SetCollisionToPlayer" target="right">Obj_SetCollisionToPlayer</A><BR>
+  　<A href="function_v2.html#FuncObj_SetCollisionToObject" target="right">Obj_SetCollisionToObject</A><BR>
+  　<A href="function_v2.html#FuncObj_GetX" target="right">Obj_GetX</A><BR>
+  　<A href="function_v2.html#FuncObj_GetY" target="right">Obj_GetY</A><BR>
+  　<A href="function_v2.html#FuncObj_GetSpeed" target="right">Obj_GetSpeed</A><BR>
+  　<A href="function_v2.html#FuncObj_GetAngle" target="right">Obj_GetAngle</A><BR>
+  <BR>
+  　<A href="function_v2.html#FuncObjShot" target="right">弾オブジェクト操作関数</A><BR>
+  　　<A href="function_v2.html#FuncObjShot_FadeDelete" target="right">ObjShot_FadeDelete</A><BR>
+  　　<A href="function_v2.html#FuncObjShot_SetDelay" target="right">ObjShot_SetDelay</A><BR>
+  　　<A href="function_v2.html#FuncObjShot_SetBombResist" target="right">ObjShot_SetBombResist</A><BR>
+  　　<A href="function_v2.html#FuncObjShot_SetGraphic" target="right">ObjShot_SetGraphic</A><BR>
+  　　<A href="function_v2.html#FuncObjShot_SetDamage" target="right">ObjShot_SetDamage</A><BR>
+  　　<A href="function_v2.html#FuncObjShot_SetPenetration" target="right">ObjShot_SetPenetration</A><BR>
+  　　<A href="function_v2.html#FuncObjShot_ToItem" target="right">ObjShot_ToItem</A><BR>
+  <BR>
+  　　<A href="function_v2.html#FuncObjLaser" target="right">レーザーオブジェクト操作関数</A><BR>
+  　　　<A href="function_v2.html#FuncObjLaser_SetLength" target="right">ObjLaser_SetLength</A><BR>
+  　　　<A href="function_v2.html#FuncObjLaser_SetWidth" target="right">ObjLaser_SetWidth</A><BR>
+  　　　<A href="function_v2.html#FuncObjLaser_SetSource" target="right">ObjLaser_SetSource</A><BR>
+  　　　<A href="function_v2.html#FuncObjLaser_GetEndX" target="right">ObjLaser_GetEndX</A><BR>
+  　　　<A href="function_v2.html#FuncObjLaser_GetEndY" target="right">ObjLaser_GetEndY</A><BR>
+  　　　<A href="function_v2.html#FuncObjLaser_GetLength" target="right">ObjLaser_GetLength</A><BR>
+  　　　<A href="function_v2.html#FuncObjLaser_GetWidth" target="right">ObjLaser_GetWidth</A><BR>
+  <BR>
+  　　<A href="function_v2.html#FuncObjSinuateLaser" target="right">レーザー(曲)オブジェクト</A><BR>
+  　　<A href="function_v2.html#FuncObjSinuateLaser" target="right">操作関数</A><BR>
+  　　　<A href="function_v2.html#FuncObjSinuateLaser_SetLength" target="right">ObjSinuateLaser_SetLength</A><BR>
+  　　　<A href="function_v2.html#FuncObjSinuateLaser_SetWidth" target="right">ObjSinuateLaser_SetWidth</A><BR>
+  <BR>
+  　<A href="function_v2.html#FuncObjEffect" target="right">エフェクト操作関数</A><BR>
+  　　<A href="function_v2.html#FuncObjEffect_SetTexture" target="right">ObjEffect_SetTexture</A><BR>
+  　　<A href="function_v2.html#FuncObjEffect_SetRenderState" target="right">ObjEffect_SetRenderState</A><BR>
+  　　<A href="function_v2.html#FuncObjEffect_SetPrimitiveType" target="right">ObjEffect_SetPrimitiveType</A><BR>
+  　　<A href="function_v2.html#FuncObjEffect_SetScale" target="right">ObjEffect_SetScale</A><BR>
+  　　<A href="function_v2.html#FuncObjEffect_SetAngle" target="right">ObjEffect_SetAngle</A><BR>
+  　　<A href="function_v2.html#FuncObjEffect_SetLayer" target="right">ObjEffect_SetLayer</A><BR>
+  　　<A href="function_v2.html#FuncObjEffect_CreateVertex" target="right">ObjEffect_CreateVertex</A><BR>
+  　　<A href="function_v2.html#FuncObjEffect_SetVertexXY" target="right">ObjEffect_SetVertexXY</A><BR>
+  　　<A href="function_v2.html#FuncObjEffect_SetVertexColor" target="right">ObjEffect_SetVertexColor</A><BR>
+  　　<A href="function_v2.html#FuncObjEffect_SetVertexUV" target="right">ObjEffect_SetVertexUV</A><BR>
+  　　<A href="function_v2.html#FuncObjEffect_ResizeVertexCount" target="right">ObjEffect_ResizeVertexCount</A><BR>
+  <BR>
+  　　<A href="function_v2.html#FuncObjSpell" target="right">自機スペルカード操作関数</A><BR>
+  　　　<A href="function_v2.html#FuncObjSpell_SetIntersecrionCircle" target="right">ObjSpell_SetIntersecrionCircle</A><BR>
+  　　　<A href="function_v2.html#FuncObjSpell_SetIntersecrionLine" target="right">ObjSpell_SetIntersecrionLine</A><BR>
+  <HR><BR>
+  
+  <BR>
+ </TD></TR></TABLE>
+ </BODY>
+</HTML>

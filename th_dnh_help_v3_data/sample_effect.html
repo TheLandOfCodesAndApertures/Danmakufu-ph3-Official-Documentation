@@ -1,0 +1,361 @@
+<HTML>
+ <HEAD>
+  <TITLE>エフェクトサンプル</TITLE>
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/html;charset=Shift_JIS">
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/css">
+  <LINK rel="stylesheet" href="style.css" type="text/css">
+ </HEAD>
+
+ <STYLE TYPE="text/css">
+
+ </STYLE>
+
+ <BODY link="#0000ff" alink="#0000ff" vlink="#0000ff">
+ <DIV class="allbody">
+
+ <HR>
+ <SPAN class = "section_title"><A name = "sec_sound">■エフェクトサンプル</A></SPAN><BR>
+ <P>描画エフェクトのサンプルです。
+ </P>
+
+ <P>
+  <TABLE class = "sample">
+   <TR class = "sample">
+    <TD class = "sample_elementT">SampleE</TD> <TD class = "tag_textT">エフェクトサンプル</TD>
+   </TR>
+   <TR class = "sample">
+    <TD class = "sample_element">E01</TD>
+    <TD class = "sample_text"><A href = "#E01">モーションブラー</A></TD>
+   </TR>
+   <TR class = "sample">
+    <TD class = "sample_element">E02</TD>
+    <TD class = "sample_text"><A href = "#E02">ボス周囲のゆらぎ</A></TD>
+   </TR>
+  </TABLE>
+ </P>
+ ※E01,E02はこのままでは、同時には実行できません。<BR>
+ 　(どちらもGetReservedRenderTargetName(0)を使用しているため。)
+ <BR><HR>
+
+ <P>
+  <TABLE class = "sample_ex">
+   <TR class = "sample">
+    <TD class = "sample_textT" colspan="2"><A name="E01">E01 モーションブラー</A></TD>
+   </TR>
+   <TR class = "sample">
+    <TD class = "sample_image"><IMG src = "img/sample_effect_E01.jpg"></TD>
+    <TD class = "sample_text">
+     モーションブラーです。<BR>
+     このサンプルでのモーションブラーは、前フレームの描画内容を利用した残像効果です。<BR>
+     前フレームの描画内容を半透明で現フレームに上書きすることで残像を残します。<BR>
+     <BR>
+     サンプルではSTGフレーム全体にモーションブラーをかけていますが、<BR>
+     一部の描画優先度のみ(例えば弾のみ)にモーションブラーをかけることもできます。<BR>
+     <BR>
+     以下の手順で行えます。<BR>
+     1) 現フレーム描画用テクスチャAに<BR>　モーションブラー対象とする範囲の優先度を描画する。<BR>
+     2) 前フレームの描画内容であるテクスチャBを半透明でテクスチャAに描画。<BR>
+     3) テクスチャAを画面に描画する。<BR>
+     4) 1フレーム毎にテクスチャA/Bをきりかえ1)-3)を繰り返す。<BR>
+     <BR>
+    </TD>
+   </TR>
+  </TABLE>
+<DIV Class="source"><PRE class="source">
+<SPAN Class="source_reserve">task</SPAN> TMotionBlur()
+{
+	<SPAN Class="source_comment">//レンダリングターゲットに使用するテクスチャ</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> renderTexture = [GetReservedRenderTargetName(<SPAN Class="source_number">0</SPAN>), GetReservedRenderTargetName(<SPAN Class="source_number">1</SPAN>)];
+
+	<SPAN Class="source_comment">//モーションブラーでの描画でまかなえるため、</SPAN>
+	<SPAN Class="source_comment">//優先度20～79の通常描画を無効にする。</SPAN>
+	SetInvalidRenderPriorityA1(<SPAN Class="source_number">20</SPAN>, <SPAN Class="source_number">79</SPAN>);
+
+	<SPAN Class="source_comment">//現フレームを描画するオブジェクト</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> objCurentFrame = ObjPrim_Create(OBJ_SPRITE_2D);
+	Obj_SetRenderPriorityI(objCurentFrame, <SPAN Class="source_number">80</SPAN>);<SPAN Class="source_comment">//優先度80に描画する</SPAN>
+	ObjRender_SetPermitCamera(objCurentFrame, <SPAN Class="source_reserve">false</SPAN>);
+
+	<SPAN Class="source_comment">//過去フレーム用オブジェクト</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> objOldFrame = ObjPrim_Create(OBJ_SPRITE_2D);
+	Obj_SetRenderPriorityI(objOldFrame, <SPAN Class="source_number">0</SPAN>);
+	ObjRender_SetPermitCamera(objOldFrame, <SPAN Class="source_reserve">false</SPAN>);
+	ObjRender_SetAlpha(objOldFrame, <SPAN Class="source_number">224</SPAN>);<SPAN Class="source_comment">//α値はモーションブラーの強さになります</SPAN>
+	Obj_SetVisible(objOldFrame, <SPAN Class="source_reserve">false</SPAN>);<SPAN Class="source_comment">//過去フレーム用なので通常の描画がされないようにします。</SPAN>
+
+	<SPAN Class="source_comment">//ボスのライフが0になるまでモーションブラーをかける。</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> frame = <SPAN Class="source_number">0</SPAN>;
+	<SPAN Class="source_reserve">while</SPAN>(ObjEnemy_GetInfo(objEnemy, INFO_LIFE) &gt; <SPAN Class="source_number">0</SPAN>)
+	{
+		<SPAN Class="source_reserve">let</SPAN> currentFrameTexture = renderTexture[frame % <SPAN Class="source_number">2</SPAN>];
+
+		<SPAN Class="source_comment">//優先度20～79(STGフレーム全体)をテクスチャに描画する。</SPAN>
+		RenderToTextureA1(currentFrameTexture, <SPAN Class="source_number">20</SPAN>, <SPAN Class="source_number">79</SPAN>, <SPAN Class="source_reserve">true</SPAN>);
+
+		<SPAN Class="source_reserve">if</SPAN>(frame &gt;= <SPAN Class="source_number">1</SPAN>) 
+		{
+			<SPAN Class="source_comment">//前フレームを現フレームに半透明描画</SPAN>
+			<SPAN Class="source_comment">//0フレーム目は前フレームがないためこの処理は行わない。</SPAN>
+			<SPAN Class="source_reserve">let</SPAN> oldFrameTexture = renderTexture[(frame - <SPAN Class="source_number">1</SPAN>) % <SPAN Class="source_number">2</SPAN>];
+			ObjPrim_SetTexture(objOldFrame, oldFrameTexture);
+			ObjSprite2D_SetSourceRect(objOldFrame, <SPAN Class="source_number">32</SPAN>, <SPAN Class="source_number">16</SPAN>, <SPAN Class="source_number">416</SPAN>, <SPAN Class="source_number">464</SPAN>);
+			ObjSprite2D_SetDestRect(objOldFrame, <SPAN Class="source_number">32</SPAN>, <SPAN Class="source_number">16</SPAN>, <SPAN Class="source_number">416</SPAN>, <SPAN Class="source_number">464</SPAN>);
+			RenderToTextureB1(currentFrameTexture, objOldFrame, <SPAN Class="source_reserve">false</SPAN>);
+		}
+
+		<SPAN Class="source_comment">//現フレーム描画用オブジェクトを設定</SPAN>
+		ObjPrim_SetTexture(objCurentFrame, currentFrameTexture);
+		ObjSprite2D_SetSourceRect(objCurentFrame, <SPAN Class="source_number">32</SPAN>, <SPAN Class="source_number">16</SPAN>, <SPAN Class="source_number">416</SPAN>, <SPAN Class="source_number">464</SPAN>);
+		ObjSprite2D_SetDestRect(objCurentFrame, <SPAN Class="source_number">32</SPAN>, <SPAN Class="source_number">16</SPAN>, <SPAN Class="source_number">416</SPAN>, <SPAN Class="source_number">464</SPAN>);
+
+		frame++;
+		<SPAN Class="source_reserve">yield</SPAN>;
+	}
+
+	<SPAN Class="source_comment">//モーションブラー用オブジェクト削除</SPAN>
+	Obj_Delete(objCurentFrame);
+	Obj_Delete(objOldFrame);
+	ClearInvalidRenderPriority();
+}
+</PRE></DIV>
+ </P>
+ <BR><HR>
+
+
+ <P>
+  <TABLE class = "sample_ex">
+   <TR class = "sample">
+    <TD class = "sample_textT" colspan="2"><A name="E02">E02 ボス周囲のゆらぎ</A></TD>
+   </TR>
+   <TR class = "sample">
+    <TD class = "sample_image"><IMG src = "img/sample_effect_E02.jpg"></TD>
+    <TD class = "sample_text">
+     ボス周囲のゆらぎエフェクトです。<BR>
+     ←の画像ではゆらいでいるのがわかりづらいので<BR>
+       実際の動きは本体付属のサンプルスクリプトを実行お願いします。<BR>
+     <BR>
+     以下の手順で行えます。<BR>
+     1) 描画用テクスチャに背景を描画する。<BR>
+     2) 背景を描画したテクスチャをゆがませて、画面に描画する。<BR>
+     <BR>
+    </TD>
+   </TR>
+  </TABLE>
+	<DIV Class="source"><PRE class="source">
+	<SPAN Class="source_reserve">task</SPAN> TWaveCircle()
+	{
+		<SPAN Class="source_comment">//レンダリングターゲットに使用するテクスチャ</SPAN>
+		<SPAN Class="source_reserve">let</SPAN> renderTexture = GetReservedRenderTargetName(<SPAN Class="source_number">0</SPAN>);
+
+		<SPAN Class="source_reserve">let</SPAN> frame = <SPAN Class="source_number">0</SPAN>; <SPAN Class="source_comment">//フレーム</SPAN>
+		<SPAN Class="source_reserve">let</SPAN> baseEffectRadius = <SPAN Class="source_number">144</SPAN>; <SPAN Class="source_comment">//基準エフェクト半径</SPAN>
+		<SPAN Class="source_reserve">let</SPAN> outerFluct = <SPAN Class="source_number">16</SPAN>; <SPAN Class="source_comment">//エフェクト半径の最大変化量</SPAN>
+		<SPAN Class="source_reserve">let</SPAN> effectRadius = <SPAN Class="source_number">0</SPAN>; <SPAN Class="source_comment">//エフェクト半径</SPAN>
+		<SPAN Class="source_reserve">let</SPAN> circleVertexCount = <SPAN Class="source_number">16</SPAN>; <SPAN Class="source_comment">//円をあらわすのに使用する頂点の数</SPAN>
+		<SPAN Class="source_reserve">let</SPAN> innerCircleCount = <SPAN Class="source_number">4</SPAN>;
+
+		<SPAN Class="source_reserve">let</SPAN> priEffectMin = <SPAN Class="source_number">20</SPAN>; <SPAN Class="source_comment">//エフェクトをかける最小優先度</SPAN>
+		<SPAN Class="source_reserve">let</SPAN> priEffectMax = <SPAN Class="source_number">28</SPAN>; <SPAN Class="source_comment">//エフェクトをかける最大優先度</SPAN>
+
+		<SPAN Class="source_comment">//背景のみエフェクトの対象とする</SPAN>
+		<SPAN Class="source_comment">//エフェクトの描画でまかなえるため、</SPAN>
+		<SPAN Class="source_comment">//優先度20～28の通常描画を無効にする。</SPAN>
+		SetInvalidRenderPriorityA1(priEffectMin, priEffectMax);
+
+
+		<SPAN Class="source_reserve">let</SPAN> frameWidth = GetStgFrameWidth();
+		<SPAN Class="source_reserve">let</SPAN> frameHeight = GetStgFrameHeight();
+		<SPAN Class="source_reserve">let</SPAN> frameLeft = GetStgFrameLeft();
+		<SPAN Class="source_reserve">let</SPAN> frameRight = frameLeft + frameWidth;
+		<SPAN Class="source_reserve">let</SPAN> frameTop = GetStgFrameTop();
+		<SPAN Class="source_reserve">let</SPAN> frameBottom = frameTop + frameHeight;
+
+		<SPAN Class="source_comment">//--------------------------------</SPAN>
+		<SPAN Class="source_comment">//円形の影</SPAN>
+		<SPAN Class="source_reserve">let</SPAN> path = GetCurrentScriptDirectory() ~ <SPAN Class="source_string">"Effect02.png"</SPAN>;
+		<SPAN Class="source_reserve">let</SPAN> objShadow = ObjPrim_Create(OBJ_SPRITE_2D); <SPAN Class="source_comment">//2Dスプライトオブジェクト生成</SPAN>
+		Obj_SetRenderPriorityI(objShadow, <SPAN Class="source_number">25</SPAN>); <SPAN Class="source_comment">//描画優先度を設定</SPAN>
+		ObjPrim_SetTexture(objShadow, path); <SPAN Class="source_comment">//テクスチャを設定</SPAN>
+		ObjRender_SetBlendType(objShadow, BLEND_MULTIPLY);
+		ObjSprite2D_SetSourceRect(objShadow, <SPAN Class="source_number">1</SPAN>, <SPAN Class="source_number">1</SPAN>, <SPAN Class="source_number">255</SPAN>, <SPAN Class="source_number">255</SPAN>); <SPAN Class="source_comment">//描画元設定(44, 54)-(71,105)</SPAN>
+		ObjSprite2D_SetDestCenter(objShadow);
+		ObjRender_SetScaleXYZ(objShadow, <SPAN Class="source_number">1.2</SPAN>, <SPAN Class="source_number">1.2</SPAN>, <SPAN Class="source_number">0</SPAN>);
+
+
+		<SPAN Class="source_comment">//--------------------------------</SPAN>
+		<SPAN Class="source_comment">//円内</SPAN>
+		<SPAN Class="source_reserve">let</SPAN> objInnerC = ObjPrim_Create(OBJ_PRIMITIVE_2D);
+		Obj_SetRenderPriorityI(objInnerC, priEffectMax + <SPAN Class="source_number">1</SPAN>);
+		ObjPrim_SetTexture(objInnerC, renderTexture);
+		ObjPrim_SetVertexCount(objInnerC, <SPAN Class="source_number">6</SPAN> * circleVertexCount * innerCircleCount);
+
+		<SPAN Class="source_comment">//円外～エフェクト枠</SPAN>
+		<SPAN Class="source_reserve">let</SPAN> objOuterC = ObjPrim_Create(OBJ_PRIMITIVE_2D);
+		Obj_SetRenderPriorityI(objOuterC, priEffectMax + <SPAN Class="source_number">1</SPAN>);
+		ObjPrim_SetTexture(objOuterC, renderTexture); <SPAN Class="source_comment">//テクスチャを設定</SPAN>
+		ObjPrim_SetVertexCount(objOuterC, <SPAN Class="source_number">3</SPAN> * circleVertexCount);
+
+		<SPAN Class="source_comment">//エフェクト枠外オブジェクト</SPAN>
+		<SPAN Class="source_reserve">let</SPAN> objOuterE = ObjPrim_Create(OBJ_SPRITE_LIST_2D);
+		Obj_SetRenderPriorityI(objOuterE, priEffectMax + <SPAN Class="source_number">1</SPAN>);
+		ObjPrim_SetTexture(objOuterE, renderTexture); <SPAN Class="source_comment">//テクスチャを設定</SPAN>
+
+
+		<SPAN Class="source_comment">//ボスのライフが0になるまでエフェクトをかける。</SPAN>
+		<SPAN Class="source_reserve">let</SPAN> objEnemy = GetEnemyBossObjectID[<SPAN Class="source_number">0</SPAN>];
+		<SPAN Class="source_reserve">while</SPAN>(ObjEnemy_GetInfo(objEnemy, INFO_LIFE) &gt; <SPAN Class="source_number">0</SPAN>)
+		{
+			<SPAN Class="source_comment">//エフェクト半径</SPAN>
+			effectRadius = baseEffectRadius + outerFluct * sin(frame*<SPAN Class="source_number">4</SPAN>);
+
+			<SPAN Class="source_reserve">let</SPAN> enemyX = ObjMove_GetX(objEnemy); <SPAN Class="source_comment">//敵座標X</SPAN>
+			<SPAN Class="source_reserve">let</SPAN> enemyY = ObjMove_GetY(objEnemy); <SPAN Class="source_comment">//敵座標Y</SPAN>
+			<SPAN Class="source_reserve">let</SPAN> circleLeft = enemyX - effectRadius + frameLeft; <SPAN Class="source_comment">//エフェクト円の左端</SPAN>
+			<SPAN Class="source_reserve">let</SPAN> circleRight = enemyX + effectRadius + frameLeft; <SPAN Class="source_comment">//エフェクト円の右端</SPAN>
+			<SPAN Class="source_reserve">let</SPAN> circleTop = enemyY - effectRadius + frameTop; <SPAN Class="source_comment">//エフェクト円の上端</SPAN>
+			<SPAN Class="source_reserve">let</SPAN> circleBottom = enemyY + effectRadius + frameTop; <SPAN Class="source_comment">//エフェクト円の下端</SPAN>
+
+			<SPAN Class="source_comment">//--------------------------------</SPAN>
+			<SPAN Class="source_comment">//優先度20～28(背景)をエフェクト用のテクスチャに描画</SPAN>
+			RenderToTextureA1(renderTexture, priEffectMin, priEffectMax, <SPAN Class="source_reserve">true</SPAN>);
+
+			<SPAN Class="source_comment">//--------------------------------</SPAN>
+			<SPAN Class="source_comment">//影</SPAN>
+			ObjRender_SetPosition(objShadow, enemyX, enemyY, <SPAN Class="source_number">0</SPAN>);
+
+			<SPAN Class="source_comment">//--------------------------------</SPAN>
+			<SPAN Class="source_comment">//円内</SPAN>
+			<SPAN Class="source_comment">//エフェクト内円を描画</SPAN>
+			<SPAN Class="source_comment">//ゆらいでいる部分</SPAN>
+			ObjRender_SetPosition(objInnerC, -frameLeft, -frameTop, <SPAN Class="source_number">0</SPAN>);
+			<SPAN Class="source_reserve">ascent</SPAN>(<SPAN Class="source_reserve">let</SPAN> iPosI <SPAN Class="source_reserve">in</SPAN> <SPAN Class="source_number">0</SPAN> .. circleVertexCount) 
+			{
+				<SPAN Class="source_reserve">let</SPAN> xyOldRadius = <SPAN Class="source_number">0</SPAN>;
+				<SPAN Class="source_reserve">ascent</SPAN>(<SPAN Class="source_reserve">let</SPAN> iCircle <SPAN Class="source_reserve">in</SPAN> <SPAN Class="source_number">0</SPAN> .. innerCircleCount) 
+				{
+					<SPAN Class="source_reserve">let</SPAN> vertexIndex = (iPosI * innerCircleCount + iCircle) * <SPAN Class="source_number">6</SPAN>;
+					<SPAN Class="source_reserve">let</SPAN> angle1 =  iPosI * (<SPAN Class="source_number">360</SPAN> / circleVertexCount);
+					<SPAN Class="source_reserve">let</SPAN> angle2 =  (iPosI + <SPAN Class="source_number">1</SPAN>) * (<SPAN Class="source_number">360</SPAN> / circleVertexCount);
+
+					<SPAN Class="source_comment">//テクスチャのUV座標</SPAN>
+					<SPAN Class="source_reserve">let</SPAN> uvRadius1 = iCircle * effectRadius / innerCircleCount;
+					<SPAN Class="source_reserve">let</SPAN> uvRadius2 = (iCircle + <SPAN Class="source_number">1</SPAN>) * effectRadius / innerCircleCount;
+
+					<SPAN Class="source_comment">//テクスチャのUV座標と描画先のXY座標を変化させることでゆらぎを表現する</SPAN>
+					<SPAN Class="source_reserve">let</SPAN> xyRadius1t = iCircle * effectRadius / innerCircleCount;
+					<SPAN Class="source_reserve">let</SPAN> xyRadius2t = (iCircle + <SPAN Class="source_number">1</SPAN>) * effectRadius / innerCircleCount;
+					<SPAN Class="source_reserve">let</SPAN> xyRadius1 = xyOldRadius;
+					<SPAN Class="source_reserve">let</SPAN> xyBias = (xyRadius2t - xyRadius1t) / <SPAN Class="source_number">2</SPAN> + (xyRadius2t - xyRadius1t) * sin(frame*<SPAN Class="source_number">16</SPAN> + (iCircle * <SPAN Class="source_number">360</SPAN> / innerCircleCount)) / <SPAN Class="source_number">4</SPAN>;
+					<SPAN Class="source_reserve">let</SPAN> xyRadius2 = xyRadius2t + xyBias / ((innerCircleCount - iCircle + <SPAN Class="source_number">1</SPAN>) / <SPAN Class="source_number">2</SPAN>);
+
+					xyOldRadius = xyRadius2;
+					<SPAN Class="source_reserve">if</SPAN>(iCircle == innerCircleCount - <SPAN Class="source_number">1</SPAN>)
+					{
+						xyRadius2 = uvRadius2;
+					}
+
+					<SPAN Class="source_comment">//上記の頂点座標を設定</SPAN>
+					<SPAN Class="source_reserve">let</SPAN> leftBias = enemyX + frameLeft;
+					<SPAN Class="source_reserve">let</SPAN> topBias = enemyY + frameTop;
+					ObjPrim_SetVertexPosition(objInnerC, vertexIndex  , leftBias + xyRadius1 * cos(angle1), topBias + xyRadius1 * sin(angle1), <SPAN Class="source_number">0</SPAN>);
+					ObjPrim_SetVertexPosition(objInnerC, vertexIndex+<SPAN Class="source_number">1</SPAN>, leftBias + xyRadius2 * cos(angle1), topBias + xyRadius2 * sin(angle1), <SPAN Class="source_number">0</SPAN>);
+					ObjPrim_SetVertexPosition(objInnerC, vertexIndex+<SPAN Class="source_number">2</SPAN>, leftBias + xyRadius1 * cos(angle2), topBias + xyRadius1 * sin(angle2), <SPAN Class="source_number">0</SPAN>);
+				
+					ObjPrim_SetVertexPosition(objInnerC, vertexIndex+<SPAN Class="source_number">3</SPAN>, leftBias + xyRadius1 * cos(angle2), topBias + xyRadius1 * sin(angle2), <SPAN Class="source_number">0</SPAN>);
+					ObjPrim_SetVertexPosition(objInnerC, vertexIndex+<SPAN Class="source_number">4</SPAN>, leftBias + xyRadius2 * cos(angle1), topBias + xyRadius2 * sin(angle1), <SPAN Class="source_number">0</SPAN>);
+					ObjPrim_SetVertexPosition(objInnerC, vertexIndex+<SPAN Class="source_number">5</SPAN>, leftBias + xyRadius2 * cos(angle2), topBias + xyRadius2 * sin(angle2), <SPAN Class="source_number">0</SPAN>);
+
+					ObjPrim_SetVertexUVT(objInnerC, vertexIndex  , leftBias + uvRadius1 * cos(angle1), topBias + uvRadius1 * sin(angle1));
+					ObjPrim_SetVertexUVT(objInnerC, vertexIndex+<SPAN Class="source_number">1</SPAN>, leftBias + uvRadius2 * cos(angle1), topBias + uvRadius2 * sin(angle1));
+					ObjPrim_SetVertexUVT(objInnerC, vertexIndex+<SPAN Class="source_number">2</SPAN>, leftBias + uvRadius1 * cos(angle2), topBias + uvRadius1 * sin(angle2));
+				
+					ObjPrim_SetVertexUVT(objInnerC, vertexIndex+<SPAN Class="source_number">3</SPAN>, leftBias + uvRadius1 * cos(angle2), topBias + uvRadius1 * sin(angle2));
+					ObjPrim_SetVertexUVT(objInnerC, vertexIndex+<SPAN Class="source_number">4</SPAN>, leftBias + uvRadius2 * cos(angle1), topBias + uvRadius2 * sin(angle1));
+					ObjPrim_SetVertexUVT(objInnerC, vertexIndex+<SPAN Class="source_number">5</SPAN>, leftBias + uvRadius2 * cos(angle2), topBias + uvRadius2 * sin(angle2));
+
+				}
+			}
+
+
+			<SPAN Class="source_comment">//--------------------------------</SPAN>
+			<SPAN Class="source_comment">//円外～エフェクト枠</SPAN>
+			<SPAN Class="source_comment">//揺らいでいる円の外側から矩形までを埋める</SPAN>
+			ObjRender_SetPosition(objOuterC, -frameLeft, -frameTop, <SPAN Class="source_number">0</SPAN>);
+			<SPAN Class="source_reserve">ascent</SPAN>(<SPAN Class="source_reserve">let</SPAN> iPosO <SPAN Class="source_reserve">in</SPAN> <SPAN Class="source_number">0</SPAN> .. circleVertexCount) 
+			{
+				<SPAN Class="source_reserve">let</SPAN> angle1 = iPosO * (<SPAN Class="source_number">360</SPAN> / circleVertexCount);
+				<SPAN Class="source_reserve">let</SPAN> angle2 = (iPosO + <SPAN Class="source_number">1</SPAN>) * (<SPAN Class="source_number">360</SPAN> / circleVertexCount);
+				<SPAN Class="source_reserve">let</SPAN> rectX = <SPAN Class="source_number">0</SPAN>;
+				<SPAN Class="source_reserve">let</SPAN> rectY = <SPAN Class="source_number">0</SPAN>;
+				<SPAN Class="source_reserve">if</SPAN>(angle1 &gt;= <SPAN Class="source_number">0</SPAN> &amp;&amp; angle1 &lt; <SPAN Class="source_number">90</SPAN>)
+				{
+					rectX = circleRight;
+					rectY = circleBottom;
+				}
+				<SPAN Class="source_reserve">else</SPAN> <SPAN Class="source_reserve">if</SPAN>(angle1 &gt;= <SPAN Class="source_number">90</SPAN> &amp;&amp; angle1 &lt; <SPAN Class="source_number">180</SPAN>)
+				{
+					rectX = circleLeft;
+					rectY = circleBottom;
+				}
+				<SPAN Class="source_reserve">else</SPAN> <SPAN Class="source_reserve">if</SPAN>(angle1 &gt;= <SPAN Class="source_number">180</SPAN> &amp;&amp; angle1 &lt; <SPAN Class="source_number">270</SPAN>)
+				{
+					rectX = circleLeft;
+					rectY = circleTop;
+				}
+				<SPAN Class="source_reserve">else</SPAN> <SPAN Class="source_reserve">if</SPAN>(angle1 &gt;= <SPAN Class="source_number">270</SPAN> &amp;&amp; angle1 &lt; <SPAN Class="source_number">360</SPAN>)
+				{
+					rectX = circleRight;
+					rectY = circleTop;
+				}
+				<SPAN Class="source_reserve">let</SPAN> vertexIndex = iPosO * <SPAN Class="source_number">3</SPAN>;
+				ObjPrim_SetVertexPosition(objOuterC, vertexIndex, enemyX + effectRadius * cos(angle1) + frameLeft, enemyY + effectRadius * sin(angle1) + frameTop, <SPAN Class="source_number">0</SPAN>);
+				ObjPrim_SetVertexPosition(objOuterC, vertexIndex+<SPAN Class="source_number">1</SPAN>, rectX, rectY, <SPAN Class="source_number">0</SPAN>);
+				ObjPrim_SetVertexPosition(objOuterC, vertexIndex+<SPAN Class="source_number">2</SPAN>, enemyX + effectRadius * cos(angle2) + frameLeft, enemyY + effectRadius * sin(angle2) + frameTop, <SPAN Class="source_number">0</SPAN>);
+
+				ObjPrim_SetVertexUVT(objOuterC, vertexIndex, enemyX + effectRadius * cos(angle1) + frameLeft, enemyY + effectRadius * sin(angle1) + frameTop);
+				ObjPrim_SetVertexUVT(objOuterC, vertexIndex+<SPAN Class="source_number">1</SPAN>, rectX, rectY);
+				ObjPrim_SetVertexUVT(objOuterC, vertexIndex+<SPAN Class="source_number">2</SPAN>, enemyX + effectRadius * cos(angle2) + frameLeft, enemyY + effectRadius * sin(angle2) + frameTop);
+			}
+			
+
+			<SPAN Class="source_comment">//--------------------------------</SPAN>
+			<SPAN Class="source_comment">//エフェクト枠外</SPAN>
+			<SPAN Class="source_comment">//エフェクト枠外の背景を描画する</SPAN>
+			ObjSpriteList2D_ClearVertexCount(objOuterE);
+			ObjRender_SetPosition(objOuterE, -frameLeft, -frameTop, <SPAN Class="source_number">0</SPAN>);
+			ObjSpriteList2D_SetSourceRect(objOuterE, frameLeft, frameTop, frameRight, circleTop + <SPAN Class="source_number">1</SPAN>);
+			ObjSpriteList2D_SetDestRect(objOuterE, frameLeft, frameTop, frameRight, circleTop + <SPAN Class="source_number">1</SPAN>);
+			ObjSpriteList2D_AddVertex(objOuterE);
+
+			ObjSpriteList2D_SetSourceRect(objOuterE, frameLeft, circleTop, circleLeft + <SPAN Class="source_number">1</SPAN>, circleBottom);
+			ObjSpriteList2D_SetDestRect(objOuterE, frameLeft, circleTop, circleLeft + <SPAN Class="source_number">1</SPAN>, circleBottom);
+			ObjSpriteList2D_AddVertex(objOuterE);
+
+			ObjSpriteList2D_SetSourceRect(objOuterE, circleRight, circleTop, frameRight, circleBottom);
+			ObjSpriteList2D_SetDestRect(objOuterE, circleRight, circleTop, frameRight, circleBottom);
+			ObjSpriteList2D_AddVertex(objOuterE);
+
+			ObjSpriteList2D_SetSourceRect(objOuterE, frameLeft, circleBottom, frameRight, frameBottom);
+			ObjSpriteList2D_SetDestRect(objOuterE, frameLeft, circleBottom, frameRight, frameBottom);
+			ObjSpriteList2D_AddVertex(objOuterE);
+
+			frame++;
+			<SPAN Class="source_reserve">yield</SPAN>;
+		}
+
+		<SPAN Class="source_comment">//エフェクト用オブジェクト削除</SPAN>
+		Obj_Delete(objInnerC);
+		Obj_Delete(objOuterC);
+		Obj_Delete(objOuterE);
+		Obj_Delete(objShadow);
+		ClearInvalidRenderPriority();
+	}
+	</PRE></DIV>
+ </P>
+ <BR><HR>
+
+
+ </DIV></BODY>
+</HTML>
+
+

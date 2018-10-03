@@ -1,0 +1,4847 @@
+<HTML>
+ <HEAD>
+  <TITLE>東方弾幕風リファレンスメイン</TITLE>
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/html;charset=Shift_JIS">
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/css">
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/lavascript">
+  <LINK REL="stylesheet"HREF="style.css"TYPE="text/css">
+ </HEAD>
+
+
+
+
+<BODY BGCOLOR="#FFFFFF" LINK="#0000ff" ALINK="#ff00ff" VLINK="#222288">
+<P><FONT color="#800040"><A name="IAllFunction"><STRONG>共通の関数</STRONG></A></FONT></P>
+ <P>関数を、スクリプト中にかくと、決められた動作をおこせます。<BR>
+    全てのスクリプト部分で使える関数です。</P>
+ <BR><BR>
+ 
+ <P><FONT color="#800040"><A name="FuncMove"><STRONG>移動系関数</STRONG></A></FONT></P>
+ <P>敵や弾を移動する関数です。</P>
+ <P>
+  <FONT color="#000080"><A name="FuncSetX"><STRONG>SetX(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) x座標<BR>
+   </FONT>
+  x座標を設定します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjMove_SetX" target="right">ObjMove_SetX</a> (ほぼ互換　オブジェクトID指定必須)<br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetX" target="right">ObjRender_SetX</a> (敵、弾の移動以外にも使える)<br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjMove_SetPosition" target="right">ObjMove_SetPosition</a> (Y座標も同時に設定できる)<br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetPosition" target="right">ObjRender_SetPosition</a> (Y, Z座標も同時に設定できる)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSetY"><STRONG>SetY(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) y座標<BR>
+   </FONT>
+  y座標を設定します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjMove_SetY" target="right">ObjMove_SetY</a> (ほぼ互換　オブジェクトID指定必須)<br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetY" target="right">ObjRender_SetY</a> (敵、弾の移動以外にも使える)<br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjMove_SetPosition" target="right">ObjMove_SetPosition</a> (Y座標も同時に設定できる)<br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetPosition" target="right">ObjRender_SetPosition</a> (Y, Z座標も同時に設定できる)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSetSpeed"><STRONG>SetSpeed(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 速度<BR>
+   </FONT>
+  移動速度を設定します。<BR>
+  SetAngleで指定した方向に設定した速度で移動します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjMove_SetSpeed" target="right">ObjMove_SetSpeed</a> (ほぼ互換　オブジェクトID指定必須)<br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjMove_AddPatternA1" target="right">ObjMove_AddPatternA1</a> (指定フレーム経過後に変化させることができる　A4まであり)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSetAngle"><STRONG>SetAngle(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 角度<BR>
+   </FONT>
+  移動角度を設定します。<BR>
+  SetSpeedで指定した速度で設定した角度で移動します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjMove_SetAngle" target="right">ObjMove_SetAngle</a> (ほぼ互換　オブジェクトID指定必須)<br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjMove_AddPatternA1" target="right">ObjMove_AddPatternA1</a> (指定フレーム経過後に変化させることができる　A4まであり)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSetMovePosition01"><STRONG>SetMovePosition01(引数：3)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) x座標<BR>
+  　2) y座標<BR>
+  　3) 速度<BR>
+   </FONT>
+  指定した座標へ向かって、設定した速度で移動します。移動が完了すると敵は停止します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjMove_SetDestAtSpeed" target="right">ObjMove_SetDestAtSpeed</a> (ほぼ互換　オブジェクトID指定必須)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSetMovePosition02"><STRONG>SetMovePosition02(引数：3)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) x座標<BR>
+  　2) y座標<BR>
+  　3) フレーム<BR>
+   </FONT>
+  指定した座標へ向かって、設定したフレームで移動します。移動が完了すると敵は停止します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjMove_SetDestAtFrame" target="right">ObjMove_SetDestAtFrame</a> (ほぼ互換　オブジェクトID指定必須)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSetMovePosition03"><STRONG>SetMovePosition03(引数：4)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) x座標<BR>
+  　2) y座標<BR>
+  　3) 重み<BR>
+  　4) 最大速度<BR>
+   </FONT>
+  指定した座標へ向かって移動しますが、指定した座標に近づくと設定した重みによって減速します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjMove_SetDestAtWeight" target="right">ObjMove_SetDestAtWeight</a> (ほぼ互換　オブジェクトID指定必須)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSetMovePositionHermite"><STRONG>SetMovePositionHermite(引数：7)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 終点x座標<BR>
+  　2) 終点y座標<BR>
+  　3) 始点接線ベクトルの大きさ<BR>
+  　4) 始点接線ベクトルの角度<BR>
+  　5) 終点接線ベクトルの大きさ<BR>
+  　6) 終点接線ベクトルの角度<BR>
+  　7) フレーム<BR>	
+   </FONT>
+  指定した座標へ向かって曲線軌道で移動します。<BR>
+  始点(現座標)の接線ベクトル、移動終点座標、移動終点接線ベクトルからの
+  エルミートスプライン曲線上を指定したフレームで移動する関数です。<BR>
+  移動が完了すると敵は停止します<BR>
+  下図のような曲線軌道になります。<BR>
+  <IMG src="SetMovePositionHermite.png" ALT="SetMovePositionHermite">
+  <BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSetMovePositionRandom01"><STRONG>SetMovePositionRandom01(引数：7)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 移動量x<BR>
+  　2) 移動量y<BR>
+  　3) 速度<BR>
+  　4) x最小値<BR>
+  　5) y最小値<BR>
+  　6) x最大値<BR>
+  　7) y最大値<BR>
+   </FONT>
+  指定した矩形内でランダムに移動場所を決めます。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSetPlayerX"><STRONG>SetPlayerX(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) x座標<BR>
+   </FONT>
+  自機のx座標を設定します。<BR>
+  自機の移動範囲を制限したり、瞬間移動、吸引?等の効果に使えます。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetX" target="right">ObjRender_SetX</a> (<a href="../../func_common_stg.html#GetPlayerObjectID" target="right">GetPlayerObjectID</a>と併用して)<br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetPosition" target="right">ObjRender_SetPosition</a> (Y, Z座標も同時に設定できる)<br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjMove_SetX" target="right">ObjMove_SetX</a>, 
+<a href="../../func_common_obj_stg.html#ObjMove_SetY" target="right">ObjMove_SetY</a>でも可。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSetPlayerY"><STRONG>SetPlayerY(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) y座標<BR>
+   </FONT>
+  自機のy座標を設定します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetY" target="right">ObjRender_SetY</a> (<a href="../../func_common_stg.html#GetPlayerObjectID" target="right">GetPlayerObjectID</a>と併用して)<br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetPosition" target="right">ObjRender_SetPosition</a> (Y, Z座標も同時に設定できる)<br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjMove_SetX" target="right">ObjMove_SetX</a>, 
+<a href="../../func_common_obj_stg.html#ObjMove_SetY" target="right">ObjMove_SetY</a>でも可。<br>
+  <BR>
+  
+  
+  
+  <FONT color="#000080"><A name="FuncSetCoordinateType"><STRONG>SetCoordinateType(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 座標系<BR>
+  　　COODINATE_TYPE_ABSOLUTE：絶対座標系<BR>
+  　　COODINATE_TYPE_RELATIVE：SetOriginで設定した座標を中心とした座標系<BR>
+  　　COODINATE_TYPE_PARENT　：敵の親を中心とした座標系<BR>
+   </FONT>
+  敵が中心とする座標系を設定します。<BR>
+  初期値はCOODINATE_TYPE_ABSOLUTEです。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSetOrigin"><STRONG>SetOrigin(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) x座標<BR>
+  　2) y座標<BR>
+   </FONT>
+  SetCoordinatesType(COODINATE_TYPE_RELATIVE)が指定された場合、<BR>
+  敵が中心とする座標を設定します。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+ </P><BR><BR>
+ 
+ 
+ <P><FONT color="#800040"><A name="FuncEnemyShot"><STRONG>敵弾を制御する関数</STRONG></A></FONT></P>
+ <P>敵弾の制御を行う関数です。<BR>
+
+ <BR>
+ <P>
+  <FONT color="#000080"><A name="FuncSetShotDirectionType"><STRONG>SetShotDirectionType(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) タイプ<BR>
+  　　PLAYER：設定する弾の角度を自機方向からの角度にします。<BR>
+  　　ABSOLUTE：設定する弾の角度を絶対角度にします。<BR>
+  　　SEQUENCE：設定する弾の角度を現在の弾の角度からの変化にします。<BR>
+   </FONT>
+  SetShotData系の関数の前に使用することで、弾の角度の意味を変更できます。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSetShotKillTime"><STRONG>SetShotKillTime(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 弾のID;CreateShot系で作製したときに指定したID<BR>
+  　2) 時間<BR>
+   </FONT>
+  弾が消滅する時間を設定します。設定しなければ画面外に出てしばらくたつまで弾は消滅しません。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjShot_SetDeleteFrame" target="right">ObjShot_SetDeleteFrame</a> (完全互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncCreateShot01"><STRONG>CreateShot01(引数：6)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) x座標<BR>
+  　2) y座標<BR>
+  　3) 速度<BR>
+  　4) 角度<BR>
+  　5) 画像<BR>
+  　6) 遅延時間(弾が実体化するまでの時間)<BR>
+   </FONT>
+  弾を簡易的に発射するための関数。<BR>途中で角度変化等を行うことはできない。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#CreateShotA1" target="right">CreateShotA1</a> (完全互換　弾画像の引数名が異なる　返り値に弾ID)<br>
+  　　　　<a href="../../func_common_stg.html#CreateShotOA1" target="right">CreateShotOA1</a> (x,y座標を指定せず、発生源のオブジェクトIDを指定)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncCreateShot02"><STRONG>CreateShot02(引数：8)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) x座標<BR>
+  　2) y座標<BR>
+  　3) 速度<BR>
+  　4) 角度<BR>
+  　5) 加速度(1フレームあたりの速度変化量)<BR>
+  　6) 最大速度(最低速度)<BR>
+  　7) 画像<BR>
+  　8) 遅延時間(弾が実体化するまでの時間)<BR>
+   </FONT>
+  弾を簡易的に発射するための関数。<BR>途中で角度変化等を行うことはできない。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#CreateShotA2" target="right">CreateShotA2</a> (完全互換　弾画像の引数名が異なる　返り値に弾ID)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncCreateShot11"><STRONG>CreateShot11(引数：6)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) x座標<BR>
+  　2) y座標<BR>
+  　3) x速度<BR>
+  　4) y速度<BR>
+  　5) 画像<BR>
+  　6) 遅延時間(弾が実体化するまでの時間)<BR>
+   </FONT>
+  弾を簡易的に発射するための関数。<BR>途中で角度変化等を行うことはできない。<BR>
+  CreateShot01と違い、こちらはx,y方向のベクトルを指定する。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#CreateShotB1" target="right">CreateShotB1</a> (完全互換　弾画像の引数名が異なる　返り値に弾ID)<br>
+  　　　　<a href="../../func_common_stg.html#CreateShotOB1" target="right">CreateShotOB1</a> (x,y座標を指定せず、発生源のオブジェクトIDを指定)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncCreateShot12"><STRONG>CreateShot12(引数：10)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) x座標<BR>
+  　2) y座標<BR>
+  　3) x速度<BR>
+  　4) y速度<BR>
+  　5) x加速度(1フレームあたりの速度変化量)<BR>
+  　6) y加速度(1フレームあたりの速度変化量)<BR>
+  　7) x最大速度(最低速度)<BR>
+  　8) y最大速度(最低速度)<BR>	
+  　9) 画像<BR>
+  　10) 遅延時間(弾が実体化するまでの時間)<BR>
+   </FONT>
+  弾を簡易的に発射するための関数。<BR>途中で角度変化等を行うことはできない。<BR>
+  CreateShot02と違い、こちらはx,y方向のベクトルを指定する。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#CreateShotB2" target="right">CreateShotB2</a> (完全互換　弾画像の引数名が異なる　返り値に弾ID)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncCreateShotA"><STRONG>CreateShotA(引数：4)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) ID：自由に指定できる数値。このあとにSetShotDataA、FireShot、AddShot関数に同じものを使う。<BR>
+  　2) x(弾を出現させる絶対x座標。AddShotに使用する場合は弾からの座標。)<BR>
+  　3) y(弾を出現させる絶対y座標。AddShotに使用する場合は弾からの座標。)<BR>
+  　4) 遅延時間(弾が実体化するまでの時間)<BR>
+   </FONT>
+  弾を作製する関数。<BR>このあとに、SetShotDataAで動きを設定したあと、FireShotで発射させる。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  　　　　<a href="../../func_common_stg.html#CreateShotA1" target="right">CreateShotA1</a>か
+<a href="../../func_common_obj_stg.html#ObjShot_Create" target="right">ObjShot_Create</a>で得られたオブジェクトIDに
+<a href="../../func_common_obj_stg.html#sec_ObjMove_" target="right">ObjMove系列の関数</a>を使用する形で実現できます。<br>
+  　　　　(v0.12mでのObjShotと同じ要領で作る)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSetShotDataA"><STRONG>SetShotDataA(引数：8)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) ID：CreateShotAで指定したID。<BR>
+  　2) 軌道を変化させるフレーム(弾実体化後の経過フレーム)<BR>
+  　3) 速度(NULLを指定することで現在の値を引き継ぐ)<BR>
+  　4) 角度(NULLを指定することで現在の値を引き継ぐ)<BR>
+  　5) 角速度(1フレームあたりの角度変化量)<BR>
+  　6) 加速度(1フレームあたりの速度変化量)<BR>
+  　7) 最大速度(最低速度)<BR>
+  　8) 画像<BR>
+   </FONT>
+  弾の軌道を設定する関数。<BR>
+  1つの弾に何回も行うことができ、何度でも軌道を変化させられる。<BR>
+  (0フレーム目の設定だけは行ってください)<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjMove_AddPatternA3" target="right">ObjMove_AddPatternA3</a> (完全互換　他にA1 ～ A4まである)<br>
+  　　　　<font color="red">SetShotDataAと違って、5)加速度 6)角速度 という順で指定するので注意。</font><br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSetShotDataA_XY"><STRONG>SetShotDataA_XY(引数：9)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) ID：CreateShotAで指定したID。<BR>
+  　2) 軌道を変化させるフレーム(弾実体化後の経過フレーム)<BR>
+  　3) x速度<BR>
+  　4) y速度<BR>
+  　5) x加速度(1フレームあたりの速度変化量)<BR>
+  　6) y加速度(1フレームあたりの速度変化量)<BR>
+  　7) 最大x速度(最低速度)<BR>
+  　8) 最大y速度(最低速度)<BR>
+  　9) 画像<BR>
+   </FONT>
+  弾の軌道を設定する関数。<BR>
+  1つの弾に何回も行うことができ、何度でも軌道を変化させられる。<BR>
+  (0フレーム目の設定だけは行ってください)<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjMove_AddPatternB3" target="right">ObjMove_AddPatternB3</a> (完全互換　他にB1, B2がある)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncCreateLaser01"><STRONG>CreateLaser01(引数：8)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) x(レーザーを設置する絶対x座標)<BR>
+  　2) y(レーザーを設置する絶対y座標)<BR>
+  　3) 速度<BR>
+  　4) 角度<BR>
+  　5) レーザーの最大長さ<BR>
+  　6) レーザーの幅<BR>
+  　7) 画像<BR>
+  　8) 遅延時間(レーザーが実体化するまでの時間)<BR>
+   </FONT>
+  射出型レーザーを発射する。<BR>途中で角度変化等を行うことはできない。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#CreateLooseLaserA1" target="right">CreateLooseLaserA1</a> (完全互換　弾画像の引数名が異なる　返り値に弾ID)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncCreateLaserA"><STRONG>CreateLaserA(引数：7)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) ID：自由に指定できる数値。このあとにSetLaserDataA、FireShot、AddShot関数に同じものを使う。<BR>
+  　2) x(レーザーを設置する絶対x座標)<BR>
+  　3) y(レーザーを設置する絶対y座標)<BR>
+  　4) レーザーの長さ<BR>
+  　5) レーザーの幅<BR>
+  　6) 画像<BR>
+  　7) 遅延時間(レーザーが実体化するまでの時間)<BR>
+   </FONT>
+  設置型レーザーを作製する関数。<BR>このあとに、SetLaserDataAで動きを設定したあと、FireShotで発射させる。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  　　　　<a href="../../func_common_stg.html#CreateLooseLaserA1" target="right">CreateLooseLaserA1</a>か
+<a href="../../func_common_obj_stg.html#ObjShot_Create" target="right">ObjShot_Create</a>で得られたオブジェクトIDに
+<a href="../../func_common_obj_stg.html#ObjLaser_SetLength" target="right">ObjLaser系列の関数</a>を使用する形で実現できます。<br>
+  　　　　(v0.12mでのObjShotと同じ要領で作る)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSetLaserDataA"><STRONG>SetLaserDataA(引数：7)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) ID：CreateLaserAで指定したID。<BR>
+  　2) 軌道を変化させるフレーム(FireShot後の経過フレーム)<BR>
+  　3) 角度(NULLを指定することで現在の値を引き継ぐ)<BR>
+  　4) 角速度(1フレームあたりの角度変化量)<BR>
+  　5) 長さの変化量<BR>
+  　6) 設置点移動速度(1フレームあたりの設置点移動量)<BR>
+  　7) 設置点移動角度<BR>
+   </FONT>
+  レーザーの動きを設定する関数。<BR>
+  1つのレーザーに何回も行うことができ、何度でも動きを変化させられる。<BR>
+  (0フレーム目の設定だけは行ってください)<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncCreateLaserB"><STRONG>CreateLaserB(引数：5)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) ID：自由に指定できる数値。このあとにSetLaserDataB、FireShot、AddShot関数に同じものを使う。<BR>
+  　2) レーザーの長さ<BR>
+  　3) レーザーの幅<BR>
+  　4) 画像<BR>
+  　5) 遅延時間(レーザーが実体化するまでの時間)<BR>
+   </FONT>
+  敵を中心として敵に付いて移動するレーザーを作製する関数。<BR>
+  このあとに、SetLaserDataBで動きを設定したあと、FireShotで発射させる。<BR>
+  特定の敵を中心とするため敵スクリプト専用です。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#CreateStraightLaserA1" target="right">CreateStraightLaserA1</a> (設置型レーザーというだけで、中身は結構異なる)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSetLaserDataB"><STRONG>SetLaserDataB(引数：9)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) ID：CreateLaserBで指定したID。<BR>
+  　2) 軌道を変化させるフレーム(FireShot後の経過フレーム)<BR>
+  　3) 長さの変化量<BR>
+  　4) 敵の中心からレーザー源までの距離(NULLを指定することで現在の値を引き継ぐ)<BR>
+  　5) 敵の中心からレーザー源までの距離の1フレームあたりの変化量<BR>
+  　6) 敵の中心からレーザー源までの角度(NULLを指定することで現在の値を引き継ぐ)<BR>
+  　7) 敵の中心からレーザー源までの角度の1フレームあたりの変化量<BR>
+  　8) レーザーの角度(NULLを指定することで現在の値を引き継ぐ)<BR>
+  　9) レーザーの角度の1フレームあたりの変化量<BR>
+   </FONT>
+  レーザーの動きを設定する関数。<BR>
+  1つのレーザーに何回も行うことができ、何度でも動きを変化させられる。<BR>
+  (0フレーム目の設定だけは行ってください)<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncCreateLaserC"><STRONG>CreateLaserC(引数：7)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) ID：自由に指定できる数値。このあとにSetLaserDataC、FireShot、AddShot関数に同じものを使う。<BR>
+  　2) x(レーザーを設置する絶対x座標)<BR>
+  　3) y(レーザーを設置する絶対y座標)<BR>
+  　4) レーザーの幅<BR>
+  　5) 残像を引くフレーム数(大きいほど長いレーザーになる。32程度。)<BR>
+  　6) 画像<BR>
+  　7) 遅延時間(レーザーが実体化するまでの時間)<BR>
+   </FONT>
+  曲げられる射出型レーザーを作製する関数。<BR>このあとに、SetLaserDataCで動きを設定したあと、FireShotで発射させる。<BR>
+  ただし他の弾、レーザーに比べて重いです。<BR>
+  長くなるほど重くなります。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#CreateCurveLaserA1" target="right">CreateCurveLaserA1</a> (曲がるレーザーの基を作り出すための関数)<br>
+  　　　　曲げる操作を加える場合は<a href="../../func_common_obj_stg.html#sec_ObjMove_" target="right">ObjMove系列の関数</a>を使用します。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSetLaserDataC"><STRONG>SetLaserDataC(引数：7)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) ID：CreateLaserCで指定したID。<BR>
+  　2) 軌道を変化させるフレーム(レーザー実体化後の経過フレーム)<BR>
+  　3) 速度(NULLを指定することで現在の値を引き継ぐ)<BR>
+  　4) 角度(NULLを指定することで現在の値を引き継ぐ)<BR>
+  　5) 角速度(1フレームあたりの角度変化量)<BR>
+  　6) 加速度(1フレームあたりの速度変化量)<BR>
+  　7) 最大速度(最低速度)<BR>
+   </FONT>
+  レーザーの動きを設定する関数。<BR>
+  1つのレーザーに何回も行うことができ、何度でも動きを変化させられる。<BR>
+  (0フレーム目の設定だけは行ってください)<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjMove_AddPatternA2" target="right">ObjMove_AddPatternA2</a> (完全互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncAddShot"><STRONG>AddShot(引数：4)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 加えられた弾を放出するフレーム<BR>
+  　2) 追加先の弾(レーザー)ID<BR>
+  　3) 追加元の弾(レーザー)ID<BR>
+  　4) 弾を放出するレーザー源からの距離(追加先がレーザーでない場合は無視される)<BR>
+   </FONT>
+  弾に弾を持たせる関数。<BR>
+  使用すると追加元のID弾(レーザー)の設定は消滅する。<BR>
+  弾を分裂させたり、敵弾を出す敵弾を作製する場合に用いる。<BR>
+  レーザーから弾を出したい場合にも、用いることができる(禁忌「レーヴァテイン」等)。<BR>
+  同じ弾に対して何度も実行でき、別弾を持たせた弾を別弾にもたせることもできる(説明しづらい…)。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjShot_AddShotA1" target="right">ObjShot_AddShotA1</a> (引数の順序、個数が異なる)<br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjShot_AddShotA2" target="right">ObjShot_AddShotA2</a> (弾の出現位置を指定できるが、AddShotと仕様が異なる)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncFireShot"><STRONG>FireShot(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 発射する弾のID<BR>
+   </FONT>
+  CreateShot、CreateLaserで作製した弾を発射する関数。<BR>
+  発射したID弾(レーザー)の設定は消滅する。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  　　　　(ph3では<a href="../../func_common_obj_stg.html#ObjShot_AddShotA1" target="right">ObjShot_AddShotA1</a>, <a href="../../func_common_obj_stg.html#ObjShot_AddShotA2" target="right">ObjShot_AddShotA2</a>を使う際にFireShot相当の関数を使う必要はないが、<br>
+  　　　　 <a href="../../func_common_obj_stg.html#ObjShot_Create" target="right">ObjShot_Create</a>で弾を使った場合は<a href="../../func_common_obj_stg.html#ObjShot_Regist" target="right">ObjShot_Regist</a>を使う必要がある)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncCreateShotFromScript"><STRONG>CreateShotFromScript(引数：7)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 定義してある弾スクリプト名(<STRONG>文字列</STRONG>)<BR>
+  　2) x座標(弾スクリプト内でGetXで取得可能)<BR>
+  　3) y座標(弾スクリプト内でGetYで取得可能)<BR>
+  　4) 速度(弾スクリプト内でGetSpeedで取得可能)<BR>
+  　5) 角度(弾スクリプト内でGetAngleで取得可能)<BR>
+  　6) 遅延時間(弾スクリプト内でOnDelayで取得可能)<BR>
+  　7) 任意の値(弾スクリプト内でGetArgumentで取得可能)<BR>
+   </FONT>
+  スクリプトで定義してある弾を作製します。<BR>
+  <br>
+  　　　　ph3には弾スクリプトが無いため、それに関連する関数もありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncDeleteEnemyShot"><STRONG>DeleteEnemyShot(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) タイプ<BR>
+  　　ALL：全ての敵弾を消します<BR>
+  　　SHOT：ボムに耐性のない敵弾だけ削除します(レーザー等は消えません)<BR>
+  　　CHILD：子に該当する敵弾を全て削除します<BR>
+   </FONT>
+  敵弾を削除します。CHILDは敵スクリプト内でしか使えません。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#DeleteShotAll" target="right">DeleteShotAll</a> (上位互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncDeleteEnemyShotInCircle"><STRONG>DeleteEnemyShotInCircle(引数：4)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) タイプ<BR>
+  　　ALL：全ての敵弾を消します<BR>
+  　　SHOT：ボムに耐性のない敵弾だけ削除します(レーザー等は消えません)<BR>
+  　2) x座標<BR>
+  　3) y座標<BR>
+  　4) 半径<BR>
+   </FONT>
+  指定円内の敵弾を削除します。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#DeleteShotInCircle" target="right">DeleteShotInCircle</a> (上位互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncDeleteEnemyShotImmediatelyInCircle"><STRONG>DeleteEnemyShotImmediatelyInCircle(引数：4)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) タイプ<BR>
+  　　ALL：全ての敵弾を消します<BR>
+  　　SHOT：ボムに耐性のない敵弾だけ削除します(レーザー等は消えません)<BR>
+  　2) x座標<BR>
+  　3) y座標<BR>
+  　4) 半径<BR>
+   </FONT>
+  指定円内の敵弾を即座に削除します。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#DeleteShotInCircle" target="right">DeleteShotInCircle</a> (上位互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncDeleteEnemyShotToItem"><STRONG>DeleteEnemyShotToItem(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) タイプ<BR>
+  　　ALL：全ての敵弾を消します<BR>
+  　　SHOT：ボムに耐性のない敵弾だけ削除します(レーザー等は消えません)<BR>
+  　　CHILD：子に該当する敵弾を全て削除します<BR>
+   </FONT>
+  敵弾を削除して得点アイテムに変えます。CHILDは敵スクリプト内でしか使えません。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#DeleteShotAll" target="right">DeleteShotAll</a> (上位互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncDeleteEnemyShotToItemInCircle"><STRONG>DeleteEnemyShotToItemInCircle(引数：4)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) タイプ<BR>
+  　　ALL：全ての敵弾を消します<BR>
+  　　SHOT：ボムに耐性のない敵弾だけ削除します(レーザー等は消えません)<BR>
+  　　CHILD：子に該当する敵弾を全て削除します<BR>
+  　2) x座標<BR>
+  　3) y座標<BR>
+  　4) 半径<BR>
+   </FONT>
+  指定円内の敵弾を削除して得点アイテムに変えます。<BR>
+  CHILDは敵スクリプト内でしか使えません。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#DeleteShotInCircle" target="right">DeleteShotInCircle</a> (上位互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSetShotColor"><STRONG>SetShotColor(引数：3)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 赤(0-255)<BR>
+  　2) 緑(0-255)<BR>
+  　3) 青(0-255)<BR>
+   </FONT>
+  作製する敵弾に指定した色を合成します。<BR>
+  SetShotColor(255, 255, 255)で元の色になります。<BR>
+  例えば、CreateShot01(～～～,WHITE11)の前に<BR>
+  SetShotColor(128, 128, 255)を実行すると、WHITE11ですが弾は青っぽくなります。<BR>
+  ただしレーザーとxxx05(大玉)は加算合成描画を行います。<BR>
+  SetShotColor(0, 0, 0)後にレーザーを射出すると見えなくなるので注意してください。<BR>
+  (加算合成しない弾でもSetShotColorを使うと白い部分が無くなってしまうので、
+  なるべくSetShotColorは使わずにRED、GREEN、BLUE、YELLOW、PURPLE、AQUA、WHITEの各色を使ってください。)<br>
+  <br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetColor" target="right">ObjRender_SetColor</a> (ほぼ互換　オブジェクトID指定必須)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncLoadUserShotData"><STRONG>LoadUserShotData(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) ファイル名(文字列)<BR>
+   </FONT>
+  ファイルに書いてあるデータから、弾画像を追加する関数です。<BR>
+  1ファイルしか読み込めない仕様です。<BR>
+  何度も実行するとデータが上書きされていきます。<BR>
+  ファイルの書き方等は<A href="reference_v2.html#AddShotImage">弾画像の追加</A>を参照してください。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#LoadEnemyShotData" target="right">LoadEnemyShotData</a> (完全互換)<br>
+  　　　　<a href="../../func_common_stg.html#ReLoadEnemyShotData" target="right">ReLoadEnemyShotData</a> (上位互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSetShotAutoDeleteClip"><STRONG>SetShotAutoDeleteClip(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 弾自動削除境界(左、初期値：64)<BR>
+  　2) 弾自動削除境界(上、初期値：64)<BR>
+  　3) 弾自動削除境界(右、初期値：64)<BR>
+  　4) 弾自動削除境界(下、初期値：64)<BR>
+   </FONT>
+  弾が自動削除される境界を設定します。<BR>
+  STGシーンの外側で弾の消えない境界を設定します。<BR>
+  あまり大きな値を設定すると、いつまでたっても弾が消えなくなり<BR>
+  重くなるので注意してください。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#SetShotAutoDeleteClip" target="right">SetShotAutoDeleteClip</a> (同一関数)<br>
+  <BR>
+
+
+
+ </P> 
+ <BR><BR>
+  
+  
+ <P><FONT color="#800040"><A name="FuncDraw"><STRONG>描画系関数</STRONG></A></FONT></P>
+ <P>描画を行う関数です。</P>
+ <BR>
+ <P>
+  <FONT color="#000080"><A name="FuncDrawGraphic"><STRONG>DrawGraphic(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) x座標<BR>
+  　2) y座標<BR>
+   </FONT>
+  設定した情報で描画を行う関数<BR>
+  指定する座標は中心座標。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetPosition" target="right">ObjRender_SetPosition</a> (ほぼ互換　オブジェクトID指定必須　Z座標も指定する)<br>
+  　　　　ph3には@DrawLoopが無いため、DrawGraphic相当の関数を必ずしも毎フレーム実行する必要はありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncLoadGraphic"><STRONG>LoadGraphic(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) ファイル名(実行ファイルからの相対パス<STRONG>文字列</STRONG>)<BR>
+   </FONT>
+  画像ファイルを読みこんで、テクスチャを作製します。<BR>
+  読みこめる画像は、bmp、png。<BR>
+  色はRGB(0,0,0)が抜けます。もしくはpngでα値を保存。<BR>
+  <br>
+  　　　　<a href="../../func_common_dx.html#LoadTexture" target="right">LoadTexture</a> (完全互換)<br>
+  　　　　<font color="red">ph3では<a href="../../func_common_dx.html#LoadTexture" target="right">LoadTexture</a>を
+実行せずに、描画関連の関数を使うことができます。</font><br>
+  　　　　参照：<a href="../../description.html#Resource" target="right">使用可能ファイル(画像, 音声)</a><br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncDeleteGraphic"><STRONG>DeleteGraphic(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) ファイル名(実行ファイルからの相対パス<STRONG>文字列</STRONG>)<BR>
+   </FONT>
+  読みこんだ画像ファイルを破棄します。<BR>
+  <br>
+  　　　　<a href="../../func_common_dx.html#RemoveTexture" target="right">RemoveTexture</a> (完全互換)<br>
+  　　　　<font color="red">ph3では<a href="../../func_common_dx.html#RemoveTexture" target="right">RemoveTexture</a>を
+実行せずとも、画像を参照しているスクリプトが全て終了した時点で自動解放してくれます。</font><br>
+  　　　　但し、事前に<a href="../../func_common_dx.html#LoadTexture" target="right">LoadTexture</a>を実行していた場合は自動解放しません。 (例外あり)<br>
+  　　　　参照：<a href="../../description.html#Resource" target="right">使用可能ファイル(画像, 音声)</a><br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSetTexture"><STRONG>SetTexture(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 読みこんである画像のファイル名(実行ファイルからの相対パス<STRONG>文字列</STRONG>)<BR>
+   </FONT>
+  DrawGraphicで描画する画像を設定します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjPrim_SetTexture" target="right">ObjPrim_SetTexture</a> (ほぼ互換　オブジェクトID指定必須)<br>
+  　　　　ph3での画像処理は、v2のエフェクトオブジェクトのように操作します。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSetGraphicRect"><STRONG>SetGraphicRect(引数：4)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 描画元矩形左<BR>
+  　2) 描画元矩形上<BR>
+  　3) 描画元矩形右<BR>
+  　4) 描画元矩形下<BR>
+   </FONT>
+  DrawGraphicで描画する描画元矩形を設定します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjSprite2D_SetSourceRect" target="right">ObjSprite2D_SetSourceRect</a> (ほぼ互換　オブジェクトID指定必須)<br>
+  　　　　これだけではオブジェクト描画先の座標が０座標を中心とした設定になりません。<br>
+  　　　　０座標を中心にするには<a href="../../func_common_obj_dx.html#ObjSprite2D_SetDestCenter" target="right">ObjSprite2D_SetDestCenter</a>を
+実行する必要があります。<br>
+  　　　　またph3には<a href="../../func_common_obj_dx.html#sec_ObjSpriteList2D_" target="right">リストにして操作</a>することも可能です。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSetGraphicScale"><STRONG>SetGraphicScale(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) x方向拡大率(1.0が等倍)<BR>
+  　2) y方向拡大率(1.0が等倍)<BR>
+   </FONT>
+  DrawGraphicで描画する描画元画像の拡大率を設定します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetScaleXYZ" target="right">ObjRender_SetScaleXYZ</a> (オブジェクトID指定必須　Z方向も設定)<br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetScaleX" target="right">ObjRender_SetScaleX</a> (X方向のみ設定)<br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetScaleY" target="right">ObjRender_SetScaleY</a> (Y方向のみ設定)<br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetScaleZ" target="right">ObjRender_SetScaleZ</a> (Z方向のみ設定)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSetGraphicAngle"><STRONG>SetGraphicAngle(引数：3)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) x軸回転角度(0～360 Radianではないです)<BR>
+  　2) y軸回転角度(0～360)<BR>
+  　3) z軸回転角度(0～360)<BR>
+   </FONT>
+  DrawGraphicで描画する描画元画像の回転角度を設定します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetAngleXYZ" target="right">ObjRender_SetAngleXYZ</a> (ほぼ互換　オブジェクトID指定必須)<br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetAngleX" target="right">ObjRender_SetAngleX</a> (X方向のみ設定)<br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetAngleY" target="right">ObjRender_SetAngleY</a> (Y方向のみ設定)<br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetAngleZ" target="right">ObjRender_SetAngleZ</a> (Z方向のみ設定)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSetAlpha"><STRONG>SetAlpha(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) α値(0～255)<BR>
+   </FONT>
+  DrawGraphicで描画時のα値(不透明度)を設定します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetAlpha" target="right">ObjRender_SetAlpha</a> (ほぼ互換　オブジェクトID指定必須)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSetColor"><STRONG>SetColor(引数：3)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) R値(0～255)<BR>
+  　2) G値(0～255)<BR>
+  　3) B値(0～255)<BR>
+   </FONT>
+  DrawGraphicで描画時の色を設定します(全部255で元と同じ色)。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetColor" target="right">ObjRender_SetColor</a> (ほぼ互換　オブジェクトID指定必須)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSetRenderState"><STRONG>SetRenderState(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 描画方法<BR>
+  　　ALPHA：半透明描画<BR>
+  　　ADD：加算合成描画<BR>
+  　　MULTIPLY：乗算合成描画<BR>
+  　　SUBTRACT：減算合成描画<BR>
+   </FONT>
+  DrawGraphicで描画時の合成法を指定します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetBlendType" target="right">ObjRender_SetBlendType</a> (ほぼ互換　オブジェクトID指定必須)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncDrawText"><STRONG>DrawText(引数：5)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 描画する文字列<BR>
+  　2) 描画先x座標<BR>
+  　3) 描画先y座標<BR>
+  　4) 文字サイズ<BR>
+  　5) α値(0-255)<BR>
+   </FONT>
+  文字列を描画します。ただし相当重いです。<BR>
+  多用すると、重すぎてゲームにならなくなります。<BR>
+  フルスクリーン時のデバッグ情報の出力などにも使えます。<BR>
+	<TABLE width="100%" border="1"><TD><PRE>
+	<FONT color="#008040">//敵の座標を(128,64)に文字サイズ12で表示</FONT>
+	DrawText(<FONT color="#FF0000">"("</FONT>~ToString(GetX)~<FONT color="#FF0000">","</FONT>~ToString(GetY)~<FONT color="#FF0000">")"</FONT>,<FONT color="#FF0000">128</FONT>,<FONT color="#FF0000">64</FONT>,<FONT color="#FF0000">12</FONT>,<FONT color="#FF0000">255</FONT>);
+	</PRE></TD></TABLE>
+  <br>
+  　　　　ph3では<a href="../../func_common_obj_dx.html#sec_ObjText_" target="right">テキストオブジェクト</a>が
+使用可能なため、そちらの関数を使用してテキストを描画します。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSetFontColor"><STRONG>SetFontColor(引数：6)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 上側R値(0-255)<BR>
+  　2) 上側G値(0-255)<BR>
+  　3) 上側B値(0-255)<BR>
+  　4) 下側R値(0-255)<BR>
+  　5) 下側G値(0-255)<BR>
+  　6) 下側B値(0-255)<BR>
+   </FONT>
+  DrawTextで描画する文字の色を設定します。<BR>
+  上下の色を変えることでグラデーションがかかります。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjText_SetFontColorTop" target="right">ObjText_SetFontColorTop</a> (テキスト上側のみ設定　オブジェクトID指定必須)<br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjText_SetFontColorBottom" target="right">ObjText_SetFontColorBottom</a> (テキスト下側のみ設定　オブジェクトID指定必須)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncCreateRenderTarget"><STRONG>CreateRenderTarget(引数：3、返り値：boolean型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) テクスチャ名<BR>
+  　2) 幅<BR>
+  　3) 高さ<BR>
+   </FONT>
+  指定した大きさの描画用テクスチャを作成します。<BR>
+  幅と高さは２の累乗になります。<BR>
+  ２の累乗が指定されなかった場合、<BR>
+  指定した大きさを含む２の累乗テクスチャに補正されます。<BR>
+  作成できた場合trueを返します。<BR>
+  削除にはDeleteGraphicを使います。<BR>
+  VRAMが足りないと作成できないので、なるべく使用しないのを推奨します。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSetRenderTarget"><STRONG>SetRenderTarget(引数：1、返り値：string型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) テクスチャ名(CreateRenderTargetで作成したターゲット)<BR>
+   </FONT>
+  描画先を設定します。<BR>
+  返り値は元の描画先名です。<BR>
+  テクスチャに描画した後、元の描画先に戻さない場合、<BR>
+  そのフレームは正しく描画されなくなります。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncClearRenderTarget"><STRONG>ClearRenderTarget(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) テクスチャ名(CreateRenderTargetで作成したターゲット)<BR>
+   </FONT>
+  指定した描画先テクスチャをクリアします(ARGB=(0,0,0,0)にします)。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+ </P>
+ <BR><BR>
+ 
+ 
+ <P><FONT color="#800040"><A name="FuncSound"><STRONG>音声系関数</STRONG></A></FONT></P>
+ <P>音声を再生するのに使います。<BR>
+    再生可能なのは、wav、mp3、ogg、midです。<BR>
+	拡張子はwavにしておくことで、wav→mp3→ogg→midの順で検索します。<BR>
+	wavヘッダのmp3は、例えば午後のこ～だだと出力するファイルの形式を「WAVE形式」にすることで作製できます。<BR>
+	<br>
+	<font color="red">ph3には<a href="../../func_common_obj_dx.html#sec_ObjSound_">音声オブジェクト</a>操作ができるので、
+	細かい操作がしたい場合はそちらを利用してください。</font><br>
+ </P>
+ <P>
+  <FONT color="#000080"><A name="FuncLoadMusic"><STRONG>LoadMusic(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) ファイル名(<STRONG>文字列</STRONG>)<BR>
+   </FONT>
+  曲をメモリ上に読みこみます。<BR>
+  <br>
+  　　　　<a href="../../func_common_dx.html#LoadSound" target="right">LoadSound</a> (BGMとSE兼用)<br>
+  　　　　<font color="red">描画処理 (<a href="../../func_common_dx.html#LoadTexture" target="right">LoadTexture</a>) とは
+異なり、必ず<a href="../../func_common_dx.html#LoadSound" target="right">LoadSound</a>を実行する必要があります。</font><br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncPlayMusic"><STRONG>PlayMusic(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) ファイル名(<STRONG>文字列</STRONG>)<BR>
+   </FONT>
+  曲を再生します。メモリに読みこまれてなかったら読みこみます。<BR>
+  <br>
+  　　　　<a href="../../func_common_dx.html#playBGM" target="right">PlayBGM</a> (曲がループする始点と終点も設定する)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncDeleteMusic"><STRONG>DeleteMusic(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) ファイル名(<STRONG>文字列</STRONG>)<BR>
+   </FONT>
+  再生中の曲を停止してメモリから削除します。<BR>  
+  <br>
+  　　　　<a href="../../func_common_dx.html#RemoveSound" target="right">RemoveSound</a> (BGMとSE兼用)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncFadeOutMusic"><STRONG>FadeOutMusic(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) ファイル名(<STRONG>文字列</STRONG>)<BR>
+  　2) 1フレームごとの低下音量幅(20程度)<BR>
+   </FONT>
+  指定した再生中の曲をフェードアウトします。<BR>  
+  <br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjSound_SetFade" target="right">ObjSound_SetFade</a> (<a href="../../func_common_obj_dx.html#sec_ObjSound_" target="right">音声オブジェクト</a>として実行)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncLoadSE"><STRONG>LoadSE(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) ファイル名(<STRONG>文字列</STRONG>)<BR>
+   </FONT>
+  効果音をメモリ上に読みこみます。<BR>
+  <br>
+  　　　　<a href="../../func_common_dx.html#LoadSound" target="right">LoadSound</a> (BGMとSE兼用)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncPlaySE"><STRONG>PlaySE(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) ファイル名(<STRONG>文字列</STRONG>)<BR>
+   </FONT>
+  効果音を再生します。メモリに読みこまれてなかったら読みこみます。<BR>
+  <br>
+  　　　　<a href="../../func_common_dx.html#PlaySE" target="right">PlaySE</a> (BGMとSE兼用)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncStopSE"><STRONG>StopSE(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) ファイル名(<STRONG>文字列</STRONG>)<BR>
+   </FONT>
+  効果音を停止します。<BR>
+  <br>
+  　　　　<a href="../../func_common_dx.html#StopSound" target="right">StopSound</a> (BGMとSE兼用)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncDeleteSE"><STRONG>DeleteSE(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) ファイル名(<STRONG>文字列</STRONG>)<BR>
+   </FONT>
+  効果音をメモリから削除します。<BR>  
+  <br>
+  　　　　<a href="../../func_common_dx.html#RemoveSound" target="right">RemoveSound</a> (BGMとSE兼用)<br>
+  <BR>
+
+
+
+ </P>
+ <BR><BR>
+ 
+ 
+ <P><FONT color="#800040"><A name="FuncGet"><STRONG>特定の値を取得する関数</STRONG></A></FONT></P>
+ <P>敵の座標や、自機の座標を取得したりするときに使います。<BR>
+    <STRONG>角度はdeg</STRONG>です(radではありません)。</P>
+ <P>
+  <FONT color="#000080"><A name="FuncCos"><STRONG>cos(引数：1、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 値(0～360の値)<BR>
+   </FONT>
+  コサインを取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_std.html#cos" target="right">cos</a> (同一関数)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSin"><STRONG>sin(引数：1、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 値(0～360の値)<BR>
+   </FONT>
+  サインを取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_std.html#sin" target="right">sin</a> (同一関数)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncTan"><STRONG>tan(引数：1、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 値<BR>
+   </FONT>
+  タンジェントを取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_std.html#tan" target="right">tan</a> (同一関数)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncAcos"><STRONG>acos(引数：1、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 値<BR>
+   </FONT>
+  アークコサイン(cosの逆関数)を取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_std.html#acos" target="right">acos</a> (同一関数)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncAsin"><STRONG>asin(引数：1、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 値<BR>
+   </FONT>
+  アークサイン(sinの逆関数)を取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_std.html#asin" target="right">asin</a> (同一関数)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncAtan"><STRONG>atan(引数：1、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 値<BR>
+   </FONT>
+  アークタンジェント(tanの逆関数)を取得します<BR>
+  <br>
+  　　　　<a href="../../func_common_std.html#atan" target="right">atan</a> (同一関数)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncAtan2"><STRONG>atan2(引数：2、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) y値<BR>
+  　2) x値<BR>
+   </FONT>
+  線分(0,0)-(x,y)の角度(deg)を取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_std.html#atan2" target="right">atan2</a> (同一関数)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncLog"><STRONG>log(引数：1、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 値<BR>
+   </FONT>
+  自然対数(eを底とする対数)を取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_std.html#log" target="right">log</a> (同一関数)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncLog10"><STRONG>log10(引数：1、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 値<BR>
+   </FONT>
+  常用対数(10を底とする対数)を取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_std.html#log10" target="right">log10</a> (同一関数)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncRand"><STRONG>rand(引数：2、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 最小値<BR>
+  　2) 最大値<BR>
+   </FONT>
+  最小値と最大値の間の乱数(ランダムな実数)を取得します。<BR>
+  min>maxならrand(max,min)が返ります。<BR>
+  小数点以下の値もランダムに得られるので注意してください<BR>
+  また、rand(x, y)は[x, y)ではなく[x, y]になり、yを含みます。<BR>
+  <br>
+  　　　　<a href="../../func_common_std.html#rand" target="right">rand</a> (同一関数)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncRand_Int"><STRONG>rand_int(引数：2、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 最小値<BR>
+  　2) 最大値<BR>
+   </FONT>
+  最小値と最大値の間の乱数(ランダムな整数)を取得します。<BR>
+  min>maxならrand(max,min)が返ります。<BR>
+  また、[x, y)ではなく[x, y]になり、yを含みます。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncPRand"><STRONG>prand(引数：2、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 最小値<BR>
+  　2) 最大値<BR>
+   </FONT>
+  最小値と最大値の間の乱数(ランダムな実数)を取得します。<BR>
+  psrandで発生させた乱数を取得します。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncPRand_Int"><STRONG>prand_int(引数：2、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 最小値<BR>
+  　2) 最大値<BR>
+   </FONT>
+  最小値と最大値の間の乱数(ランダムな整数)を取得します。<BR>
+  psrandで発生させた乱数を取得します。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncPSRand"><STRONG>psrand(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 乱数種<BR>
+   </FONT>
+  prandとprand_intで取得できる乱数の初期化を行います。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncInt"><STRONG>int(引数：1、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 値<BR>
+   </FONT>
+  小数部分をカットした値を取得します。<BR>
+  精度が悪いですが互換用に残してあります。<BR>
+  truncの方が精度が高いです。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  　　　　下のtruncateを使用してください。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncTruncate"><STRONG>truncate(引数：1、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 値<BR>
+   </FONT>
+  符号を問わず小数点以下を切り捨てます。<BR>
+  truncでも同じ関数が呼ばれます。<BR>
+  <br>
+  　　　　<a href="../../func_common_std.html#truncate" target="right">truncate</a> (同一関数)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncRound"><STRONG>round(引数：1、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 値<BR>
+   </FONT>
+  四捨五入を行います。<BR>
+  <br>
+  　　　　<a href="../../func_common_std.html#round" target="right">round</a> (同一関数)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncCeil"><STRONG>ceil(引数：1、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 値<BR>
+   </FONT>
+  +∞方向への切り上げを行います。<BR>
+  <br>
+  　　　　<a href="../../func_common_std.html#ceil" target="right">ceil</a> (同一関数)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncFloor"><STRONG>floor(引数：1、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 値<BR>
+   </FONT>
+  -∞方向への切り下げを行います。<BR>
+  <br>
+  　　　　<a href="../../func_common_std.html#floor" target="right">floor</a> (同一関数)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncAbsolute"><STRONG>absolute(引数：1、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 値<BR>
+   </FONT>
+  絶対値を取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_std.html#absolute" target="right">absolute</a> (同一関数)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncLength"><STRONG>length(引数：1、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 値<BR>
+   </FONT>
+  配列のサイズを取得します。<BR>
+  <br>
+  　　　　ph3の関数集にはありませんが、<a href="../../syntax.html#VariableArray" target="right">使えます</a>。 (eraseも)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncIntegral"><STRONG>integral(引数：4、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 下限値<BR>
+  　2) 上限値<BR>
+  　3) 分割幅<BR>
+  　4) 式(文字列)<BR>
+   </FONT>
+  [下限～上限]区間の積分結果を取得します。式は文字列で指定し、変数xで積分されます。(x以外は不可です)<BR>
+  引き数の文字列を局所的に数値解析することで結果を得るので、重いです。<BR>
+  分割幅は大きいほど精度がよくなると思いますが、大きすぎるとさらに重くなります。<BR>
+	<TABLE width="100%" border="1"><TD><PRE>
+	<FONT color="#008040">//式x^2+3を区間0-1で積分</FONT>
+	integral(<FONT color="#FF0000">0</FONT>, <FONT color="#FF0000">1</FONT>, <FONT color="#FF0000">64</FONT>, <FONT color="#FF0000">"x^2+3"</FONT>);
+	</PRE></TD></TABLE>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncToString"><STRONG>ToString(引数：1、返り値：char型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 値<BR>
+   </FONT>
+  数値などを文字列に変換します。<BR>
+  <br>
+  　　　　<a href="../../func_common_std.html#ToString" target="right">ToString</a> (同一関数)<br>
+  　　　　<a href="../../func_common_std.html#IntToString" target="right">IntToString</a> (整数に変換)<br>
+  　　　　他にも<a href="../../func_common_std.html#itoa" target="right">itoa</a>関数などがあります。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncCollision_Line_Circle"><STRONG>Collision_Line_Circle(引数：8、返り値：boolean型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 線分始点x座標<BR>
+  　2) 線分始点y座標<BR>
+  　3) 線分終点x座標<BR>
+  　4) 線分終戦y座標<BR>
+  　5) 線分の幅<BR>
+  　6) 円の中心x座標<BR>
+  　7) 円の中心y座標<BR>
+  　8) 円の半径<BR>
+   </FONT>
+  線分と円が接触しているかを調べます。<BR>
+  　true：接触、false：非接触<BR>
+  が返ります。(線には幅はありませんが？という突っ込みは無しの方向で…)<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#IsIntersected_Line_Circle" target="right">IsIntersected_Line_Circle</a> (完全互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncCollision_Obj_Obj"><STRONG>Collision_Obj_Obj(引数：2、返り値：boolean型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) オブジェクト<BR>
+  　2) オブジェクト<BR>
+   </FONT>
+  オブジェクト同士が接触しているかを調べます。<BR>
+  　true：接触、false：非接触<BR>
+  が返ります。<BR>
+  <br>
+  　　　　ph3には<a href="../../func_common_obj_stg.html#sec_ObjCol_" target="right">オブジェクトの当たり判定を操作する関数群</a>があるので<br>
+  　　　　そちらを使ってください。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetX"><STRONG>GetX(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  オブジェクトのx座標を取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjMove_GetX" target="right">ObjMove_GetX</a> (ほぼ互換　オブジェクトID指定必須)<br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_GetX" target="right">ObjRender_GetX</a> (ObjPrim等でも使える)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetY"><STRONG>GetY(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  オブジェクトのy座標を取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjMove_GetY" target="right">ObjMove_GetY</a> (ほぼ互換　オブジェクトID指定必須)<br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_GetY" target="right">ObjRender_GetY</a> (ObjPrim等でも使える)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetSpeed"><STRONG>GetSpeed(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  オブジェクトの移動速度を取得します。<BR>
+  オブジェクトのy座標を取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjMove_GetSpeed" target="right">ObjMove_GetSpeed</a> (ほぼ互換　オブジェクトID指定必須)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetAngle"><STRONG>GetAngle(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjMove_GetAngle" target="right">ObjMove_GetAngle</a> (ほぼ互換　オブジェクトID指定必須)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetEnemyX"><STRONG>GetEnemyX(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  敵ボスのx座標を取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjMove_GetX" target="right">ObjMove_GetX</a>と<a href="../../func_common_stg.html#GetEnemyBossObjectID" target="right">GetEnemyBossObjectID</a>の併用で代替できます。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetEnemyY"><STRONG>GetEnemyY(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">		
+   </FONT>
+  敵ボスのy座標を取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjMove_GetY" target="right">ObjMove_GetY</a>と<a href="../../func_common_stg.html#GetEnemyBossObjectID" target="right">GetEnemyBossObjectID</a>の併用で代替できます。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetEnemyLife"><STRONG>GetEnemyLife(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">		
+   </FONT>
+  敵ボスの残りライフを取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjEnemy_GetInfo" target="right">ObjEnemy_GetInfo</a>と<a href="../../func_common_stg.html#GetEnemyBossObjectID" target="right">GetEnemyBossObjectID</a>の併用で代替できます。<br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjEnemyBossScene_GetInfo" target="right">ObjEnemyBossScene_GetInfo</a>ならボスのステップ数、全ステップを含めた合計ライフなども取得できます。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetTimer"><STRONG>GetTimer(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">		
+   </FONT>
+  スペルカードの残り時間を取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjEnemyBossScene_GetInfo" target="right">ObjEnemyBossScene_GetInfo</a> (上位互換　INFO_TIMERかINFO_TIMEFを引数に)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetEnemyNum"><STRONG>GetEnemyNum(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">		
+   </FONT>
+  存在している敵の数を取得します<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#GetAllEnemyID" target="right">GetAllEnemyID</a>の返り値である配列に対して
+<a href="../../syntax.html#VariableArray" target="right">length</a>を使って配列長を取得するようにすれば代替できます。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetEnemyShotCount"><STRONG>GetEnemyShotCount(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">		
+   </FONT>
+  存在している敵弾の数を取得します<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#GetShotCount" target="right">GetShotCount</a> (上位互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetEnemyShotCountEx"><STRONG>GetEnemyShotCountEx(引数：4、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) x座標<BR> 
+  　2) y座標<BR> 
+  　3) 半径<BR> 
+  　4) 弾の種類(ALLで全種類)<BR> 
+   </FONT>
+  指定円内の敵弾の数を取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#GetShotIdInCircleA2" target="right">GetShotIdInCircleA2</a> (完全互換のようで、返り値は配列なので注意)<br>
+  　　　　<a href="../../func_common_stg.html#GetShotIdInCircleA1" target="right">GetShotIdInCircleA1</a> (大分仕様が異なるので、リンク先熟読推奨)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnumEnemyBegin"><STRONG>EnumEnemyBegin(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">		
+   </FONT>
+  EnumEnemyBegin、FuncEnumEnemyEnd、FuncGetEnemyIDの3つで1セットの関数群です。<BR>
+  全ての敵を列挙し敵IDを列挙します。<BR>
+  EnumEnemyBeginは敵を列挙するための初期化を行います。<BR>
+  使用例)
+	<TABLE width="100%" border="1"><TD><PRE>
+	<FONT color="#0000FF">ascent</FONT>(enemy <FONT color="#0000FF">in</FONT> EnumEnemyBegin..EnumEnemyEnd)
+	{
+		<FONT color="#0000FF">let</FONT> enemyID = EnumEnemyGetID(enemy);
+		<FONT color="#0000FF">let</FONT> enemyLife = GetEnemyInfo(enemyID, ENEMY_LIFE);
+	}
+	</PRE></TD></TABLE>
+  <br>
+  　　　　<a href="../../func_common_stg.html#GetAllEnemyID" target="right">GetAllEnemyID</a> (ph3はこれ１つでOK)<br>
+  　　　　ph3には他にも敵のID、当たり判定を取得する関数が充実しています。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnumEnemyEnd"><STRONG>EnumEnemyEnd(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">		
+   </FONT>
+  EnumEnemyBegin、FuncEnumEnemyEnd、FuncGetEnemyIDの3つで1セットの関数群です。<BR>
+  全ての敵を列挙し敵IDを列挙します。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#GetAllEnemyID" target="right">GetAllEnemyID</a> (ph3はこれ１つでOK)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnumEnemyEnd"><STRONG>EnumEnemyGetID(引数：1、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) インデックス<BR>   		
+   </FONT>
+  EnumEnemyBegin、FuncEnumEnemyEnd、FuncGetEnemyIDの3つで1セットの関数群です。<BR>
+  全ての敵を列挙し敵IDを列挙します。<BR>
+  この関数は必ず 敵を列挙するループ内 で用いてください。<BR>
+  IDを保存しておけば、ループ外からでもGetEnemyInfoで情報を取得できます。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#GetAllEnemyID" target="right">GetAllEnemyID</a> (ph3はこれ１つでOK)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetEnemyInfo"><STRONG>GetEnemyInfo(引数：2、返り値：変動)</STRONG></A></FONT><BR>
+   <FONT color="#008000">	
+  　1) 敵ID<BR>
+  　2) 取得する情報の種類<BR>
+  　　ENEMY_X   ：敵のx座標(real)<BR>
+  　　ENEMY_Y   ：敵のy座標(real)<BR>
+  　　ENEMY_LIFE：敵のライフ(real)<BR>
+   </FONT>
+  敵のIDを指定して、情報を取得します。<BR>
+  取得できない場合はfalseが返ります。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjEnemy_GetInfo" target="right">ObjEnemy_GetInfo</a> (INFO_LIFEを引数に)<br>
+  　　　　座標は<a href="../../func_common_obj_stg.html#ObjMove_GetX" target="right">ObjMove_GetX</a>,
+<a href="../../func_common_obj_stg.html#ObjMove_GetY" target="right">ObjMove_GetY</a>か、
+<a href="../../func_common_obj_dx.html#ObjRender_GetX" target="right">ObjRender_GetX</a>,
+<a href="../../func_common_obj_dx.html#ObjRender_GetY" target="right">ObjRender_GetY</a>を使いましょう。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetEnemyInfoDefault"><STRONG>GetEnemyInfoDefault(引数：3、返り値：変動)</STRONG></A></FONT><BR>
+   <FONT color="#008000">	
+  　1) 敵ID<BR>
+  　2) 取得する情報の種類<BR>
+  　　ENEMY_X   ：敵のx座標(real)<BR>
+  　　ENEMY_Y   ：敵のy座標(real)<BR>
+  　　ENEMY_LIFE：敵のライフ(real)<BR>
+  　3) デフォルト値<BR>
+   </FONT>
+  敵のIDを指定して、情報を取得します。<BR>
+  取得できない場合は第3引数の値がそのままが返ります。<BR>
+  <br>
+  　　　　上のGetEnemyInfoを参照してください。<br>
+  　　　　ph3ではデフォルト値を設定できる関数がありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetPlayerX"><STRONG>GetPlayerX(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  自機のx座標を取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#GetPlayerX" target="right">GetPlayerX</a> (同一関数)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetPlayerY"><STRONG>GetPlayerY(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  自機のy座標を取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#GetPlayerY" target="right">GetPlayerY</a> (同一関数)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetAngleToPlayer"><STRONG>GetAngleToPlayer(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  オブジェクトから自機への角度を取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#GetAngleToPlayer" target="right">GetAngleToPlayer</a> (同名の関数だがオブジェクトID指定必須)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetPlayerType"><STRONG>GetPlayerType(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  自機のタイプを取得します。<BR>
+  　REIMU_A：霊夢(霊)<BR>
+  　REIMU_B：霊夢(夢)<BR>
+  　MARISA_A：魔理沙(魔)<BR>
+  　MARISA_B：魔理沙(恋)<BR>
+  　USER_PLAYER：追加した自機<BR>
+  が返ります。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetPlayerScriptName"><STRONG>GetPlayerScriptName(引数：0、返り値：string型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  自機スクリプト名を取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#GetPlayerReplayName" target="right">GetPlayerReplayName</a> (完全互換)<br>
+  <BR>
+  <FONT color="#000080"><A name="FuncGetPlayerLife"><STRONG>GetPlayerLife(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  自機の残機を取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#GetPlayerLife" target="right">GetPlayerLife</a> (同一関数)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetPlayerBomb"><STRONG>GetPlayerBomb(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  自機残りボムの数を取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#GetPlayerSpell" target="right">GetPlayerSpell</a> (完全互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetPlayerMoveState"><STRONG>GetPlayerMoveState(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  自機の移動状態を取得します<BR>
+  　低速移動中：MOVE_SLOW<BR>
+  　通常移動中；MOVE_NORMAL<BR>
+  が返ります。<BR>
+  <br>
+  　　　　<a href="../../func_common_dx.html#GetVirtualKeyState" target="right">GetVirtualKeyState</a> (上位互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetPlayerInfo"><STRONG>GetPlayerInfo(引数：1、返り値：変動)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 取得する情報の種類<BR>
+  　　PLAYER_SPEED_HIGH  ：自機の通常移動速度(real)<BR>
+  　　PLAYER_SPEED_LOW   ：自機の低速移動速度(real)<BR>
+   </FONT>
+  自機の指定した情報が返ります。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+  <FONT color="#000080"><A name="FuncGetTimeOfPlayerInvincibility"><STRONG>GetTimeOfPlayerInvincibility(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  自機の残り無敵時間を取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#GetPlayerInvincibilityFrame" target="right">GetPlayerInvincibilityFrame</a> (完全互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetTimeOfSuperNaturalBorder"><STRONG>GetTimeOfSuperNaturalBorder(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  自機の森羅結界残り時間を取得します。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetMissCount"><STRONG>GetMissCount(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  プレイヤーがミスした回数を取得します。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetMissCountInThisSpell"><STRONG>GetMissCountInThisSpell(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  現在実行中のスペルカード内でプレイヤーがミスした回数を取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjEnemyBossScene_GetInfo" target="right">ObjEnemyBossScene_GetInfo</a> (INFO_PLAYER_SHOOTDOWN_COUNTを引数に)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetBombCount"><STRONG>GetBombCount(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  プレイヤーがボムを使った回数を取得します。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetBombCountInThisSpell"><STRONG>GetBombCountInThisSpell(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  現在実行中のスペルカード内でプレイヤーがボムを使った回数を取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjEnemyBossScene_GetInfo" target="right">ObjEnemyBossScene_GetInfo</a> (INFO_PLAYER_SPELL_COUNTを引数に)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetScore"><STRONG>GetScore(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  現在の得点を取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#GetScore" target="right">GetScore</a> (同一関数)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetGraze"><STRONG>GetGraze(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  現在のGrazeを取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#GetGraze" target="right">GetGraze</a> (同一関数)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetPoint"><STRONG>GetPoint(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  現在のPointを取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#GetPoint" target="right">GetPoint</a> (同一関数)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncContinued"><STRONG>Continued(引数：0、返り値：boolean型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  コンティニューしてない：false、コンティニューした：trueを返します。<BR>
+  <br>
+  　　　　ph3にはコンティニューの概念がありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetAllowedContinueCount"><STRONG>GetAllowedContinueCount(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  残りコンティニュー回数を取得します<BR>
+  <br>
+  　　　　ph3にはコンティニューの概念がありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncOnPlayerMissed"><STRONG>OnPlayerMissed(引数：0、返り値：boolean型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  自機通常時：false、自機撃墜中：trueを返します。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#GetPlayerState" target="right">GetPlayerState</a> (上位互換)<br>
+  　　　　ph3ではミス状態を『喰らいボム発動可能状態』『撃墜状態』『残機０で終了状態』と３種類に分けられます。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncOnBomb"><STRONG>OnBomb(引数：0、返り値：boolean型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  ボム非発動中：false、ボム発動中：trueを返します。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#IsPlayerSpellActive" target="right">IsPlayerSpellActive</a> (完全互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncOnEnemySpell"><STRONG>OnEnemySpell(引数：0、返り値：boolean型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  敵スペル非発動中：false、敵スペル発動中：trueを返します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjEnemyBossScene_GetInfo" target="right">ObjEnemyBossScene_GetInfo</a> (INFO_IS_SPELLを引数に)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncOnEnemyLastSpell"><STRONG>OnEnemyLastSpell(引数：0、返り値：boolean型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  敵ラストスペル非発動中：false、敵ラストスペル発動中：trueを返します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjEnemyBossScene_GetInfo" target="right">ObjEnemyBossScene_GetInfo</a> (INFO_IS_LAST_SPELLを引数に)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncIsBossExisting"><STRONG>IsBossExisting(引数：0、返り値：boolean型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  ボスが存在していない：false、ボスが存在している：trueを返します。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#GetEnemyBossObjectID" target="right">GetEnemyBossObjectID</a> (lengthで返り値の配列長が０ならボス不在、１以上ならボスが存在)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncIsBGStopping"><STRONG>IsBGStopping(引数：0、返り値：boolean型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  背景時間動作中：false、背景時間停止中：trueを返します。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+  <FONT color="#000080"><A name="FuncIsReplay"><STRONG>IsReplay(引数：0、返り値：boolean型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  通常プレイ：false、リプレイ：trueを返します。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#IsReplay" target="right">IsReplay</a> (同一関数)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetCenterX"><STRONG>GetCenterX(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  STGシーンの中心x座標を取得します(224固定)。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#GetStgFrameWidth" target="right">GetStgFrameWidth</a>の返り値を２で割ると中心X座標値になります。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetCenterY"><STRONG>GetCenterY(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  STGシーンの中心y座標を取得します(240固定)。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#GetStgFrameHeight" target="right">GetStgFrameHeight</a>の返り値を２で割ると中心Y座標値になります。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetClipMinX"><STRONG>GetClipMinX(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  STGシーンの左端x座標を取得します(32固定)。<BR>
+  <br>
+  　　　　<font color="red">ph3の空間座標設定はかなり特殊です。<br>
+  <br>
+  　　　　座標設定するオブジェクトの描画優先度がSTG空間内に収まる (デフォルトでは２０以上８０以下) 場合、<br>
+  　　　　STG空間の左端X座標は常に０になります。<br>
+  <br>
+  　　　　逆に描画優先度がSTG空間外のものである場合は、<br>
+  　　　　弾幕風ウインドウ左端のX座標値が０になります。<br>
+  　　　　ウインドウからSTG空間左端までの距離は<a href="../../func_common_stg.html#GetStgFrameLeft" target="right">GetStgFrameLeft</a>で取得できます。<br>
+  <br>
+  　　　　ph3では<a href="../../func_common_stg.html#SetStgFrame" target="right">SetStgFrame</a>でSTG空間を変更できるので、<br>
+  　　　　<a href="../../func_common_stg.html#GetStgFrameLeft" target="right">GetStgFrameLeft</a>は常に固定の値が返るわけではありません。</font><br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetClipMaxX"><STRONG>GetClipMaxX(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  STGシーンの右端x座標を取得します(416固定)。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#GetStgFrameWidth" target="right">GetStgFrameWidth</a> (完全互換)<br>
+  　　　　ph3では<a href="../../func_common_stg.html#SetStgFrame" target="right">SetStgFrame</a>でSTG空間の大きさも変えられるので、常に固定の値が返るわけではありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetClipMinY"><STRONG>GetClipMinY(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  STGシーンの上端y座標を取得します(16固定)。<BR>
+  <br>
+  　　　　<font color="red">ph3の空間座標設定はかなり特殊です。<br>
+  <br>
+  　　　　座標設定するオブジェクトの描画優先度がSTG空間内に収まる (デフォルトでは２０以上８０以下) 場合、<br>
+  　　　　STG空間の上端Y座標は常に０になります。<br>
+  <br>
+  　　　　逆に描画優先度がSTG空間外のものである場合は、<br>
+  　　　　弾幕風ウインドウ上端のY座標値が０になります。<br>
+  　　　　ウインドウからSTG空間上端までの距離は<a href="../../func_common_stg.html#GetStgFrameTop" target="right">GetStgFrameTop</a>で取得できます。<br>
+  <br>
+  　　　　ph3では<a href="../../func_common_stg.html#SetStgFrame" target="right">SetStgFrame</a>でSTG空間を変更できるので、<br>
+  　　　　<a href="../../func_common_stg.html#GetStgFrameTop" target="right">GetStgFrameTop</a>は常に固定の値が返るわけではありません。</font><br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetClipMaxY"><STRONG>GetClipMaxY(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  STGシーンの下端y座標を取得します(464固定)。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#GetStgFrameHeight" target="right">GetStgFrameHeight</a> (完全互換)<br>
+  　　　　ph3では<a href="../../func_common_stg.html#SetStgFrame" target="right">SetStgFrame</a>でSTG空間の大きさも変えられるので、常に固定の値が返るわけではありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetCurrentScriptDirectory"><STRONG>GetCurrentScriptDirectory(引数：0、返り値：char型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  実行ファイルから実行中のスクリプトまでのパスを取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_std.html#GetCurrentScriptDirectory" target="right">GetCurrentScriptDirectory</a> (同一関数)<br>
+  　　　　<a href="../../func_common_std.html#GetModuleDirectory" target="right">GetModuleDirectory</a> (類似関数)<br>
+  　　　　<a href="../../func_common_std.html#GetMainStgScriptDirectory" target="right">GetMainStgScriptDirectory</a> (類似関数)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncUsedDebugKey"><STRONG>UsedDebugKey(引数：0、返り値：boolean型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  デバッグキーを使用したかを調べます。<BR>
+  　true：デバッグキーを使用した、false：デバッグキーを使用していない<BR>
+  が返ります。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetKeyState"><STRONG>GetKeyState(引数：1、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 状態を取得するキー<BR>
+  　　VK_LEFT	：左移動キー<BR>
+  　　VK_RIGHT	：右移動キー<BR>
+  　　VK_UP		：上移動キー<BR>
+  　　VK_DOWN	：下移動キー<BR>
+  　　VK_SHOT	：ショットキー<BR>
+  　　VK_BOMB	：ボムキー<BR>
+  　　VK_SLOWMOVE：低速移動キー<BR>
+  　　VK_SKIP：メッセージスキップキー<BR>
+  　　VK_USER：ユーザ定義キー<BR>
+   </FONT>
+  指定したキー(パッドボタン)の状態を取得します。<BR>
+  　KEY_FREE：キーが離されている状態<BR>
+  　KEY_PUSH：キーが押された瞬間<BR>
+  　KEY_HOLD：キーが押され続けている状態<BR>
+  　KEY_PULL：キーが離された瞬間<BR>
+  が返ります。<BR>
+  <br>
+  　　　　<a href="../../func_common_dx.html#GetVirtualKeyState" target="right">GetVirtualKeyState</a> (ほぼ互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetFps"><STRONG>GetFps(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  現在のFPSが返ります。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetTime"><STRONG>GetTime(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  スクリプト開始からの経過時間(ミリ秒)が返ります。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  　　　　ボスの残り時間取得は<a href="../../func_common_obj_stg.html#ObjEnemyBossScene_GetInfo" target="right">ObjEnemyBossScene_GetInfo</a> (INFO_TIMERかINFO_TIMEFを引数に)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncIsRenderFrame"><STRONG>IsRenderFrame(引数：0、返り値：boolean型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">		
+   </FONT>
+  描画フレームなら真が返ります。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+ </P>
+ <BR><BR>
+ 
+ 
+ <P><FONT color="#800040"><A name="FuncCommonData"><STRONG>スクリプト間共通データ用関数</STRONG></A></FONT></P>
+ <P>スクリプト間をまたいで共通の値を保存する関数です<BR>
+ </P>
+ <P>
+  <FONT color="#000080"><A name="FuncSetCommonData"><STRONG>SetCommonData(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 保存する値の名前(文字列)<BR>
+  　2) 保存する値<BR>
+   </FONT>
+  共通データを保存する関数です。<BR>
+  共通データ空間名「""」が対象になります。<BR>
+  <br>
+  　　　　<a href="../../func_common_std.html#SetCommonData" target="right">SetCommonData</a> (同一関数)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetCommonData"><STRONG>GetCommonData(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 取り出す値の名前(文字列)<BR>
+   </FONT>
+  共通データを読みこむ関数です。<BR>
+  値が存在しなかったら文字列"NoData"が返ります。<BR>
+  共通データ空間名「""」が対象になります。<BR>
+  <br>
+  　　　　<a href="../../func_common_std.html#GetCommonData" target="right">GetCommonData</a> (内容は下記のGetCommonDataDefaultと同じでデフォルト値を設定する)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetCommonDataDefault"><STRONG>GetCommonDataDefault(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 取り出す値の名前(文字列)<BR>
+  　2) デフォルトの値<BR>
+   </FONT>
+  共通の値を読みこむ関数です。<BR>
+  値が存在しなかったら第2引数が返ります。<BR>
+  共通データ空間名「""」が対象になります。<BR>
+  <br>
+  　　　　<a href="../../func_common_std.html#GetCommonData" target="right">GetCommonData</a> (完全互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncClearCommonData"><STRONG>ClearCommonData(引数：0)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  共通データを削除します。<BR>
+  共通データ空間名「""」が対象になります。<BR>
+  <br>
+  　　　　<a href="../../func_common_std.html#ClearCommonData" target="right">ClearCommonData</a> (同一関数)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncDeleteCommonData"><STRONG>DeleteCommonData(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 消去する値の名前(文字列)<BR>
+   </FONT>
+  指定した共通の値を削除する関数です。<BR>
+  共通データ空間名「""」が対象になります。<BR>
+  <br>
+  　　　　<a href="../../func_common_std.html#DeleteCommonData" target="right">DeleteCommonData</a> (同一関数)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSaveCommonData"><STRONG>SaveCommonData(引数：0)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  現在メモリ上にある共通データを、ファイルに保存する関数です。<BR>
+  実行中のスクリプトと同じフォルダに"ファイル名_save.dat"で保存されます。<BR>
+  共通データ空間名「""」が対象になります。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  　　　　<a href="../../func_common_std.html#SaveCommonDataAreaA1" target="right">SaveCommonDataAreaA1</a>ならあります。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSaveCommonDataInReplayFile"><STRONG>SaveCommonDataInReplayFile(引数：0)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  現在メモリ上にある共通データを、リプレイファイル内に保存する関数です。<BR>
+  この関数を実行した時点の共通データがリプレイファイルに保存されます。<BR>
+  リプレイ再生中は無視されます。<BR>
+  共通データ空間名「""」が対象になります。<BR>
+  <br>
+   　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncLoadCommonData"><STRONG>LoadCommonData(引数：0)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  共通データをファイルからメモリ上に読み込む関数です。<BR>
+  実行中のスクリプトと同じフォルダにある"ファイル名_save.dat"を読み込みます。<BR>
+  共通データ空間名「""」が対象になります。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  　　　　<a href="../../func_common_std.html#LoadCommonDataAreaA1" target="right">LoadCommonDataAreaA1</a>ならあります。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncLoadCommonDataFromReplayFile"><STRONG>LoadCommonDataFromReplayFile(引数：0)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  リプレイファイルから共通データを読み込みます。<BR>
+  リプレイ再生中以外は無視されます。<BR>
+  リプレイファイル内に共通データが無い場合無視されます。<BR>
+  共通データ空間名「""」が対象になります。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncCreateCommonDataArea"><STRONG>CreateCommonDataArea(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 共通データ空間名(文字列)<BR>
+   </FONT>
+  共通データを保存するメモリ空間を新たに作成します。<BR>
+  共通データ空間「""」は初期状態で作成済みです。<BR>
+  <br>
+  　　　　<a href="../../func_common_std.html#CreateCommonDataArea" target="right">CreateCommonDataArea</a> (同一関数)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSetCommonDataEx"><STRONG>SetCommonDataEx(引数：3)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 共通データ空間名(文字列)<BR>
+  　2) 保存する値の名前(文字列)<BR>
+  　3) 保存する値<BR>
+   </FONT>
+  共通データを保存する関数です。<BR>
+  <br>
+  　　　　<a href="../../func_common_std.html#SetAreaCommonData" target="right">SetAreaCommonData</a> (完全互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetCommonDataEx"><STRONG>GetCommonDataEx(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 共通データ空間名(文字列)<BR>
+  　2) 取り出す値の名前(文字列)<BR>
+   </FONT>
+  共通データを読みこむ関数です。<BR>
+  値が存在しなかったら文字列"NoData"が返ります。<BR>
+  <br>
+  　　　　<a href="../../func_common_std.html#GetAreaCommonData" target="right">GetAreaCommonData</a> (内容は下記のGetCommonDataDefaultExと同じでデフォルト値を設定する)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetCommonDataDefaultEx"><STRONG>GetCommonDataDefaultEx(引数：3)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 共通データ空間名(文字列)<BR>
+  　2) 取り出す値の名前(文字列)<BR>
+  　3) デフォルトの値<BR>
+   </FONT>
+  共通の値を読みこむ関数です。<BR>
+  値が存在しなかったら第2引数が返ります。<BR>
+  <br>
+  　　　　<a href="../../func_common_std.html#GetAreaCommonData" target="right">GetAreaCommonData</a> (完全互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncClearCommonDataEx"><STRONG>ClearCommonDataEx(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 共通データ空間名(文字列)<BR>
+   </FONT>
+  共通データを削除します。<BR>
+  <br>
+  　　　　<a href="../../func_common_std.html#ClearAreaCommonData" target="right">ClearAreaCommonData</a> (完全互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncDeleteCommonDataEx"><STRONG>DeleteCommonDataEx(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 共通データ空間名(文字列)<BR>
+  　2) 消去する値の名前(文字列)<BR>
+   </FONT>
+  指定した共通の値を削除する関数です。<BR>
+  <br>
+  　　　　<a href="../../func_common_std.html#DeleteAreaCommonData" target="right">DeleteAreaCommonData</a> (完全互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSaveCommonDataEx"><STRONG>SaveCommonDataEx(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 共通データ空間名(文字列)<BR>
+  　2) 保存ファイルパス(文字列)<BR>
+   </FONT>
+  現在メモリ上にある共通データを、ファイルに保存する関数です。<BR>
+  ファイルに指定するパスは、<BR>
+  "snapshot"、"script"、"player"フォルダ内である必要があります。<BR>
+  <br>
+  　　　　<a href="../../func_common_std.html#SaveCommonDataAreaA1" target="right">SaveCommonDataAreaA1</a> (下位互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSaveCommonDataInReplayFileEx"><STRONG>SaveCommonDataInReplayFileEx(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 共通データ空間名(文字列)<BR>
+   </FONT>
+  現在メモリ上にある共通データを、リプレイファイル内に保存する関数です。<BR>
+  この関数を実行した時点の共通データがリプレイファイルに保存されます。<BR>
+  リプレイ再生中は無視されます。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncLoadCommonDataEx"><STRONG>LoadCommonDataEx(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 共通データ空間名(文字列)<BR>
+  　2) ファイルパス(文字列)<BR>
+   </FONT>
+   共通データをファイルからメモリ上に読み込む関数です。<BR>
+  <br>
+  　　　　<a href="../../func_common_std.html#LoadCommonDataAreaA1" target="right">LoadCommonDataAreaA1</a> (下位互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncLoadCommonDataFromReplayFileEx"><STRONG>LoadCommonDataFromReplayFileEx(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 共通データ空間名(文字列)<BR>
+   </FONT>
+  リプレイファイルから共通データを読み込みます。<BR>
+  リプレイ再生中以外は無視されます。<BR>
+  リプレイファイル内に共通データが無い場合無視されます。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncIsCommonDataAreaExists"><STRONG>IsCommonDataAreaExists(引数：1、返り値：boolean型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 共通データ空間名(文字列)<BR>
+   </FONT>
+  共通データ空間が存在していれば真が返ります。<br>
+  <br>
+  　　　　<a href="../../func_common_std.html#IsCommonDataAreaExists" target="right">IsCommonDataAreaExists</a> (同一関数)<br>
+  <BR>
+
+
+
+ </P>
+ <BR><BR> 
+ 
+ 
+ <P><FONT color="#800040"><A name="FuncDebug"><STRONG>デバッグ用関数</STRONG></A></FONT></P>
+ <P>デバッグ用の関数です。<BR>
+    FullScreenでは用いることはできません。<BR>
+	配布前にはこれらの関数は削除してください。<BR>
+ </P>
+ <P>
+  <FONT color="#000080"><A name="FuncCreateDebugWindow"><STRONG>CreateDebugWindow(引数：0)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  デバッグ情報出力用のウィンドウを作製します。<BR>
+  <br>
+  　　　　ph3では現在config.exeの設定変更によって、起動時にログウインドウが起動するようにします。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncOutputDebugString"><STRONG>OutputDebugString(引数：3)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 情報を出力する位置(0-10程度)<BR>
+  　2) 任意の文字列<BR>
+  　3) 情報を表示したい変数等<BR>
+   </FONT>
+  デバッグ用の情報を表示します。<BR>
+  情報を表示したい変数の型は自動で判断されます。<BR>
+  CreateDebugWindowを使ってない場合は無視されます。<BR>
+  <br>
+  　　　　<a href="../../func_common_std.html#WriteLog" target="right">WriteLog</a> (下位互換)<br>
+  <BR>
+
+
+
+ </P>
+ <BR><BR>
+ 
+ 
+ <P><FONT color="#800040"><A name="FuncOthers"><STRONG>その他の関数</STRONG></A></FONT></P>
+ <P>その他の関数です。<BR>
+    区分できない関数の一覧です。<BR>
+ </P>
+ <P>
+  <FONT color="#000080"><A name="FuncDeleteAllEnemyWithoutBoss"><STRONG>DeleteAllEnemyWithoutBoss(引数：0)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  ボス以外の敵を全て消滅させます<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  　　　　<a href="../../func_common_stg.html#GetAllEnemyID" target="right">GetAllEnemyID</a>等を使えばなんとか実装可能です。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSetPlayerInvincibility"><STRONG>SetPlayerInvincibility(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   　1) 時間(無敵時間をフレーム単位で指定)<BR>
+   </FONT>
+  自機を指定時間無敵にします。<BR>
+  0を指定すると、自機の無敵時間を解除できます。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#SetPlayerInvincibilityFrame" target="right">SetPlayerInvincibilityFrame</a> (完全互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncExtendPlayer"><STRONG>ExtendPlayer(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   　1) 増加させる残機数<BR>
+   </FONT>
+  残機を増加させます。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#SetPlayerLife" target="right">SetPlayerLife</a> (残機を増やすのではなく再設定する)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSuperNaturalBorder"><STRONG>SuperNaturalBorder(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   　1) 継続時間<BR>
+   </FONT>
+  指定した時間継続する、森羅結界を発動させます。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncShootDownPlayer"><STRONG>ShootDownPlayer(引数：0)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  自機を撃墜します。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSetEffectLayer"><STRONG>SetEffectLayer(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   　1) レイヤ(0-8)<BR>
+   　　0:背景<BR>
+   　　1:-<BR>
+   　　2:敵<BR>
+   　　3:自機(エフェクトオブジェクトの初期値)<BR>
+   　　4:アイテム<BR>
+   　　5:弾<BR>
+   　　6:会話イベントの画像<BR>
+   　　7:-<BR>
+   　　8:外枠(指定すると、枠部分が再描画されるため少し重くなります)<BR>
+   </FONT>
+  組み込みエフェクトの描画先のレイヤを指定します<BR>
+  (現在適用されるのはConcentration01,02です)<BR>
+  例えば5を指定した場合、弾の上の層に描画されます。<BR>
+  初期値は3です。<BR>
+<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_dx.html#Obj_SetRenderPriority" target="right">Obj_SetRenderPriority</a> (上位互換　０～１の範囲で少数指定)<br>
+  　　　　<a href="../../func_common_obj_dx.html#Obj_SetRenderPriorityI" target="right">Obj_SetRenderPriorityI</a> (上位互換　０～１００の範囲で整数指定)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncCollectItems"><STRONG>CollectItems(引数：0)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  無条件に画面上のアイテムを自機に吸い寄せます。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#CollectAllItems" target="right">CollectAllItems</a> (完全互換)<br>
+  　　　　<a href="../../func_common_stg.html#CollectItemsByType" target="right">CollectItemsByType</a> (上位互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncAddScore"><STRONG>AddScore(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 増加させる得点<BR>
+   </FONT>
+  指定した値だけ得点を増加させます。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#AddScore" target="right">AddScore</a> (同一関数)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncAddPoint"><STRONG>AddPoint(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 増加させるPoint<BR>
+   </FONT>
+  指定した値だけPointを増加させます。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#AddPoint" target="right">AddPoint</a> (同一関数)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncAddGraze"><STRONG>AddGraze(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 増加させるGraze<BR>
+   </FONT>
+  指定した値だけGrazeを増加させます。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#AddGraze" target="right">AddGraze</a> (同一関数)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncAddBomb"><STRONG>AddBomb(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 増加させるBomb<BR>
+   </FONT>
+  指定した値だけBombを増加させます。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#SetPlayerSpell" target="right">SetPlayerSpell</a> (ボムを増やすのではなく再設定する)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSetLifeZeroToAllEnemy"><STRONG>SetLifeZeroToAllEnemy(引数：0)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  全ての敵のライフを0にします(全ての敵を倒します)。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSetAllowedContinueCount"><STRONG>SetAllowedContinueCount(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) コンティニュー回数<BR>
+   </FONT>
+  コンティニュー回数を設定します。<BR>
+  <br>
+  　　　　ph3にはコンティニューの概念がありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSetRateScoreSystemEnable"><STRONG>SetRateScoreSystemEnable(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) true:有効　false:無効<BR>
+   </FONT>
+  スコアにrateを反映するか指定します。<BR>
+  無効にした場合rate自体表示されなくなります。<BR>
+  <br>
+  　　　　ph3にはスコアレートの概念がありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSetDefaultStatusVisible"><STRONG>SetDefaultStatusVisible(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) true:有効　false:無効<BR>
+   </FONT>
+  スコア、残機などの表示を設定します。<BR>
+  無効にした場合、枠にほとんど何も表示されなくなります。<BR>
+  <br>
+  　　　　スクリプトヘッダに『#System[""]』と書いてデフォルトのシステムファイルを読み込まないようにすれば非表示にできます。<br>
+  　　　　ですがこの方法は外枠を含めて一切表示されなくなります。<br>
+  　　　　一部の表示だけ非表示にしたい場合は、script/default_system/Default_System.txtのファイルをコピーして内容を適宜書き換え、<br>
+  　　　　その書き換えたファイルを『#System』で読み込むようにすればOKです。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSetNormPoint"><STRONG>SetNormpoint(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) ノルマ<BR>
+   </FONT>
+  Pointのノルマを指定します。負数を指定すると表示が消えます。<BR>
+  <br>
+  　　　　ph3にはノルマの概念がありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncForbidShot"><STRONG>ForbidShot(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) true：弾使用不許可、false：弾使用許可<BR>
+   </FONT>
+  自弾の使用を禁止します。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#SetForbidPlayerShot" target="right">SetForbidPlayerShot</a> (完全互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncForbidBomb"><STRONG>ForbidBomb(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) true：ボム使用不許可、false：ボム使用許可<BR>
+   </FONT>
+  ボムの使用を禁止します。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#SetForbidPlayerSpell" target="right">SetForbidPlayerSpell</a> (完全互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSlow"><STRONG>Slow(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) Slowにする強度(0で通常、1で1/2倍、2で1/3倍速)<BR>
+   </FONT>
+  全てのオブジェクトの動きをスローにします。<BR>
+  スロー解除には0を設定します。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#StartSlow" target="right">StartSlow</a> (上位互換　スロー強度を細かく設定可能　自機側と敵側で処理の衝突が無い)<br>
+  　　　　<a href="../../func_common_stg.html#StopSlow" target="right">StopSlow</a> (スローの停止)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncSaveSnapShot"><STRONG>SaveSnapShot(引数：5)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) ファイル名<BR>
+  　2) 保存矩形(左)<BR>
+  　3) 保存矩形(上)<BR>
+  　4) 保存矩形(右)<BR>
+  　5) 保存矩形(下)<BR>
+   </FONT>
+  指定範囲のスナップショットをファイルに保存します。<BR>
+  ファイルに指定するパスは、<BR>
+  "snapshot"、"script"、"player"フォルダ内である必要があります。<BR>
+  <br>
+  　　　　<a href="../../func_common_dx.html#SaveSnapShotA2" target="right">SaveSnapShotA2</a> (完全互換)<br>
+  　　　　<a href="../../func_common_dx.html#SaveSnapShotA1" target="right">SaveSnapShotA1</a> (下位互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncAddArchiveFile"><STRONG>AddArchiveFile(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) アーカイブファイル名(文字列)<BR>
+   </FONT>
+  画像や音声を読み込むとき検索される、アーカイブファイルを追加します。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncRaiseError"><STRONG>RaiseError(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 表示するテキスト(文字列)<BR>
+  　2) ダイアログのキャプション(文字列)<BR>
+   </FONT>
+  ダイアログを表示して、強制的にスクリプトを終了します。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncRetry"><STRONG>Retry(引数：0)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  リトライします。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncAssert"><STRONG>assert(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 条件<BR>
+  　2) テキスト<BR>
+   </FONT>
+  条件がfalseなら、assertを発生します。<BR>
+  エラーを発生し指定したテキストを表示します。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncGetVersion"><STRONG>GetVersion(引数：0、返り値：char型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  バージョン情報を文字列で取得します。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+ </P>
+ <BR><HR> 
+ 
+ 
+ <P><FONT color="#800040"><A name="IEnemyFunction"><STRONG>敵動作専用関数</STRONG></A></FONT></P>
+ <P>敵専用組み込み関数です。敵動作スクリプト部分にのみ使えます。</P>
+ <BR>
+ 
+ <P><FONT color="#800040"><A name="FuncEnemyControl"><STRONG>敵を制御する関数</STRONG></A></FONT></P>
+ <P>敵を制御する関数は、敵ライフ、スペル残り時間等を制御します。</P>
+ <BR>
+ <P>
+  <FONT color="#000080"><A name="FuncEnemySetLife"><STRONG>SetLife(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 敵のライフ<BR>
+   </FONT>
+  敵のライフを設定します。設定しなければ出現と同時に敵は消滅します。<BR>
+  @Initialize内で一回だけ変数を使用せず実行してください。<BR>
+  ×)↓<BR>
+  let life=5000;SetLife(life);←連続再生のライフが変になります。<BR>
+  <br>
+  　　　　<a href="../../description.html#Event" target="right">@EventのEV_REQUEST_LIFE</a>に
+<a href="../../func_common_stg.html#SetScriptResult" target="right">SetScriptResult</a>を使って初期ライフを設定します。 (ボスのみ)<br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjEnemy_SetLife" target="right">ObjEnemy_SetLife</a> (ほぼ互換　オブジェクトID指定必須)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemyAddLife"><STRONG>AddLife(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 増減させるライフ値<BR>
+   </FONT>
+  敵のライフを増減させます。<BR>
+  ただしSetLifeで設定した値を越えることはできません。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjEnemy_AddLife" target="right">ObjEnemy_AddLife</a> (ほぼ互換　オブジェクトID指定必須)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemySetTimer"><STRONG>SetTimer(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) スペルカード残り時間(秒単位)<BR>
+   </FONT>
+  スペルカードの残り時間を設定します。設定しなければ無制限になります。<BR>
+  <br>
+  　　　　<a href="../../description.html#Event" target="right">@EventのEV_REQUEST_TIMER</a>に
+<a href="../../func_common_stg.html#SetScriptResult" target="right">SetScriptResult</a>を使って初期ライフを設定します。 (ボスのみ)<br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjEnemyBossScene_SetSpellTimer" target="right">ObjEnemyBossScene_SetSpellTimer</a> (ほぼ互換　オブジェクトID指定必須)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemySetInvincibility"><STRONG>SetInvincibility(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 無敵時間(フレーム単位)<BR>
+   </FONT>
+  敵の無敵時間を設定します。設定した時間内は弾をあててもライフが減りません。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemySetDamageRate"><STRONG>SetDamageRate(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 自弾へのダメージ割合(0～100)<BR>
+  　2) ボムへのダメージ割合(0～100)<BR>
+   </FONT>
+  自弾、ボムへの抵抗値を設定します。<BR>
+  0で無効化、100で元の威力です。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjEnemy_SetDamageRate" target="right">ObjEnemy_SetDamageRate</a> (ほぼ互換　オブジェクトID指定必須)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemySetDamageRateEx"><STRONG>SetDamageRateEx(引数：4)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 自弾へのダメージ割合(0～100)<BR>
+  　2) ボムへのダメージ割合(0～100)<BR>
+  　3) 親への自弾ダメージ割合(0～100)<BR>
+  　4) 親へのボムダメージ割合(0～100)<BR>
+   </FONT>
+  自弾、ボムへの抵抗値を設定します。<BR>
+  使い魔のダメージを敵ボスのライフに通したい場合に用いてください。<BR>
+  親へのダメージ割合の初期値は0です。<BR>
+  0で無効化、100で元の威力です。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemySetDurableSpellCard"><STRONG>SetDurableSpellCard(引数：0)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  スペルカードを耐久弾幕用にします。<BR>
+  使用しておくと時間制限になってもスペルカードボーナスを得られます。<BR>
+  <br>
+  　　　　<a href="../../description.html#Event" target="right">@EventのEV_REQUEST_IS_DURABLE_SPELL</a>に
+<a href="../../func_common_stg.html#SetScriptResult" target="right">SetScriptResult</a>を使って耐久スペル仕様にします。 (ボスのみ)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemySetCollisionA"><STRONG>SetCollisionA(引数：3)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) x座標<BR>
+  　2) y座標<BR>
+  　3) 半径<BR>
+   </FONT>
+  敵の当たり判定を登録します。この部分に自弾が当たると敵のライフが減少します。<BR>
+  当たり判定は何箇所でも登録できます。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjEnemy_SetIntersectionCircleToShot" target="right">ObjEnemy_SetIntersectionCircleToShot</a> (ほぼ互換　オブジェクトID指定必須)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemySetCollisionB"><STRONG>SetCollisionB(引数：3)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) x座標<BR>
+  　2) y座標<BR>
+  　3) 半径<BR>
+   </FONT>
+  敵の当たり判定を登録します。この部分に自機が当たると自機は撃墜されます。<BR>
+  当たり判定は何箇所でも登録できます。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjEnemy_SetIntersectionCircleToPlayer" target="right">ObjEnemy_SetIntersectionCircleToPlayer</a> (ほぼ互換　オブジェクトID指定必須)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemySetScore"><STRONG>SetScore(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 得点<BR>
+   </FONT>
+  敵の得点を設定します。また、スペルカードボーナス対象になります。<BR>
+  <br>
+  　　　　<a href="../../description.html#Event" target="right">@EventのEV_REQUEST_SPELL_SCORE</a>に
+<a href="../../func_common_stg.html#SetScriptResult" target="right">SetScriptResult</a>を使ってスペルカードのスコアを設定します。 (ボスのみ)<br>
+  　　　　ザコ敵にスコア設定する場合は、撃破されたタイミングに<a href="../../func_common_stg.html#AddScore" target="right">AddScore</a>でスコア増加させます。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemyCreateEnemyFromScript"><STRONG>CreateEnemyFromScript(引数：6)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 定義してある敵スクリプト名<BR>
+  　2) x座標(敵スクリプト内でGetXで取得可能)<BR>
+  　3) y座標(敵スクリプト内でGetYで取得可能)<BR>
+  　4) 速度(敵スクリプト内でGetSpeedで取得可能)<BR>
+  　5) 角度(敵スクリプト内でGetAngleで取得可能)<BR>
+  　6) 任意の値(敵スクリプト内でGetArgumentで取得可能)<BR>
+   </FONT>
+  スクリプトで定義してある敵を作製します。<BR>
+  <br>
+  　　　　ph3では<a href="../../func_common_stg.html#StartScript" target="right">StartScript</a>で敵スクリプトを起動させます。<br>
+  　　　　敵スクリプト以外にも適用できますが、x座標等の情報を渡すには
+<a href="../../func_common_stg.html#SetScriptArgument" target="right">SetScriptArgument</a>や
+<a href="../../func_common_obj_dx.html#Obj_SetValue" target="right">Obj_SetValue</a>などを使います。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemyCreateEnemyFromFile"><STRONG>CreateEnemyFromFile(引数：6)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 敵スクリプトファイルへのパス(文字列)<BR>
+  　2) x座標(敵スクリプト内でGetXで取得可能)<BR> 
+  　3) y座標(敵スクリプト内でGetYで取得可能)<BR>
+  　4) 速度(敵スクリプト内でGetSpeedで取得可能)<BR>  
+  　5) 角度(敵スクリプト内でGetAngleで取得可能)<BR>
+  　6) 任意の値(敵スクリプト内でGetArgumentで取得可能)<BR>
+   </FONT>
+   敵をファイルから読みこんで出現させます。ただし連続再生ファイルは不可です。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#LoadScript" target="right">LoadScript</a> (敵に限らず全てのスクリプトをロードする)<br>
+  　　　　<a href="../../func_common_stg.html#LoadScriptInThread" target="right">LoadScriptInThread</a> (別スレッドでロードする)<br>
+  　　　　敵スクリプト以外にも適用できますが、x座標等の情報を渡すには
+<a href="../../func_common_stg.html#SetScriptArgument" target="right">SetScriptArgument</a>や
+<a href="../../func_common_obj_dx.html#Obj_SetValue" target="right">Obj_SetValue</a>などを使います。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemyVanishEnemy"><STRONG>VanishEnemy(引数：0)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  敵を消滅させます。<BR>
+  得点なども加算されません。<BR>
+  敵消滅時の効果音が必要ない時などにもどうぞ。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_dx.html#Obj_Delete" target="right">Obj_Delete</a> (オブジェクト削除)<br>
+  　　　　<a href="../../func_common_stg.html#CloseScript" target="right">CloseScript</a> (ph3では手動でスクリプトを閉じる)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemySetEnemyMarker"><STRONG>SetEnemyMarker(引数：0)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  敵マーカーの状態を設定します。<BR>
+  　true：マーカーを描画する<BR>
+  　false：マーカーを描画しない<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemyLastSpell"><STRONG>LastSpell(引数：0)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  @InitializeでSetScore()等と共に関数指定すると、<BR>
+  ボム・残機共に無効になり被弾してもミスにならない代わり敵ライフが0になる。<BR>
+  <br>
+  　　　　<a href="../../description.html#Event" target="right">@EventのEV_REQUEST_IS_LAST_SPELL</a>で
+<a href="../../func_common_stg.html#SetScriptResult" target="right">SetScriptResult</a>にtrueを渡します。<br>
+  <BR>
+
+
+
+ </P>
+ <BR><BR>
+ 
+ 
+ <P><FONT color="#800040"><A name="FuncEnemyEffect"><STRONG>エフェクト系(その他)関数</STRONG></A></FONT></P>
+ <P>なくても問題ないですが、エフェクト用関数です。<BR>
+    分類できないその他の関数も含みます。</P>
+ <BR> 
+ <P>
+  <FONT color="#000080"><A name="FuncEnemyConcentration01"><STRONG>Concentration01(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) エフェクト継続時間(フレーム単位)<BR>
+   </FONT>
+  敵が魔力(霊力? 妖力?)を集中(?)しているようなエフェクトを出現させます。<BR>
+  色は、SetColorで指定した色に依存します。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemyConcentration02"><STRONG>Concentration02(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) エフェクト継続時間(フレーム単位)<BR>
+   </FONT>
+  氷の結晶?を集中(?)しているようなエフェクトを出現させます。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemyExplosion01"><STRONG>Explosion01(引数：5)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) x座標<BR>
+  　2) y座標<BR>
+  　3) α値の減少速度<BR>
+  　4) 拡大速度<BR>
+  　5) エフェクト終了時間(フレーム単位)<BR>				
+   </FONT>
+  爆発?のエフェクトを描画します。<BR>
+  <br>
+  　　　　ヘルプにはありませんが、<br>
+  　　　　#include "script/default_system/Default_Effect.txt"<br>
+  　　　　を取り込むとTExplosionAという似た関数が使えます。<br>
+  　　　　　　引数１：x座標<br>
+  　　　　　　引数２：y座標<br>
+  　　　　　　引数３：α値の減少速度<br>
+  　　　　　　引数４：拡大速度<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemyMotionBlur"><STRONG>MotionBlur(引数：3)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) タイプ<BR>
+  　　ALL：自機、敵、弾に残像がかかります。<BR>
+  　　SHOT：弾にだけ残像がかかります。<BR>
+  　2) 残像がかかり続ける時間(フレーム)<BR>
+  　3) 残像の強度(0～244)<BR>
+   </FONT>
+  擬似モーションブラー関数です。弾等に残像を残します。<BR>
+  また、残像がかかっている間は強制的に加算合成描画になります。<BR>
+  (ほとんど妖夢専用？)<BR>
+  <br>
+  　　　　<a href="../../sample_effect.html" target="right">エフェクトサンプル</a>を参照してください。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemyMotionBlurEx"><STRONG>MotionBlurEx(引数：4)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) タイプ<BR>
+  　　ALL：自機、敵、弾に残像がかかります。<BR>
+  　　SHOT：弾にだけ残像がかかります。<BR>
+  　2) 残像がかかり続ける時間(フレーム)<BR>
+  　3) 残像の強度(0～244)<BR>
+  　4) ALPHA or ADD<BR>
+   </FONT>
+  擬似モーションブラー関数です。弾等に残像を残します。<BR>
+  ALPHAもしくはADDで残像のかかり方を変えられます。<BR>
+  <br>
+  　　　　<a href="../../sample_effect.html" target="right">エフェクトサンプル</a>を参照してください。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemyTimeStop"><STRONG>TimeStop(引数：4)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 時間が停まっている時間(フレーム単位) (解説しづらい…)<BR>	
+  　2) 自機(0:停止しない 1:停止)<BR>	
+  　3) 弾(0:停止しない 1:停止)<BR>	
+  　4) 背景(0:停止しない 1:停止)<BR>	
+   </FONT>
+  指定したオブジェクトの時間を停めます。<BR>
+  自機は停止時も当たり判定があるので注意してください。<BR>
+  逆に停止している弾には当たり判定はありません。<BR>
+  咲夜さん以外が時間停止(自機)を行うとバグにしか見えない恐れがあるので、
+  自機を停止させるときはMotionBlur(弾)と併用するといい感じかもしれません。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemyCutIn"><STRONG>CutIn(引数：7)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) カットインのタイプ(KOUMA：紅魔郷、YOUMU：妖々夢)<BR>
+  　2) スペルカード名等(<STRONG>文字列</STRONG>)<BR>
+  　3) 画像ファイルへのパス<BR>
+  　4) 描画元矩形左<BR>
+  　5) 描画元矩形上<BR>
+  　6) 描画元矩形右<BR>
+  　7) 描画元矩形下<BR>
+   </FONT>
+  カットインを表示します。<BR>
+  紅魔郷タイプと、妖々夢タイプを選択できます。<BR>
+  <STRONG>SetTextは専用のものが自動的に呼ばれます</STRONG>。<BR>
+  <IMG src="CutIn.jpg" ALT="CutIn"><BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemySetText"><STRONG>SetText(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 表示するテキスト(<STRONG>文字列</STRONG>)<BR>		
+   </FONT>
+  スペル名等を表示します(途中で変更も可能です)。<BR>
+  空文字「""」を指定すると、表示してあるスペル名を消せます。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  　　　　ph3では<a href="../../func_common_obj_dx.html#sec_ObjText_" target="right">テキストオブジェクト</a>が
+使用可能なため、そちらの関数を使用してテキストを描画します。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemyMagicCircle"><STRONG>MagicCircle(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) false：魔法陣が消える、true：魔法陣が出現する<BR>
+   </FONT>
+  敵スペルカード使用時の魔法陣を出現させたり消したりできます。<BR>
+  SetScoreで得点を設定すると自動的にMagicCircle(true)が呼ばれます。<BR>
+  <br>
+  　　　　script/default_systemにあるDefault_System.txtの@Event EV_START_BOSS_SPELLにある<br>
+  　　　　Default_System_MagicCircle.txtの呼び出しを止めるように書き換える、または<br>
+  　　　　Default_System_MagicCircle.txt自体を書き換えることで魔方陣を消去できます。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemySetEffectForZeroLife"><STRONG>SetEffectForZeroLife(引数：3)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) ライフ0から消滅までの時間(この間は動けます)<BR>
+  　2) モーションブラーの強さ<BR>
+  　3) スローの強さ<BR>		
+   </FONT>
+  敵のライフが0になった瞬間から、消滅までの時間を設定できます。<BR>
+  また、モーションブラーや、スローの設定もできます。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemyCreateEventFromScript"><STRONG>CreateEventFromScript(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 定義してあるイベントスクリプト名(<STRONG>文字列</STRONG>)<BR>		
+   </FONT>
+  会話イベントを開始します。<BR>
+  互換用に残してあるEvent関数も同じ意味です。<BR>
+  <br>
+  　　　　ph3には会話イベント用のスクリプト (script_event) がありません。<br>
+  　　　　<a href="../../func_common_stg.html#LoadScript" target="right">LoadScript</a>で会話イベント用で作ったスクリプトを呼び出してください。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemyCreateItem"><STRONG>CreateItem(引数：3)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) アイテムの種類<BR>
+  　　ITEM_1UP：残機増加アイテム<BR>
+  　　ITEM_BOMB：ボム増加アイテム<BR>
+  　　ITEM_SCORE：得点アイテム<BR>
+  　2) x座標<BR>
+  　3) y座標<BR>	
+   </FONT>
+  アイテムを設置します。<BR>
+  アイテムは設置点から暫く上昇して次第に落下してきます。<BR>
+  @Finalize内にかくことで、敵・スペルカード撃破時にアイテムを出現させられます。<BR>
+  出現先座標は多少乱数を含めないと同じ座標に重なって出現するので注意してください。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#CreateItemA1" target="right">CreateItemA1</a> (上位互換)<br>
+  　　　　<a href="../../func_common_stg.html#CreateItemA2" target="right">CreateItemA2</a> (上位互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemyExpert"><STRONG>Expert(引数：0)</STRONG></A></FONT><BR>
+   <FONT color="#008000">		
+   </FONT>
+  コンティニュー、デバッグキーの使用を不可にします。<BR>
+  <br>
+  　　　　ph3にはコンティニュー、デバッグキー共にありません。<br>
+  <BR>
+
+
+
+ </P> 
+ <BR><BR>
+ 
+ 
+ <P><FONT color="#800040"><A name="FuncEnemyGet"><STRONG>特定の値を取得する関数(敵スクリプト専用)</STRONG></A></FONT></P>
+ <P>敵の座標や、自機の座標を取得したりするときに使います。</P>
+ <BR>
+ <P>
+  <FONT color="#000080"><A name="FuncEnemyGetSpeedX"><STRONG>GetSpeedX(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  敵のx方向移動速度を取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjMove_GetSpeed" target="right">ObjMove_GetSpeed(敵ID)</a> *
+<a href="../../func_common_std.html#cos" target="right">cos</a>
+(<a href="../../func_common_obj_stg.html#ObjMove_GetAngle" target="right">ObjMove_GetAngle(敵ID)</a>)
+という処理を行えば代替できます。
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemyGetSpeedY"><STRONG>GetSpeedY(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  敵のy方向移動速度を取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjMove_GetSpeed" target="right">ObjMove_GetSpeed(敵ID)</a> *
+<a href="../../func_common_std.html#sin" target="right">sin</a>
+(<a href="../../func_common_obj_stg.html#ObjMove_GetAngle" target="right">ObjMove_GetAngle(敵ID)</a>)
+という処理を行えば代替できます。
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemyGetLife"><STRONG>GetLife(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  敵の残りライフを取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjEnemy_GetInfo" target="right">ObjEnemy_GetInfo</a> (INFO_LIFEを引数に)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemyGetHitCount"><STRONG>GetHitCount(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  前フレーム中の被弾数を取得します。<BR>
+  (前フレームに減ったライフではありません)<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemyGetTimeOfInvincibility"><STRONG>GetTimeOfInvincibility(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  残り無敵時間を取得します。<BR>
+  <br>
+  　　　　ph3では自機の無敵時間を取得する関数 (<a href="../../func_common_stg.html#GetPlayerInvincibilityFrame" target="right">GetPlayerInvincibilityFrame</a>) しかありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemyBeVanished"><STRONG>BeVanished(引数：0、返り値：boolean型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  敵が自弾に倒されたか、VanishEnemy関数で消滅したかを調べます。<BR>
+  自弾に倒された：false、VanishEnemy関数で消滅した：true<BR>
+  を返します。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemyBeParentVanished"><STRONG>BeParentVanished(引数：0、返り値：boolean型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  親が自弾に倒されたか、VanishEnemy関数で消滅したかを調べます。<BR>
+  自弾に倒された：false、VanishEnemy関数で消滅した：true<BR>
+  を返します。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemyIsMaster"><STRONG>IsMaster(引数：0、返り値：boolean型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  敵が本体なのか使い魔なのかを調べます。<BR>
+  使い魔：false、本体：true<BR>
+  を返します。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemyIsTimeOut"><STRONG>IsTimeOut(引数：0、返り値：boolean型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  タイムアウトで倒したかを調べます。<BR>
+  非タイムアウト：false、タイムアウト：true<BR>
+  を返します。<BR>
+  <br>
+  　　　　<a href="../../description.html#Event" target="right">@EventのEV_TIMEOUT</a>に
+タイムアウトしたときに行いたい処理を書けば同じような使い方ができます。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemyGetSpellCardBonusScore"><STRONG>GetSpellCardBonusScore(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  現在取得予定のスペルカードボーナスの値を返します。<BR>
+  <br>
+  　　　　<a href="../../description.html#Event" target="right">@EventのEV_REQUEST_SPELL_SCORE</a>に
+<a href="../../func_common_stg.html#SetScriptResult" target="right">SetScriptResult</a>をスペルカードボーナススコアを設定します。 (ボスのみ)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemyGotSpellCardBonus"><STRONG>GotSpellCardBonus(引数：0、返り値：boolean型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  @Finalizeでスペルカードを取得できたかを返します。<BR>
+  取得できなかった：false、取得した：true<BR>
+  を返します。<BR>
+  <br>
+  　　　　<a href="../../description.html#Event" target="right">@EventのEV_GAIN_SPELL</a>に
+スペルカード取得したときに行いたい処理を書けば同じような使い方ができます。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemyOnEvent"><STRONG>OnEvent(引数：0、返り値：boolean型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  非会話イベント中：false、会話イベント中：true<BR>
+  を返します。<BR>
+  <br>
+  　　　　ph3には会話イベント用のスクリプト (script_event) がありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemyGetEventStep"><STRONG>GetEventStep(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  イベントスクリプト内の「SetStep」で設定した値を取得します。<BR>
+  <br>
+  　　　　ph3には会話イベント用のスクリプト (script_event) がありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemyGetArgument"><STRONG>GetArgument(引数：0)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  CreateEnemy実行時に最後の引数に指定した値を取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#GetScriptArgument" target="right">GetScriptArgument</a> (上位互換)<br>
+  　　　　<a href="../../func_common_obj_dx.html#Obj_GetValue" target="right">Obj_GetValue</a> (オブジェクトIDに割り付けた値の取得)<br>
+  　　　　<a href="../../func_common_obj_dx.html#Obj_GetValueD" target="right">Obj_GetValueD</a> (上記に加えデフォルト値の設定が可能)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncEnemyGetArgumentDefault"><STRONG>GetArgumentDefault(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   1) 値<BR>
+   </FONT>
+  CreateEnemy実行時に最後の引数に指定した値を取得します。<BR>
+  値が存在しなかったら、この関数の引数が返ります。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+ </P><BR><HR>
+ 
+ 
+ <P><FONT color="#800040"><A name="IShotFunction"><STRONG>弾動作専用関数</STRONG></A></FONT></P>
+ <P>弾専用組み込み関数です。弾動作スクリプト部分にのみ使えます。</P>
+ <br>
+ 　　　　<font color="red">ph3には弾スクリプトの概念が無いため、それに関連する関数もありません。</font><br>
+ 　　　　ただ<a href="../../func_common_obj_stg.html#sec_ObjShot_" target="right">オブジェクト弾</a>関連の関数に同類のものが多々あります。<br>
+ <BR>
+
+
+
+ <P><FONT color="#800040"><A name="FuncShotControl"><STRONG>弾を制御する関数</STRONG></A></FONT></P>
+ <P>弾スクリプトを制御する関数です。</P>
+ <BR>
+ <P>
+  <FONT color="#000080"><A name="FuncShotSetDefault"><STRONG>SetDefault(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 組み込み弾の種類<BR>
+   </FONT>
+  弾スクリプトに組み込みの弾を設定します。<BR>
+  SetCollisionBDefault、DrawGraphicDefaultを使う前に実行する必要があります。<BR>
+  <BR>
+  <FONT color="#000080"><A name="FuncShotSetLaser"><STRONG>SetLaser(引数：3)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) レーザーの幅<BR>
+  　2) 残像を引くフレーム数(大きいほど長いレーザーになる。32程度。)<BR>
+  　3) 画像<BR>		
+   </FONT>
+  弾スクリプトをレーザーにします。<BR>
+  SetCollisoinLaser、DrawLaserとセットで使用します。<BR>
+  長くなるほど重くなります。<BR>
+  <BR>
+  <FONT color="#000080"><A name="FuncShotSetCollisionB"><STRONG>SetCollisionB(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) x座標<BR>
+  　2) y座標<BR>
+  　3) 半径<BR>
+   </FONT>
+  弾の当たり判定を登録します。この部分に自機が当たると自機は撃墜されます。<BR>
+  当たり判定は何箇所でも登録できます。<BR>
+  <BR>
+  <FONT color="#000080"><A name="FuncShotSetCollisionBDefault"><STRONG>SetCollisionBDefault(引数：0)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  組み込みの弾の当たり判定を登録します。<BR>
+  使用前にSetDefaultを実行しておく必要があります。<BR>
+  <BR>
+  <FONT color="#000080"><A name="FuncShotSetCollisionLaser"><STRONG>SetCollisionLaser(引数：0)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  レーザーの当たり判定を登録します。<BR>
+  使用前にSetLaserを実行しておく必要があります。<BR>
+  <BR>
+  <FONT color="#000080"><A name="FuncSetShotBombResist"><STRONG>SetBombResist(引数：0)</STRONG></A></FONT><BR>
+   <FONT color="#008000">		
+   </FONT>
+  ボムに対して耐性を持つことができます。<BR>
+  <BR>
+  <FONT color="#000080"><A name="FuncShotEnd"><STRONG>End(引数：0)</STRONG></A></FONT><BR>
+   <FONT color="#008000">		
+   </FONT>
+  弾を消滅させます。<BR>
+  <BR>
+ </P><BR><BR>
+  
+  
+ <P><FONT color="#800040"><A name="FuncShotDraw"><STRONG>描画系関数(弾スクリプト専用)</STRONG></A></FONT></P>
+ <P>弾スクリプト描画専用関数です。</P>
+ <BR>
+ <P>
+  <FONT color="#000080"><A name="FuncShotDrawGraphicDefault"><STRONG>DrawGraphicDefault(引数：0)</STRONG></A></FONT><BR>
+   <FONT color="#008000">		
+   </FONT>
+  組み込みの弾を描画します。一括描画できるので高速です。<BR>
+  使用前にSetDefaultを実行しておく必要があります。<BR>
+  <BR>
+  <FONT color="#000080"><A name="FuncShotDrawLaser"><STRONG>DrawLaser(引数：0)</STRONG></A></FONT><BR>
+   <FONT color="#008000">		
+   </FONT>
+  レーザーを描画します。<BR>
+  使用前にSetLaserを実行しておく必要があります。<BR>
+  <BR>
+ </P><BR><BR>
+ 
+ 
+ <P><FONT color="#800040"><A name="FuncShotGet"><STRONG>特定の値を取得する関数(弾スクリプト専用)</STRONG></A></FONT></P>
+ <P>弾スクリプト専用の特定の値を取得する関数です。</P>
+ <BR>
+ <P>
+  <FONT color="#000080"><A name="FuncShotGetArgument"><STRONG>GetArgument(引数：0)</STRONG></A></FONT><BR>
+   <FONT color="#008000">		
+   </FONT>
+  CreateShotFromScript実行時に指定した、第7引数の値を取得します。<BR>
+  <BR>
+  <FONT color="#000080"><A name="FuncShotOnDelay"><STRONG>OnDelay(引数：0、返り値：boolean型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">		
+   </FONT>
+  非遅延時間中：false、遅延時間中：trueを返します。<BR>
+  <BR>
+  <FONT color="#000080"><A name="FuncShotGetDelayTime"><STRONG>GetDelayTime(引数：0、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">		
+   </FONT>
+  残り遅延時間を取得します。<BR>
+  <BR>
+ </P><BR><HR> 
+ 
+ 
+ <P><FONT color="#800040"><A name="IEventFunction"><STRONG>会話イベント専用関数</STRONG></A></FONT></P> 
+ <P>会話イベント専用の関数です。</P>
+ <br>
+ 　　　　<font color="red">ph3には会話イベントスクリプトの概念が無いため、それに関連する関数もありません。</font><br>
+ 　　　　<a href="../../func_common_obj_dx.html#sec_ObjRender_" target="right">ObjRender系列の関数</a>などで自作する必要があります。<br>
+ <BR>
+
+
+
+ <P>
+  <FONT color="#000080"><A name="FuncEventSetChar"><STRONG>SetChar(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 設定するキャラクタの方向(LEFT：左、RIGHT：右)<BR>
+  　2) 画像ファイルのパス(<STRONG>文字列</STRONG>)<BR>  	
+   </FONT>
+  キャラクタの画像を設定し出現させます。<BR>
+  この関数を使わないとキャラクタは出現しません。<BR>
+  <BR>
+  <FONT color="#000080"><A name="FuncEventDeleteChar"><STRONG>DeleteChar(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) キャラクタの方向(LEFT：左、RIGHT：右)<BR>	
+   </FONT>
+  表示されているキャラクタを消します。使う機会は多分ないと思います。<BR>
+  <BR>
+  <FONT color="#000080"><A name="FuncEventMoveChar"><STRONG>MoveChar(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 設定するキャラクタの方向(LEFT：左、RIGHT：右)<BR>
+  　2) 移動場所(FRONT：前、BACK：後)<BR>
+   </FONT>
+  表示されているキャラクタを移動します。<BR>
+  FRONTで前側、BACKで後ろ側です。<BR>
+  BACKのキャラクタは半透明描画になります。<BR>
+  <BR>
+  <FONT color="#000080"><A name="FuncEventSetGraphicRect"><STRONG>SetGraphicRect(引数：5)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 設定するキャラクタの方向(LEFT：左、RIGHT：右)<BR>
+  　2) 描画元矩形左<BR>
+  　3) 描画元矩形上<BR>
+  　4) 描画元矩形右<BR>
+  　5) 描画元矩形下<BR>
+   </FONT>
+  描画キャラクタの矩形を設定します。<BR>
+  <BR>
+  <FONT color="#000080"><A name="FuncEventSetNameFromText"><STRONG>SetNameFromText(引数：4)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) キャラクタの方向(LEFT：左、RIGHT：右)<BR>
+  　2) テキストの色<BR>
+  　　(TEXT_RED、TEXT_GREEN、TEXT_BLUE、TEXT_YELLOW、<BR>
+  　　 TEXT_PURPLE、TEXT_AQUA、TEXT_WHITE)<BR>
+  　3) 名前(文字列)<BR>
+  　4) 二つ名(文字列)<BR>
+   </FONT>
+  キャラクタの名前を表示します。<BR>
+  ただテキストを表示するだけなので、<BR>
+  こだわりたい方はSetNameFromTextureを用いてください。<BR>
+  <BR>
+  <FONT color="#000080"><A name="FuncEventSetNameFromTexture"><STRONG>SetNameFromTexture(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) キャラクタの方向(LEFT：左、RIGHT：右)<BR>
+  　2) 読みこんであるテクスチャ名<BR>
+   </FONT>
+  キャラクタの名前を読みこんである画像から表示します。<BR>
+  <BR>
+  <FONT color="#000080"><A name="FuncEventDeleteName"><STRONG>DeleteName(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) キャラクタの方向(LEFT：左、RIGHT：右)<BR>
+   </FONT>
+  表示してある名前を削除します。<BR>
+  <BR>
+  <FONT color="#000080"><A name="FuncEventSetStep"><STRONG>SetStep(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 値<BR>
+   </FONT>
+  イベントの段階を設定します。<BR>
+  設定した値は敵スクリプト内で取得できます(GetEventStep)。<BR>
+  <BR>
+  <FONT color="#000080"><A name="FuncEventTextOutA"><STRONG>TextOutA(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 文字列<BR>
+   </FONT>
+  TextOutでも互換用に同じ関数が呼ばれます。<BR>
+  文字列を描画します。使用しているフォントは「標準明朝」です。<BR>
+  文字列中のTabは無視されます。<BR>
+  改行は自動で行われますが、<BR>
+  一行に表示できるのは全角文字で20文字程度です。<BR>
+  (東方的な会話イベントでは自動改行なんて使わないかもしれません。<BR>
+  以下で説明してある「\n」で改行したほうがよさげです。)<BR>
+  <BR>
+  次の文字列は特殊な意味を持ちます。<BR>
+  　\n：改行<BR>
+  　\c[色]：文字の色(行単位)<BR>
+  　　(色：RED,GREEN,BLUE,YELLOW,PURPLE,AQUA,WHITE)<BR>
+
+  以下が例です。<BR>
+  <TABLE width="100%" border="1"><TD><PRE>
+	TextOut(<FONT color="#FF0000">"\c[RED]楽しい夜になりそうね\n</FONT><FONT color="#008040">//文字色を赤色に、最後に改行</FONT>
+		<FONT color="#FF0000">\c[BLUE]永い夜になりそうね"</FONT>);<FONT color="#008040">//文字色を青色に  </FONT>
+  </PRE></TD></TABLE>
+  <BR>
+  <FONT color="#000080"><A name="FuncEventTextOutB"><STRONG>TextOutB(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 待ち時間(待ちフレーム)<BR>   
+  　2) 文字列<BR>
+   </FONT>
+  文字列を描画します。<BR>
+  TextOutAと違い、キー入力を無視し必ず一定フレーム待ちます。<BR>
+  <BR>
+  <FONT color="#000080"><A name="FuncEventTextOutC"><STRONG>TextOutC(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 待ち時間(待ちフレーム)<BR>   
+  　2) 文字列<BR>
+   </FONT>
+  文字列を描画します。<BR>
+  一定フレーム待った後、キー入力を待ちます。<BR>
+  <BR>
+  <FONT color="#000080"><A name="FuncEventSelect"><STRONG>Select(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 選択肢1(文字列)<BR>
+  　2) 選択肢2(文字列)<BR>
+   </FONT>
+  選択紙を表示します。<BR>
+  返り値として1 or 2が返ります。<BR>
+  <BR>
+  <FONT color="#000080"><A name="FuncEventWait"><STRONG>Wait(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 停止時間(フレーム単位)<BR>
+   </FONT>
+  イベントを一時停止します。<BR>
+  <BR>
+  <FONT color="#000080"><A name="FuncEventEnd"><STRONG>End(引数：0)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  イベントを終了します。<BR>
+  <BR> 
+  <FONT color="#000080"><A name="FuncEventStageClear"><STRONG>StageClear(引数：0)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  会話イベント中にセリフを表示したままステージを終了します。<BR>
+  <BR> 
+ </P><BR><HR> 
+ 
+ 
+ <P><FONT color="#800040"><A name="IStageFunction"><STRONG>ステージ専用関数</STRONG></A></FONT></P> 
+ <P>ステージスクリプト専用の関数です。<BR>
+    script_stage_main内からしか呼べません</P>
+ <BR>
+ 
+ <P><FONT color="#800040"><A name="FuncStageControl"><STRONG>ステージを制御する関数</STRONG></A></FONT></P>
+ <P>敵を出現させたりする関数です。</P> 
+ <P>
+  <FONT color="#000080"><A name="FuncStageCreateEnemyFromScript"><STRONG>CreateEnemyFromScript(引数：6)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 定義してある敵スクリプト名(文字列)<BR>
+  　2) x座標(敵スクリプト内でGetXで取得可能)<BR>
+  　3) y座標(敵スクリプト内でGetYで取得可能)<BR>
+  　4) 速度(敵スクリプト内でGetSpeedで取得可能)<BR>
+  　5) 角度(敵スクリプト内でGetAngleで取得可能)<BR>
+  　6) 任意の値(敵スクリプト内でGetArgumentで取得可能)<BR>
+   </FONT>
+  スクリプトで定義してある敵を作製します。<BR>
+  敵スクリプト内でのCreateEnemyFromScriptと同じです。<BR>
+  <br>
+  　　　　ph3では<a href="../../func_common_stg.html#StartScript" target="right">StartScript</a>で敵スクリプトを起動させます。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncStageCreateEnemyFromFile"><STRONG>CreateEnemyFromFile(引数：6)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 敵スクリプトファイルへのパス(文字列)<BR>
+  　2) x座標(敵スクリプト内でGetXで取得可能)<BR> 
+  　3) y座標(敵スクリプト内でGetYで取得可能)<BR>
+  　4) 速度(敵スクリプト内でGetSpeedで取得可能)<BR>  
+  　5) 角度(敵スクリプト内でGetAngleで取得可能)<BR>
+  　6) 任意の値(敵スクリプト内でGetArgumentで取得可能)<BR>
+   </FONT>
+   敵をファイルから読みこんで出現させます。ただし連続再生ファイルは不可です。<BR>
+   ボスとして出現させるならCreateEnemyBossFromFileを用いてください。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#LoadScript" target="right">LoadScript</a> (敵に限らず全てのスクリプトをロードする)<br>
+  　　　　<a href="../../func_common_stg.html#LoadScriptInThread" target="right">LoadScriptInThread</a> (別スレッドでロードする)<br>
+  　　　　敵スクリプト以外にも適用できますが、x座標等の情報を渡すには
+<a href="../../func_common_stg.html#SetScriptArgument" target="right">SetScriptArgument</a>や
+<a href="../../func_common_obj_dx.html#Obj_SetValue" target="right">Obj_SetValue</a>などを使います。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncStageCreateEnemyBossFromFile"><STRONG>CreateEnemyBossFromFile(引数：6)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 敵スクリプトファイルへのパス(文字列)<BR>
+  　2) x座標(敵スクリプト内でGetXで取得可能)<BR> 
+  　3) y座標(敵スクリプト内でGetYで取得可能)<BR>
+  　4) 速度(敵スクリプト内でGetSpeedで取得可能)<BR>  
+  　5) 角度(敵スクリプト内でGetAngleで取得可能)<BR>
+  　6) 任意の値(敵スクリプト内でGetArgumentで取得可能)<BR>
+   </FONT>
+   敵をファイルから読みこんでボスとして出現させます。<BR>
+   連続再生ファイルを読みこむこともできます。<BR>
+   この関数を用いて敵を呼び出すことで、敵ライフが表示されたりします。<BR>
+   ただし画面上にボスとして出現できる敵は一体だけです。<BR>
+   すでにボスが存在する場合この関数は無視されます。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#LoadScript" target="right">LoadScript</a>で敵スクリプトを呼び出し、敵スクリプト側の
+<a href="../../func_common_obj_stg.html#ObjEnemy_Create" target="right">ObjEnemy_Create</a>でOBJ_ENEMY_BOSSを指定すればボスを呼び出せます。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncStageCompileEnemyFromFile"><STRONG>CompileEnemyFromFile(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 敵スクリプトファイルへのパス(文字列)<BR>
+   </FONT>
+   事前にスクリプトファイルをバイトコードに変換します。<BR>
+   この関数を実行しておくとCreateEnemyFromFileを呼んだとき、<BR>
+   高速に敵を出現させることができます。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncStageClearByteCodeCache"><STRONG>ClearByteCodeCache(引数：0)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+   キャッシュしてあるバイトコードを全て破棄します。<BR>
+   ただし、画面上の敵が0体の時しか実行できません。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncStageCreateEventFromScript"><STRONG>CreateEventFromScript(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 定義してあるイベントスクリプト名(<STRONG>文字列</STRONG>)<BR>		
+   </FONT>
+  会話イベントを開始します。<BR>
+  敵スクリプトでのCreateEventFromScriptと同じです。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#LoadScript" target="right">LoadScript</a>で会話イベント用に作成していたスクリプトを呼び出してください。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncStageClearStage"><STRONG>ClearStage(引数：0)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+   ステージを終了します。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#CloseStgScene" target="right">CloseStgScene</a> (完全互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncStageIsClear"><STRONG>IsClear(引数：0、返り値：boolean)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+   true:クリア、false：ゲームオーバーやクリア前<BR>
+   が返ります。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncStageSetRenderFrame"><STRONG>SetRenderFrame(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 描画：true、描画しない：false<BR>
+   </FONT>
+   フレーム枠を描画するか指定します。<BR>
+   falseを指定した場合、STG枠より外側が再描画されなくなります。<BR>
+   ObjEffectを用いて自力描画する必要があります。<BR>
+   初期設定ではtrueです。<BR>
+  <br>
+  　　　　script/default_system/img/Default_SystemBackground.pngを消せば外枠描画を行いません。<br>
+  　　　　またはscript/default_system/Default_System.txtの外枠描画部分を書き換えれば外枠描画を止めることができます。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncStageSetClearFrameEffectEnable"><STRONG>SetClearFrameEffectEnable(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 有効：true、無効：false<BR>
+   </FONT>
+   ステージクリア時のエフェクトを設定します。<BR>
+   初期設定ではtrueです。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncStageExpert"><STRONG>Expert(引数：0)</STRONG></A></FONT><BR>
+   <FONT color="#008000">		
+   </FONT>
+  コンティニュー、デバッグキーの使用を不可にします。<BR>
+  <br>
+  　　　　ph3にはコンティニューの概念もデバッグキーもありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncStageExpertEx"><STRONG>ExpertEx(引数：3)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) true：デバッグキーを使用可能にします、false：デバッグキーのを使用不可にします<BR>
+  　2) コンティニュー回数<BR>
+  　3) プレイヤー残機<BR>		
+   </FONT>
+  コンティニュー、デバッグキー、自機の残機数を設定します。<BR>
+  @Initialize内で1回だけ実行してください。<BR>
+  <br>
+  　　　　ph3にはコンティニューの概念もデバッグキーもありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncStageExtendPlayer"><STRONG>ExtendPlayer(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   　1) 増加させる残機数<BR>
+   </FONT>
+  残機を増加させます。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#SetPlayerLife" target="right">SetPlayerLife</a> (残機を増やすのではなく再設定する)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncStageSuperNaturalBorder"><STRONG>SuperNaturalBorder(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   　1) 継続時間<BR>
+   </FONT>
+  指定した時間継続する、森羅結界を発動させます。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+ </P><BR><BR>
+ 
+ <P><FONT color="#800040"><A name="FuncStageDraw"><STRONG>描画系関数(ステージ専用)</STRONG></A></FONT></P>
+ <P>ステージ専用の描画関数です。背景に奥行きを出せる関数があります。</P> 
+ <P>
+  <FONT color="#000080"><A name="FuncStageDrawGraphic3D"><STRONG>DrawGraphic3D(引数：3)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) x座標<BR>
+  　2) y座標<BR>
+  　3) z座標<BR>
+   </FONT>
+  ワールド座標にテクスチャの描画を行う関数。<BR>
+  テクスチャはx-y面に張り付いているので、<BR>
+  x軸で90度回転させた方がしっくりくるかもしれません。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetAngleXYZ" target="right">ObjRender_SetAngleXYZ</a> (ほぼ互換　オブジェクトID指定必須)<br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetAngleX" target="right">ObjRender_SetAngleX</a> (X方向回転のみ　オブジェクトID指定必須)<br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetAngleY" target="right">ObjRender_SetAngleY</a> (Y方向回転のみ　オブジェクトID指定必須)<br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetAngleZ" target="right">ObjRender_SetAngleZ</a> (Z方向回転のみ　オブジェクトID指定必須)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncStageSetViewTo"><STRONG>SetViewTo(引数：3)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) x座標 (初期値0)<BR>
+  　2) y座標 (初期値0)<BR>
+  　3) z座標 (初期値0)<BR>
+   </FONT>
+  ビュー行列変換時のカメラの注視点を設定する関数。<BR>
+  <br>
+  　　　　<a href="../../func_common_dx.html#SetCameraFocusX" target="right">SetCameraFocusX</a> (X座標のみ指定)<br>
+  　　　　<a href="../../func_common_dx.html#SetCameraFocusY" target="right">SetCameraFocusY</a> (Y座標のみ指定)<br>
+  　　　　<a href="../../func_common_dx.html#SetCameraFocusZ" target="right">SetCameraFocusZ</a> (Z座標のみ指定)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncStageSetViewFrom"><STRONG>SetViewFrom(引数：3)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 距離 (初期値500)<BR>
+  　2) 方位角 (初期値90)<BR>
+  　3) 仰角 (初期値45)<BR>
+   </FONT>
+  ビュー行列変換時のカメラの場所を設定する関数。<BR>
+  設定するのは注視点からの距離、方位角、仰角。<BR>
+  <br>
+  　　　　<a href="../../func_common_dx.html#SetCameraRadius" target="right">SetCameraRadius</a> (距離のみ指定)<br>
+  　　　　<a href="../../func_common_dx.html#SetCameraAzimuthAngle" target="right">SetCameraAzimuthAngle</a> (方位角のみ指定)<br>
+  　　　　<a href="../../func_common_dx.html#SetCameraElevationAngle" target="right">SetCameraElevationAngle</a> (仰角のみ指定)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncStageSetPerspectiveClip"><STRONG>SetPerspectiveClip(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 近クリッピング距離 (初期値10)<BR>
+  　2) 遠クリッピング距離 (初期値1500)<BR>
+   </FONT>
+  パースペクティブ射影行列変換時のクリップ距離を指定します。<BR>
+  近クリップより近いものと遠クリップより遠くのものは描画されません。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncStageWriteZBuffer"><STRONG>WriteZBuffer(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) Zバッファに書き込まない：false、Zバッファに書き込む：true<BR>
+   </FONT>
+  Zバッファに書き込むか指定します。<BR>
+  初期設定ではfalseです。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetZWrite" target="right">ObjRender_SetZWrite</a> (オブジェクト単位で指定　オブジェクトID指定必須)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncStageUseZBuffer"><STRONG>UseZBuffer(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) Z比較を行わない：false、Z比較を行う：true<BR>
+   </FONT>
+  Z比較を行うか指定します。<BR>
+  初期設定ではfalseです。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetZTest" target="right">ObjRender_SetZTest</a> (オブジェクト単位で指定　オブジェクトID指定必須)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncStageSetFog"><STRONG>SetFog(引数：5)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 開始点(視点からの距離)<BR>
+  　2) 終了点(視点からの距離)<BR>
+  　3) フォグの色(R)<BR>
+  　4) フォグの色(G)<BR>
+  　5) フォグの色(B)<BR>
+   </FONT>
+  フォグを発生させます。<BR>
+  毎フレームリセットされるので、<BR>
+  フォグを発生させたままにする場合は毎フレーム実行してください。<BR>
+  例えば遠くを暗く見せる場合は、<BR>
+  SetFog(<FONT color="#FF0000">250</FONT>, <FONT color="#FF0000">700</FONT>, <FONT color="#FF0000">0</FONT>, <FONT color="#FF0000">0</FONT> ,<FONT color="#FF0000">0</FONT> );<BR>
+  のように指定します。<BR>
+  <br>
+  　　　　<a href="../../func_common_dx.html#SetFogEnable" target="right">SetFogEnable</a> (フォグの有無の設定)<br>
+  　　　　<a href="../../func_common_dx.html#SetFogParam" target="right">SetFogParam</a> (完全互換)<br>
+  <BR>
+
+
+
+ </P><BR><HR>  
+  
+ 
+ <P><FONT color="#800040"><A name="IPlayerFunction"><STRONG>自機専用関数</STRONG></A></FONT></P> 
+ <P>プレイヤースクリプト専用の関数です。<BR>
+    script_player_main内からしか呼べません。</P>
+ <BR>
+ <P><FONT color="#800040"><A name="FuncPlayerControl"><STRONG>自機を制御する関数</STRONG></A></FONT></P>
+ <P>自機を制御する関数です。</P> 
+ <P>
+  <FONT color="#000080"><A name="FuncPlayerSetX"><STRONG>SetX(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) x座標<BR>
+   </FONT>
+  自機のx座標を指定します。<BR>
+  (SetSpeedがあるので瞬間移動等特殊な処理以外には用いなくてもいいです)<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetX" target="right">ObjRender_SetX</a> (ほぼ互換　オブジェクトID指定必須)<br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetPosition" target="right">ObjRender_SetPosition</a> (Y, Z座標も同時に設定できる)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncPlayerSetY"><STRONG>SetY(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) Y座標<BR>
+   </FONT>
+  自機のy座標を指定します。<BR>
+  (SetSpeedがあるので瞬間移動等特殊な処理以外には用いなくてもいいです)<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetY" target="right">ObjRender_SetY</a> (ほぼ互換　オブジェクトID指定必須)<br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetPosition" target="right">ObjRender_SetPosition</a> (X, Z座標も同時に設定できる)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncPlayerSetSpeed"><STRONG>SetSpeed(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 高速移動時の速度<BR>
+  　2) 低速移動時の速度<BR>
+   </FONT>
+  自機の移動速度を指定します。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#SetPlayerSpeed" target="right">SetPlayerSpeed</a> (完全互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncPlayerSetIntersectionCircle"><STRONG>SetIntersectionCircle(引数：3)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) x座標(普通はGetPlayerXを指定します)<BR>
+  　2) y座標(普通はGetPlayerYを指定します)<BR>
+  　3) 半径(1程度)<BR>
+   </FONT>
+  自機の当たり判定を登録します。<BR>
+  指定した円を攻撃されると、撃墜されます。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjPlayer_AddIntersectionCircleA1" target="right">ObjPlayer_AddIntersectionCircleA1</a> (上位互換　座標指定の仕様変更に注意)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncPlayerSetGrazeCircle"><STRONG>SetGrazeCircle(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 半径<BR>
+   </FONT>
+  自機のかすり判定を設定します。<BR>
+  当たり判定の半径に、この関数で加えた半径がかすり判定を持ちます。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjPlayer_AddIntersectionCircleA1" target="right">ObjPlayer_AddIntersectionCircleA1</a> (上位互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncPlayerSetRebirthFrame"><STRONG>SetRebirthFrame(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 食らいボム有効フレーム<BR>
+   </FONT>
+  食らいボムの有効フレームを指定します。<BR>
+  (食らいボム一回に付き自動的にSetRebirthFrameReductionで指定した値だけ短くなります。
+  撃墜時はこの関数で指定した値に戻ります)<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#SetPlayerRebirthFrame" target="right">SetPlayerRebirthFrame</a> (完全互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncPlayerSetRebirthFrameReduction"><STRONG>SetRebirthFrameReduction(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 食らいボム有効フレーム減少量(初期値：3)<BR>
+   </FONT>
+  食らいボムの有効フレーム減少量を指定します。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#SetPlayerRebirthLossFrame" target="right">SetPlayerRebirthLossFrame</a> (完全互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncPlayerSetInitialBombCount"><STRONG>SetInitialBombCount(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 初期ボム数<BR>
+   </FONT>
+  初期ボム数を設定します。<BR>
+  撃墜時には、この関数で設定したボム数に戻ります。<BR>
+  <br>
+  　　　　<a href="../../description.html#Event" target="right">@EventのEV_PLAYER_REBIRTH</a>に
+<a href="../../func_common_stg.html#SetPlayerSpell" target="right">SetPlayerSpell</a>を入れれば復帰後にボムの再設定が行われます。<br>
+  <BR>
+
+
+
+ </P><BR><BR>
+ 
+ <P><FONT color="#800040"><A name="FuncPlayerShot"><STRONG>自弾を制御する関数</STRONG></A></FONT></P>
+ <P>自弾を制御する関数です。<BR>
+    複雑な軌道の弾はObjShot_やObjLaserを用いてください。</P> 
+ <P>
+  <FONT color="#000080"><A name="FuncPlayerLoadPlayerShotData"><STRONG>LoadPlayerShotData(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 自機の弾を定義してあるファイル名<BR>
+   </FONT>
+  自機の弾を定義してあるファイルを読み込みます。<BR>
+  この関数で自弾を定義しないと弾は見えません。<BR>
+  <br>
+  　　　　<a href="../../func_player.html#LoadPlayerShotData" target="right">LoadPlayerShotData</a> (完全互換)<br>
+  　　　　<a href="../../func_player.html#ReloadPlayerShotData" target="right">ReloadPlayerShotData</a> (上位互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncPlayerCreatePlayerShot01"><STRONG>CreatePlayerShot01(引数：7)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) x座標<BR>
+  　2) y座標<BR>
+  　3) 速度<BR>
+  　4) 角度<BR>
+  　5) 威力(1フレームに与えるダメージです)<BR>
+  　6) 貫通力(敵に触れても消滅しない回数です)<BR>
+  　7) 定義済みの画像のID値<BR>
+   </FONT>
+  自弾を発射します。<BR>
+  <br>
+  　　　　<a href="../../func_player.html#CreatePlayerShotA1" target="right">CreatePlayerShotA1</a> (完全互換)<br>
+  <BR>
+
+
+
+ </P><BR><BR>
+  
+ <P><FONT color="#800040"><A name="FuncPlayerOther"><STRONG>自機その他の関数</STRONG></A></FONT></P>
+ <P>プレイヤースクリプトのその他の関数です</P> 
+ <P>
+  <FONT color="#000080"><A name="FuncPlayerSetPlayerLifeImage"><STRONG>SetPlayerLifeImage(引数：5)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 読み込んであるテクスチャファイル名<BR>
+  　2) 画像左座標<BR>
+  　3) 画像上座標<BR>
+  　4) 画像右座標<BR>
+  　5) 画像下座標<BR>
+   </FONT>
+  フレームに表示する、残機数の画像を設定します。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncPlayerCutIn"><STRONG>CutIn(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) カットインのタイプ(KOUMA：紅魔郷っぽいの)<BR>
+  　2) スペルカード名<BR>
+  　3) カットイン画像ファイル名<BR>
+   </FONT>
+  スペルカード使用時のカットインを表示します。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncPlayerUseSpellCard"><STRONG>UseSpellCard(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) スペルカード名(Script_spellの名前)<BR>
+  　2) 任意の値(スペルカードスクリプト内でGetArgumentで取得可能)<BR>
+   </FONT>
+  スペルカードを呼び出します。<BR>
+  (たくさん値を送りたい場合は、第二引数に配列を入れてください。)<BR>
+  <br>
+  　　　　ph3には script_spell の概念がありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncPlayerCallSpellCard"><STRONG>CallSpellCard(引数：0)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  @MainLoop(@Missed)終了後に、@SpellCardを呼び出します。<BR>
+  (任意タイミングでボムを発動できます)<BR>
+  ただし、スペル発動中は無視されます。<BR>
+  同時に2つスペルを発動することはできません。<BR>
+  残りボム数は消費します。<BR>
+  ボム数を消費したくない場合、AddBomb(1);CallSpellCard;と続けて呼んでください。<BR>
+  <br>
+  　　　　<a href="../../func_player.html#CallSpell" target="right">CallSpell</a> (完全互換)<br>
+  　　　　ph3では<a href="../../description.html#Event" target="right">@EventのEV_REQUEST_SPELL</a>からスペルカード用タスクを呼び出すなどしますが、<br>
+  　　　　スペルキーを押したら自動で呼び出される？<br>
+  　　　　そのため<a href="../../func_player.html#CallSpell" target="right">CallSpell</a>はスペルキーを押す以外でスペルカードを呼び出したいときに使う？<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncPlayerSetItemCollectLine"><STRONG>SetItemCollectLine(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) アイテム回収されるy座標<BR>
+   </FONT>
+  アイテム回収されるy座標を設定します<BR>
+  (初期値は160です)<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#SetPlayerAutoItemCollectLine" target="right">SetPlayerAutoItemCollectLine</a> (完全互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncPlayerSetAutoEffect"><STRONG>SetAutoEffect(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) false：組み込みエフェクトを使用しない、true：組み込みエフェクトを使用する<BR>
+   </FONT>
+  組み込みのエフェクトを使うか指定します。<BR>
+  falseすると、当たり判定を示す丸や、<BR>
+  無敵時間を表す円が表示されなくなります。<BR>
+  (初期値はtrueです)<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncPlayerGetRebirthFrame"><STRONG>GetRebirthFrame(引数：0、返り値：real)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  くらいボム受付時間を取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#GetPlayerRebirthFrame" target="right">GetPlayerRebirthFrame</a> (完全互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncPlayerIsLastSpell"><STRONG>IsLastSpell(引数：0、返り値：boolean)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  true：食らいボム中、false：食らいボム中以外<BR>
+  が返ります。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncPlayerIsForbidBomb"><STRONG>IsForbidBomb(引数：0、返り値：boolean)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  true：ボム禁止中、false：ボム有効<BR>
+  が返ります。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#IsPermitPlayerSpell" target="right">IsPermitPlayerSpell</a> (<font color="red">boolean値が逆転している</font> (ボム禁止中ならfalseが返る))<br>
+  　　　　<a href="../../func_common_stg.html#IsPermitPlayerShot" target="right">IsPermitPlayerShot</a> (ph3ではショット禁止の判別も可能)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncPlayerOnMissed"><STRONG>OnMissed(引数：0、返り値：boolean)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  true：撃墜中、false：撃墜中以外<BR>
+  が返ります。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#GetPlayerState" target="right">GetPlayerState</a> (上位互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncPlayerOnBorderOfLife"><STRONG>OnBorderOfLife(引数：0、返り値：boolean)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  true：くらいボム受付時間、false：くらいボム受付時間以外<BR>
+  が返ります。<BR>
+  <br>
+  　　　　<a href="../../func_common_stg.html#IsPlayerLastSpellWait" target="right">IsPlayerLastSpellWait</a> (完全互換)<br>
+  　　　　<a href="../../func_common_stg.html#GetPlayerState" target="right">GetPlayerState</a> (上位互換)<br>
+  <BR>
+
+
+
+  </P><BR><HR> 
+
+
+  <P><FONT color="#800040"><A name="IPlayerSpellFunction"><STRONG>自機スペルカード専用関数</STRONG></A></FONT></P> 
+  <P>自機スペルカード専用の関数です。<BR>
+    script_spell内からしか呼べません。<BR>
+	ほとんどがエフェクトの操作となるので、ObjEffect_を多用すると思います。<BR>
+	</P>
+  <br>
+  　　　　<font color="red">ph3には script_spellの概念が無いため、専用の関数もありません。</font><br>
+  　　　　<a href="../../func_common_obj_dx.html#sec_ObjPrim_" target="right">頂点オブジェクト</a>や
+<a href="../../func_player.html#sec_ObjSpell_" target="right">スペルオブジェクト</a>などを使って表現してください。<br>
+  <BR>
+
+
+
+ <P><FONT color="#800040"><A name="FuncPlayerSpellControl"><STRONG>自機スペルカードを制御する関数</STRONG></A></FONT></P>
+ <P>自機スペルカードを制御する関数です。</P> 
+ <P>
+  <FONT color="#000080"><A name="FuncPlayerSpellEnd"><STRONG>End(引数：0)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  スペルカードを終了します。<BR>
+  スペル終了時に必ず呼び出してください。<BR>
+  <BR> 
+  <FONT color="#000080"><A name="FuncPlayerSpellSetSpeed"><STRONG>SetSpeed(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 高速移動時の速度<BR>
+  　2) 低速移動時の速度<BR>
+   </FONT>
+  自機の移動速度を設定します。<BR>
+  スペル終了時に自機の移動速度を変化させたい場合にでも用いてください。<BR>
+  <BR>
+  <FONT color="#000080"><A name="FuncPlayerSpellSetPlayerX"><STRONG>SetPlayerX(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 自機のx座標<BR>
+   </FONT>
+  自機のx座標を設定します。<BR>
+  <BR>
+  <FONT color="#000080"><A name="FuncPlayerSpellSetPlayerY"><STRONG>SetPlayerY(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 自機のy座標<BR>
+   </FONT>
+  自機のy座標を設定します。<BR>
+  <BR> 
+  <FONT color="#000080"><A name="FuncPlayerSpellSetIntersectionCircle"><STRONG>SetIntersectionCircle(引数：5)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) x座標<BR>
+  　2) y座標<BR>
+  　3) 半径<BR> 
+  　4) 威力(1フレームあたりに与えるダメージ)<BR> 
+  　5) 敵弾消去能力(trueで範囲内の敵弾を消去します)<BR> 
+   </FONT>
+  スペルカードの当たり判定を登録します。<BR> 
+  <BR> 
+  <FONT color="#000080"><A name="FuncPlayerSpellGetArgument"><STRONG>GetArgument(引数：0)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+   </FONT>
+  UseSpellCard実行時に最後の引数に指定した値を取得します。<BR>
+  <BR>   
+ </P><BR><HR>   
+  
+  
+ <P><FONT color="#800040"><A name="IObjFunction"><STRONG>オブジェクト操作用関数</STRONG></A></FONT></P> 
+ <P>Obj_xxx関数群です。弾と弾の関係を用いた操作を行うのに使ったりします。<BR>
+    実際は共通関数なので、イベントスクリプト以外ではどこでも呼べます。<BR>
+	</P>
+ <BR>
+ <P><FONT color="#800040"><A name="FuncObj"><STRONG>オブジェクト操作共通関数</STRONG></A></FONT></P>
+ <P>全てのオブジェクト操作に共通する関数です。</P>
+ <P>
+  <FONT color="#000080"><A name="FuncObj_Create"><STRONG>Obj_Create(引数：1、返り値：オブジェクト(内部的にはreal))</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 作製するオブジェクト<BR>
+  　　OBJ_SHOT：通常の弾を作製します<BR>
+  　　OBJ_LASER：設置型レーザーを作製します<BR>
+  　　OBJ_SINUATE_LASER：曲げられるレーザーを作製します<BR>
+  　　OBJ_EFFECT：エフェクト用のオブジェクトを作成します<BR>
+  　　OBJ_SPELL：スペルカード制御用のオブジェクトを作製します<BR>
+   </FONT>
+  指定したオブジェクトを作成します。<BR>
+  返り値として、オブジェクトを示す値が返ります。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjPrim_Create" target="right">ObjPrim_Create</a> (頂点オブジェクト作成用)<br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjText_Create" target="right">ObjText_Create</a> (テキストオブジェクト作成用)<br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjSound_Create" target="right">ObjSound_Create</a> (音声オブジェクト作成用)<br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjEnemy_Create" target="right">ObjEnemy_Create</a> (敵オブジェクト作成用)<br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjEnemyBossScene_Create" target="right">ObjEnemyBossScene_Create</a> (ボスシーンオブジェクト作成用)<br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjShot_Create" target="right">ObjShot_Create</a> (弾 (レーザー) オブジェクト作成用)<br>
+  　　　　<a href="../../func_player.html#ObjSpell_Create" target="right">ObjSpell_Create</a> (スペルカードオブジェクト作成用)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObj_Delete"><STRONG>Obj_Delete(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 削除するオブジェクト<BR>
+   </FONT>
+  指定したオブジェクトを削除します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_dx.html#Obj_Delete" target="right">Obj_Delete</a> (同一関数)<br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjShot_SetDeleteFrame" target="right">ObjShot_SetDeleteFrame</a> (弾オブジェクトのみ有効　削除するタイミングを指定)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObj_BeDeleted"><STRONG>Obj_BeDeleted(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) オブジェクト<BR>
+   </FONT>
+  オブジェクトが削除済みか調べます。<BR>
+  　true：削除済み、false：未削除<BR>
+  が返ります。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_dx.html#Obj_IsDeleted" target="right">Obj_IsDeleted</a> (完全互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObj_SetX"><STRONG>Obj_SetX(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 操作するオブジェクト<BR>
+  　2) x座標<BR>
+   </FONT>
+  指定したオブジェクトのx座標を設定します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetX" target="right">ObjRender_SetX</a> (完全互換)<br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjMove_SetX" target="right">ObjMove_SetX</a> (敵、弾オブジェクトのみ適用可)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObj_SetY"><STRONG>Obj_SetY(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 操作するオブジェクト<BR>
+  　2) y座標<BR>
+   </FONT>
+  指定したオブジェクトのy座標を設定します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetY" target="right">ObjRender_SetY</a> (完全互換)<br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjMove_SetY" target="right">ObjMove_SetY</a> (敵、弾オブジェクトのみ適用可)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObj_SetPosition"><STRONG>Obj_SetPosition(引数：3)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 操作するオブジェクト<BR>
+  　2) x座標<BR>
+  　3) y座標<BR>
+   </FONT>
+  指定したオブジェクトのx,y座標を設定します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetPosition" target="right">ObjRender_SetPosition</a> (ほぼ互換　Z座標も指定する)<br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjMove_SetPosition" target="right">ObjMove_SetPosition</a> (敵、弾オブジェクトのみ適用可)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObj_SetSpeed"><STRONG>Obj_SetSpeed(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 操作するオブジェクト<BR>
+  　2) 速度<BR>
+   </FONT>
+  指定したオブジェクトの速度を設定します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjMove_SetSpeed" target="right">ObjMove_SetSpeed</a> (完全互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObj_SetAngle"><STRONG>Obj_SetAngle(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 操作するオブジェクト<BR>
+  　2) 角度<BR>
+   </FONT>
+  指定したオブジェクトの移動角度を設定します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjMove_SetAngle" target="right">ObjMove_SetAngle</a> (完全互換)<br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjStLaser_SetAngle" target="right">ObjStLaser_SetAngle</a> (設置型レーザーのレーザー角度を指定)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObj_SetAutoDelete"><STRONG>Obj_SetAutoDelete(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 操作するオブジェクト<BR>
+  　2) 自動削除設定<BR>
+  　　true：画面外に出たら自動で削除<BR>
+  　　false：画面外に出ても自動で削除されない<BR>
+   </FONT>
+  オブジェクトが画面外に出たら自動で削除されるかを設定します。<BR>
+  初期値はtrueです。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjShot_SetAutoDelete" target="right">ObjShot_SetAutoDelete</a> (弾オブジェクトのみ)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObj_SetAlpha"><STRONG>Obj_SetAlpha(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 操作するオブジェクト<BR>
+  　2) α値(0-255)<BR>
+   </FONT>
+  指定したオブジェクトのα値を設定します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetAlpha" target="right">ObjRender_SetAlpha</a> (完全互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObj_IsIntersected"><STRONG>Obj_IsIntersected(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 操作するオブジェクト<BR>
+   </FONT>
+  指定したオブジェクトが攻撃対象に接触しているか判定します。<BR>
+  接触したらtrueを返します。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObj_SetCollisionToPlayer"><STRONG>Obj_SetCollisionToPlayer(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 操作するオブジェクト<BR>
+  　2) 自機への当り判定<BR>
+  　　true：当り判定を設定する<BR>
+  　　false：当り判定を消す<BR>
+   </FONT>
+  指定したオブジェクトの自機への当り判定を設定します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjShot_SetIntersectionCircleA1" target="right">ObjShot_SetIntersectionCircleA1</a> (弾オブジェクトの判定を設定　１フレームのみ有効)<br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjShot_SetIntersectionCircleA2" target="right">ObjShot_SetIntersectionCircleA2</a> (弾オブジェクトの判定を座標指定で設定　１フレームのみ有効)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObj_SetCollisionToObject"><STRONG>Obj_SetCollisionToObject(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 操作するオブジェクト<BR>
+  　2) 当り判定<BR>
+  　　true：当り判定を設定する<BR>
+  　　false：当り判定を消す<BR>
+   </FONT>
+  指定したオブジェクトのオブジェクト同士の当り判定を設定します。<BR>
+  Collision_Obj_Objで判定するか指定できます。<BR>
+  <br>
+  　　　　ph3には<a href="../../func_common_obj_stg.html#sec_ObjCol_" target="right">オブジェクトの当たり判定を操作する関数群</a>があるので<br>
+  　　　　そちらを使ってください。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObj_GetX"><STRONG>Obj_GetX(引数：1、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) オブジェクト<BR>
+   </FONT>
+  指定したオブジェクトのx座標を取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_GetX" target="right">ObjRender_GetX</a> (完全互換)<br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjMove_GetX" target="right">ObjMove_GetX</a> (敵、弾オブジェクトのみ適用可)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObj_GetY"><STRONG>Obj_GetY(引数：1、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) オブジェクト<BR>
+   </FONT>
+  指定したオブジェクトのy座標を取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_GetY" target="right">ObjRender_GetY</a> (完全互換)<br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjMove_GetY" target="right">ObjMove_GetY</a> (敵、弾オブジェクトのみ適用可)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObj_GetSpeed"><STRONG>Obj_GetSpeed(引数：1、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) オブジェクト<BR>
+   </FONT>
+  指定したオブジェクトの速度を取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjMove_GetSpeed" target="right">ObjMove_GetSpeed</a> (完全互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObj_GetAngle"><STRONG>Obj_GetAngle(引数：1、返り値：real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) オブジェクト<BR>
+   </FONT>
+  指定したオブジェクトの移動角度を取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjMove_GetAngle" target="right">ObjMove_GetAngle</a> (完全互換)<br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjStLaser_GetAngle" target="right">ObjStLaser_GetAngle</a> (設置型レーザーのレーザー角度を取得)<br>
+  <BR>
+
+
+
+ </P><BR><BR>
+ 
+ <P><FONT color="#800040"><A name="FuncObjShot"><STRONG>弾オブジェクト操作関数</STRONG></A></FONT></P>
+ <P>弾オブジェクト(Shot、Laser)操作に共通する関数です。<BR>
+    レーザーにも用いることができるので注意してください。<BR>
+	指定したオブジェクトが弾、レーザーでなかった場合無視されます。</P>
+ <P>
+  <FONT color="#000080"><A name="FuncObjShot_FadeDelete"><STRONG>ObjShot_FadeDelete(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 削除するオブジェクト<BR>
+   </FONT>
+  指定したオブジェクトを削除します。<BR>
+  ただし、即座に消えるのではなくフェードしながら消えます。<BR>
+  この関数実行後は当たり判定が消えます。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjShot_FadeDelete" target="right">ObjShot_FadeDelete</a> (同一関数)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObjShot_SetDelay"><STRONG>ObjShot_SetDelay(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 操作するオブジェクト<BR>
+  　2) 遅延時間<BR>
+   </FONT>
+  指定した弾オブジェクトの遅延時間を設定します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjShot_SetDelay" target="right">ObjShot_SetDelay</a> (同一関数)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObjShot_SetBombResist"><STRONG>ObjShot_SetBombResist(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 操作するオブジェクト<BR>
+  　2) 耐性<BR>
+  　　true：ボムに耐性を持つ<BR>
+  　　false：ボムに耐性を持たない<BR>
+   </FONT>
+  指定した弾オブジェクトのボム耐性を設定します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjShot_SetSpellResist" target="right">ObjShot_SetSpellResist</a> (完全互換)<br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjShot_IsSpellResist" target="right">ObjShot_IsSpellResist</a> (ph3ではスペル耐性の有無も確認可能)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObjShot_SetGraphic"><STRONG>ObjShot_SetGraphic(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 操作するオブジェクト<BR>
+  　2) 画像<BR>
+   </FONT>
+  指定した弾オブジェクトの画像を設定します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjShot_SetGraphic" target="right">ObjShot_SetGraphic</a> (同一関数)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObjShot_SetDamage"><STRONG>ObjShot_SetDamage(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 操作するオブジェクト<BR>
+  　2) ダメージ<BR>
+   </FONT>
+  指定した弾オブジェクトの1フレームあたりのダメージを設定します。<BR>
+  自弾専用です。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjShot_SetDamage" target="right">ObjShot_SetDamage</a> (同一関数)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObjShot_SetPenetration"><STRONG>ObjShot_SetPenetration(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 操作するオブジェクト<BR>
+  　2) 貫通力<BR>
+   </FONT>
+  指定した弾オブジェクトの貫通力を設定します。<BR>
+  自弾専用です。(例えば5に設定すると敵に5フレーム触れるまで消えません)<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjShot_SetPenetration" target="right">ObjShot_SetPenetration</a> (同一関数)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObjShot_ToItem"><STRONG>ObjShot_ToItem(引数：1)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 操作するオブジェクト<BR>
+  　2) true/false<BR>
+   </FONT>
+  指定した弾オブジェクトが、得点アイテムに変化するか指定します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjShot_ToItem" target="right">ObjShot_ToItem</a> (<font color="red">同名の関数だが、こちらはその場でアイテムに変換する関数なので注意</font>)<br>
+  <BR>
+
+
+
+ </P><BR><BR>  
+ 
+ <P><FONT color="#800040"><A name="FuncObjLaser"><STRONG>レーザーオブジェクト操作関数</STRONG></A></FONT></P>
+ <P>設置型レーザーオブジェクト操作に用いる関数です。<BR>
+    設置型レーザーオブジェクト以外を指定すると無視されます。</P>
+ <P>
+  <FONT color="#000080"><A name="FuncObjLaser_SetLength"><STRONG>ObjLaser_SetLength(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 操作するオブジェクト<BR>
+  　2) レーザーの長さ<BR>
+   </FONT>
+  指定したレーザーオブジェクトの長さを設定します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjLaser_SetLength" target="right">ObjLaser_SetLength</a> (同一関数)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObjLaser_SetWidth"><STRONG>ObjLaser_SetWidth(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 操作するオブジェクト<BR>
+  　2) レーザーの幅<BR>
+   </FONT>
+  指定したレーザーオブジェクトの幅を設定します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjLaser_SetRenderWidth" target="right">ObjLaser_SetRenderWidth</a> (完全互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObjLaser_SetSource"><STRONG>ObjLaser_SetSource(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 操作するオブジェクト<BR>
+  　2) 光源<BR>
+  　　true：光源を描画します<BR>
+  　　false：光源を描画しません<BR>
+   </FONT>
+  指定したレーザーオブジェクトの光源を設定します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjStLaser_SetSource" target="right">ObjStLaser_SetSource</a> (完全互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObjLaser_GetEndX"><STRONG>ObjLaser_GetEndX(引数：1、real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) オブジェクト<BR>
+   </FONT>
+  指定したレーザーオブジェクトの終点x座標を取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjMove_GetX" target="right">ObjMove_GetX(弾ID)</a> +
+<a href="../../func_common_obj_stg.html#ObjLaser_GetLength" target="right">ObjLaser_GetLength(弾ID)</a> *
+<a href="../../func_common_std.html#cos" target="right">cos</a>
+(<a href="../../func_common_obj_stg.html#ObjStLaser_GetAngle" target="right">ObjStLaser_GetAngle(弾ID)</a>)
+で代替することができます。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObjLaser_GetEndY"><STRONG>ObjLaser_GetEndY(引数：1、real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) オブジェクト<BR>
+   </FONT>
+  指定したレーザーオブジェクトの終点y座標を取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjMove_GetY" target="right">ObjMove_GetY(弾ID)</a> +
+<a href="../../func_common_obj_stg.html#ObjLaser_GetLength" target="right">ObjLaser_GetLength(弾ID)</a> *
+<a href="../../func_common_std.html#sin" target="right">sin</a>
+(<a href="../../func_common_obj_stg.html#ObjStLaser_GetAngle" target="right">ObjStLaser_GetAngle(弾ID)</a>)
+で代替することができます。<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObjLaser_GetLength"><STRONG>ObjLaser_GetLength(引数：1、real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) オブジェクト<BR>
+   </FONT>
+  指定したレーザーオブジェクトの長さを取得します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjLaser_GetLength" target="right">ObjLaser_GetLength</a> (同一関数)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObjLaser_GetWidth"><STRONG>ObjLaser_GetWidth(引数：1、real型)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) オブジェクト<BR>
+   </FONT>
+  指定したレーザーオブジェクトの幅を取得します。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <BR>
+
+
+
+ </P><BR><BR>  
+ 
+ <P><FONT color="#800040"><A name="FuncObjSinuateLaser"><STRONG>レーザー(曲)オブジェクト操作関数</STRONG></A></FONT></P>
+ <P>レーザー(曲)オブジェクト操作に用いる関数です。<BR>
+    曲げられるレーザーは、設置型レーザーより重いです。<BR>
+	設置型レーザーを操作する関数ObjLaser_は使用できません。<BR>
+    レーザー(曲)オブジェクト以外を指定すると無視されます。</P>
+ <P>
+  <FONT color="#000080"><A name="FuncObjSinuateLaser_SetLength"><STRONG>ObjSinuateLaser_SetLength(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 操作するオブジェクト<BR>
+  　2) レーザーの長さ<BR>
+   </FONT>
+  指定したレーザーオブジェクトの長さを設定します。<BR>
+  実際の長さではなく、残像を引くフレーム数です<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjLaser_SetLength" target="right">ObjLaser_SetLength</a> (曲がるレーザー専用の関数を使うわけではない)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObjSinuateLaser_SetWidth"><STRONG>ObjSinuateLaser_SetWidth(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 操作するオブジェクト<BR>
+  　2) レーザーの幅<BR>
+   </FONT>
+  指定したレーザーオブジェクトの幅を設定します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_stg.html#ObjLaser_SetRenderWidth" target="right">ObjLaser_SetRenderWidth</a> (曲がるレーザー専用の関数を使うわけではない)<br>
+  <BR>
+
+
+
+ </P><BR><BR> 
+ 
+ <P><FONT color="#800040"><A name="FuncObjEffect"><STRONG>エフェクト操作関数</STRONG></A></FONT></P>
+ <P>エフェクト操作に用いる関数です。<BR>
+    自機スペルカードオブジェクトにも使用できます。<BR>
+    弾幕には全く関係ありませんが、見栄えをよくするのに使えます。<BR>
+	組み込み済みのエフェクトで満足できない場合用いてください。<BR>
+	やろうと思えば、独自のカットインだろうが、派手なスペルカードだろうが可能です。<BR>
+	<BR>
+	頂点をそのまま扱うので、矩形以外の多角形も表現できます。<BR>
+	(永夜抄以降の作品のエフェクトは、矩形にテクスチャを張るだけでは表現できません。<BR>
+	例えば、スペル発動時の魔法陣は複数個の頂点で円を表しています。<BR>
+	永夜抄の敵が霊力(妖力?,魔力?)を集中するエフェクトは、<BR>
+	多角形を描画して、テクスチャの座標をずらしていくことで表現できます。)<BR>
+    エフェクトブジェクト、自機スペルカードオブジェクト以外を指定すると無視されます。</P>
+ <P>
+  <FONT color="#000080"><A name="FuncObjEffect_SetTexture"><STRONG>ObjEffect_SetTexture(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 操作するオブジェクト<BR>
+  　2) 読み込んであるテクスチャファイル名<BR>
+   </FONT>
+  指定したエフェクトオブジェクトにテクスチャを関連付けます。<BR>
+  頂点を作成する前に実行する必要があります。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjPrim_SetTexture" target="right">ObjPrim_SetTexture</a> (完全互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObjEffect_SetRenderState"><STRONG>ObjEffect_SetRenderState(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 操作するオブジェクト<BR>
+  　2) 描画方法<BR>
+	　　ALPHA：半透明描画<BR>
+	　　ADD：加算合成描画<BR>
+	　　MULTIPLY：乗算合成描画<BR>
+	　　SUBTRACT：減算合成描画<BR>
+   </FONT>
+  指定したエフェクトオブジェクトの描画方法を指定します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetBlendType" target="right">ObjRender_SetBlendType</a> (完全互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObjEffect_SetPrimitiveType"><STRONG>ObjEffect_SetPrimitiveType(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 操作するオブジェクト<BR>
+  　2) 描画方法<BR>
+	　　PRIMITIVE_TRIANGLELIST：頂点データで順に現れる3つの頂点を結んだ三角形<BR>
+	　　PRIMITIVE_TRIANGLESTRIP：最初の頂点からはしご上に連結した形状<BR>
+	　　PRIMITIVE_TRIANGLEFAN：最初の頂点から放射状に伸びる点を連結した扇形の形状<BR>
+   </FONT>
+  指定したエフェクトオブジェクトのプリミティブの種類を指定します。<BR>
+  <IMG src="PrimitiveType.jpg" ALT="PrimitiveType"><BR>
+  <br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjPrim_SetPrimitiveType" target="right">ObjPrim_SetPrimitiveType</a> (完全互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObjEffect_SetScale"><STRONG>ObjEffect_SetScale(引数：3)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 操作するオブジェクト<BR>
+  　2) x方向の拡大率<BR>
+  　3) y方向の拡大率<BR>	
+   </FONT>
+  指定したエフェクトオブジェクトの拡大率を設定します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetScaleXYZ" target="right">ObjRender_SetScaleXYZ</a> (Z方向の拡大率も指定する)<br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetScaleX" target="right">ObjRender_SetScaleX</a> (X方向の拡大率のみ指定)<br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetScaleY" target="right">ObjRender_SetScaleY</a> (Y方向の拡大率のみ指定)<br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetScaleZ" target="right">ObjRender_SetScaleZ</a> (Z方向の拡大率のみ指定)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObjEffect_SetAngle"><STRONG>ObjEffect_SetAngle(引数：4)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 操作するオブジェクト<BR>
+  　2) x軸角度<BR>
+  　3) y軸角度<BR>
+  　4) z軸角度<BR>	
+   </FONT>
+  指定したエフェクトオブジェクトの回転角度を設定します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetAngleXYZ" target="right">ObjRender_SetAngleXYZ</a> (完全互換)<br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetAngleX" target="right">ObjRender_SetAngleX</a> (X角度のみ指定)<br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetAngleY" target="right">ObjRender_SetAngleY</a> (Y角度のみ指定)<br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjRender_SetAngleZ" target="right">ObjRender_SetAngleZ</a> (Z角度のみ指定)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObjEffect_SetLayer"><STRONG>ObjEffect_SetLayer(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 操作するオブジェクト<BR>
+  　2) レイヤ(0-8)<BR>
+  　　0:背景<BR>
+  　　1:-<BR>	
+  　　2:敵<BR>
+  　　3:自機(エフェクトオブジェクトの初期値)<BR>
+  　　4:アイテム<BR>
+  　　5:弾<BR>
+  　　6:会話イベントの画像<BR>
+  　　7:-<BR>
+  　　8:外枠(指定すると、枠部分が再描画されるため少し重くなります)<BR>
+   </FONT>
+  描画先のレイヤを指定します<BR>
+  例えば5を指定した場合、弾の上の層に描画されます。<BR>
+  初期値は3です。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_dx.html#Obj_SetRenderPriority" target="right">Obj_SetRenderPriority</a> (上位互換　０～１の範囲で少数指定)<br>
+  　　　　<a href="../../func_common_obj_dx.html#Obj_SetRenderPriorityI" target="right">Obj_SetRenderPriorityI</a> (上位互換　０～１００の範囲で整数指定)<br>
+  　　　　ただし弾オブジェクト、アイテムは一括描画するため個別に設定できません。
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObjEffect_CreateVertex"><STRONG>ObjEffect_CreateVertex(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 操作するオブジェクト<BR>
+  　2) 頂点の数<BR>
+   </FONT>
+  指定したエフェクトオブジェクトの頂点を設定した数作成します。<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjPrim_SetVertexCount" target="right">ObjPrim_SetVertexCount</a> (完全互換)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObjEffect_SetVertexXY"><STRONG>ObjEffect_SetVertexXY(引数：4)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 操作するオブジェクト<BR>
+  　2) 頂点のインデックス<BR>
+  　3) x座標<BR>
+  　4) y座標<BR>
+   </FONT>
+  指定したエフェクトオブジェクトの頂点の座標を指定します。<BR>
+  (移動、拡大、回転を行う前の座標です)<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjPrim_SetVertexPosition" target="right">ObjPrim_SetVertexPosition</a> (ほぼ互換　Z座標も指定する)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObjEffect_SetVertexColor"><STRONG>ObjEffect_SetVertexColor(引数：6)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 操作するオブジェクト<BR>
+  　2) 頂点のインデックス<BR>
+  　3) α値(0-255)<BR>
+  　4) R値(0-255)<BR>
+  　5) G値(0-255)<BR>   
+  　6) B値(0-255)<BR>
+   </FONT>
+  指定したエフェクトオブジェクトの頂点カラーを設定します<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjPrim_SetVertexColor" target="right">ObjPrim_SetVertexColor</a> (RGB値のみ指定する)<br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjPrim_SetVertexAlpha" target="right">ObjPrim_SetVertexAlpha</a> (不透明度のみ指定する)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObjEffect_SetVertexUV"><STRONG>ObjEffect_SetVertexUV(引数：4)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 操作するオブジェクト<BR>
+  　2) 頂点のインデックス<BR>
+  　3) U値<BR>
+  　4) V値<BR>
+   </FONT>
+  指定したエフェクトオブジェクトの頂点に関連付けるテクスチャの座標を設定します。<BR>
+  (普通、UVは0-1の値ですが、計算するのが面倒なので、<BR>
+  テクスチャの座標値をそのまま設定できます)<BR>
+  <br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjPrim_SetVertexUVT" target="right">ObjPrim_SetVertexUVT</a> (完全互換)<br>
+  　　　　<a href="../../func_common_obj_dx.html#ObjPrim_SetVertexUV" target="right">ObjPrim_SetVertexUV</a> (UV値で指定する)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObjEffect_ResizeVertexCount"><STRONG>ObjEffect_ResizeVertexCount(引数：2)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 操作するオブジェクト<BR>
+  　2) 頂点の数<BR>
+   </FONT>
+  指定したエフェクトオブジェクトの頂点数を再設定します。<BR>
+  頂点数が増加した場合、それまでの領域の頂点設定は保持されます。<BR>
+  <br>
+  　　　　ph3にはありません。<br>
+  <br>
+
+
+
+ </P><BR><BR>  
+ 
+ <P><FONT color="#800040"><A name="FuncObjSpell"><STRONG>自機スペルカード操作関数</STRONG></A></FONT></P>
+ <P>自機スペルカード制御用に用いる関数です。<BR>
+    当たり判定の登録を行うことができるので、<BR>
+	敵との接触を検出することができます。<BR>
+    自機スペルカードオブジェクト以外を指定すると無視されます。</P>
+ <P>
+  <FONT color="#000080"><A name="FuncObjSpell_SetIntersecrionCircle"><STRONG>ObjSpell_SetIntersecrionCircle(引数：6)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 操作するオブジェクト<BR>
+  　2) x座標<BR>
+  　3) y座標<BR>
+  　4) 半径<BR>
+  　5) 威力(1フレームあたりに与えるダメージ)<BR>
+  　6) 敵弾消去能力(trueで範囲内の敵弾を消去します)<BR>
+   </FONT>
+  円形の当たり判定を登録します。<BR>
+  範囲内の敵にダメージを与えることができます。<BR>
+  <br>
+  　　　　<a href="../../func_player.html#ObjSpell_SetIntersectionCircle" target="right">ObjSpell_SetIntersectionCircle</a> (x, y, 半径を指定)<br>
+  　　　　<a href="../../func_player.html#ObjSpell_SetDamage" target="right">ObjSpell_SetDamage</a> (威力のみ指定)<br>
+  　　　　<a href="../../func_player.html#ObjSpell_SetEraseShot" target="right">ObjSpell_SetEraseShot</a> (敵弾消去能力のみ指定)<br>
+  <BR>
+
+
+
+  <FONT color="#000080"><A name="FuncObjSpell_SetIntersecrionLine"><STRONG>ObjSpell_SetIntersecrionLine(引数：8)</STRONG></A></FONT><BR>
+   <FONT color="#008000">
+  　1) 操作するオブジェクト<BR>
+  　2) x座標(先端)<BR>
+  　3) y座標(先端)<BR>
+  　4) x座標(終端)<BR>
+  　5) y座標(終端)<BR>
+  　6) 線幅<BR>
+  　7) 威力(1フレームあたりに与えるダメージ)<BR>
+  　8) 敵弾消去能力(trueで範囲内の敵弾を消去します)<BR>
+   </FONT>
+  線形の当たり判定を登録します。<BR>
+  範囲内の敵にダメージを与えることができます。<BR>
+  <br>
+  　　　　<a href="../../func_player.html#ObjSpell_SetIntersectionLine" target="right">ObjSpell_SetIntersectionLine</a> (x, y, 線幅を指定)<br>
+  　　　　<a href="../../func_player.html#ObjSpell_SetDamage" target="right">ObjSpell_SetDamage</a> (威力のみ指定)<br>
+  　　　　<a href="../../func_player.html#ObjSpell_SetEraseShot" target="right">ObjSpell_SetEraseShot</a> (敵弾消去能力のみ指定)<br>
+  <BR>
+
+
+
+ </P> 
+ 
+ </BODY>
+</HTML>

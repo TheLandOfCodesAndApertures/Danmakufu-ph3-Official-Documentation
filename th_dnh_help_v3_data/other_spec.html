@@ -1,0 +1,1008 @@
+<HTML>
+ <HEAD>
+  <TITLE>動作仕様</TITLE>
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/html;charset=Shift_JIS">
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/css">
+  <LINK rel="stylesheet" href="style.css" type="text/css">
+ </HEAD>
+
+ <STYLE TYPE="text/css">
+  TABLE.tag {width:90%; vertical-align:top;background-color:RGB(255,255,255);border: 1px solid #cccccc;}
+  TR.tag {}
+  TD.tag_elementT {width:120px; background-color:#ffccff}
+  TD.tag_valueT {width:120px; background-color:#ccccff}
+  TD.tag_textT {background-color:#ccccff}
+  TD.tag_element {vertical-align:top; width:120px; border: 1px solid #ffccff;}
+  TD.tag_value {vertical-align:top; width:120px; border: 1px solid #ccccff;}
+  TD.tag_text {vertical-align:top; border: 1px solid #ccccff;}
+ </STYLE>
+
+ <BODY link="#0000ff" alink="#0000ff" vlink="#0000ff">
+ <DIV class="allbody">
+ <SPAN class = "section_title">■動作仕様■</SPAN>
+ <BR><BR>
+
+
+ <SPAN class = "section_sub"><A name="DefaultShot">■弾画像(デフォルト)</A></SPAN><BR>
+ <P>「#include"script/default_system/Default_ShotConst.txt"」を記述することで<BR>
+    デフォルトの弾画像をロードします。<BR>
+    えむ氏サイトの素材弾画像を使用させていただいております。(license.txtを参照ください)<BR>
+    主に以下の種類があります。<BR>
+    (RED, ORANGE, YELLOW, GREEN, SKY, BLUE, PURPLE, WHITEがありますが、REDのみ記述。また一部省略。)<BR>
+
+  <TABLE class = "tag">
+   <TR class = "tag">
+    <TD class = "tag_elementT">定数</TD> <TD class = "tag_textT">説明</TD> <TD class = "tag_textT">画像</TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">DS_BALL_SS_RED</TD>
+    <TD class = "tag_element">粒弾</TD>
+    <TD class = "tag_text"><IMG src = "img/shot_DS_BALL_SS_RED.jpg"></TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">DS_BALL_S_RED</TD>
+    <TD class = "tag_element">小弾</TD>
+    <TD class = "tag_text"><IMG src = "img/shot_DS_BALL_S_RED.jpg"></TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">DS_BALL_BS_RED</TD>
+    <TD class = "tag_element">枠小弾</TD>
+    <TD class = "tag_text"><IMG src = "img/shot_DS_BALL_BS_RED.jpg"></TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">DS_BALL_M_RED</TD>
+    <TD class = "tag_element">中弾</TD>
+    <TD class = "tag_text"><IMG src = "img/shot_DS_BALL_M_RED.jpg"></TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">DS_NEEDLE_RED</TD>
+    <TD class = "tag_element">針弾</TD>
+    <TD class = "tag_text"><IMG src = "img/shot_DS_NEEDLE_RED.jpg"></TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">DS_RICE_S_RED</TD>
+    <TD class = "tag_element">米粒弾</TD>
+    <TD class = "tag_text"><IMG src = "img/shot_DS_RICE_S_RED.jpg"></TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">DS_ICE_RED</TD>
+    <TD class = "tag_element">氷塊弾</TD>
+    <TD class = "tag_text"><IMG src = "img/shot_DS_ICE_RED.jpg"></TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">DS_MISSILE_RED</TD>
+    <TD class = "tag_element">座薬弾</TD>
+    <TD class = "tag_text"><IMG src = "img/shot_DS_MISSILE_RED.jpg"></TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">DS_RICE_M_RED</TD>
+    <TD class = "tag_element">草履弾</TD>
+    <TD class = "tag_text"><IMG src = "img/shot_DS_RICE_M_RED.jpg"></TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">DS_KUNAI_RED</TD>
+    <TD class = "tag_element">苦無弾</TD>
+    <TD class = "tag_text"><IMG src = "img/shot_DS_KUNAI_RED.jpg"></TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">DS_SCALE_RED</TD>
+    <TD class = "tag_element">鱗弾</TD>
+    <TD class = "tag_text"><IMG src = "img/shot_DS_SCALE_RED.jpg"></TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">DS_BILL_RED</TD>
+    <TD class = "tag_element">札弾</TD>
+    <TD class = "tag_text"><IMG src = "img/shot_DS_BILL_RED.jpg"></TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">DS_COIN_RED</TD>
+    <TD class = "tag_element">銭弾</TD>
+    <TD class = "tag_text"><IMG src = "img/shot_DS_COIN_RED.jpg"></TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">DS_BUTTERFLY_RED</TD>
+    <TD class = "tag_element">蝶弾</TD>
+    <TD class = "tag_text"><IMG src = "img/shot_DS_BUTTERFLY_RED.jpg"></TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">DS_LIGHT_RED</TD>
+    <TD class = "tag_element">光弾</TD>
+    <TD class = "tag_text"><IMG src = "img/shot_DS_LIGHT_RED.jpg"></TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">DS_STAR_S_RED</TD>
+    <TD class = "tag_element">小星弾</TD>
+    <TD class = "tag_text"><IMG src = "img/shot_DS_STAR_S_RED.jpg"></TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">DS_STAR_M_RED</TD>
+    <TD class = "tag_element">大星弾</TD>
+    <TD class = "tag_text"><IMG src = "img/shot_DS_STAR_M_RED.jpg"></TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">DS_KNIFE_YOUMU_RED</TD>
+    <TD class = "tag_element">小刀弾</TD>
+    <TD class = "tag_text"><IMG src = "img/shot_DS_KNIFE_YOUMU_RED.jpg"></TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">DS_KNIFE_KOUMA_RED</TD>
+    <TD class = "tag_element">ナイフ弾</TD>
+    <TD class = "tag_text"><IMG src = "img/shot_DS_KNIFE_KOUMA_RED.jpg"></TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">DS_BEAM_RED</TD>
+    <TD class = "tag_element">光線</TD>
+    <TD class = "tag_text"><IMG src = "img/shot_DS_BEAM_RED.jpg"></TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">DS_FIRE_RED</TD>
+    <TD class = "tag_element">炎弾<BR>(RED, BLUEのみ)</TD>
+    <TD class = "tag_text"><IMG src = "img/shot_DS_FIRE_RED.jpg"></TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">DS_BALL_L_RED</TD>
+    <TD class = "tag_element">大弾</TD>
+    <TD class = "tag_text"><IMG src = "img/shot_DS_BALL_L_RED.jpg"></TD>
+   </TR>
+  </TABLE>
+ </P>
+ <BR><HR>
+
+
+
+ <SPAN class = "section_sub"><A name="AddShot">■弾画像の追加</A></SPAN><BR>
+ <P>デフォルトで定義されている弾画像だけでは、足りない場合も有ると思います。<BR>
+    そんなときは、LoadEnemyShotData/LoadPlayerShotData関数で弾画像の追加を行えます。<BR>
+    アニメーションする弾も定義することができます。<BR>
+    LoadEnemyShotData/LoadPlayerShotで読み込むためのファイルの書き方を以下に示します。<BR>
+<DIV Class="source"><PRE class="source">
+	#UserShotData
+	
+	shot_image = <SPAN Class="source_string">"./img/Default_Shot.png"</SPAN> <SPAN Class="source_comment">//画像ファイルへのパス</SPAN>
+	delay_rect = (<SPAN Class="source_number">209</SPAN>, <SPAN Class="source_number">472</SPAN>, <SPAN Class="source_number">243</SPAN>, <SPAN Class="source_number">507</SPAN>) <SPAN Class="source_comment">//遅延時間用の描画元矩形</SPAN>
+	delay_color = (<SPAN Class="source_number">128</SPAN>,<SPAN Class="source_number">128</SPAN>,<SPAN Class="source_number">128</SPAN>)
+	
+	<SPAN Class="source_comment">//ShotDataに弾の定義を書きます</SPAN>
+	ShotData
+	{
+		id = <SPAN Class="source_number">1</SPAN> <SPAN Class="source_comment">//ID</SPAN>
+		rect = (<SPAN Class="source_number">0</SPAN>,<SPAN Class="source_number">0</SPAN>,<SPAN Class="source_number">32</SPAN>,<SPAN Class="source_number">32</SPAN>) <SPAN Class="source_comment">//描画元矩形</SPAN>
+		render = ALPHA <SPAN Class="source_comment">//描画方法</SPAN>
+		delay_color = (<SPAN Class="source_number">255</SPAN>,<SPAN Class="source_number">128</SPAN>,<SPAN Class="source_number">255</SPAN>) <SPAN Class="source_comment">//遅延時間時の光の色</SPAN>
+		angular_velocity = rand(-<SPAN Class="source_number">5</SPAN>,<SPAN Class="source_number">5</SPAN>) <SPAN Class="source_comment">//画像の回転速度</SPAN>
+	}
+	
+	<SPAN Class="source_comment">//アニメーションする弾</SPAN>
+	ShotData
+	{
+		id = <SPAN Class="source_number">3</SPAN>
+		render = ADD <SPAN Class="source_comment">//加算合成</SPAN>
+		delay_color = (<SPAN Class="source_number">255</SPAN>,<SPAN Class="source_number">128</SPAN>,<SPAN Class="source_number">255</SPAN>)
+		AnimationData
+		{
+			<SPAN Class="source_comment">//16フレーム(0,0,12,12)</SPAN>
+			<SPAN Class="source_comment">//→8フレーム(12,0,24,12)</SPAN>
+			<SPAN Class="source_comment">//→24フレーム(12,12,24,24)</SPAN>
+			<SPAN Class="source_comment">//→最初に戻る</SPAN>
+			animation_data = (<SPAN Class="source_number">16</SPAN>,<SPAN Class="source_number">0</SPAN>,<SPAN Class="source_number">0</SPAN>,<SPAN Class="source_number">12</SPAN>,<SPAN Class="source_number">12</SPAN>)
+			animation_data = (<SPAN Class="source_number">8</SPAN>,<SPAN Class="source_number">12</SPAN>,<SPAN Class="source_number">0</SPAN>,<SPAN Class="source_number">24</SPAN>,<SPAN Class="source_number">12</SPAN>)
+			animation_data = (<SPAN Class="source_number">24</SPAN>,<SPAN Class="source_number">12</SPAN>,<SPAN Class="source_number">12</SPAN>,<SPAN Class="source_number">24</SPAN>,<SPAN Class="source_number">24</SPAN>)
+		}
+	}
+
+	<SPAN Class="source_comment">//角度固定の弾</SPAN>
+	ShotData
+	{
+		id = <SPAN Class="source_number">4</SPAN> <SPAN Class="source_comment">//ID</SPAN>
+		rect = (<SPAN Class="source_number">32</SPAN>,<SPAN Class="source_number">32</SPAN>,<SPAN Class="source_number">64</SPAN>,<SPAN Class="source_number">64</SPAN>) <SPAN Class="source_comment">//描画元矩形</SPAN>
+		render = ALPHA <SPAN Class="source_comment">//描画方法</SPAN>
+		delay_color = (<SPAN Class="source_number">255</SPAN>,<SPAN Class="source_number">128</SPAN>,<SPAN Class="source_number">255</SPAN>) <SPAN Class="source_comment">//遅延時間時の光の色</SPAN>
+		fixed_angle=<SPAN Class="source_reserve">true</SPAN> <SPAN Class="source_comment">//角度固定</SPAN>
+	}
+
+</PRE></DIV>
+    <BR>
+  最初の「#UserShotData」で弾データを定義したファイルと認識されます。<BR>
+  続く「shot_image」に画像ファイルのパスを記述します。<BR>
+  パスは実行ファイルからの相対パスです。<BR>
+  ただし[./～]のようにパスの最初に「./」をかくと、この定義ファイルのあるフォルダからのパスになります。<BR>
+  <BR>
+  画像ファイル内の弾画像の向きには注意してください。<BR>
+  <A href = "other_spec.html#DefaultShot">弾画像(デフォルト)</A>にある画像と同じ向き(上向き)である必要があります。<BR>
+  <BR>
+  「ShotData」には弾画像のIDや、描画元の矩形を記述します。<BR>
+  <TABLE class = "tag">
+   <TR class = "tag">
+    <TD class = "tag_elementT">要素</TD> <TD class = "tag_textT">説明</TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">id</TD>
+    <TD class = "tag_text">
+     CraateShotXX等に渡すIDです。<BR>
+     IDの数値に制限はありませんが、ここで記述した最大の大きさのメモリ領域が確保されるため、<BR>
+     あまり大きな数値を指定しないほうが良いです。<BR>
+     (といっても10000以下程度なら問題はありません。)<BR>
+     <BR>
+     同じIDがあった場合は後勝ちになります。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">rect</TD>
+    <TD class = "tag_text">
+     描画もとの矩形を設定します(左、上、右、下)。<BR>
+     アニメーションがある場合は無視されます。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">render</TD>
+    <TD class = "tag_text">
+     指定しなければALPHAになります。<BR>
+    　 ALPHA：通常描画<BR>
+    　 ADD_RGB(ADD)：加算合成描画<BR>
+    　 ADD_ARGB：α適応加算合成描画<BR>
+    　 MULTIPLY：乗算合成<BR>
+    　 SUBTRACT：減算合成<BR>
+    　 INV_DESTRGB：描画先の色を反転して合成<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">delay_rect</TD>
+    <TD class = "tag_text">
+     遅延時間中の描画もとの矩形を設定します(左、上、右、下)。<BR>
+     指定しない場合は、ShotDataの外で指定したdelay_rect設定が割り当てられます。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">delay_color</TD>
+    <TD class = "tag_text">
+     遅延時間時の光の色です。<BR>
+     指定しない場合は、ShotDataの外で指定したdelay_color設定が割り当てられます。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">delay_render</TD>
+    <TD class = "tag_text">
+     遅延時間時の光の合成種別を指定します。<BR>
+     指定可能な種別は、renderと同じです。<BR>
+     指定しなければ、ADD_ARGBになります。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">angular_velocity</TD>
+    <TD class = "tag_text">
+     画像が回転する速度を指定します。<BR>
+     ランダムを指定したい場合はrandを用います。<BR>
+     指定しなければ0になります。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">fixed_angle</TD>
+    <TD class = "tag_text">
+     弾の描画角度を移動方向に関係なく固定します。<BR>
+     (fixed_angle = true)<BR>
+     指定しなければ0falseになります。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">collision</TD>
+    <TD class = "tag_text">
+     弾の当たり判定位置と半径を指定します。<BR>
+     省略した場合、弾の大きさから判断して適当な当たり判定が割り当てられます。<BR>
+     ・当たり判定を画像の中心から半径をrで指定。<BR>
+     　collision = r<BR>
+     ・当たり判定を画像の中心からx,yの位置に半径をrで指定。(複数指定可能)<BR>
+     　collision = (r, x, y)<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">AnimationData</TD>
+    <TD class = "tag_text">
+     アニメーションする弾を定義します。<BR>
+     アニメーションはanimation_dataで定義していきます。 <BR>
+     animation_data=(継続フレーム, 描画元左, 描画元上, 描画元右, 描画元下)<BR>
+     になっています。<BR>
+     連続してanimation_dataを記述することで次々描画元矩形が変化するようにできます。<BR>
+    </TD>
+   </TR>
+  </TABLE>
+ </P>
+ <BR><HR>
+
+
+ <SPAN class = "section_sub"><A name="UserItem">■ユーザ定義アイテム</A></SPAN><BR>
+ <P>組み込みのアイテムで足りない場合に、独自のアイテムを定義できます。<BR>
+    LoadItemData/ReloadItemData関数でユーザ定義アイテムの追加を行えます。<BR>
+    LoadItemData/ReloadItemDataで読み込むためのファイルの書き方を以下に示します。<BR>
+	<DIV Class="source"><PRE class="source">
+	#UserItemData
+
+	item_image = <SPAN Class="source_string">"./Item.png"</SPAN>
+
+	ItemData{
+		id = <SPAN Class="source_number">1</SPAN> <SPAN Class="source_comment">//アイテムID</SPAN>
+		rect = ( <SPAN Class="source_number">0</SPAN>, <SPAN Class="source_number">0</SPAN>, <SPAN Class="source_number">16</SPAN>, <SPAN Class="source_number">16</SPAN> ) <SPAN Class="source_comment">//描画元矩形</SPAN>
+		render = ALPHA <SPAN Class="source_comment">//描画方法</SPAN>
+	}
+
+	ItemData{
+		id = <SPAN Class="source_number">2</SPAN> <SPAN Class="source_comment">//アイテムID</SPAN>
+		type = <SPAN Class="source_number">2</SPAN> <SPAN Class="source_comment">//アイテム種別(@Eventで通知される値)</SPAN>
+		rect = (<SPAN Class="source_number">20</SPAN>, <SPAN Class="source_number">1</SPAN>, <SPAN Class="source_number">35</SPAN>, <SPAN Class="source_number">16</SPAN> ) <SPAN Class="source_comment">//描画元矩形</SPAN>
+		render = ADD <SPAN Class="source_comment">//加算合成</SPAN>
+	}
+	</PRE></DIV>
+    <BR>
+  最初の「#UserItemData」でアイテムデータを定義したファイルと認識されます。<BR>
+  続く「item_image」に画像ファイルのパスを記述します。<BR>
+  パスは実行ファイルからの相対パスです。<BR>
+  ただし[./～]のようにパスの最初に「./」をかくと、この定義ファイルのあるフォルダからのパスになります。<BR>
+  <BR>
+  「ItemData」には弾画像のIDや、描画元の矩形を記述します。<BR>
+  <TABLE class = "tag">
+   <TR class = "tag">
+    <TD class = "tag_elementT">要素</TD> <TD class = "tag_textT">説明</TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">id</TD>
+    <TD class = "tag_text">
+     ObjItem_SetItemID、CreateItemU1等に渡すIDです。<BR>
+     IDの数値に制限はありませんが、ここで記述した最大の大きさのメモリ領域が確保されるため、<BR>
+     あまり大きな数値を指定しないほうが良いです。<BR>
+     (といっても10000以下程度なら問題はありません。)<BR>
+     <BR>
+     同じIDがあった場合は後勝ちになります。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">type</TD>
+    <TD class = "tag_text">
+     アイテム種別(@Eventで通知される値)です。<BR>
+     指定しない場合はidと同じ値になります。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">rect</TD>
+    <TD class = "tag_text">
+     描画もとの矩形を設定します(左、上、右、下)。<BR>
+     アニメーションがある場合は無視されます。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">out</TD>
+    <TD class = "tag_text">
+     アイテムが画面外にあるときの描画もとの矩形を設定します(左、上、右、下)。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">render</TD>
+    <TD class = "tag_text">
+     指定しなければALPHAになります。<BR>
+    　 ALPHA：通常描画<BR>
+    　 ADD_RGB(ADD)：加算合成描画<BR>
+    　 ADD_ARGB：α適応加算合成描画<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">AnimationData</TD>
+    <TD class = "tag_text">
+     アニメーションするアイテムを定義します。<BR>
+     アニメーションはanimation_dataで定義していきます。 <BR>
+     animation_data=(継続フレーム, 描画元左, 描画元上, 描画元右, 描画元下)<BR>
+     になっています。<BR>
+     連続してanimation_dataを記述することで次々描画元矩形が変化するようにできます。<BR>
+    </TD>
+   </TR>
+  </TABLE>
+ <BR>
+
+ <BR><HR>
+
+
+ <SPAN class = "section_sub"><A name="Object">■オブジェクト</A></SPAN><BR>
+ <P>「ObjXXX_」関数には以下の関係があり、上側の関数は下側のオブジェクトにも使用できます。<BR>
+     例えば、弾オブジェクトは「ObjShot」以外に「Obj_, ObjRender_, ObjMove_」系の関数を適応できます。<BR>
+<DIV Class="source"><PRE class="source">
+	--描画系------------
+	Obj_ 
+	　│
+	ObjRender_/ObjShader_
+	　│
+	　├─────┬─────┬────┬────┐
+	ObjPrim_    ObjMesh_   ObjText_   ObjShot_   ObjItem_
+	　│                              　│
+	　│                              ObjLaser_
+	　│                              　│
+	　│                              ObjStLaser_
+	　│
+	　│
+	　├───────┬────────┬──────┐
+	ObjSprite2D_    ObjSpriteList2D_  ObjSprite3D_  ObjSpell_
+	　│
+	ObjEnemy_
+
+
+	--移動系------------
+	ObjMove_
+	　│
+	　├──────┬────┐
+	ObjEnemy_    ObjShot_    ObjItem_
+	　            　│
+	　           ObjLaser_
+	　            　│
+	　           ObjStLaser_
+</PRE></DIV>
+ </P>
+ <BR><HR>
+
+
+ <SPAN class = "section_sub"><A name="RenderPriority">■描画優先度</A></SPAN><BR>
+ <P>描画の優先度は、0-100の101段階があります。<BR>
+    描画オブジェクトの優先度は「Obj_SetRenderPriorityI」で設定できます。<BR>
+    <BR>
+    各オブジェクトのデフォルト描画優先度は以下です。<BR>
+    優先度が大きいほど上側に描画されます。<BR>
+  <TABLE class = "tag">
+   <TR class = "tag">
+    <TD class = "tag_elementT">種類</TD> <TD class = "tag_textT">優先度</TD> <TD class = "tag_textT">説明</TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">STG枠内最小</TD>
+    <TD class = "tag_text">20</TD>
+    <TD class = "tag_text">
+     STGシーン最小優先度です。<BR>
+     これより大きい優先度ではSTGシーン内に描画されます。<BR>
+     スコアや自機残機など、STGシーン外枠に描画する場合これより小さい優先度に設定する必要があります。<BR>
+     <BR>
+     この優先度の数値はGetStgFrameRenderPriorityMinIで取得できます。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">自機描画</TD>
+    <TD class = "tag_text">30<BR>(デフォルト)</TD>
+    <TD class = "tag_text">
+     自機画像が描画される優先度です。<BR>
+     自機画像の優先度はObj_SetRenderPriorityIで変更可能です。<BR>
+     <BR>
+     この優先度はGetPlayerRenderPriorityIで取得できます。
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">敵描画</TD>
+    <TD class = "tag_text">40<BR>(デフォルト)</TD>
+    <TD class = "tag_text">
+     敵画像が描画される優先度です。<BR>
+     敵画像の優先度は個々にObj_SetRenderPriorityIで変更可能です。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">弾描画</TD>
+    <TD class = "tag_text">50(デフォルト)</TD>
+    <TD class = "tag_text">
+     弾画像が描画される優先度です。<BR>
+     弾のデフォルト優先度はSetShotRenderPriorityIで変更可能です。<BR>
+     弾のデフォルト優先度はGetShotRenderPriorityIで取得できます。<BR>
+     弾画像の優先度は個々にObj_SetRenderPriorityIで変更可能です。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">アイテム描画</TD>
+    <TD class = "tag_text">60(デフォルト)</TD>
+    <TD class = "tag_text">
+     アイテム画像が描画される優先度です。<BR>
+     アイテムのデフォルト優先度はSetItemRenderPriorityIで変更可能です。<BR>
+     アイテムのデフォルト優先度はGetItemRenderPriorityIで取得できます。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">カメラフォーカス有効優先度</TD>
+    <TD class = "tag_text">69</TD>
+    <TD class = "tag_text">
+     「STG枠内開始」～「カメラフォーカス有効優先度」間の優先度は、<BR>
+     2Dカメラのフォーカス位置が適応されます。<BR>
+     これより大きい優先度では2Dカメラのフォーカス設定は無視されます。<BR>
+     (フォーカスによらず一定の位置に描画したいオブジェクトは70以上に設定します。)<BR>
+     <BR>
+     この優先度はGetCameraFocusPermitPriorityIで取得できます。
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">STG枠内最大</TD>
+    <TD class = "tag_text">80</TD>
+    <TD class = "tag_text">
+     STGシーン最大優先度です。<BR>
+     これより大きい優先度ではSTG枠外に描画可能です。<BR>
+     <BR>
+     この優先度の数値はGetStgFrameRenderPriorityMaxIで取得できます。<BR>
+    </TD>
+   </TR>
+  </TABLE>
+ </P>
+ <BR><HR>
+
+
+ <SPAN class = "section_sub"><A name="Resource">■使用可能ファイル(画像, 音声)</A></SPAN><BR>
+ <P>以下のフォーマットのファイルが使用可能です。<BR>
+  <TABLE class = "tag">
+   <TR class = "tag">
+    <TD class = "tag_elementT">種類</TD> <TD class = "tag_textT">拡張子</TD> <TD class = "tag_textT">説明</TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">画像ファイル</TD>
+    <TD class = "tag_text">
+     png, bmp, jpg, tga , dds, dib
+    </TD>
+    <TD class = "tag_text">
+     PNGを使用してください。<BR>
+     色が抜けるのはα値=0の部分です。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">音声ファイル</TD>
+    <TD class = "tag_text">
+     wav, ogg, mp3
+    </TD>
+    <TD class = "tag_text">
+     ogg推奨です。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">3Dポリゴン(固定)</TD>
+    <TD class = "tag_text">
+     mqo
+    </TD>
+    <TD class = "tag_text">
+     mqoはMetasequoiaというモデリングソフトで保存できるファイルです。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">3Dポリゴン(アニメ)</TD>
+    <TD class = "tag_text">
+     elem
+    </TD>
+    <TD class = "tag_text">
+     elemはエルフレイナという3Dモデルアニメーションソフトで保存できるファイルです。<BR>
+     頂点シェーダを使用します。<BR>
+     頂点シェーダ非対応のビデオカードではCPU処理になるため重いです。<BR>
+     (オンボードPCは頂点シェーダ非対応だと思った方が良いです。)<BR>
+     CPU処理でも動作可能にするために、できるだけローポリ(多くても頂点数1000程度のモデル)にするのが妥当だと思います。
+     ボーン数は80本以下限定です。<BR>
+    </TD>
+   </TR>
+  </TABLE>
+ </P>
+
+ <P>テクスチャは、ObjPrim_SetTexture等呼び出し時に、自動でロードされます。<BR>
+    事前に任意に読み込みたい場合のみ、LoadTextureを呼び出しておきます。<BR>
+    <BR>
+    テクスチャの解放は、そのテクスチャを参照しているオブジェクトが全て削除されたときに自動で行われます。<BR>
+    ただし、LoadTextureで読み込んだ場合は、RemoveTextureで解放する必要があります。<BR>
+    (ただ、LoadTextureでロードした場合も、LoadTextureを呼び出したスクリプトが終了した場合は勝手に解放されます。)<BR>
+    <BR>
+    またRemoveTextureを呼び出したときに、テクスチャを参照しているオブジェクトがまだある場合は、<BR>
+    すぐには解放されず、そのテクスチャを参照しているオブジェクトが全て削除されたときに自動で行われます。<BR>
+    (ScriptVersion2までと異なり、テクスチャの読み込みと解放にあまり気を使わなくても良くなっています。)<BR>
+ </P>
+ <BR><HR>
+
+
+ <SPAN class = "section_sub"><A name="Text">■テキスト表示</A></SPAN><BR>
+ <P>テキストを記述するときタグを挟むことで、改行やルビを振ることができます。<BR>
+    タグは、<A href = description.html#Header>■スクリプトヘッダ</A>の#Textや<A href = func_common_obj_dx.html#sec_ObjText_>■テキストオブジェクト操作</A>での文字列表示に適応されます。<BR>
+    タグには以下のものがあります。<BR>
+  <TABLE class = "tag">
+   <TR class = "tag">
+    <TD class = "tag_elementT">種類</TD> <TD class = "tag_textT">説明</TD> <TD class = "tag_textT">サンプル</TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">[r]</TD>
+    <TD class = "tag_text">
+     改行
+    </TD>
+    <TD class = "tag_text">
+     "テスト1[r]テスト2"<BR><BR>
+     ↓結果<BR>
+     <IMG src = "img/text_r.jpg">
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">[ruby]</TD>
+    <TD class = "tag_text">
+     ルビ(振り仮名)<BR><BR>
+
+     振り仮名対象文字をrb、振り仮名をrtで指定します。<BR>
+     振り仮名は対象文字の幅に均等に割り振られます。<BR>
+     <BR>
+     振り仮名の指定も文字列となるため「"」で囲む必要がありますが、<BR>
+     通常すでに文字列中のため、「\"」で囲む必要があります。<BR>
+    </TD>
+    <TD class = "tag_text">
+     "振り仮名　[ruby rb=\"博麗 霊夢\" rt=\"はくれいれいむ\"] "<BR><BR>
+     ↓結果<BR>
+     <IMG src = "img/text_ruby.jpg">
+    </TD>
+   </TR>
+  </TABLE>
+ </P>
+
+ <P>特定の文字は以下の置換文字を使用して表示します。<BR>
+  <TABLE class = "tag">
+   <TR class = "tag">
+    <TD class = "tag_elementT">置換文字</TD> <TD class = "tag_textT">表示文字</TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">&amp;nbsp;</TD>
+    <TD class = "tag_text">(空白)</TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">&amp;quot;</TD>
+    <TD class = "tag_text">"</TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">&amp;osb;</TD>
+    <TD class = "tag_text">[</TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">&amp;csb;</TD>
+    <TD class = "tag_text">]</TD>
+   </TR>
+  </TABLE>
+ <BR><HR>
+
+
+ <SPAN class = "section_sub"><A name="Shader">■ピクセルシェーダ</A></SPAN><BR>
+ <P>ピクセル単位で描画結果をプログラミングする機能です。<BR>
+    例えば以下のようなことを行うことができます。<BR>
+    ・ピクセル色の変更(白黒やセピア色で表示)<BR>
+    ・マルチテクスチャ(2つ以上のテクスチャ合成やマスク機能)<BR>
+    ・参照するテクスチャUV座標の操作(画像をゆがませるなど)<BR>
+    <BR>
+    ただし、ビデオカードが対応していない場合は動作しません。<BR>
+    OSがWindowsXpの時代の、オンボードビデオはおそらく全滅です。<BR>
+    Vista以降に売り出されたPCであれば、おそらくほぼ問題ありません。<BR>
+ </P>
+ ----------------------------------------------------------------
+ <P>シェーダはHLSLというスクリプト言語で記述します。<BR>
+    言語の仕様は「<A href="http://msdn.microsoft.com/ja-jp/library/ee418346(v=vs.85).aspx" target="_blank">HLSL のリファレンス</A>」に記載されていますが、<BR>
+    ここでは1例として、敵の周囲を歪ませるシェーダを以下に示します。
+    <BR>
+  <TABLE class = "tag">
+   <TR class = "tag">
+    <TD class = "tag_elementT">項目</TD> <TD class = "tag_textT">説明</TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">(1)テクスチャ</TD>
+    <TD class = "tag_text">
+     ObjPrim_SetTextureで渡されているテクスチャです。<BR>
+     2つ以上のテクスチャを合成する場合は、ObjShader_SetTextureを使用します。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">(2)パラメータ</TD>
+    <TD class = "tag_text">
+     スクリプト側から引き渡すパラメータが格納されている変数です。<BR>
+     例えば、float型に値を引き渡すには、ObjShader_SetFloatを使用します。<BR>
+     ex)
+     ObjShader_SetFloat(obj, "enemyX_", 400);
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">(3)ピクセルシェーダ入力値</TD>
+    <TD class = "tag_text">
+     ピクセルシェーダに引き渡されてくる入力値です。<BR>
+     頂点シェーダを交えることで別のパラメータを受けることもできますが、<BR>
+     ピクセルシェーダのみ使用する場合は、以下の3つが渡されます。<BR>
+     ・頂点ディフューズ色(ObjRender_SetColorで設定されている色)<BR>
+     ・ピクセルのテクスチャ座標(処理すピクセルのテクスチャ位置0.0-1.0)<BR>
+     　テクスチャの左端上端=0.0、右端下端=1.0になります。<BR>
+       例えば、幅512のテクスチャの真ん中(256)は0.5が渡されてきます。<BR>
+     ・描画先座標(このピクセルが書き込まれるスクリーンの座標)<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">(4)ピクセルシェーダ出力値</TD>
+    <TD class = "tag_text">
+     ピクセルの出力値です。<BR>
+     必ずなんらかの色をシェーダの結果として出力する必要があります。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">(5)ピクセルシェーダ</TD>
+    <TD class = "tag_text">
+     ピクセルの入力値から出力値を作成する処理です。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">(6)テクニック</TD>
+    <TD class = "tag_text">
+     テクニックで動作させるシェーダを指定します。<BR>
+     ここでは、ピクセルシェーダ3.0で、PsWaveという関数を使用するように指定しています。<BR>
+     
+    </TD>
+   </TR>
+  </TABLE>
+
+<DIV Class="source"><PRE class="source">
+
+<SPAN Class="source_comment">//================================================================</SPAN>
+<SPAN Class="source_comment">//大域設定値</SPAN>
+<SPAN Class="source_comment">//(1)Texture</SPAN>
+<SPAN Class="source_reserve">sampler</SPAN> sampler0_ : <SPAN Class="source_reserve">register</SPAN>(s0);
+
+<SPAN Class="source_comment">//--------------------------------</SPAN>
+<SPAN Class="source_comment">//(2)ゆがみ生成用パラメータ</SPAN>
+<SPAN Class="source_reserve">static</SPAN> <SPAN Class="source_reserve">const</SPAN> <SPAN Class="source_reserve">float</SPAN> RENDER_WIDTH = <SPAN Class="source_number">1024</SPAN>; <SPAN Class="source_comment">//レンダリングテクスチャの幅</SPAN>
+<SPAN Class="source_reserve">static</SPAN> <SPAN Class="source_reserve">const</SPAN> <SPAN Class="source_reserve">float</SPAN> RENDER_HEIGHT = <SPAN Class="source_number">1024</SPAN>; <SPAN Class="source_comment">//レンダリングテクスチャの高さ</SPAN>
+
+<SPAN Class="source_reserve">float</SPAN> frame_; <SPAN Class="source_comment">//フレーム数</SPAN>
+<SPAN Class="source_reserve">float</SPAN> enemyX_; <SPAN Class="source_comment">//敵の位置X</SPAN>
+<SPAN Class="source_reserve">float</SPAN> enemyY_; <SPAN Class="source_comment">//敵の位置Y</SPAN>
+<SPAN Class="source_reserve">float</SPAN> waveRadius_; <SPAN Class="source_comment">//エフェクトの半径</SPAN>
+
+
+<SPAN Class="source_comment">//================================================================</SPAN>
+<SPAN Class="source_comment">//--------------------------------</SPAN>
+<SPAN Class="source_comment">//(3)ピクセルシェーダ入力値</SPAN>
+<SPAN Class="source_reserve">struct</SPAN> PS_INPUT
+{
+	<SPAN Class="source_reserve">float4</SPAN> diffuse : COLOR0;  <SPAN Class="source_comment">//ディフューズ色</SPAN>
+	<SPAN Class="source_reserve">float2</SPAN> texCoord : TEXCOORD0; <SPAN Class="source_comment">//テクスチャ座標</SPAN>
+	<SPAN Class="source_reserve">float2</SPAN> vPos : VPOS; <SPAN Class="source_comment">//描画先座標</SPAN>
+};
+
+<SPAN Class="source_comment">//--------------------------------</SPAN>
+<SPAN Class="source_comment">//(4)ピクセルシェーダ出力値</SPAN>
+<SPAN Class="source_reserve">struct</SPAN> PS_OUTPUT
+{
+    <SPAN Class="source_reserve">float4</SPAN> color : COLOR0; <SPAN Class="source_comment">//出力色</SPAN>
+};
+
+
+<SPAN Class="source_comment">//================================================================</SPAN>
+<SPAN Class="source_comment">// シェーダ</SPAN>
+<SPAN Class="source_comment">//--------------------------------</SPAN>
+<SPAN Class="source_comment">//(5)ピクセルシェーダ</SPAN>
+PS_OUTPUT PsWave( PS_INPUT In ) : COLOR0
+{
+	PS_OUTPUT Out;
+
+	<SPAN Class="source_comment">//--------------------------------</SPAN>
+	<SPAN Class="source_comment">//ゆらぎを計算</SPAN>
+	<SPAN Class="source_reserve">float</SPAN> dist2 = pow(In.vPos.x-enemyX_ ,<SPAN Class="source_number">2</SPAN>) + pow(In.vPos.y-enemyY_ ,<SPAN Class="source_number">2</SPAN>);
+	<SPAN Class="source_reserve">float</SPAN> dist = sqrt(dist2);
+	<SPAN Class="source_reserve">float</SPAN> sinTheta = (In.vPos.y - enemyY_) / dist;
+	<SPAN Class="source_reserve">float</SPAN> cosTheta = (In.vPos.x - enemyX_) / dist;
+
+	<SPAN Class="source_comment">//歪み作成用のsinに使用する角度パラメータ</SPAN>
+	<SPAN Class="source_reserve">float</SPAN> angle = In.vPos.y - enemyY_ + In.vPos.x - enemyX_ + frame_;
+	angle = radians(angle);
+
+	<SPAN Class="source_comment">//該当ピクセルの歪みの半径を計算</SPAN>
+	<SPAN Class="source_comment">//エフェクト半径の1/16を最大の歪み幅とする</SPAN>
+	<SPAN Class="source_reserve">float</SPAN> waveRadius = waveRadius_ + waveRadius_/<SPAN Class="source_number">16</SPAN> * (-<SPAN Class="source_number">1</SPAN> + sin(angle));
+
+	<SPAN Class="source_comment">//中心から距離が離れるほど影響を小さくする</SPAN>
+	<SPAN Class="source_reserve">float</SPAN> powerRatio = (waveRadius - dist) / waveRadius;
+	<SPAN Class="source_reserve">if</SPAN>(powerRatio &lt; <SPAN Class="source_number">0</SPAN>){powerRatio = <SPAN Class="source_number">0</SPAN>;}
+
+	<SPAN Class="source_comment">//色情報を取得する位置のバイアス値</SPAN>
+	<SPAN Class="source_reserve">float</SPAN> biasRadius = waveRadius * powerRatio;
+	<SPAN Class="source_reserve">float</SPAN> biasX = biasRadius * cosTheta;
+	<SPAN Class="source_reserve">float</SPAN> biasY = biasRadius * sinTheta;
+
+	<SPAN Class="source_comment">//テクスチャの色情報を取得する位置</SPAN>
+	<SPAN Class="source_reserve">float2</SPAN> texUV;
+	texUV.x = -biasX / RENDER_WIDTH + In.texCoord.x;
+	texUV.y = -biasY / RENDER_HEIGHT + In.texCoord.y;
+
+
+	<SPAN Class="source_comment">//--------------------------------</SPAN>
+	<SPAN Class="source_comment">//テクスチャの色</SPAN>
+	<SPAN Class="source_reserve">float4</SPAN> colorTexture = tex2D(sampler0_, texUV);
+
+	<SPAN Class="source_comment">//頂点ディフーズ色</SPAN>
+	<SPAN Class="source_reserve">float4</SPAN> colorDiffuse = In.diffuse;
+
+	<SPAN Class="source_comment">//合成</SPAN>
+	<SPAN Class="source_reserve">float4</SPAN> color = colorTexture * colorDiffuse;
+
+	<SPAN Class="source_comment">//色を赤っぽく変化させる</SPAN>
+	<SPAN Class="source_reserve">if</SPAN>(powerRatio &gt; <SPAN Class="source_number">0</SPAN>)
+	{
+		color.g = color.g * (<SPAN Class="source_number">1</SPAN> - powerRatio);
+		color.b = color.b * (<SPAN Class="source_number">1</SPAN> - powerRatio);
+	}
+
+	Out.color = color;
+
+	<SPAN Class="source_reserve">return</SPAN> Out;
+}
+
+
+<SPAN Class="source_comment">//================================================================</SPAN>
+<SPAN Class="source_comment">//--------------------------------</SPAN>
+<SPAN Class="source_comment">//(6)technique</SPAN>
+<SPAN Class="source_reserve">technique</SPAN> TecWave
+{
+	<SPAN Class="source_reserve">pass</SPAN> P0
+	{
+		PixelShader = compile ps_3_0 PsWave();
+	}
+}
+
+</PRE></DIV> 
+ </P>
+ ----------------------------------------------------------------
+ <P>シェーダは以下の方法のいずれかで適用できます。
+  <TABLE class = "tag">
+   <TR class = "tag">
+    <TD class = "tag_elementT">項目</TD> <TD class = "tag_textT">説明</TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">1オブジェクトごと</TD>
+    <TD class = "tag_text">
+     各Sprite2D/Sprite3Dなどのオブジェクトに個別にシェーダを設定する方法です。<BR>
+     各オブジェクトのObjShader_SetShaderF/Oを呼び出すことで指定できます。<BR>
+<DIV Class="source"><PRE class="source">
+<SPAN Class="source_comment">//オブジェクトにシェーダを設定</SPAN>
+<SPAN Class="source_reserve">let</SPAN> objWave = ObjPrim_Create(OBJ_SPRITE_2D); <SPAN Class="source_comment">//2Dスプライトオブジェクト生成</SPAN>
+<SPAN Class="source_comment">//～～～</SPAN>
+<SPAN Class="source_reserve">let</SPAN> pathShader = GetCurrentScriptDirectory ~ <SPAN Class="source_string">"SamplePS03_HLSL.txt"</SPAN>;
+ObjShader_SetShaderF(objWave, pathShader);
+ObjShader_SetTechnique(objWave, <SPAN Class="source_string">"TecWave"</SPAN>);
+</PRE></DIV>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">描画優先度(複数オブジェクト)</TD>
+    <TD class = "tag_text">指定した優先度に対して、一度にシェーダを設定します。<BR>
+      ObjShader_Create()で生成したシェーダオブジェクトを、SetShaderIに渡します。<BR>
+<DIV Class="source"><PRE class="source">
+<SPAN Class="source_comment">//シェーダ生成</SPAN>
+<SPAN Class="source_reserve">let</SPAN> objShader = ObjShader_Create();
+ObjShader_SetShaderF(objShader, pathShader);
+ObjShader_SetTechnique(objShader, <SPAN Class="source_string">"TecMonotone"</SPAN>);
+
+<SPAN Class="source_comment">//特定の描画優先度にシェーダを適応</SPAN>
+SetShaderI(objShader, <SPAN Class="source_number">0</SPAN>, <SPAN Class="source_number">100</SPAN>);
+
+</PRE></DIV>
+    </TD>
+   </TR>
+  </TABLE>
+ </P>
+ <BR><HR>
+
+
+ <SPAN class = "section_sub"><A name="Archive">■アーカイブファイル</A></SPAN><BR>
+ <P>付属のFileArchiver.exeで、画像・音声・スクリプトファイルなどを1ファイルにまとめることができます。<BR>
+    <BR>
+    [メリット]<BR>
+    以下のようなメリットがあります。<BR>
+    　・スクリプトを改変されづらくなる<BR>
+    　・音声・画像の生ファイルを見られづらくなる<BR>
+    <BR>
+    [対象ファイル]<BR>
+    弾幕風で使用可能なファイルはどのファイルもアーカイブ可能です。<BR>
+    またアーカイブするにあたり、スクリプト側を特には書き換える必要はありません。<BR>
+    <BR>
+    [弾幕風の再生対象にするには]<BR>
+    アーカイブしたファイルを、弾幕風の再生対象にするには、<BR>
+    通常のスクリプトと同じく script/ フォルダに置くことで再生対象にできます。<BR>
+    <BR>
+    [ファイル検索範囲]<BR>
+    画像、音声、スクリプトなどを読み込むときファイルは以下の順序で検索し使用します。<BR>
+    　1) アーカイブされていないファイルがあれば優先して使用する<BR>
+    　2) アーカイブファイル内を探してあれば採用<BR>
+    <BR>
+    上記2)の検索対象となるアーカイブファイルは、メインとなるスクリプトがアーカイブされている場合、<BR>
+    そのアーカイブファイルは自動で検索対象になります。<BR>
+    <BR>
+    検索対象のアーカイブファイルの追加は AddArchiveFile関数で行います。<BR>
+    <BR>
+    [注意]<BR>
+    アーカイブしたファイルを展開するソフトはありません。<BR>
+    アーカイブ前のファイルは削除しないようお願いします。<BR>
+ </P>
+ <BR><HR>
+
+ <SPAN class = "section_sub"><A name="Definition">■定義ファイル(th_dnh.def)</A></SPAN><BR>
+ <P>th_dnh.defに設定を記述することで、th_dnh.exeに特定の動作を設定できます。<BR>
+  <TABLE class = "tag">
+   <TR class = "tag">
+    <TD class = "tag_elementT">項目</TD> <TD class = "tag_textT">キー</TD> <TD class = "tag_textT">値</TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">パッケージ<BR>スクリプトパス</TD>
+    <TD class = "tag_text">
+     package.script.main
+    </TD>
+    <TD class = "tag_text">
+     パッケージスクリプトのパスを指定することで、<BR>th_dnh.exeでそのスクリプトのみを再生することができます。<BR>
+     パスは実行ファイル(th_dnh.exe)からのパスを指定します。<BR>
+     <BR>
+     ex)<BR>
+      package.script.main = script/ExRumia/ExRumia_Package_Main.txt<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">ウィンドウタイトル</TD>
+    <TD class = "tag_text">
+     window.title
+    </TD>
+    <TD class = "tag_text">
+     ウィンドウのタイトルを変更します。<BR>
+     <BR>
+     ex)<BR>
+      window.title = test<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">描画領域</TD>
+    <TD class = "tag_text">
+     screen.width<BR>
+     screen.height
+    </TD>
+    <TD class = "tag_text">
+     弾幕風の描画領域は通常 640 * 480 ですが、<BR>
+     640 * 480 以上のサイズを描画領域にしたい場合に指定します。<BR>
+     通常のスクリプトは640*480を前提としているため、<BR>
+     専用のパッケージスクリプト再生時にしか指定しない方が良いです。<BR>
+     <BR>
+     指定できる範囲は(640,480) - (1920,1200)の間です。<BR>
+     参考までに、ゲームで使用されそうな解像度とアスペクト比を以下に示します。<BR>
+     　・640 * 480 (4:3)<BR>
+     　・800 * 600 (4:3)<BR>
+     　・1024 * 768 (4:3)<BR>
+     　・1280 * 960 (4:3)<BR>
+     　・1024 * 576 (16:9)<BR>
+     　・1280 * 720 (16:9)<BR>
+     　・1600 * 900 (16:9)<BR>
+     　・1920 * 1080 (16:9)<BR>
+     <BR>
+     高解像度を指定した場合でも、高解像度に対応していないディスプレイの時は、<BR>
+     表示できる大きさになるように強制的に縮小表示します。<BR>
+     (くっきり表示されなくなると思います。)<BR>
+     <BR>
+     スクリプト側からは、以下の関数で設定されている描画領域を取得可能です。<BR>
+     　・横幅：GetScreenWidth<BR>
+     　・縦幅：GetScreenHeight<BR>
+     <BR>
+     ex)<BR>
+      screen.width=1024<BR>
+      screen.height=576
+    </TD>
+   </TR>
+  </TABLE>
+  <BR>
+  以下に定義ファイルの記述例を示します。<BR>
+	<DIV Class="source"><PRE class="source">
+	<SPAN Class="source_comment">//--------------------------------------------------------------</SPAN>
+	<SPAN Class="source_comment">//パッケージスクリプトパス</SPAN>
+	<SPAN Class="source_comment">//指定したパッケージスクリプト再生専用になります。</SPAN>
+	package.script.main = script/ExRumia/ExRumia_Package_Main.txt
+
+
+	<SPAN Class="source_comment">//--------------------------------------------------------------</SPAN>
+	<SPAN Class="source_comment">//ウィンドウタイトル</SPAN>
+	<SPAN Class="source_comment">//指定したウィンドウタイトルになります。</SPAN>
+	window.title = test
+
+
+	<SPAN Class="source_comment">//--------------------------------------------------------------</SPAN>
+	<SPAN Class="source_comment">//スクリーンの基本サイズ</SPAN>
+	<SPAN Class="source_comment">//弾幕風の描画領域は通常 640 * 480 ですが、</SPAN>
+	<SPAN Class="source_comment">//640 * 480 以上のサイズを描画領域にしたい場合に指定します。</SPAN>
+	<SPAN Class="source_comment">//・通常のスクリプトは640*480を前提としているため、</SPAN>
+	<SPAN Class="source_comment">//　専用のパッケージスクリプト再生時にしか指定しない方が良いです。</SPAN>
+	<SPAN Class="source_comment">//・高解像度を指定した場合でも、高解像度に対応していないディスプレイの時は、</SPAN>
+	<SPAN Class="source_comment">//　表示できる大きさになるように強制的に縮小表示します。</SPAN>
+	<SPAN Class="source_comment">//　(くっきり表示されなくなると思います。)</SPAN>
+	screen.width=<SPAN Class="source_number">1024</SPAN>
+	screen.height=<SPAN Class="source_number">576</SPAN>
+	</PRE></DIV>
+ </P>
+ <BR><HR>
+
+
+ </DIV></BODY>
+</HTML>

@@ -1,0 +1,1296 @@
+<HTML>
+ <HEAD>
+  <TITLE>共通関数</TITLE>
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/html;charset=Shift_JIS">
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/css">
+  <LINK rel="stylesheet" href="style.css" type="text/css">
+ </HEAD>
+
+ <STYLE TYPE="text/css">
+
+ </STYLE>
+
+ <BODY link="#0000ff" alink="#0000ff" vlink="#0000ff">
+ <DIV class="allbody">
+
+ <HR>
+ <SPAN class = "section_title"><A name = "sec_Obj_">■共通オブジェクト操作(Obj_)</A></SPAN><BR>
+  オブジェクト操作用の共通関数です。<BR>
+  各オブジェクトの関連性については「<A href = "other_spec.html#Object">オブジェクト</A>」を参照お願いします。<BR>
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="Obj_Delete">Obj_Delete(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  指定したオブジェクトを削除します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="Obj_IsDeleted">Obj_IsDeleted(引数：1、返り値：bool)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  指定したオブジェクトが削除済みか調べます。<BR>
+  削除されている場合はtrueを返します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="Obj_SetVisible">Obj_SetVisible(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) bool:表示可否(表示するならtrue)</SPAN><BR>
+  オブジェクトの表示可否を設定します。<BR>
+  falseに設定すると非表示になります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="Obj_IsVisible">Obj_IsVisible(引数：1、返り値：bool)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  指定したオブジェクトの表示可否を取得します。<BR>
+  非表示の場合はfalseになります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="Obj_SetRenderPriority">Obj_SetRenderPriority(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) bool:描画優先度(0.0-1.0)</SPAN><BR>
+  オブジェクトの描画優先度を設定します。<BR>
+  0.0～1.0の間で設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="Obj_SetRenderPriorityI">Obj_SetRenderPriorityI(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) bool:描画優先度(0-100)</SPAN><BR>
+  オブジェクトの描画優先度を設定します。<BR>
+  0～100の間の整数で設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="Obj_GetRenderPriority">Obj_GetRenderPriority(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  オブジェクトの描画優先度を取得します。<BR>
+  0.0～1.0の間の値が返ります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="Obj_GetRenderPriorityI">Obj_GetRenderPriorityI(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  オブジェクトの描画優先度を設定します。<BR>
+  0～100の間の整数で返ります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="Obj_GetValue">Obj_GetValue(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) char:キー(文字列)</SPAN><BR>
+  オブジェクトに割りついている、キーに対応した値を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="Obj_GetValueD">Obj_GetValueD(引数：3)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) char:キー(文字列)</SPAN><BR>
+  <SPAN class = "function_arg">　3) デフォルト値(任意の型)</SPAN><BR>
+  オブジェクトに割りついている、キーに対応した値を取得します。<BR>
+  キーに対応した値が存在しない場合、デフォルト値が返ります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="Obj_SetValue">Obj_SetValue(引数：3)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) char:キー(文字列)</SPAN><BR>
+  <SPAN class = "function_arg">　3) 値(任意の型)</SPAN><BR>
+  キーに対応した任意の値をオブジェクトに割りつけます。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="Obj_DeleteValue">Obj_DeleteValue(引数：3)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) キー(文字列)</SPAN><BR>
+  <SPAN class = "function_arg">　3) 値(任意の型)</SPAN><BR>
+  オブジェクトに割りついている、キーに対応した値を削除します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="Obj_IsValueExists">Obj_IsValueExists(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) char:キー(文字列)</SPAN><BR>
+  オブジェクトに割りついている、キーに対応した値が存在している場合trueが返ります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="Obj_GetType">Obj_GetType(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  オブジェクトの種別を返します。<BR>
+  　　OBJ_PRIMITIVE_2D　：2D空間自由変形オブジェクト<BR>
+  　　OBJ_SPRITE_2D　　 ：2D空間矩形オブジェクト(ObjSprite2D_を使用可能なオブジェクト)<BR>
+  　　OBJ_SPRITE_LIST_2D：2D空間矩形リストオブジェクトObjSpriteList2D_を使用可能なオブジェクト)<BR>
+  　　OBJ_PRIMITIVE_3D　：3D空間自由変形オブジェクト<BR>
+  　　OBJ_SPRITE_3D　 　：3D空間矩形オブジェクト(ObjSprite3D_を使用可能なオブジェクト)</SPAN><BR>
+  　　OBJ_MESH  　　　　：3Dメッシュオブジェクト(ObjMesh_を使用可能なオブジェクト)</SPAN><BR>
+  　　OBJ_TEXT　　 　 　：テキストオオブジェクト(ObjText_を使用可能なオブジェクト)</SPAN><BR>
+  　　OBJ_SOUND　 　　　：音声オブジェクト(ObjSound_を使用可能なオブジェクト)</SPAN><BR>
+  　　OBJ_FILE_TEXT　 　：テキストファイルオブジェクト(ObjFileT_を使用可能なオブジェクト)</SPAN><BR>
+  　　OBJ_FILE_BINARY 　：バイナリファイルオブジェクト(ObjFileB_を使用可能なオブジェクト)</SPAN><BR>
+  　　OBJ_PLAYER 　　 　：自機オブジェクト(ObjPlayer_を使用可能なオブジェクト)</SPAN><BR>
+  　　OBJ_SPELL 　　 　 ：自機スペルオブジェクト(ObjSpell_を使用可能なオブジェクト)</SPAN><BR>
+  　　OBJ_ENEMY 　　 　 ：敵ルオブジェクト(ObjEnemy_を使用可能なオブジェクト)</SPAN><BR>
+  　　OBJ_ENEMY_BOSS_SCENE：敵ボスシーンオブジェクト(ObjEnemyBossScene_を使用可能なオブジェクト)</SPAN><BR>
+  　　OBJ_SHOT 　　 　  ：通常弾オブジェクト(ObjShot_を使用可能なオブジェクト)</SPAN><BR>
+  　　OBJ_LOOSE_LASER 　：射出型レーザーオブジェクト(ObjLaser_を使用可能なオブジェクト)</SPAN><BR>
+  　　OBJ_STRAIGHT_LASER：設置型レーザーオブジェクト(ObjStLaser_を使用可能なオブジェクト)</SPAN><BR>
+  　　OBJ_CURVE_LASER 　：曲がるレーザーオブジェクト(ObjLaser_を使用可能なオブジェクト)</SPAN><BR>
+  　　OBJ_ITEM 　　 　　：アイテムオブジェクト(ObjItem_を使用可能なオブジェクト)</SPAN><BR>
+ </P><HR>
+
+ <HR>
+ <SPAN class = "section_title"><A name = "sec_ObjRender_">■描画オブジェクト操作(ObjRender_)</A></SPAN><BR>
+  描画オブジェクト操作用の共通関数です。<BR>
+  各オブジェクトの関連性については「<A href = "other_spec.html#Object">オブジェクト</A>」を参照お願いします。<BR>
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjRender_SetX">ObjRender_SetX(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:x座標</SPAN><BR>
+  指定したオブジェクトのx座標を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjRender_SetY">ObjRender_SetY(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:y座標</SPAN><BR>
+  指定したオブジェクトのy座標を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjRender_SetZ">ObjRender_SetZ(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:z座標</SPAN><BR>
+  指定したオブジェクトのz座標を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjRender_SetPosition">ObjRender_SetPosition(引数：4)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:x座標</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:y座標</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:z座標</SPAN><BR>
+  指定したオブジェクトのxyz座標を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjRender_SetAngleX">ObjRender_SetAngleX(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:x角度(0-360)</SPAN><BR>
+  指定したオブジェクトのx角度を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjRender_SetAngleY">ObjRender_SetAngleY(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:y角度(0-360)</SPAN><BR>
+  指定したオブジェクトのy角度を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjRender_SetAngleZ">ObjRender_SetAngleZ(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:z角度(0-360)</SPAN><BR>
+  指定したオブジェクトのz角度を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjRender_SetAngleXYZ">ObjRender_SetAngleXYZ(引数：4)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:x角度</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:y角度</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:z角度</SPAN><BR>
+  指定したオブジェクトのxyz角度を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjRender_SetScaleX">ObjRender_SetScaleX(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:x拡大率</SPAN><BR>
+  指定したオブジェクトのx拡大率を設定します。<BR>
+  例えば2に設定すると、x方向が2倍に拡大されて描画されます。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjRender_SetScaleY">ObjRender_SetScaleY(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:y拡大率</SPAN><BR>
+  指定したオブジェクトのy拡大率を設定します。<BR>
+  例えば2に設定すると、y方向が2倍に拡大されて描画されます。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjRender_SetScaleZ">ObjRender_SetScaleZ(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:z拡大率</SPAN><BR>
+  指定したオブジェクトのz拡大率を設定します。<BR>
+  例えば2に設定すると、z方向が2倍に拡大されて描画されます。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjRender_SetScaleXYZ">ObjRender_SetScaleXYZ(引数：4)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:x拡大率</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:y拡大率</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:z拡大率</SPAN><BR>
+  指定したオブジェクトのxyz拡大率を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjRender_SetColor">ObjRender_SetColor(引数：4)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:r色(0-255)</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:g色(0-255)</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:b色(0-255)</SPAN><BR>
+  指定したオブジェクトの色合いを設定します。<BR>
+  全て255でテクスチャと同色になります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjRender_SetColorHSV">ObjRender_SetColorHSV(引数：4)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:色相 Hue(0-359)</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:彩度 Saturation(0-255)</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:明度 Value(0-255)</SPAN><BR>
+  指定したオブジェクトの色合いをHSV(色相, 彩度, 明度)で設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjRender_SetAlpha">ObjRender_SetAlpha(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:α値(0-255)</SPAN><BR>
+  指定したオブジェクトのα値を設定します。<BR>
+  0にした場合、透明になります。<BR>
+  この設定はObjRender_SetBlendTypeで加算合成を設定した場合は適応されません。<BR>
+  加算合成での色を透明にするにはObjRender_SetColorで各色に0を設定する必要があります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjRender_SetBlendType">ObjRender_SetBlendType(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:合成種別<BR>
+  　　BLEND_ALPHA：通常の描画方法です。<BR>
+  　　BLEND_ADD_RGB：RGBによる加算合成を行います。<BR>
+  　　BLEND_ADD_ARGB：ARGBによる加算合成を行います。(α値が適応される加算合成)<BR>
+  　　BLEND_MULTIPLY：乗算合成です。<BR>
+  　　BLEND_SUBTRACT：減算合成です。<BR>
+  　　BLEND_INV_DESTRGB：描画先の色を反転して合成します。</SPAN><BR>
+  描画先への画像合成方法を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjRender_GetX">ObjRender_GetX(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  指定したオブジェクトのx座標を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjRender_GetY">ObjRender_GetY(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  指定したオブジェクトのy座標を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjRender_GetZ">ObjRender_GetZ(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  指定したオブジェクトのz座標を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjRender_GetAngleX">ObjRender_GetAngleX(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  指定したオブジェクトのx角度を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjRender_GetAngleY">ObjRender_GetAngleY(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  指定したオブジェクトのy角度を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjRender_GetAngleZ">ObjRender_GetAngleZ(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  指定したオブジェクトのz角度を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjRender_GetScaleX">ObjRender_GetScaleX(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  指定したオブジェクトのx拡大率を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjRender_GetScaleY">ObjRender_GetScaleY(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  指定したオブジェクトのy拡大率を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjRender_GetScaleZ">ObjRender_GetScaleZ(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  指定したオブジェクトのz拡大率を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjRender_GetBlendType">ObjRender_GetBlendType(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  指定したオブジェクトの合成種別を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjRender_SetZWrite">ObjRender_SetZWrite(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) bool:zバッファ書き込み有無</SPAN><BR>
+  指定したオブジェクトのzバッファ書き込み有無を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjRender_SetFogEnable">ObjRender_SetFogEnable(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) bool:フォグ反映有無</SPAN><BR>
+  指定したオブジェクトのフォグ反映有無を設定します。<BR>
+  3D空間に配置する加算合成オブジェクトはfalseにします。<BR>
+  (3Dオブジェクトはデフォルトでtrueです。)<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjRender_SetZTest">ObjRender_SetZTest(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) bool:z比較有無</SPAN><BR>
+  指定したオブジェクトの描画時にz比較を行うか設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjRender_SetPermitCamera">ObjRender_SetPermitCamera(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) bool:カメラ有効有無</SPAN><BR>
+  指定したオブジェクトの描画時にカメラ設定を有効にするか指定します。<BR>
+  falseの場合、描画優先度に関係なくカメラ効果が無効になります。<BR>
+ </P><HR>
+
+
+ <HR>
+ <SPAN class = "section_title"><A name = "sec_ObjPrim_">■頂点オブジェクト操作(ObjPrim_)</A></SPAN><BR>
+  頂点オブジェクト操作用の関数です。<BR>
+  各オブジェクトの関連性については「<A href = "other_spec.html#Object">オブジェクト</A>」を参照お願いします。<BR>
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjPrim_Create">ObjPrim_Create(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクト種別<BR>
+  　　OBJ_PRIMITIVE_2D　：2D空間自由変形オブジェクト<BR>
+  　　OBJ_SPRITE_2D　　 ：2D空間矩形オブジェクト(ObjSprite2D_を使用可能なオブジェクト)<BR>
+  　　OBJ_SPRITE_LIST_2D：2D空間矩形リストオブジェクト(ObjSpriteList2D_を使用可能なオブジェクト)<BR>
+  　　OBJ_PRIMITIVE_3D　：3D空間自由変形オブジェクト<BR>
+  　　OBJ_SPRITE_3D　 　：3D空間矩形オブジェクト(ObjSprite3D_を使用可能なオブジェクト)</SPAN><BR>
+  指定した描画用オブジェクトを作成します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjPrim_SetPrimitiveType">ObjPrim_SetPrimitiveType(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:プリミティブ種別<BR>
+  　　PRIMITIVE_TRIANGLELIST：頂点データで順に現れる3つの頂点を結んだ三角形<BR>
+  　　PRIMITIVE_TRIANGLESTRIP：最初の頂点からはしご上に連結した形状<BR>
+  　　PRIMITIVE_TRIANGLEFAN：最初の頂点から放射状に伸びる点を連結した扇形の形状</SPAN><BR>
+  指定したオブジェクトのプリミティブの種類を指定します。<BR>
+  <IMG src="img/PrimitiveType.jpg" ALT="PrimitiveType"><BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjPrim_SetVertexCount">ObjPrim_SetVertexCount(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:頂点数</SPAN><BR>
+  指定したオブジェクトの頂点数を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjPrim_GetVertexCount">ObjPrim_GetVertexCount(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  指定したオブジェクトの頂点数を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjPrim_SetTexture">ObjPrim_SetTexture(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) char:画像ファイルへのパス</SPAN><BR>
+  指定したオブジェクトにテクスチャを設定します。<BR>
+  テクスチャが読み込まれていない場合はロードします。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjPrim_SetVertexPosition">ObjPrim_SetVertexPosition(引数：5)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:頂点インデックス</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:x座標</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:y座標</SPAN><BR>
+  <SPAN class = "function_arg">　5) real:z座標</SPAN><BR>
+  指定したオブジェクトの頂点座標を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjPrim_GetVertexPosition">ObjPrim_GetVertexPosition(引数：2、返り値：real配列)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:頂点インデックス</SPAN><BR>
+  指定したオブジェクトの頂点の座標を取得します。<BR>
+  [x, y, z]の配列で返ります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjPrim_SetVertexUV">ObjPrim_SetVertexUV(引数：4)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:頂点インデックス</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:テクスチャのx座標(0-1)</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:テクスチャのy座標(0-1)</SPAN><BR>
+  指定したオブジェクトの頂点座標にテクスチャの座標を関連付けます。<BR>
+  テクスチャの一番端を1とした座標を設定します。<BR>
+  例えば、テクスチャの幅が512で、頂点にテクスチャ座標256を設定したい場合0.5を設定します。<BR>
+  (通常面倒なので、ObjPrim_SetVertexUVTの使用を推奨します。)<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjPrim_SetVertexUVT">ObjPrim_SetVertexUVT(引数：4)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:頂点インデックス</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:テクスチャのx座標</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:テクスチャのy座標</SPAN><BR>
+  指定したオブジェクトの頂点座標にテクスチャの座標を関連付けます。<BR>
+  事前にObjPrim_SetTextureでテクスチャを設定しておく必要があります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjPrim_SetVertexColor">ObjPrim_SetVertexColor(引数：5)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:S頂点インデックス</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:r色(0-255)</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:g色(0-255)</SPAN><BR>
+  <SPAN class = "function_arg">　5) real:b色(0-255)</SPAN><BR>
+  指定したオブジェクトの頂点座標の色を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjPrim_SetVertexAlpha">ObjPrim_SetVertexAlpha(引数：3)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:頂点インデックス</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:α値(0-255)</SPAN><BR>
+  指定したオブジェクトの頂点座標のα値を設定します。<BR>
+ </P><HR>
+
+
+ <HR>
+ <SPAN class = "section_title"><A name = "sec_ObjSprite2D_">■2D矩形オブジェクト操作(ObjSprite2D_)</A></SPAN><BR>
+  2D矩形オブジェクト操作用の関数です。<BR>
+  各オブジェクトの関連性については「<A href = "other_spec.html#Object">オブジェクト</A>」を参照お願いします。<BR>
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjSprite2D_SetSourceRect">ObjSprite2D_SetSourceRect(引数：5)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:テクスチャ座標(左)</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:テクスチャ座標(上)</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:テクスチャ座標(右)</SPAN><BR>
+  <SPAN class = "function_arg">　5) real:テクスチャ座標(下)</SPAN><BR>
+  指定したオブジェクトの描画元テクスチャ座標を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjSprite2D_SetDestRect">ObjSprite2D_SetDestRect(引数：5)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:描画先座標(左)</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:描画先座標(上)</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:描画先座標(右)</SPAN><BR>
+  <SPAN class = "function_arg">　5) real:描画先座標(下)</SPAN><BR>
+  指定したオブジェクトの描画先の矩形座標を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjSprite2D_SetDestCenter">ObjSprite2D_SetDestCenter(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  指定したオブジェクトの描画先の座標を、0座標を中心になるように割り当てます。<BR>
+  例えば、ObjSprite2D_SetSourceRectで設定した描画元が(24, 32) - (48, 56)の場合、<BR>
+  描画先は(-12,-7) - (12, 7)になります。<BR>
+ </P><HR>
+
+
+ <HR>
+ <SPAN class = "section_title"><A name = "sec_ObjSpriteList2D_">■2D矩形リストオブジェクト操作(ObjSpriteList2D_)</A></SPAN><BR>
+  2D矩形リストオブジェクト操作用の関数です。<BR>
+  <BR>
+  ObjSpriteList2D_SetSourceRectなどで描画設定を行った後、ObjSpriteList2D_AddVertexを呼び出すことで<BR>
+  描画する矩形を追加できます。<BR>
+  複数の2D矩形を描画するときに、複数のObjSprite2D_を作成不要にするためにあります。<BR>
+  各オブジェクトの関連性については「<A href = "other_spec.html#Object">オブジェクト</A>」を参照お願いします。<BR>
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjSpriteList2D_SetSourceRect">ObjSpriteList2D_SetSourceRect(引数：5)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:テクスチャ座標(左)</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:テクスチャ座標(上)</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:テクスチャ座標(右)</SPAN><BR>
+  <SPAN class = "function_arg">　5) real:テクスチャ座標(下)</SPAN><BR>
+  指定したオブジェクトの描画元テクスチャ座標を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjSpriteList2D_SetDestRect">ObjSpriteList2D_SetDestRect(引数：5)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:描画先座標(左)</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:描画先座標(上)</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:描画先座標(右)</SPAN><BR>
+  <SPAN class = "function_arg">　5) real:描画先座標(下)</SPAN><BR>
+  指定したオブジェクトの描画先の矩形座標を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjSpriteList2D_SetDestCenter">ObjSpriteList2D_SetDestCenter(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  指定したオブジェクトの描画先の座標を、0座標を中心になるように割り当てます。<BR>
+  例えば、ObjSprite2D_SetSourceRectで設定した描画元が(24, 32) - (48, 56)の場合、<BR>
+  描画先は(-12,-7) - (12, 7)になります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjSpriteList2D_AddVertex">ObjSpriteList2D_AddVertex(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  現在設定されている状態を、頂点情報として指定したオブジェクトに追加します。<BR>
+  (描画矩形が1つ増えます。)<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjSpriteList2D_CloseVertex">ObjSpriteList2D_CloseVertex(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  頂点の追加を終了します。<BR>
+  これ以降のObjRender_での座標変換は、追加した矩形全てに適応されます。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjSpriteList2D_ClearVertexCount">ObjSpriteList2D_ClearVertexCount(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  指定したオブジェクトの頂点をクリアします。<BR>
+ </P><HR>
+
+
+ <HR>
+ <SPAN class = "section_title"><A name = "sec_ObjSprite3D_">■3D矩形オブジェクト操作(ObjSprite3D_)</A></SPAN><BR>
+  3D矩形オブジェクト操作用の関数です。<BR>
+  各オブジェクトの関連性については「<A href = "other_spec.html#Object">オブジェクト</A>」を参照お願いします。<BR>
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjSprite3D_SetSourceRect">ObjSprite3D_SetSourceRect(引数：5)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:テクスチャ座標(左)</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:テクスチャ座標(上)</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:テクスチャ座標(右)</SPAN><BR>
+  <SPAN class = "function_arg">　5) real:テクスチャ座標(下)</SPAN><BR>
+  指定したオブジェクトの描画元テクスチャ座標を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjSprite3D_SetDestRect">ObjSprite3D_SetDestRect(引数：5)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:描画先座標(左)</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:描画先座標(上)</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:描画先座標(右)</SPAN><BR>
+  <SPAN class = "function_arg">　5) real:描画先座標(下)</SPAN><BR>
+  指定したオブジェクトの描画先の矩形座標を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjSprite3D_SetSourceDestRect">ObjSprite3D_SetSourceDestRect(引数：5)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:描画先座標(左)</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:描画先座標(上)</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:描画先座標(右)</SPAN><BR>
+  <SPAN class = "function_arg">　5) real:描画先座標(下)</SPAN><BR>
+  指定したオブジェクトの描画元テクスチャ座標を設定します。<BR>
+  また同時に指定したオブジェクトの描画先の座標を、0座標を中心になるように割り当てます。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjSprite3D_SetBillboard">ObjSprite3D_SetBillboard(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) bool:ビルボード設定</SPAN><BR>
+  指定したオブジェクトをビルボードにするか設定します。><BR>
+  ビルボードに設定されたオブジェクトは常にカメラ方向を向きます。<BR>
+ </P><HR>
+
+
+ <HR>
+ <SPAN class = "section_title"><A name = "sec_ObjMesh_">■3Dメッシュオブジェクト操作(ObjMesh_)</A></SPAN><BR>
+  3Dメッシュオブジェクト操作用の関数です。<BR>
+  3Dオブジェクトをファイルから読み込み描画することができます。<BR>
+  各オブジェクトの関連性については「<A href = "other_spec.html#Object">オブジェクト</A>」を参照お願いします。<BR>
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjMesh_Create">ObjMesh_Create(引数：0、返り値：real[オブジェクトID])</A></SPAN><BR>
+  3Dメッシュオブジェクトを作成します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjMesh_Load">ObjMesh_Load(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:3Dオブジェクトファイルへのパス</SPAN><BR>
+  3Dメッシュオブジェクトを読み込みます。<BR>
+  読み込めるのはメタセコイアファイル(.mqo)、エルフレイナファイル(.elem)のみです。<BR>
+  「<A href="other_spec.html#Resource">使用可能ファイル</A>」を参照お願いします。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjMesh_SetColor">ObjMesh_SetColor(引数：4)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:r色(0-255)</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:g色(0-255)</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:b色(0-255)</SPAN><BR>
+  3Dメッシュオブジェクトの色を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjMesh_SetAlpha">ObjMesh_SetAlpha(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:α値(0-255)</SPAN><BR>
+  3Dメッシュオブジェクトのα値を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjMesh_SetAnimation">ObjMesh_SetAnimation(引数：3)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) char:アニメ名称</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:アニメフレーム</SPAN><BR>
+  3Dメッシュオブジェクトのアニメを設定します。<BR>
+  設定したアニメ名称のアニメフレームが描画されます。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjMesh_SetCoordinate2D">ObjMesh_SetCoordinate2D(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) bool:2D座標指定(true/false)</SPAN><BR>
+  3Dメッシュオブジェクトの座標指定を2D座標で指定可能にします。<BR>
+  <BR>
+  この関数にtrueを渡すと、例えば表示位置が(300,200)に設定されている場合、<BR>
+  画面の(300,200)にオブジェクトが表示されます。<BR>
+ </P><HR>
+
+ <HR>
+ <SPAN class = "section_title"><A name = "sec_ObjText_">■テキストオブジェクト操作(ObjText_)</A></SPAN><BR>
+  テキストオブジェクト操作用の関数です。<BR>
+  各オブジェクトの関連性については「<A href = "other_spec.html#Object">オブジェクト</A>」を参照お願いします。<BR>
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjText_Create">ObjText_Create(引数：0、返り値：real[オブジェクトID])</A></SPAN><BR>
+  テキストオブジェクトを作成します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjText_SetText">ObjText_SetText(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) char:文字列</SPAN><BR>
+  テキストオブジェクトに文字列を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjText_SetFontType">ObjText_SetFontType(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) char:フォント名称</SPAN><BR>
+  テキストオブジェクトにフォントを設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjText_SetFontSize">ObjText_SetFontSize(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:フォントサイズ</SPAN><BR>
+  テキストオブジェクトにフォントサイズを設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjText_SetFontBold">ObjText_SetFontBold(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) bool:太字</SPAN><BR>
+  テキストオブジェクト太字を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjText_SetFontColorTop">ObjText_SetFontColorTop(引数：4)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:r色(0-255)</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:g色(0-255)</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:b色(0-255)</SPAN><BR>
+  テキストオブジェクトの上側色を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjText_SetFontColorBottom">ObjText_SetFontColorBottom(引数：4)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) r色(0-255)</SPAN><BR>
+  <SPAN class = "function_arg">　3) g色(0-255)</SPAN><BR>
+  <SPAN class = "function_arg">　4) b色(0-255)</SPAN><BR>
+  テキストオブジェクトの下側色を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjText_SetFontBorderWidth">ObjText_SetFontBorderWidth(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:縁取り太さ</SPAN><BR>
+  テキストオブジェクトの縁取りの太さを設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjText_SetFontBorderType">ObjText_SetFontBorderType(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:縁取り種別<br>
+  　　BORDER_NONE：縁取りを無効にします。<BR>
+  　　BORDER_FULL：縁取りを有効にします。<BR>
+  　　BORDER_SHADOW：右下方向強めの縁取りにします。</SPAN><BR>
+  テキストオブジェクトの縁取りの種別を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjText_SetFontBorderColor">ObjText_SetFontBorderColor(引数：4)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:r色(0-255)</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:g色(0-255)</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:b色(0-255)</SPAN><BR>
+  テキストオブジェクトの縁取り色を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjText_SetMaxWidth">ObjText_SetMaxWidth(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:最大幅</SPAN><BR>
+  テキストオブジェクトの最大幅を設定します。<BR>
+  この幅を超える文字列は自動的に折り返されます。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjText_SetMaxHeight">ObjText_SetMaxHeight(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:最大高さ</SPAN><BR>
+  テキストオブジェクトの最大幅を設定します。<BR>
+  この高さを超える文字列は描画されません。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjText_SetLinePitch">ObjText_SetLinePitch(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:行ピッチ</SPAN><BR>
+  テキストオブジェクトの行ピッチを設定します。<BR>
+  テキストが複数行にわたる場合の行間隔です。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjText_SetSidePitch">ObjText_SetSidePitch(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:字間ピッチ</SPAN><BR>
+  テキストオブジェクトの字間ピッチを設定します。<BR>
+  文字と文字の間の間隔です。。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjText_SetTransCenter">ObjText_SetTransCenter(引数：3)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:中心X座標</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:中心Y座標</SPAN><BR>
+  テキストオブジェクト回転/拡大の中心座標を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjText_SetAutoTransCenter">ObjText_SetAutoTransCenter(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) bool:有効/無効</SPAN><BR>
+  テキストオブジェクト回転/拡大の中心座標を、自動的にテキストの中心に設定します。<BR>
+  デフォルトで有効です。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjText_SetHorizontalAlignment">ObjText_SetHorizontalAlignment(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:表示位置<BR>
+  　　ALIGNMENT_LEFT：左揃え<BR>
+  　　ALIGNMENT_CENTER：中央揃え<BR>
+  　　ALIGNMENT_RIGHT：右揃え<BR>
+  </SPAN>
+  テキストオブジェクトの表示位置を指定します。デフォルトは左揃えです。<BR>
+  左揃え以外の場合は、ObjText_SetMaxWidthで幅を指定する必要があります。<BR>
+  (最大幅を指定しないと右端を判断できないため。)<BR>
+  <BR>
+  例えば、右揃えにし右端X座標192で最大幅300にする場合、以下のように指定します。<BR>
+  　ObjText_SetHorizontalAlignment(obj, ALIGNMENT_RIGHT);<BR>
+  　ObjText_SetMaxWidth(obj, 300);<BR>
+  　ObjRender_SetX(obj, 192 - 300);<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjText_SetSyntacticAnalysis">ObjText_SetSyntacticAnalysis(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) bool:タグ解析有効／無効</SPAN><BR>
+  テキストオブジェクトのタグ解析有効／無効を指定します。デフォルトはtrueです。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjText_GetTextLength">ObjText_GetTextLength(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  テキストオブジェクトの文字数を取得します。<BR>
+  半角文字は1文字、全角文字は2文字で換算されます。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjText_GetTextLengthCU">ObjText_GetTextLengthCU(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  テキストオブジェクトの文字数を取得します。<BR>
+  ルビや改行を除いてカウントします。<BR>
+  半角も全角も1文字でカウントします。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjText_GetTextLengthCUL">ObjText_GetTextLengthCUL(引数：1、返り値：real配列)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  テキストオブジェクトの行ごとの文字数を取得します。<BR>
+  ルビや改行を除いてカウントします。<BR>
+  半角も全角も1文字でカウントします。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjText_GetTotalWidth">ObjText_GetTotalWidth(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  テキストオブジェクトの全行での幅を取得する。<BR>
+  全ての行の中の最大の幅が返ります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjText_GetTotalHeight">ObjText_GetTotalHeight(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  テキストオブジェクトの全行での高さを取得する。<BR>
+  全ての行の合計の高さが返ります。<BR>
+ </P><HR>
+
+
+ <HR>
+ <SPAN class = "section_title"><A name = "sec_ObjShader_">■シェーダオブジェクト操作(ObjShader_)</A></SPAN><BR>
+  シェーダオブジェクト操作用の関数です。<BR>
+  シェーダの説明については「」を参照お願いします。
+  各オブジェクトの関連性については「<A href = "other_spec.html#Object">オブジェクト</A>」を参照お願いします。<BR>
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjShader_Create">ObjShader_Create(引数：0、返り値：real[オブジェクトID])</A></SPAN><BR>
+  シェーダオブジェクトを生成します。<BR>
+  特定の描画優先度範囲に、シェーダを適用するために使用するオブジェクトです。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjShader_SetShaderF">ObjShader_SetShaderF(引数：2、返り値：bool)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) char:シェーダファイルへのパス</SPAN><BR> 
+  指定したオブジェクトにシェーダを設定します。<BR>
+  シェーダが読み込まれていない場合はロードします。<BR>
+  生成に成功した場合はtrueを返します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjShader_SetShaderO">ObjShader_SetShaderO(引数：2、返り値：bool)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:シェーダオブジェクトID</SPAN><BR>
+  指定したオブジェクトにシェーダオブジェクトでシェーダを設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjShader_ResetShader">ObjShader_ResetShader(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  指定したオブジェクトのシェーダを解除します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjShader_SetTechnique">ObjShader_SetTechnique(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) char:テクニック</SPAN><BR> 
+  実行するテクニックを設定します。
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjShader_SetVector">ObjShader_SetVector(引数：6)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) char:パラメータ名</SPAN><BR> 
+  <SPAN class = "function_arg">　3) real:float4.x</SPAN><BR> 
+  <SPAN class = "function_arg">　4) real:float4.y</SPAN><BR> 
+  <SPAN class = "function_arg">　5) real:float4.z</SPAN><BR> 
+  <SPAN class = "function_arg">　6) real:float4.w</SPAN><BR> 
+  シェーダの実数値(float4)に値を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjShader_SetFloat">ObjShader_SetFloat(引数：3)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) char:パラメータ名</SPAN><BR> 
+  <SPAN class = "function_arg">　3) real:float値</SPAN><BR> 
+  シェーダの実数値(float)に値を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjShader_SetFloatArray">ObjShader_SetFloatArray(引数：3)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) char:パラメータ名</SPAN><BR> 
+  <SPAN class = "function_arg">　3) real:real配列</SPAN><BR> 
+  シェーダの実数値(float配列)に値を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjShader_SetTexture">ObjShader_SetTexture(引数：3)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) char:パラメータ名</SPAN><BR> 
+  <SPAN class = "function_arg">　3) char:テクスチャ名</SPAN><BR> 
+  シェーダにテクスチャを設定します。<BR>
+  マルチテクスチャを使用する場合に、呼び出します。<BR>
+ </P><HR>
+
+ <HR>
+ <SPAN class = "section_title"><A name = "sec_ObjSound_">■音声オブジェクト操作(ObjSound_)</A></SPAN><BR>
+  音声オブジェクト操作用の関数です。<BR>
+  各オブジェクトの関連性については「<A href = "other_spec.html#Object">オブジェクト</A>」を参照お願いします。<BR>
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjSound_Create">ObjSound_Create(引数：0、返り値：real[オブジェクトID])</A></SPAN><BR>
+  音声オブジェクトを作成します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjSound_Load">ObjSound_Load(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) char:音声ファイルへのパス</SPAN><BR>
+  音声ファイルを読み込みます。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjSound_Play">ObjSound_Play(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  音声を再生開始します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjSound_Stop">ObjSound_Stop(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  音声を停止します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjSound_SetVolumeRate">ObjSound_SetVolumeRate(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:ボリューム(0-100)</SPAN><BR>
+  音声のボリュームを設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjSound_SetPanRate">ObjSound_SetPanRate(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:ボリューム(-100～100)</SPAN><BR>
+  左右音声のボリューム割合を設定します。<BR>
+  0を指定すると、左右で均等なボリュームになります。<BR>
+  -100で左側最大、100で右側最大になります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjSound_SetFade">ObjSound_SetFade(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:1秒毎のボリューム変化割合(負の値でフェードアウト)</SPAN><BR>
+  音声のフェードを設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjSound_SetLoopEnable">ObjSound_SetLoopEnable(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) bool:ループ有無(true/false)</SPAN><BR>
+  音声のループ有無を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjSound_SetLoopTime">ObjSound_SetLoopTime(引数：3)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:ループ開始時間(秒)</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:ループ終端時間(秒)</SPAN><BR>
+  音声のループ位置を時間で設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjSound_SetLoopSampleCount">ObjSound_SetLoopSampleCount(引数：3)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:ループ開始サンプル数</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:ループ終端サンプル数</SPAN><BR>
+  音声のループ位置をサンプル数で設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjSound_SetRestartEnable">ObjSound_SetRestartEnable(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) bool:リスタート有無(true/false)</SPAN><BR>
+  音声のリスタート有無を設定します。<BR>
+  trueの場合、ObjSound_Stop後にObjSound_Playで再生開始すると、前回停止時点から再生を開始します。<BR>
+  デフォルトfalseです。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjSound_SetSoundDivision">ObjSound_SetSoundDivision(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:音声区分<BR>
+  　　SOUND_BGM：BGM<BR>
+  　　SOUND_SE：効果音</SPAN><BR>
+  音声区分を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjSound_IsPlaying">ObjSound_IsPlaying(引数：1、返り値：bool)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) オブジェクトID</SPAN><BR>
+  音声を再生中の場合trueが返ります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjSound_GetVolumeRate">ObjSound_GetVolumeRate(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  音量を0-100で返します。<BR>
+ </P><HR>
+
+
+ <HR>
+ <SPAN class = "section_title"><A name = "sec_ObjFile_">■ファイルオブジェクト操作(ObjFile_)</A></SPAN><BR>
+  ファイルオブジェクト操作用の関数です。<BR>
+  テキストファイルやバイナリファイルの読み込みに使用します。<BR>
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjFile_Create">ObjFile_Create(引数：1、返り値：real[オブジェクトID])</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:ファイルオブジェクト種別<BR>
+  　　OBJ_FILE_TEXT　：テキストファイルオブジェクト<BR>
+  　　OBJ_FILE_BINARY：バイナリファイルオブジェクト</SPAN><BR>
+  指定したファイルオブジェクトを作成します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjFile_Open">ObjFile_Open(引数：2、返り値：bool)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) char:ファイルパス</SPAN><BR>
+  指定したファイルオブジェクトのファイルをオープンします。<BR>
+  この関数実行後に、ファイルの読み込みを行うことができます。<BR>
+  再度別ファイルをオープンするか、このオブジェクトを削除した場合に、<BR>
+  ファイルはクローズされます。<BR>
+  成功した場合はtrueが返ります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjFile_OpenNW">ObjFile_OpenNW(引数：2、返り値：bool)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) char:ファイルパス</SPAN><BR>
+  指定したファイルオブジェクトのファイルを新規ファイルで書き込みオープンします。<BR>
+  この関数実行後に、ファイルの書き込みを行うことができます。<BR>
+  再度別ファイルをオープンするか、このオブジェクトを削除した場合に、<BR>
+  ファイルはクローズされます。<BR>
+  成功した場合はtrueが返ります。<BR>
+  <BR>
+  指定したパスのディレクトリが存在しない場合は作成されます。<BR>
+  指定可能なパスは、th_dnh.exeのあるディレクトリ以下のディレクトリのみです。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjFile_Store">ObjFile_Store(引数：1、返り値：bool)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  指定したファイルオブジェクトの書き込みを行います。<BR>
+  書き込み情報を指定した後最後に1度だけ呼び出します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjFile_GetSize">ObjFile_GetSize(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  指定したファイルオブジェクトのファイルサイズが返ります。<BR>
+ </P><HR>
+
+
+ <HR>
+ <SPAN class = "section_title"><A name = "sec_ObjFileT_">■テキストファイルオブジェクト操作(ObjFileT_)</A></SPAN><BR>
+  テキストファイルオブジェクト操作用の関数です。<BR>
+  使用例は以下です。<BR>
+	<DIV Class="source"><PRE class="source">
+
+	<SPAN Class="source_reserve">let</SPAN> path = GetCurrentScriptDirectory() ~ <SPAN Class="source_string">"test.txt"</SPAN>; <SPAN Class="source_comment">//ファイルパス</SPAN>
+
+	<SPAN Class="source_reserve">let</SPAN> obj = ObjFile_Create(OBJ_FILE_TEXT); <SPAN Class="source_comment">//オブジェクト生成</SPAN>
+	ObjFile_Open(obj, path); <SPAN Class="source_comment">//ファイルオープン</SPAN>
+
+	<SPAN Class="source_reserve">let</SPAN> lineCount = ObjFileT_GetLineCount(obj);  <SPAN Class="source_comment">//行数取得</SPAN>
+
+	<SPAN Class="source_comment">//すべての行を順次処理する</SPAN>
+	<SPAN Class="source_reserve">ascent</SPAN>(iLine <SPAN Class="source_reserve">in</SPAN> <SPAN Class="source_number">0</SPAN> .. lineCount)
+	{
+		<SPAN Class="source_reserve">let</SPAN> line = ObjFileT_GetLineText(obj, iLine+<SPAN Class="source_number">1</SPAN>);
+		<SPAN Class="source_comment">// XXX</SPAN>
+	}
+	</PRE></DIV>
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjFileT_GetLineCount">ObjFileT_GetLineCount(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  テキストファイルの行数を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjFileT_GetLineText">ObjFileT_GetLineText(引数：2、返り値：char)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:ファイルオブジェクト種別</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:行数 (テキストファイルの最初の行は「1」です。0ではありません。)</SPAN><BR>
+  テキストファイルの指定した行の文字列を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjFileT_AddLine">ObjFileT_AddLine(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:ファイルに書き込む文字列</SPAN><BR>
+  指定した文字列を、テキストファイルに1行分として書き込む準備をします。<BR>
+  この関数を実行しただけでは、ファイルには書き込まれません。<BR>
+  この関数を書き込み対象文字列の全行分呼び出し最後に<BR>
+  ObjFile_Storeを実行することでファイルに書き込まれます。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjFileT_ClearLine">ObjFileT_ClearLine(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  ObjFileT_AddLineで追加した行をクリアします。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjFileT_SplitLineText">ObjFileT_SplitLineText(引数：3、返り値：char配列)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:行数 (テキストファイルの最初の行は「1」です。0ではありません。)</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:切り分けに使用する文字列 (デリミタ)</SPAN><BR>
+  テキストファイルの指定した行を指定した文字で分割した文字列配列を取得します。<BR>
+ </P><HR>
+
+ <HR>
+ <SPAN class = "section_title"><A name = "sec_ObjFileB_">■バイナリファイルオブジェクト操作(ObjFileB_)</A></SPAN><BR>
+  バイナリファイルオブジェクト操作用の関数です。<BR>
+  数値はデフォルトではリトルエンディアンで読み込みます。<BR>
+  数値のバイトオーダーはObjFileB_SetByteOrderで設定可能です。<BR>
+  文字列を読み込む場合は、ObjFileB_SetCharacterCodeで文字コードを指定できます。<BR>
+  <BR>
+  使用例は以下です。<BR>
+	<DIV Class="source"><PRE class="source">
+
+	<SPAN Class="source_reserve">let</SPAN> path = GetCurrentScriptDirectory() ~ <SPAN Class="source_string">"test.dat"</SPAN>; <SPAN Class="source_comment">//ファイルパス</SPAN>
+
+	<SPAN Class="source_reserve">let</SPAN> obj = ObjFile_Create(OBJ_FILE_BINARY); <SPAN Class="source_comment">//オブジェクト生成</SPAN>
+	ObjFile_Open(obj, path); <SPAN Class="source_comment">//ファイルオープン</SPAN>
+
+	<SPAN Class="source_reserve">let</SPAN> vBool = ObjFileB_ReadBoolean(obj)); <SPAN Class="source_comment">//1バイトをboolean型として読み込む</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> vByte = ObjFileB_ReadByte(obj)); <SPAN Class="source_comment">//1バイト整数をreal型として読み込む</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> vShort = ObjFileB_ReadShort(obj)); <SPAN Class="source_comment">//2バイト整数をreal型として読み込む</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> vInt = ObjFileB_ReadInteger(obj)); <SPAN Class="source_comment">//4バイト整数をreal型として読み込む</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> vLong = ObjFileB_ReadLong(obj)); <SPAN Class="source_comment">//8バイト整数をreal型として読み込む</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> vFloat = ObjFileB_ReadFloat(obj)); <SPAN Class="source_comment">//4バイト実数をreal型として読み込む</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> vDouble = ObjFileB_ReadDouble(obj)); <SPAN Class="source_comment">//8バイト実数をreal型として読み込む</SPAN>
+
+	ObjFileB_SetCharacterCode(obj, CODE_UTF16LE); <SPAN Class="source_comment">//文字コードをUTF16LEに設定</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> str = ObjFileB_ReadString(obj, <SPAN Class="source_number">14</SPAN>); <SPAN Class="source_comment">//14バイトを文字列(UTF16LE)として読み込む</SPAN>
+	</PRE></DIV>
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjFileB_SetByteOrder">ObjFileB_SetByteOrder(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:バイトオーダー種別<BR>
+  　　ENDIAN_LITTLE：リトルエンディアン<BR>
+  　　ENDIAN_BIG：ビッグエンディアン</SPAN><BR>
+  数値を読み込む際のバイトオーダーを設定します。<BR>
+  デフォルト値は ENDIAN_LITTLE です。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjFileB_SetCharacterCode">ObjFileB_SetCharacterCode(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:文字コード<BR>
+  　　CODE_ACP：ANSI (Shift-JIS)<BR>
+  　　CODE_UTF8：UTF8<BR>
+  　　CODE_UTF16LE：UTF16LE<BR>
+  　　CODE_UTF16BE：UTF16BE</SPAN><BR>
+  ObjFileB_ReadStringで文字列としてバイナリデータを読み込む場合の文字コードを指定します。<BR>
+  デフォルト値は CODE_ACP です。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjFileB_GetPointer">ObjFileB_GetPointer(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  現在のファイルポインタの位置を返します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjFileB_Seek">ObjFileB_Seek(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:ファイルポインタ位置</SPAN><BR>
+  ファイルポインタの位置を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjFileB_ReadBoolean">ObjFileB_ReadBoolean(引数：1、返り値：bool)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  1バイトをboolean型として読み込みます。<BR>
+  ファイルポインタは1バイト進みます。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjFileB_ReadByte">ObjFileB_ReadByte(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  1バイト整数をreal型として読み込みます。<BR>
+  ファイルポインタは1バイト進みます。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjFileB_ReadShort">ObjFileB_ReadShort(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  2バイト整数をreal型として読み込みます。<BR>
+  ファイルポインタは2バイト進みます。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjFileB_ReadInteger">ObjFileB_ReadInteger(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  4バイト整数をreal型として読み込みます。<BR>
+  ファイルポインタは4バイト進みます。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjFileB_ReadLong">ObjFileB_ReadLong(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  8バイト整数をreal型として読み込みます。<BR>
+  ファイルポインタは8バイト進みます。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjFileB_ReadFloat">ObjFileB_ReadFloat(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  4バイト実数をreal型として読み込みます。<BR>
+  ファイルポインタは4バイト進みます。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjFileB_ReadDouble">ObjFileB_ReadDouble(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  8バイト実数をreal型として読み込みます。<BR>
+  ファイルポインタは8バイト進みます。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjFileB_ReadString">ObjFileB_ReadString(引数：2、返り値：char)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:読み込むデータサイズ</SPAN><BR>
+  指定したデータサイズ分を文字列として読み込みます。<BR>
+  ファイルポインタは指定したデータサイズ分進みます。<BR>
+ </P><HR>
+
+ </DIV></BODY>
+</HTML>
+
+
+

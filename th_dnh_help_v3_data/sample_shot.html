@@ -1,0 +1,547 @@
+<HTML>
+ <HEAD>
+  <TITLE>弾幕サンプル</TITLE>
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/html;charset=Shift_JIS">
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/css">
+  <LINK rel="stylesheet" href="style.css" type="text/css">
+ </HEAD>
+
+ <STYLE TYPE="text/css">
+
+ </STYLE>
+
+ <BODY link="#0000ff" alink="#0000ff" vlink="#0000ff">
+ <DIV class="allbody">
+
+ <HR>
+ <SPAN class = "section_title"><A name = "sec_sound">■弾幕サンプル</A></SPAN><BR>
+ <P>以下で、なるべくコメントを付けながらサンプルを紹介します。<BR>
+    各サンプルはコピーペーストで貼り付けても動作するので、<BR>
+	いろいろ試してみてください。<BR>
+ </P>
+ <P>
+  <TABLE class = "sample">
+   <TR class = "sample">
+    <TD class = "sample_elementT">SampleA</TD> <TD class = "tag_textT">弾幕風の組み込み関数のみを用いた弾操作サンプル</TD>
+   </TR>
+   <TR class = "sample">
+    <TD class = "sample_element">A01</TD>
+    <TD class = "sample_text"><A href = "#A01">弾を真下に出す</A></TD>
+   </TR>
+   <TR class = "sample">
+    <TD class = "sample_element">A02</TD>
+    <TD class = "sample_text"><A href = "#A02">自機方向へ5WAY</A></TD>
+   </TR>
+   <TR class = "sample">
+    <TD class = "sample_element">A03</TD>
+    <TD class = "sample_text"><A href = "#A03">一定時間で自機方向へ角度を変える弾</A></TD>
+   </TR>
+   <TR class = "sample">
+    <TD class = "sample_element">A04</TD>
+    <TD class = "sample_text"><A href = "#A04">分裂する弾</A></TD>
+   </TR>
+  </TABLE>
+ </P>
+ <BR><HR>
+
+ <P>
+  <TABLE class = "sample_ex">
+   <TR class = "sample">
+    <TD class = "sample_textT" colspan="2"><A name="A01">A01 弾を真下に出す</A></TD>
+   </TR>
+   <TR class = "sample">
+    <TD class = "sample_image"><IMG src = "img/sample_shot_A01.jpg"></TD>
+    <TD class = "sample_text">
+     弾を真下に出すサンプルです。<BR>
+     60フレーム(1秒)間隔で赤色の弾を真下に向かって出しつづけます。<BR>
+    </TD>
+   </TR>
+  </TABLE>
+
+	<DIV Class="source"><PRE class="source">
+	#東方弾幕風[Single]
+	#ScriptVersion[<SPAN Class="source_number">3</SPAN>]
+	#Title[<SPAN Class="source_string">"SampleA01"</SPAN>]
+	#Text[<SPAN Class="source_string">"SampleA01：弾を真下に出す"</SPAN>]
+
+	<SPAN Class="source_comment">//デフォルト弾画像をロード</SPAN>
+	<SPAN Class="source_reserve">#include</SPAN><SPAN Class="source_string">"script/default_system/Default_ShotConst.txt"</SPAN>
+
+	<SPAN Class="source_comment">//----------------------------------------------------</SPAN>
+	<SPAN Class="source_comment">//グローバル変数宣言</SPAN>
+	<SPAN Class="source_comment">//この位置で宣言した変数はスクリプト全体で有効です。</SPAN>
+	<SPAN Class="source_comment">//ただしこの箇所での変数への代入は、定数以外の代入は行えません。</SPAN>
+	<SPAN Class="source_comment">//(実行順序が保障されないため乱数などの使用はできません)</SPAN>
+	<SPAN Class="source_comment">//----------------------------------------------------</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> objEnemy; <SPAN Class="source_comment">//敵オブジェクト</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> frame = <SPAN Class="source_number">0</SPAN>; <SPAN Class="source_comment">//敵動作に使用するカウンタ(@MainLoopで1づつ増加させます)</SPAN>
+
+	<SPAN Class="source_comment">//----------------------------------------------------</SPAN>
+	<SPAN Class="source_comment">//敵の動作</SPAN>
+	<SPAN Class="source_comment">//----------------------------------------------------</SPAN>
+	@Event
+	{
+		<SPAN Class="source_reserve">alternative</SPAN>(GetEventType())
+		<SPAN Class="source_reserve">case</SPAN>(EV_REQUEST_LIFE)
+		{
+			<SPAN Class="source_comment">//敵ライフを要求された</SPAN>
+			SetScriptResult(<SPAN Class="source_number">500</SPAN>);<SPAN Class="source_comment">//ライフを500に設定</SPAN>
+		}
+	}
+
+	@Initialize
+	{
+		<SPAN Class="source_comment">//敵オブジェクトを生成し登録</SPAN>
+		objEnemy = ObjEnemy_Create(OBJ_ENEMY_BOSS);
+		ObjEnemy_Regist(objEnemy);
+
+		<SPAN Class="source_comment">//敵画像の設定</SPAN>
+		<SPAN Class="source_reserve">let</SPAN> imgExRumia = GetCurrentScriptDirectory ~ <SPAN Class="source_string">"ExRumia.png"</SPAN>; <SPAN Class="source_comment">//敵画像ファイル</SPAN>
+		ObjPrim_SetTexture(objEnemy, imgExRumia); <SPAN Class="source_comment">//画像ファイルを読み込む</SPAN>
+		ObjSprite2D_SetSourceRect(objEnemy, <SPAN Class="source_number">64</SPAN>, <SPAN Class="source_number">1</SPAN>, <SPAN Class="source_number">127</SPAN>, <SPAN Class="source_number">64</SPAN>); <SPAN Class="source_comment">//描画元矩形を(64,1) - (127,64)に設定</SPAN>
+		ObjSprite2D_SetDestCenter(objEnemy); <SPAN Class="source_comment">//描画先を中心(0, 0)に設定</SPAN>
+
+		<SPAN Class="source_comment">//座標(cx, 60)へ60フレームかけて移動する</SPAN>
+		<SPAN Class="source_reserve">let</SPAN> cx = GetStgFrameWidth() / <SPAN Class="source_number">2</SPAN>;<SPAN Class="source_comment">//STGシーンの中心x座標を取得</SPAN>
+		ObjMove_SetDestAtFrame(objEnemy, cx, <SPAN Class="source_number">60</SPAN>, <SPAN Class="source_number">60</SPAN>);
+	}
+
+	@MainLoop
+	{
+		<SPAN Class="source_comment">//敵の座標を取得</SPAN>
+		<SPAN Class="source_reserve">let</SPAN> ex = ObjMove_GetX(objEnemy);
+		<SPAN Class="source_reserve">let</SPAN> ey = ObjMove_GetY(objEnemy);
+
+		<SPAN Class="source_reserve">if</SPAN>(frame == <SPAN Class="source_number">60</SPAN>)
+		{
+			<SPAN Class="source_comment">//frameが60になったら実行される部分</SPAN>
+			<SPAN Class="source_comment">//・敵の座標から真下に向かって弾を発射する</SPAN>
+			<SPAN Class="source_comment">//・速度：1フレームに3</SPAN>
+			<SPAN Class="source_comment">//・角度：90 (真下)</SPAN>
+			<SPAN Class="source_comment">//・遅延時間：30フレーム</SPAN>
+			CreateShotA1(ex, ey, <SPAN Class="source_number">3</SPAN>, <SPAN Class="source_number">90</SPAN>, DS_BALL_S_RED, <SPAN Class="source_number">30</SPAN>);
+
+			frame = <SPAN Class="source_number">0</SPAN>;<SPAN Class="source_comment">//弾を出したらframeを0にする</SPAN>
+
+		}
+
+		<SPAN Class="source_comment">//当たり判定登録</SPAN>
+		ObjEnemy_SetIntersectionCircleToShot(objEnemy, ex, ey, <SPAN Class="source_number">32</SPAN>);<SPAN Class="source_comment">//当たり判定(自機弾用)登録</SPAN>
+		ObjEnemy_SetIntersectionCircleToPlayer(objEnemy, ex, ey, <SPAN Class="source_number">24</SPAN>);<SPAN Class="source_comment">//当たり判定(体当たり用)登録</SPAN>
+
+		<SPAN Class="source_comment">//カウンタに1追加</SPAN>
+		frame++;
+
+		<SPAN Class="source_comment">//ライフ0処理</SPAN>
+		<SPAN Class="source_reserve">if</SPAN>(ObjEnemy_GetInfo(objEnemy, INFO_LIFE) &lt;= <SPAN Class="source_number">0</SPAN>)
+		{
+			<SPAN Class="source_comment">//ライフが0になったら即座に終了</SPAN>
+			<SPAN Class="source_comment">//本来は爆発エフェクトのタスクを登録し、</SPAN>
+			<SPAN Class="source_comment">//エフェクト終了を待って、スクリプトを終了します。</SPAN>
+			Obj_Delete(objEnemy);
+			CloseScript(GetOwnScriptID());
+			<SPAN Class="source_reserve">return</SPAN>;
+		}
+	}
+	</PRE></DIV>
+ </P>
+ <BR><HR>
+
+ <P>
+  <TABLE class = "sample_ex">
+   <TR class = "sample">
+    <TD class = "sample_textT" colspan="2"><A name="A02">A02 自機方向へ5WAY</A></TD>
+   </TR>
+   <TR class = "sample">
+    <TD class = "sample_image"><IMG src = "img/sample_shot_A02.jpg"></TD>
+    <TD class = "sample_text">
+     自機方向へ5WAYを発射するサンプルです。<BR>
+     60フレーム(1秒)間隔で青色の5WAYを自機へ向かって出しつづけます。<BR>
+     <BR>
+     atan2で敵からみた自機方向の角度を計算し、<BR>
+     whileでループして5WAYにしています。 <BR>
+    </TD>
+   </TR>
+  </TABLE>
+
+	<DIV Class="source"><PRE class="source">
+	#東方弾幕風[Single]
+	#ScriptVersion[<SPAN Class="source_number">3</SPAN>]
+	#Title[<SPAN Class="source_string">"SampleA02"</SPAN>]
+	#Text[<SPAN Class="source_string">"SampleA02：自機方向へ5WAY"</SPAN>]
+
+	<SPAN Class="source_comment">//デフォルト弾画像をロード</SPAN>
+	<SPAN Class="source_reserve">#include</SPAN><SPAN Class="source_string">"script/default_system/Default_ShotConst.txt"</SPAN>
+
+	<SPAN Class="source_comment">//----------------------------------------------------</SPAN>
+	<SPAN Class="source_comment">//グローバル変数宣言</SPAN>
+	<SPAN Class="source_comment">//この位置で宣言した変数はスクリプト全体で有効です。</SPAN>
+	<SPAN Class="source_comment">//ただしこの箇所での変数への代入は、定数以外の代入は行えません。</SPAN>
+	<SPAN Class="source_comment">//(実行順序が保障されないため乱数などの使用はできません)</SPAN>
+	<SPAN Class="source_comment">//----------------------------------------------------</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> objEnemy; <SPAN Class="source_comment">//敵オブジェクト</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> frame = <SPAN Class="source_number">0</SPAN>; <SPAN Class="source_comment">//敵動作に使用するカウンタ(@MainLoopで1づつ増加させます)</SPAN>
+
+	<SPAN Class="source_comment">//----------------------------------------------------</SPAN>
+	<SPAN Class="source_comment">//敵の動作</SPAN>
+	<SPAN Class="source_comment">//----------------------------------------------------</SPAN>
+	@Event
+	{
+		<SPAN Class="source_reserve">alternative</SPAN>(GetEventType())
+		<SPAN Class="source_reserve">case</SPAN>(EV_REQUEST_LIFE)
+		{
+			<SPAN Class="source_comment">//敵ライフを要求された</SPAN>
+			SetScriptResult(<SPAN Class="source_number">500</SPAN>);<SPAN Class="source_comment">//ライフを500に設定</SPAN>
+		}
+	}
+
+	@Initialize
+	{
+		<SPAN Class="source_comment">//敵オブジェクトを生成し登録</SPAN>
+		objEnemy = ObjEnemy_Create(OBJ_ENEMY_BOSS);
+		ObjEnemy_Regist(objEnemy);
+
+		<SPAN Class="source_comment">//敵画像の設定</SPAN>
+		<SPAN Class="source_reserve">let</SPAN> imgExRumia = GetCurrentScriptDirectory ~ <SPAN Class="source_string">"ExRumia.png"</SPAN>; <SPAN Class="source_comment">//敵画像ファイル</SPAN>
+		ObjPrim_SetTexture(objEnemy, imgExRumia); <SPAN Class="source_comment">//画像ファイルを読み込む</SPAN>
+		ObjSprite2D_SetSourceRect(objEnemy, <SPAN Class="source_number">64</SPAN>, <SPAN Class="source_number">1</SPAN>, <SPAN Class="source_number">127</SPAN>, <SPAN Class="source_number">64</SPAN>); <SPAN Class="source_comment">//描画元矩形を(64,1) - (127,64)に設定</SPAN>
+		ObjSprite2D_SetDestCenter(objEnemy); <SPAN Class="source_comment">//描画先を中心(0, 0)に設定</SPAN>
+
+		<SPAN Class="source_comment">//座標(cx, 60)へ60フレームかけて移動する</SPAN>
+		<SPAN Class="source_reserve">let</SPAN> cx = GetStgFrameWidth() / <SPAN Class="source_number">2</SPAN>;<SPAN Class="source_comment">//STGシーンの中心x座標を取得</SPAN>
+		ObjMove_SetDestAtFrame(objEnemy, cx, <SPAN Class="source_number">60</SPAN>, <SPAN Class="source_number">60</SPAN>);
+	}
+
+	@MainLoop
+	{
+		<SPAN Class="source_comment">//敵の座標を取得</SPAN>
+		<SPAN Class="source_reserve">let</SPAN> ex = ObjMove_GetX(objEnemy);
+		<SPAN Class="source_reserve">let</SPAN> ey = ObjMove_GetY(objEnemy);
+
+		<SPAN Class="source_reserve">if</SPAN>(frame == <SPAN Class="source_number">60</SPAN>)
+		{
+			<SPAN Class="source_comment">//frameが60になったら実行される部分</SPAN>
+			<SPAN Class="source_comment">//自機の座標を取得</SPAN>
+			<SPAN Class="source_reserve">let</SPAN> px = GetPlayerX();
+			<SPAN Class="source_reserve">let</SPAN> py = GetPlayerY();
+
+			<SPAN Class="source_comment">//敵からみた自機方向の角度を求める。</SPAN>
+			<SPAN Class="source_reserve">let</SPAN> angleToPlayer = atan2(py - ey, px - ex);
+
+			<SPAN Class="source_comment">//angleを-30から15ずつ増加させ5WAYにする</SPAN>
+			<SPAN Class="source_reserve">let</SPAN> angle = -<SPAN Class="source_number">30</SPAN>;
+			<SPAN Class="source_reserve">while</SPAN>(angle &lt;= <SPAN Class="source_number">30</SPAN>)
+			{<SPAN Class="source_comment">//(angle=-30, -15, 0, 15, 30)</SPAN>
+				<SPAN Class="source_comment">//敵の座標から自機に向かって5WAY弾を発射する</SPAN>
+				<SPAN Class="source_comment">//速度：1フレームに3</SPAN>
+				<SPAN Class="source_comment">//角度：angle + angleToPlayer</SPAN>
+				<SPAN Class="source_comment">//遅延時間：30フレーム</SPAN>
+				CreateShotA1(ex, ey, <SPAN Class="source_number">3</SPAN>, angle + angleToPlayer, DS_RICE_S_BLUE, <SPAN Class="source_number">30</SPAN>);
+				angle += <SPAN Class="source_number">15</SPAN>;
+			}
+
+			frame = <SPAN Class="source_number">0</SPAN>;<SPAN Class="source_comment">//弾を出したらframeを0にする</SPAN>
+		}
+
+		<SPAN Class="source_comment">//当たり判定登録</SPAN>
+		ObjEnemy_SetIntersectionCircleToShot(objEnemy, ex, ey, <SPAN Class="source_number">32</SPAN>);<SPAN Class="source_comment">//当たり判定(自機弾用)登録</SPAN>
+		ObjEnemy_SetIntersectionCircleToPlayer(objEnemy, ex, ey, <SPAN Class="source_number">24</SPAN>);<SPAN Class="source_comment">//当たり判定(体当たり用)登録</SPAN>
+
+		<SPAN Class="source_comment">//カウンタに1追加</SPAN>
+		frame++;
+
+		<SPAN Class="source_comment">//ライフ0処理</SPAN>
+		<SPAN Class="source_reserve">if</SPAN>(ObjEnemy_GetInfo(objEnemy, INFO_LIFE) &lt;= <SPAN Class="source_number">0</SPAN>)
+		{
+			<SPAN Class="source_comment">//ライフが0になったら即座に終了</SPAN>
+			<SPAN Class="source_comment">//本来は爆発エフェクトのタスクを登録し、</SPAN>
+			<SPAN Class="source_comment">//エフェクト終了を待って、スクリプトを終了します。</SPAN>
+			Obj_Delete(objEnemy);
+			CloseScript(GetOwnScriptID());
+			<SPAN Class="source_reserve">return</SPAN>;
+		}
+	}
+	</PRE></DIV>
+ </P>
+ <BR><HR>
+
+
+ <P>
+  <TABLE class = "sample_ex">
+   <TR class = "sample">
+    <TD class = "sample_textT" colspan="3"><A name="A03">A03 一定時間で自機方向へ角度を変える弾</A></TD>
+   </TR>
+   <TR class = "sample">
+    <TD class = "sample_image"><IMG src = "img/sample_shot_A03_1.jpg"></TD>
+    <TD class = "sample_arrow">→</TD>
+    <TD class = "sample_image"><IMG src = "img/sample_shot_A03_2.jpg"></TD>
+    </TD>
+   </TR>
+   <TR class = "sample">
+    <TD class = "sample_text" colspan="3">
+     一定時間で自機方向へ角度を変える全方位弾を発射します。<BR>
+     <BR>
+     CreateShotで弾を作製し、ObjMove_AddPatternを使うことで、<BR>
+     角度を変化させます。 <BR>
+    </TD>
+   </TR>
+  </TABLE>
+	<DIV Class="source"><PRE class="source">
+	#東方弾幕風[Single]
+	#ScriptVersion[<SPAN Class="source_number">3</SPAN>]
+	#Title[<SPAN Class="source_string">"SampleA03"</SPAN>]
+	#Text[<SPAN Class="source_string">"SampleA03：一定時間で自機方向へ角度を変える弾"</SPAN>]
+
+	<SPAN Class="source_comment">//デフォルト弾画像をロード</SPAN>
+	<SPAN Class="source_reserve">#include</SPAN><SPAN Class="source_string">"script/default_system/Default_ShotConst.txt"</SPAN>
+
+	<SPAN Class="source_comment">//----------------------------------------------------</SPAN>
+	<SPAN Class="source_comment">//グローバル変数宣言</SPAN>
+	<SPAN Class="source_comment">//この位置で宣言した変数はスクリプト全体で有効です。</SPAN>
+	<SPAN Class="source_comment">//ただしこの箇所での変数への代入は、定数以外の代入は行えません。</SPAN>
+	<SPAN Class="source_comment">//(実行順序が保障されないため乱数などの使用はできません)</SPAN>
+	<SPAN Class="source_comment">//----------------------------------------------------</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> objEnemy; <SPAN Class="source_comment">//敵オブジェクト</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> objPlayer; <SPAN Class="source_comment">//自機オブジェクト</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> frame = <SPAN Class="source_number">0</SPAN>; <SPAN Class="source_comment">//敵動作に使用するカウンタ(@MainLoopで1づつ増加させます)</SPAN>
+
+	<SPAN Class="source_comment">//----------------------------------------------------</SPAN>
+	<SPAN Class="source_comment">//敵の動作</SPAN>
+	<SPAN Class="source_comment">//----------------------------------------------------</SPAN>
+	@Event
+	{
+		<SPAN Class="source_reserve">alternative</SPAN>(GetEventType())
+		<SPAN Class="source_reserve">case</SPAN>(EV_REQUEST_LIFE)
+		{
+			<SPAN Class="source_comment">//敵ライフを要求された</SPAN>
+			SetScriptResult(<SPAN Class="source_number">500</SPAN>);<SPAN Class="source_comment">//ライフを500に設定</SPAN>
+		}
+	}
+
+	@Initialize
+	{
+		<SPAN Class="source_comment">//自機オブジェクト取得</SPAN>
+		objPlayer = GetPlayerObjectID();
+
+		<SPAN Class="source_comment">//敵オブジェクトを生成し登録</SPAN>
+		objEnemy = ObjEnemy_Create(OBJ_ENEMY_BOSS);
+		ObjEnemy_Regist(objEnemy);
+
+		<SPAN Class="source_comment">//敵画像の設定</SPAN>
+		<SPAN Class="source_reserve">let</SPAN> imgExRumia = GetCurrentScriptDirectory ~ <SPAN Class="source_string">"ExRumia.png"</SPAN>; <SPAN Class="source_comment">//敵画像ファイル</SPAN>
+		ObjPrim_SetTexture(objEnemy, imgExRumia); <SPAN Class="source_comment">//画像ファイルを読み込む</SPAN>
+		ObjSprite2D_SetSourceRect(objEnemy, <SPAN Class="source_number">64</SPAN>, <SPAN Class="source_number">1</SPAN>, <SPAN Class="source_number">127</SPAN>, <SPAN Class="source_number">64</SPAN>); <SPAN Class="source_comment">//描画元矩形を(64,1) - (127,64)に設定</SPAN>
+		ObjSprite2D_SetDestCenter(objEnemy); <SPAN Class="source_comment">//描画先を中心(0, 0)に設定</SPAN>
+
+		<SPAN Class="source_comment">//座標(cx, 120)へ60フレームかけて移動する</SPAN>
+		<SPAN Class="source_reserve">let</SPAN> cx = GetStgFrameWidth() / <SPAN Class="source_number">2</SPAN>;<SPAN Class="source_comment">//STGシーンの中心x座標を取得</SPAN>
+		ObjMove_SetDestAtFrame(objEnemy, cx, <SPAN Class="source_number">120</SPAN>, <SPAN Class="source_number">60</SPAN>);
+	}
+
+	@MainLoop
+	{
+		<SPAN Class="source_comment">//敵の座標を取得</SPAN>
+		<SPAN Class="source_reserve">let</SPAN> ex = ObjMove_GetX(objEnemy);
+		<SPAN Class="source_reserve">let</SPAN> ey = ObjMove_GetY(objEnemy);
+
+		<SPAN Class="source_reserve">if</SPAN>(frame == <SPAN Class="source_number">180</SPAN>)
+		{
+			<SPAN Class="source_comment">//frameが180になったら実行される部分</SPAN>
+			<SPAN Class="source_comment">//自機の座標を取得</SPAN>
+			<SPAN Class="source_reserve">let</SPAN> px = GetPlayerX();
+			<SPAN Class="source_reserve">let</SPAN> py = GetPlayerY();
+
+			<SPAN Class="source_comment">//敵からみた自機方向の角度を求める。</SPAN>
+			<SPAN Class="source_reserve">let</SPAN> angleToPlayer = atan2(py - ey, px - ex);
+
+			<SPAN Class="source_comment">//angleを-30から15ずつ増加させ5WAYにする</SPAN>
+			<SPAN Class="source_reserve">let</SPAN> angle=<SPAN Class="source_number">0</SPAN>;
+			<SPAN Class="source_reserve">while</SPAN>(angle&lt;<SPAN Class="source_number">360</SPAN>)
+			{<SPAN Class="source_comment">//(angle：15°間隔で0～360まで)</SPAN>
+				<SPAN Class="source_comment">//一定時間で自機方向へ角度を変える弾</SPAN>
+				<SPAN Class="source_comment">//弾を作成する。</SPAN>
+				<SPAN Class="source_reserve">let</SPAN> obj = CreateShotA2(ex, ey, <SPAN Class="source_number">5</SPAN>, angle, -<SPAN Class="source_number">0.10</SPAN>, <SPAN Class="source_number">1</SPAN>, DS_RICE_S_BLUE, <SPAN Class="source_number">30</SPAN>);
+				<SPAN Class="source_comment">//発射後60フレーム目に、自機方向を基準に角度変更するように設定</SPAN>
+				ObjMove_AddPatternA4(obj, <SPAN Class="source_number">60</SPAN>, <SPAN Class="source_number">3</SPAN>, <SPAN Class="source_number">0</SPAN>, <SPAN Class="source_number">0</SPAN>, <SPAN Class="source_number">0</SPAN>, <SPAN Class="source_number">3</SPAN>, objPlayer, NO_CHANGE);
+				angle += <SPAN Class="source_number">15</SPAN>;
+			}
+
+			frame = <SPAN Class="source_number">0</SPAN>;<SPAN Class="source_comment">//弾を出したらframeを0にする</SPAN>
+		}
+
+		<SPAN Class="source_comment">//当たり判定登録</SPAN>
+		ObjEnemy_SetIntersectionCircleToShot(objEnemy, ex, ey, <SPAN Class="source_number">32</SPAN>);<SPAN Class="source_comment">//当たり判定(自機弾用)登録</SPAN>
+		ObjEnemy_SetIntersectionCircleToPlayer(objEnemy, ex, ey, <SPAN Class="source_number">24</SPAN>);<SPAN Class="source_comment">//当たり判定(体当たり用)登録</SPAN>
+
+		<SPAN Class="source_comment">//カウンタに1追加</SPAN>
+		frame++;
+
+		<SPAN Class="source_comment">//ライフ0処理</SPAN>
+		<SPAN Class="source_reserve">if</SPAN>(ObjEnemy_GetInfo(objEnemy, INFO_LIFE) &lt;= <SPAN Class="source_number">0</SPAN>)
+		{
+			<SPAN Class="source_comment">//ライフが0になったら即座に終了</SPAN>
+			<SPAN Class="source_comment">//本来は爆発エフェクトのタスクを登録し、</SPAN>
+			<SPAN Class="source_comment">//エフェクト終了を待って、スクリプトを終了します。</SPAN>
+			Obj_Delete(objEnemy);
+			CloseScript(GetOwnScriptID());
+			<SPAN Class="source_reserve">return</SPAN>;
+		}
+	}
+	</PRE></DIV>
+ </P>
+ <BR><HR>
+
+
+ <P>
+  <TABLE class = "sample_ex">
+   <TR class = "sample">
+    <TD class = "sample_textT" colspan="5"><A name="A04">A04 分裂する弾</A></TD>
+   </TR>
+   <TR class = "sample">
+    <TD class = "sample_image"><IMG src = "img/sample_shot_A04_1.jpg"></TD>
+    <TD class = "sample_arrow">→</TD>
+    <TD class = "sample_image"><IMG src = "img/sample_shot_A04_2.jpg"></TD>
+    <TD class = "sample_arrow">→</TD>
+    <TD class = "sample_image"><IMG src = "img/sample_shot_A04_3.jpg"></TD>
+    </TD>
+   </TR>
+   <TR class = "sample">
+    <TD class = "sample_text" colspan="5">
+     ObjShot_AddShotを使った分裂する弾です。<BR>
+     自機方向への3WAY(青)が、<BR>
+     それぞれ自機と逆方向への3WAY(赤)に分裂し、<BR>
+     さらに自機方向への5WAY(紫)に分裂します。<BR>
+    </TD>
+   </TR>
+  </TABLE>
+	<DIV Class="source"><PRE class="source">
+	#東方弾幕風[Single]
+	#ScriptVersion[<SPAN Class="source_number">3</SPAN>]
+	#Title[<SPAN Class="source_string">"SampleA04"</SPAN>]
+	#Text[<SPAN Class="source_string">"SampleA04：分裂する弾"</SPAN>]
+
+	<SPAN Class="source_comment">//デフォルト弾画像をロード</SPAN>
+	<SPAN Class="source_reserve">#include</SPAN><SPAN Class="source_string">"script/default_system/Default_ShotConst.txt"</SPAN>
+
+	<SPAN Class="source_comment">//----------------------------------------------------</SPAN>
+	<SPAN Class="source_comment">//グローバル変数宣言</SPAN>
+	<SPAN Class="source_comment">//この位置で宣言した変数はスクリプト全体で有効です。</SPAN>
+	<SPAN Class="source_comment">//ただしこの箇所での変数への代入は、定数以外の代入は行えません。</SPAN>
+	<SPAN Class="source_comment">//(実行順序が保障されないため乱数などの使用はできません)</SPAN>
+	<SPAN Class="source_comment">//----------------------------------------------------</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> objEnemy; <SPAN Class="source_comment">//敵オブジェクト</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> objPlayer; <SPAN Class="source_comment">//自機オブジェクト</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> frame = <SPAN Class="source_number">0</SPAN>; <SPAN Class="source_comment">//敵動作に使用するカウンタ(@MainLoopで1づつ増加させます)</SPAN>
+
+	<SPAN Class="source_comment">//----------------------------------------------------</SPAN>
+	<SPAN Class="source_comment">//敵の動作</SPAN>
+	<SPAN Class="source_comment">//----------------------------------------------------</SPAN>
+	@Event
+	{
+		<SPAN Class="source_reserve">alternative</SPAN>(GetEventType())
+		<SPAN Class="source_reserve">case</SPAN>(EV_REQUEST_LIFE)
+		{
+			<SPAN Class="source_comment">//敵ライフを要求された</SPAN>
+			SetScriptResult(<SPAN Class="source_number">500</SPAN>);<SPAN Class="source_comment">//ライフを500に設定</SPAN>
+		}
+	}
+
+	@Initialize
+	{
+		<SPAN Class="source_comment">//自機オブジェクト取得</SPAN>
+		objPlayer = GetPlayerObjectID();
+
+		<SPAN Class="source_comment">//敵オブジェクトを生成し登録</SPAN>
+		objEnemy = ObjEnemy_Create(OBJ_ENEMY_BOSS);
+		ObjEnemy_Regist(objEnemy);
+
+		<SPAN Class="source_comment">//敵画像の設定</SPAN>
+		<SPAN Class="source_reserve">let</SPAN> imgExRumia = GetCurrentScriptDirectory ~ <SPAN Class="source_string">"ExRumia.png"</SPAN>; <SPAN Class="source_comment">//敵画像ファイル</SPAN>
+		ObjPrim_SetTexture(objEnemy, imgExRumia); <SPAN Class="source_comment">//画像ファイルを読み込む</SPAN>
+		ObjSprite2D_SetSourceRect(objEnemy, <SPAN Class="source_number">64</SPAN>, <SPAN Class="source_number">1</SPAN>, <SPAN Class="source_number">127</SPAN>, <SPAN Class="source_number">64</SPAN>); <SPAN Class="source_comment">//描画元矩形を(64,1) - (127,64)に設定</SPAN>
+		ObjSprite2D_SetDestCenter(objEnemy); <SPAN Class="source_comment">//描画先を中心(0, 0)に設定</SPAN>
+
+		<SPAN Class="source_comment">//座標(cx, 120)へ60フレームかけて移動する</SPAN>
+		<SPAN Class="source_reserve">let</SPAN> cx = GetStgFrameWidth() / <SPAN Class="source_number">2</SPAN>;<SPAN Class="source_comment">//STGシーンの中心x座標を取得</SPAN>
+		ObjMove_SetDestAtFrame(objEnemy, cx, <SPAN Class="source_number">120</SPAN>, <SPAN Class="source_number">60</SPAN>);
+	}
+
+	@MainLoop
+	{
+		<SPAN Class="source_comment">//敵の座標を取得</SPAN>
+		<SPAN Class="source_reserve">let</SPAN> ex = ObjMove_GetX(objEnemy);
+		<SPAN Class="source_reserve">let</SPAN> ey = ObjMove_GetY(objEnemy);
+
+		<SPAN Class="source_reserve">if</SPAN>(frame == <SPAN Class="source_number">360</SPAN>)
+		{
+			<SPAN Class="source_comment">//frameが360になったら実行される部分</SPAN>
+			<SPAN Class="source_comment">//自機の座標を取得</SPAN>
+			<SPAN Class="source_reserve">let</SPAN> px = GetPlayerX();
+			<SPAN Class="source_reserve">let</SPAN> py = GetPlayerY();
+
+			<SPAN Class="source_comment">//敵からみた自機方向の角度を求める。</SPAN>
+			<SPAN Class="source_reserve">let</SPAN> angleToPlayer = atan2(py - ey, px - ex);
+
+			<SPAN Class="source_comment">//angleを-30から15ずつ増加させ5WAYにする</SPAN>
+			<SPAN Class="source_reserve">let</SPAN> iAngle = -<SPAN Class="source_number">20</SPAN>;
+			<SPAN Class="source_reserve">while</SPAN>(iAngle &lt;= <SPAN Class="source_number">20</SPAN>)
+			{<SPAN Class="source_comment">//(iAngle=-20 ,0 ,20)の3WAY</SPAN>
+				<SPAN Class="source_comment">//一定時間で自機方向へ角度を変える弾</SPAN>
+				<SPAN Class="source_comment">//弾を作成する。</SPAN>
+				<SPAN Class="source_reserve">let</SPAN> obj1 = CreateShotA1(ex, ey, <SPAN Class="source_number">4</SPAN>, iAngle + angleToPlayer, DS_SCALE_BLUE, <SPAN Class="source_number">30</SPAN>);<SPAN Class="source_comment">//shot1作製</SPAN>
+				ObjShot_SetDeleteFrame(obj1, <SPAN Class="source_number">46</SPAN>);<SPAN Class="source_comment">//遅延時間後46フレーム目に消滅</SPAN>
+
+				<SPAN Class="source_reserve">let</SPAN> jAngle = -<SPAN Class="source_number">15</SPAN>;
+				<SPAN Class="source_reserve">while</SPAN>(jAngle &lt;= <SPAN Class="source_number">15</SPAN>)
+				{<SPAN Class="source_comment">//(jAngle=-15 ,0 ,15)の3WAY</SPAN>
+					<SPAN Class="source_reserve">let</SPAN> obj2 = CreateShotA1(<SPAN Class="source_number">0</SPAN>, <SPAN Class="source_number">0</SPAN>, <SPAN Class="source_number">0</SPAN>, <SPAN Class="source_number">0</SPAN>, DS_SCALE_RED, <SPAN Class="source_number">10</SPAN>);<SPAN Class="source_comment">//shot2作製</SPAN>
+					ObjMove_AddPatternA4(obj2, <SPAN Class="source_number">0</SPAN>, <SPAN Class="source_number">3</SPAN>, jAngle + <SPAN Class="source_number">180</SPAN>, <SPAN Class="source_number">0</SPAN>, <SPAN Class="source_number">0</SPAN>, <SPAN Class="source_number">3</SPAN>, objPlayer, NO_CHANGE);<SPAN Class="source_comment">//自機依存の角度に設定</SPAN>
+					ObjShot_SetDeleteFrame(obj2, <SPAN Class="source_number">61</SPAN>);<SPAN Class="source_comment">//遅延時間後61フレーム目に消滅</SPAN>
+
+					<SPAN Class="source_reserve">let</SPAN> kAngle = -<SPAN Class="source_number">30</SPAN>;
+					<SPAN Class="source_reserve">while</SPAN>(kAngle &lt;= <SPAN Class="source_number">30</SPAN>)
+					{<SPAN Class="source_comment">//(kAngle=-30, -15 , 0 , 15, 30)の5WAY</SPAN>
+						<SPAN Class="source_reserve">let</SPAN> obj3 = CreateShotA1(<SPAN Class="source_number">0</SPAN>, <SPAN Class="source_number">0</SPAN>, <SPAN Class="source_number">0</SPAN>, <SPAN Class="source_number">0</SPAN>, DS_SCALE_PURPLE, <SPAN Class="source_number">10</SPAN>);<SPAN Class="source_comment">//shot3作製</SPAN>
+						ObjMove_AddPatternA4(obj3, <SPAN Class="source_number">0</SPAN>, <SPAN Class="source_number">2</SPAN>, kAngle, <SPAN Class="source_number">0</SPAN>, <SPAN Class="source_number">0</SPAN>, <SPAN Class="source_number">3</SPAN>, objPlayer, NO_CHANGE);<SPAN Class="source_comment">//自機依存の角度に設定</SPAN>
+						ObjShot_AddShotA1(obj2, obj3, <SPAN Class="source_number">60</SPAN>);<SPAN Class="source_comment">// shot2にshot3を追加(60フレームでshot3放出)</SPAN>
+						kAngle += <SPAN Class="source_number">15</SPAN>;
+					}
+					ObjShot_AddShotA1(obj1, obj2, <SPAN Class="source_number">45</SPAN>);<SPAN Class="source_comment">// shot1にshot2を追加(45フレームでshot2放出)</SPAN>
+					jAngle += <SPAN Class="source_number">15</SPAN>;
+				}
+
+				iAngle += <SPAN Class="source_number">20</SPAN>;
+			}
+
+			frame = <SPAN Class="source_number">0</SPAN>;<SPAN Class="source_comment">//弾を出したらframeを0にする</SPAN>
+		}
+
+		<SPAN Class="source_comment">//当たり判定登録</SPAN>
+		ObjEnemy_SetIntersectionCircleToShot(objEnemy, ex, ey, <SPAN Class="source_number">32</SPAN>);<SPAN Class="source_comment">//当たり判定(自機弾用)登録</SPAN>
+		ObjEnemy_SetIntersectionCircleToPlayer(objEnemy, ex, ey, <SPAN Class="source_number">24</SPAN>);<SPAN Class="source_comment">//当たり判定(体当たり用)登録</SPAN>
+
+		<SPAN Class="source_comment">//カウンタに1追加</SPAN>
+		frame++;
+
+		<SPAN Class="source_comment">//ライフ0処理</SPAN>
+		<SPAN Class="source_reserve">if</SPAN>(ObjEnemy_GetInfo(objEnemy, INFO_LIFE) &lt;= <SPAN Class="source_number">0</SPAN>)
+		{
+			<SPAN Class="source_comment">//ライフが0になったら即座に終了</SPAN>
+			<SPAN Class="source_comment">//本来は爆発エフェクトのタスクを登録し、</SPAN>
+			<SPAN Class="source_comment">//エフェクト終了を待って、スクリプトを終了します。</SPAN>
+			Obj_Delete(objEnemy);
+			CloseScript(GetOwnScriptID());
+			<SPAN Class="source_reserve">return</SPAN>;
+		}
+	}
+	</PRE></DIV>
+
+ </P>
+ <BR><HR>
+
+
+
+ </DIV></BODY>
+</HTML>
+
+

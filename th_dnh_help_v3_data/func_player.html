@@ -1,0 +1,119 @@
+<HTML>
+ <HEAD>
+  <TITLE>自機スクリプト専用関数</TITLE>
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/html;charset=Shift_JIS">
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/css">
+  <LINK rel="stylesheet" href="style.css" type="text/css">
+ </HEAD>
+
+ <STYLE TYPE="text/css">
+ </STYLE>
+
+ <BODY link="#0000ff" alink="#0000ff" vlink="#0000ff">
+ <DIV class="allbody">
+
+ <HR>
+ <SPAN class = "section_title"><A name="sec_player">■自機専用関数</A></SPAN><BR>
+  自機スクリプト専用の関数です。
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="CreatePlayerShotA1">CreatePlayerShotA1(引数：7)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:x座標</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:y座標</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:速度</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:角度</SPAN><BR>
+  <SPAN class = "function_arg">　5) real:威力</SPAN><BR>
+  <SPAN class = "function_arg">　6) real:貫通力</SPAN><BR>
+  <SPAN class = "function_arg">　7) real:弾画像ID</SPAN><BR>
+  自弾を発射します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="CallSpell">CallSpell(引数：0)</A></SPAN><BR>
+  スペルカードを発動できる条件が整っている場合は、スペルカードを発動します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="LoadPlayerShotData">LoadPlayerShotData(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:弾設定ファイルへのパス</SPAN><BR>
+  自機弾画像をロードします。<BR>
+  何回でも呼び出せ、複数回読んだ場合はIDが異なってさえいれば、次々と登録されます。<BR>
+  同名ファイルは1度しか読み込めません。<BR>
+  「<A href="other_spec.html#AddShot">弾画像の追加</A>」を参照お願いします。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ReloadPlayerShotData">ReloadPlayerShotData(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:弾設定ファイルへのパス</SPAN><BR>
+  自機弾画像をリロードします。(LoadPlayerShotDataを呼ばずにいきなり呼び出してもよいです)<BR>
+  何回でも呼び出せ、複数回読んだ場合はIDが異なってさえいれば、次々と登録されます。<BR>
+  LoadPlayerShotDataと異なり同名ファイルも読み込めます。<BR>
+  「<A href="other_spec.html#AddShot">弾画像の追加</A>」を参照お願いします。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetSpellManageObject">GetSpellManageObject(引数：0、返り値：real[オブジェクトID])</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:スペルカード管理オブジェクト</SPAN><BR>
+  スペルカード管理オブジェクトIDを取得します。<BR>
+  スペルカード終了時にはこのオブジェクトをObjDeleteで削除する必要があります。<BR>
+ </P><HR>
+
+
+ <HR>
+ <SPAN class = "section_title"><A name="sec_ObjSpell_">■スペルオブジェクト操作(ObjSpell_)</A></SPAN><BR>
+  自機スペルカードの操作を行う関数です。<BR>
+  各オブジェクトの関連性については「<A href = "other_spec.html#Object">オブジェクト</A>」を参照お願いします。<BR>
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjSpell_Create">ObjSpell_Create(引数：0、返り値：real[オブジェクトID])</A></SPAN><BR>
+  スペルカードオブジェクトを生成します。<BR>
+  生成するだけで発動はされません。ObjSpell_Registで発動されます。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjSpell_Regist">ObjSpell_Regist(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  スペルカードオブジェクトを発動します。(表示されるようになります)<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjSpell_SetDamage">ObjSpell_SetDamage(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:威力</SPAN><BR>
+  威力を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjSpell_SetEraseShot">ObjSpell_SetEraseShot(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) bool:弾消し性能有無(true/false)</SPAN><BR>
+  弾消し性能有無を設定します。<BR>デフォルトでtrueです。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjSpell_SetIntersectionCircle">ObjSpell_SetIntersectionCircle(引数：4)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:x座標</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:y座標</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:半径</SPAN><BR>
+  このスペルの当たり判定を登録します。<BR>
+  複数登録できますが、1フレーム毎に判定は消滅します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjSpell_SetIntersectionLine">ObjSpell_SetIntersectionLine(引数：6)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:先端x座標</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:先端y座標</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:終端x座標</SPAN><BR>
+  <SPAN class = "function_arg">　5) real:終端y座標</SPAN><BR>
+  <SPAN class = "function_arg">　6) real:線幅</SPAN><BR>
+  このスペルの線形の当たり判定を登録します。<BR>
+  複数登録できますが、1フレーム毎に判定は消滅します。<BR>
+ </P><HR>
+
+ </DIV></BODY>
+</HTML>
+

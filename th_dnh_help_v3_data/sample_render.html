@@ -1,0 +1,476 @@
+<HTML>
+ <HEAD>
+  <TITLE>画像表示サンプル(解説)</TITLE>
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/html;charset=Shift_JIS">
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/css">
+  <LINK rel="stylesheet" href="style.css" type="text/css">
+ </HEAD>
+
+ <STYLE TYPE="text/css">
+
+ </STYLE>
+
+ <BODY link="#0000ff" alink="#0000ff" vlink="#0000ff">
+ <DIV class="allbody">
+
+ <HR>
+ <SPAN class = "section_title"><A name = "sec_sound">■画像表示サンプル(解説)</A></SPAN><BR>
+ <P>画像表示の説明です。
+ </P>
+
+ <P>
+  <TABLE class = "sample">
+   <TR class = "sample">
+    <TD class = "sample_elementT">SampleRA</TD> <TD class = "tag_textT">描画オブジェクト(解説)</TD>
+   </TR>
+   <TR class = "sample">
+    <TD class = "sample_element">RA01</TD>
+    <TD class = "sample_text"><A href = "#RA01">描画オブジェクト</A></TD>
+   </TR>
+   <TR class = "sample">
+    <TD class = "sample_element">RA02</TD>
+    <TD class = "sample_text"><A href = "#RA02">テクスチャ・ポリゴン・頂点</A></TD>
+   </TR>
+   <TR class = "sample">
+    <TD class = "sample_element">RA03</TD>
+    <TD class = "sample_text"><A href = "#RA03">プリミティブ</A></TD>
+   </TR>
+   <TR class = "sample">
+    <TD class = "sample_element">RA05</TD>
+    <TD class = "sample_text"><A href = "#RA05">頂点のUV値</A></TD>
+   </TR>
+  </TABLE>
+  <BR>
+  <TABLE class = "sample">
+   <TR class = "sample">
+    <TD class = "sample_elementT">SampleRB</TD> <TD class = "tag_textT">描画オブジェクトサンプル(2D)</TD>
+   </TR>
+   <TR class = "sample">
+    <TD class = "sample_element">RB01</TD>
+    <TD class = "sample_text"><A href = "#RB01">矩形(長方形)画像の描画</A></TD>
+   </TR>
+   <TR class = "sample">
+    <TD class = "sample_element">RB02</TD>
+    <TD class = "sample_text"><A href = "#RB02">矩形画像の回転・拡大</A></TD>
+   </TR>
+   <TR class = "sample">
+    <TD class = "sample_element">RB03</TD>
+    <TD class = "sample_text"><A href = "#RB03">複数の矩形画像の描画</A></TD>
+   </TR>
+  </TABLE>
+  <BR>
+  <TABLE class = "sample">
+   <TR class = "sample">
+    <TD class = "sample_elementT">SampleRD</TD> <TD class = "tag_textT">描画オブジェクトサンプル(3Dモデル)</TD>
+   </TR>
+   <TR class = "sample">
+    <TD class = "sample_element">RD02</TD>
+    <TD class = "sample_text"><A href = "#RD02">自機や敵に3Dモデルを使用</A></TD>
+   </TR>
+  </TABLE>
+ </P>
+ <BR><HR>
+
+ <P>
+  <TABLE class = "sample_ex">
+   <TR class = "sample">
+    <TD class = "sample_textT" colspan="1"><A name="RA01">RA01 描画オブジェクト</A></TD>
+   </TR>
+   <TR class = "sample">
+    <TD class = "sample_text">
+     (このあたりはとばして、<A href = "#RB01">SampleRB</A>からの実際の使用例から読んだ方がわかりやすいかもしれません。)<BR>
+     <BR>
+     描画オブジェクトは東方弾幕風画面内に絵を表示するための機能で、<BR>
+     おおまかには以下のように画面に表示する画像を設定します。<BR>
+     <BR>
+     1)ObjPrim_Createで描画オブジェクトを生成する。<BR>
+     2)ObjPrim_SetTextureで描画オブジェクトに、<BR>
+     　画面に表示する画像ファイルを設定する。<BR>
+     3)画像ファイルの表示する範囲(描画元の範囲)を設定する。<BR>
+     　(この関数は種類が多いので別途解説)<BR>
+     4)描画先の位置を設定する。(この関数も種類が多いので別途解説)<BR>
+     5)その他の必要な設定を行う。(描画優先度、回転、拡大、透明度など)<BR>
+     <BR>
+     上記それぞれの設定には、テクスチャ、ポリゴンという要素がかかわってきます。<BR>
+     <BR>
+    </TD>
+   </TR>
+  </TABLE>
+ </P>
+ <BR><HR>
+
+ <P>
+  <TABLE class = "sample_ex">
+   <TR class = "sample">
+    <TD class = "sample_textT" colspan="1"><A name="RA02">RA02 テクスチャ・ポリゴン</A></TD>
+   </TR>
+   <TR class = "sample">
+    <TD class = "sample_text">
+     東方弾幕風は2Dゲームですが、描画には3Dグラフィクスの機能を用いています。<BR>
+     3Dといえば、よくテクスチャとかポリゴンとか聞くと思います。<BR>
+     テクスチャとは画像です。絵です。<BR>
+     ポリゴンとは3Dグラフィクスで物体をあらわすのに用いる多角形のことです。<BR>
+     <BR>
+     ポリゴンを表すのに用いられるのが頂点です<BR>
+     例えば、三角形を表すには、3つの頂点が必要です。<BR>
+     (3つの点を結べば三角形になりますよね)<BR>
+     ポリゴンはほとんどが三角形の集合で表されます。<BR>
+     三角形は凸な角だけで構成されたりして都合がよいのです。<BR>
+     <BR>
+     さて、弾幕風の自機の画像も、弾の画像も画像ファイルから読み込んだテクスチャの一部を<BR>
+     四角形に切り取って画面に貼り付けているのは、見ただけで分かると思います。<BR>
+     その四角形もポリゴンなのです。<BR>
+     四角形のポリゴンにテクスチャを貼り付けて、絵を表示しているのです。<BR>
+     <BR>
+    </TD>
+   </TR>
+  </TABLE>
+ </P>
+ <BR><HR>
+
+ <P>
+  <TABLE class = "sample_ex">
+   <TR class = "sample">
+    <TD class = "sample_textT" colspan="1"><A name="RA03">RA03 プリミティブ</A></TD>
+   </TR>
+   <TR class = "sample">
+    <TD class = "sample_text">
+     ポリゴンは三角形の集合で表されます。<BR>
+     しかしながら、どのような頂点の並びでどのような三角形の集合を<BR>
+     あらわすのか決めないと困ってしまいます。<BR>
+      頂点の並びで定義される図形を決めてやらないといけません。<BR>
+     この頂点の並びで定義される図形を<B>プリミティブ</B>といいます。<BR>
+     このプリミティブには三種類が用意されています。<BR>
+     <IMG src="img/sample_render_RA03.jpg"><BR>
+     例えば四角形を表すには、TRIANGLELISTでは6つの頂点が必要になりますが、<BR>
+     TRAIANGLESTRIPやTRAIANGLEFANでは4つの頂点で表すことができます。<BR>
+     <BR>
+     それでは、よくSTGにでてくる曲がるレーザーにはどれが使いやすいでしょうか。<BR>
+     曲がるレーザーにはTRAIANGLESTRIPが使いやすいですよね。<BR>
+     TRAIANGLESTRIPは、最初の頂点からはしご上に連結した形状を表すので<BR>
+     曲がるレーザーのように、途中が曲がったものには最適なのです。<BR>
+     <BR>
+     もちろん、TRAIANGLELISTは、ある意味どんな図形でも表現できるので<BR>
+     当然曲がるレーザーを表現することもできますが、<BR>
+     頂点の数が多くなるので面倒なのです。<BR>
+     <BR>
+    </TD>
+   </TR>
+  </TABLE>
+ </P>
+ <BR><HR>
+
+ <P>
+  <TABLE class = "sample_ex">
+   <TR class = "sample">
+    <TD class = "sample_textT" colspan="1"><A name="RA04">RA04 頂点のUV値</A></TD>
+   </TR>
+   <TR class = "sample">
+    <TD class = "sample_text">
+     UV値はテクスチャ画像における座標をあらわします。<BR>
+     本来は、0-1の値をとります(まあ0-1以外の値をとることもできますが)が、<BR>
+     弾幕風では、画像のx座標がuにy座標がvにそのまま対応します。<BR>
+     <BR>
+     ポリゴンを描画するときに、各頂点のUV値をもとにポリゴン上の1点1点が<BR>
+     テクスチャ上のどの位置を参照しているのかを求めています。<BR>
+     <BR>
+     大雑把にまとめると<BR>
+     画像の切り抜き部分を指定するのがUV値です。<BR>
+     頂点の座標とUV値は異なったものなので、画像を歪めて表示したりもできます。<BR>
+     <IMG src="img/sample_render_RA04.jpg"><BR>
+     <BR>
+    </TD>
+   </TR>
+  </TABLE>
+ </P>
+ <BR><HR>
+
+ <HR>
+ <P>
+  <TABLE class = "sample_ex">
+   <TR class = "sample">
+    <TD class = "sample_textT" colspan="1"><A name="RB01">RB01 矩形(長方形)画像の描画</A></TD>
+   </TR>
+   <TR class = "sample">
+    <TD class = "sample_text">
+     もっとも単純な矩形(長方形)を描画する方法は、<BR>
+     ObjPrim_CreateにOBJ_SPRITE_2Dをわたして生成したオブジェクトを使う方法です。<BR>
+     <BR>
+     次の例では、<BR>
+     　描画元矩形指定：ObjSprite2D_SetSourceRect<BR>
+     　描画先矩形指定：ObjSprite2D_SetDestRect<BR>
+     を使用し、画像ファイルの(44, 54)-(71,105)を切り出して、(100, 150)-(127, 201)に表示しています。<BR>
+     <IMG src="img/sample_render_RB01.jpg"><BR>
+    </TD>
+   </TR>
+  </TABLE>
+	<DIV Class="source"><PRE class="source">
+	#東方弾幕風[Stage]
+	#ScriptVersion[<SPAN Class="source_number">3</SPAN>]
+	#Title[<SPAN Class="source_string">"SampleRB01"</SPAN>]
+	#Text[<SPAN Class="source_string">"SampleRB01：矩形(長方形)画像の描画"</SPAN>]
+
+	@Initialize
+	{
+		TSample();
+	}
+
+	@MainLoop
+	{
+		<SPAN Class="source_reserve">yield</SPAN>;
+	}
+
+	<SPAN Class="source_reserve">task</SPAN> TSample
+	{
+		<SPAN Class="source_comment">//画像パス設定</SPAN>
+		<SPAN Class="source_reserve">let</SPAN> dir = GetCurrentScriptDirectory();
+		<SPAN Class="source_reserve">let</SPAN> path = dir ~ <SPAN Class="source_string">"Effect01.png"</SPAN>;
+
+		<SPAN Class="source_reserve">let</SPAN> obj = ObjPrim_Create(OBJ_SPRITE_2D); <SPAN Class="source_comment">//2Dスプライトオブジェクト生成</SPAN>
+		Obj_SetRenderPriorityI(obj, <SPAN Class="source_number">21</SPAN>); <SPAN Class="source_comment">//描画優先度を設定</SPAN>
+		ObjPrim_SetTexture(obj, path); <SPAN Class="source_comment">//テクスチャを設定</SPAN>
+		ObjSprite2D_SetSourceRect(obj, <SPAN Class="source_number">44</SPAN>, <SPAN Class="source_number">54</SPAN>, <SPAN Class="source_number">71</SPAN>, <SPAN Class="source_number">105</SPAN>); <SPAN Class="source_comment">//描画元設定(44, 54)-(71,105)</SPAN>
+		ObjSprite2D_SetDestRect(obj, <SPAN Class="source_number">100</SPAN>, <SPAN Class="source_number">150</SPAN>, <SPAN Class="source_number">127</SPAN>, <SPAN Class="source_number">201</SPAN>); <SPAN Class="source_comment">//描画先設定(100, 150)-(127, 201)</SPAN>
+
+		<SPAN Class="source_comment">//240フレーム待機</SPAN>
+		<SPAN Class="source_reserve">loop</SPAN>(<SPAN Class="source_number">240</SPAN>){<SPAN Class="source_reserve">yield</SPAN>;}
+
+		Obj_Delete(obj); <SPAN Class="source_comment">//描画オブジェクト削除</SPAN>
+
+		<SPAN Class="source_comment">//ステージ終了</SPAN>
+		CloseStgScene();
+	}
+	</PRE></DIV>
+ </P>
+ <BR><HR>
+
+ <HR>
+ <P>
+  <TABLE class = "sample_ex">
+   <TR class = "sample">
+    <TD class = "sample_textT" colspan="1"><A name="RB02">RB02 矩形(長方形)画像の回転・拡大</A></TD>
+   </TR>
+   <TR class = "sample">
+    <TD class = "sample_text">
+     画像の回転にはObjRender_SetAngleXYZ、拡大にはObjRender_SetScaleXYZなどを使いますが、<BR>
+     このとき気をつけなければならないのは回転と拡大の中心がどこにあるかということです。<BR>
+     <BR>
+     例えば、↓の図の a と b は、同じ大きさの四角形になるように頂点の座標を配置していますが、<BR>
+     回転の中心が異なっているため、最終的な描画位置が違っています。<BR>
+     <IMG src="img/sample_render_RB02_1.jpg"><BR>
+     <BR>
+     ここで<A href = "#RB01">SampleRB01</A>にでてきたObjSprite2D_SetDestRectを考えてみましょう。<BR>
+     この関数は描画先矩形を指定するとかきましたが、実際には回転、拡大前の頂点の座標を設定しています。<BR>
+     上記の図では左側の図がObjSprite2D_SetDestRect直後の位置です。<BR>
+     回転や拡大の座標変換は、この状態の頂点に対して(0, 0)を中心に行われます。<BR>
+     <BR>
+     したがって、回転拡大のある描画は以下の手順をふみます。<BR>
+     1) ObjSprite2D_SetDestRect(※)で回転拡大の中心を考えて頂点を配置する。<BR>
+     2) ObjRender_SetAngleXYZ、ObjRender_SetScaleXYZなどで回転拡大を行う。<BR>
+     3) ObjRender_SetPositionで表示したい位置に移動する。<BR>
+     　※画像の中心を回転拡大の中心にすることはよくあるので、<BR>
+     　　自動で中心にあわせてくれる関数(=ObjSprite2D_SetDestCenter)を準備しています。<BR>
+     <IMG src="img/sample_render_RB02_2.jpg"><BR>
+    </TD>
+   </TR>
+  </TABLE>
+
+	<DIV Class="source"><PRE class="source">
+	#東方弾幕風[Stage]
+	#ScriptVersion[<SPAN Class="source_number">3</SPAN>]
+	#Title[<SPAN Class="source_string">"SampleRB02"</SPAN>]
+	#Text[<SPAN Class="source_string">"SampleRB02：矩形(長方形)画像の回転・拡大"</SPAN>]
+
+	@Initialize
+	{
+		TSample();
+	}
+
+	@MainLoop
+	{
+		<SPAN Class="source_reserve">yield</SPAN>;
+	}
+
+	<SPAN Class="source_reserve">task</SPAN> TSample
+	{
+		<SPAN Class="source_comment">//画像パス設定</SPAN>
+		<SPAN Class="source_reserve">let</SPAN> dir = GetCurrentScriptDirectory();
+		<SPAN Class="source_reserve">let</SPAN> path = dir ~ <SPAN Class="source_string">"Effect01.png"</SPAN>;
+
+		<SPAN Class="source_reserve">let</SPAN> obj = ObjPrim_Create(OBJ_SPRITE_2D); <SPAN Class="source_comment">//2Dスプライトオブジェクト生成</SPAN>
+		Obj_SetRenderPriorityI(obj, <SPAN Class="source_number">21</SPAN>); <SPAN Class="source_comment">//描画優先度を設定</SPAN>
+		ObjPrim_SetTexture(obj, path); <SPAN Class="source_comment">//テクスチャを設定</SPAN>
+		ObjSprite2D_SetSourceRect(obj, <SPAN Class="source_number">44</SPAN>, <SPAN Class="source_number">54</SPAN>, <SPAN Class="source_number">71</SPAN>, <SPAN Class="source_number">105</SPAN>); <SPAN Class="source_comment">//描画元設定(44, 54)-(71,105)</SPAN>
+		
+		ObjSprite2D_SetDestCenter(obj); <SPAN Class="source_comment">//頂点を(0, 0)中心に配置</SPAN>
+		ObjRender_SetAngleZ(obj, <SPAN Class="source_number">45</SPAN>); <SPAN Class="source_comment">//45°回転</SPAN>
+		ObjRender_SetScaleXYZ(obj, <SPAN Class="source_number">2</SPAN>, <SPAN Class="source_number">2</SPAN>, <SPAN Class="source_number">1</SPAN>); <SPAN Class="source_comment">//X,Y方向に2倍に拡大</SPAN>
+		ObjRender_SetPosition(obj, <SPAN Class="source_number">100</SPAN>, <SPAN Class="source_number">150</SPAN>, <SPAN Class="source_number">0</SPAN>); <SPAN Class="source_comment">//(100, 150)に移動</SPAN>
+
+		<SPAN Class="source_comment">//240フレーム待機</SPAN>
+		<SPAN Class="source_reserve">loop</SPAN>(<SPAN Class="source_number">240</SPAN>){<SPAN Class="source_reserve">yield</SPAN>;}
+
+		Obj_Delete(obj); <SPAN Class="source_comment">//描画オブジェクト削除</SPAN>
+
+		<SPAN Class="source_comment">//ステージ終了</SPAN>
+		CloseStgScene();
+	}
+	</PRE></DIV>
+ </P>
+ <BR><HR>
+
+ <HR>
+ <P>
+  <TABLE class = "sample_ex">
+   <TR class = "sample">
+    <TD class = "sample_textT" colspan="1"><A name="RB03">RB03 複数の矩形画像の描画</A></TD>
+   </TR>
+   <TR class = "sample">
+    <TD class = "sample_text">
+     SampleRB01、02で矩形の描画を行いましたが、<BR>
+     矩形1つ1つにObjPrim_Createでオブジェクトを生成すると記述が面倒です。<BR>
+     <BR>
+     ScriptVersion[2]では@DrawLoop内で、以下のように複数の描画を行うことができました。<BR>
+     1) SetTextureでテクスチャを設定。<BR>
+     2) SetGraphicRectで描画元矩形を設定。<BR>
+     3) SetGraphicAngle、SetGraphicScaleで回転拡大。<BR>
+     4) DrawGraphicで描画。<BR>
+     5) 1-3を繰り返し次々と描画する。<BR>
+     <BR>
+     上記と似たような処理を行うためのオブジェクトとして、SpriteList2Dがあります。<BR>
+     このオブジェクトは1つ生成するだけで複数の矩形を描画できます。<BR>
+     1) ObjPrim_Create(OBJ_SPRITE_LIST_2D)でオブジェクトを生成する。<BR>
+     2) ObjPrim_SetTextureでテクスチャを設定。<BR>
+     3) ObjSpriteList2D_SetSourceRectで描画元矩形を設定。<BR>
+     4) ObjRender_SetAngleXYZ、ObjRender_SetScaleXYZなどで回転拡大。<BR>
+     5) ObjSpriteList2D_AddVertexで3-4)の設定で描画対象に追加。<BR>
+     6) 3-5を繰り返し、次々と描画矩形を追加する。<BR>
+     　　このとき、描画元矩形、回転、拡大、透明度などは再設定しない限り<BR>
+     　　再設定前の値を引き継ぎます。<BR>
+     　　ただし、優先度、テクスチャは1オブジェクトにつき1値しか適応できません。<BR>
+         <BR>
+     　　追加した描画矩形をクリアする場合は、<BR>
+     　　ObjSpriteList2D_ClearVertexCountを呼び出します。<BR>
+     　　(追加した矩形は1フレーム毎に自動でクリアされたりはしません。<BR>
+     　　@DrawLoopと似た感じで使うには、<BR>
+     　　毎フレームにObjSpriteList2D_ClearVertexCountでクリアする必要があります。)<BR>
+     <IMG src="img/sample_render_RB03.jpg"><BR>
+    </TD>
+   </TR>
+  </TABLE>
+
+	<DIV Class="source"><PRE class="source">
+	#東方弾幕風[Stage]
+	#ScriptVersion[<SPAN Class="source_number">3</SPAN>]
+	#Title[<SPAN Class="source_string">"SampleRB03"</SPAN>]
+	#Text[<SPAN Class="source_string">"SampleRB03：複数の矩形画像の描画"</SPAN>]
+
+	@Initialize
+	{
+		TSample();
+	}
+
+	@MainLoop
+	{
+		<SPAN Class="source_reserve">yield</SPAN>;
+	}
+
+	<SPAN Class="source_reserve">task</SPAN> TSample
+	{
+		<SPAN Class="source_comment">//画像パス設定</SPAN>
+		<SPAN Class="source_reserve">let</SPAN> dir = GetCurrentScriptDirectory();
+		<SPAN Class="source_reserve">let</SPAN> path = dir ~ <SPAN Class="source_string">"Effect01.png"</SPAN>;
+
+		<SPAN Class="source_reserve">let</SPAN> obj = ObjPrim_Create(OBJ_SPRITE_LIST_2D); <SPAN Class="source_comment">//2Dスプライトリストオブジェクト生成</SPAN>
+		Obj_SetRenderPriorityI(obj, <SPAN Class="source_number">21</SPAN>); <SPAN Class="source_comment">//描画優先度を設定</SPAN>
+		ObjPrim_SetTexture(obj, path); <SPAN Class="source_comment">//テクスチャを設定</SPAN>
+
+		<SPAN Class="source_comment">//1つめ：描画元(44, 54)-(71,105)を45°回転、2倍拡大で、(100, 150)に描画</SPAN>
+		ObjSpriteList2D_SetSourceRect(obj, <SPAN Class="source_number">44</SPAN>, <SPAN Class="source_number">54</SPAN>, <SPAN Class="source_number">71</SPAN>, <SPAN Class="source_number">105</SPAN>); <SPAN Class="source_comment">//描画元設定(44, 54)-(71,105)</SPAN>
+		ObjSpriteList2D_SetDestCenter(obj); <SPAN Class="source_comment">//頂点を(0, 0)中心に配置</SPAN>
+		ObjRender_SetAngleZ(obj, <SPAN Class="source_number">45</SPAN>); <SPAN Class="source_comment">//45°回転</SPAN>
+		ObjRender_SetScaleXYZ(obj, <SPAN Class="source_number">2</SPAN>, <SPAN Class="source_number">2</SPAN>, <SPAN Class="source_number">1</SPAN>); <SPAN Class="source_comment">//X,Y方向に2倍に拡大</SPAN>
+		ObjRender_SetPosition(obj, <SPAN Class="source_number">100</SPAN>, <SPAN Class="source_number">150</SPAN>, <SPAN Class="source_number">0</SPAN>); <SPAN Class="source_comment">//(100, 150)に移動</SPAN>
+		ObjSpriteList2D_AddVertex(obj); <SPAN Class="source_comment">//描画対象追加</SPAN>
+
+		<SPAN Class="source_comment">//2つめ：描画元(81, 117)-(25, 143)を45°回転、2倍拡大で、(200, 300)に描画</SPAN>
+		ObjSpriteList2D_SetSourceRect(obj, <SPAN Class="source_number">81</SPAN>, <SPAN Class="source_number">117</SPAN>, <SPAN Class="source_number">125</SPAN>, <SPAN Class="source_number">143</SPAN>); <SPAN Class="source_comment">//描画元設定(81, 117)-(25, 143)</SPAN>
+		ObjSpriteList2D_SetDestCenter(obj); <SPAN Class="source_comment">//頂点を(0, 0)中心に配置</SPAN>
+		ObjRender_SetPosition(obj, <SPAN Class="source_number">200</SPAN>, <SPAN Class="source_number">300</SPAN>, <SPAN Class="source_number">0</SPAN>); <SPAN Class="source_comment">//(200, 300)に移動</SPAN>
+		ObjSpriteList2D_AddVertex(obj); <SPAN Class="source_comment">//描画対象追加</SPAN>
+
+		<SPAN Class="source_comment">//3つめ：描画元(140, 39)-(186, 86)を0°回転、2倍拡大で、(300, 200)に描画</SPAN>
+		ObjSpriteList2D_SetSourceRect(obj, <SPAN Class="source_number">140</SPAN>, <SPAN Class="source_number">39</SPAN>, <SPAN Class="source_number">186</SPAN>, <SPAN Class="source_number">86</SPAN>); <SPAN Class="source_comment">//描画元設定(140, 39)-(186, 86)</SPAN>
+		ObjSpriteList2D_SetDestCenter(obj); <SPAN Class="source_comment">//頂点を(0, 0)中心に配置</SPAN>
+		ObjRender_SetAngleZ(obj, <SPAN Class="source_number">0</SPAN>); <SPAN Class="source_comment">//0°回転</SPAN>
+		ObjRender_SetPosition(obj, <SPAN Class="source_number">300</SPAN>, <SPAN Class="source_number">200</SPAN>, <SPAN Class="source_number">0</SPAN>); <SPAN Class="source_comment">//(300, 200)に移動</SPAN>
+		ObjSpriteList2D_AddVertex(obj); <SPAN Class="source_comment">//描画対象追加</SPAN>
+
+		<SPAN Class="source_comment">//240フレーム待機</SPAN>
+		<SPAN Class="source_reserve">loop</SPAN>(<SPAN Class="source_number">240</SPAN>){<SPAN Class="source_reserve">yield</SPAN>;}
+
+		Obj_Delete(obj); <SPAN Class="source_comment">//描画オブジェクト削除</SPAN>
+
+		<SPAN Class="source_comment">//ステージ終了</SPAN>
+		CloseStgScene();
+	}
+	</PRE></DIV>
+ </P>
+ <BR><HR>
+
+
+ <HR>
+ <P>
+  <TABLE class = "sample_ex">
+   <TR class = "sample">
+    <TD class = "sample_textT" colspan="1"><A name="RD02">RD02 自機や敵に3Dモデルを使用</A></TD>
+   </TR>
+   <TR class = "sample">
+    <TD class = "sample_text">
+     自機や敵に3Dモデルを使用する場合、ObjMesh_SetCoordinate2Dを使用します。<BR>
+     ObjMesh_SetCoordinate2Dを使用することで、<BR>
+     2D座標指定で3Dモデルを表示することができます。<BR>
+     <IMG src="img/sample_3dmesh_RD02.jpg"><BR>
+    </TD>
+   </TR>
+  </TABLE>
+
+	<DIV Class="source"><PRE class="source">
+
+	<SPAN Class="source_comment">//～～～画像表示タスクなど</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> path = GetCurrentScriptDirectory() ~ <SPAN Class="source_string">"UnitMesh_Euphoria.elem"</SPAN>;
+	<SPAN Class="source_reserve">let</SPAN> obj = ObjMesh_Create();
+	ObjMesh_Load(obj, path); <SPAN Class="source_comment">//3Dメッシュを読み込む	</SPAN>
+	ObjMesh_SetCoordinate2D(obj, <SPAN Class="source_reserve">true</SPAN>); <SPAN Class="source_comment">//2D座標モードに切り替える</SPAN>
+	ObjRender_SetAngleZ(obj, <SPAN Class="source_number">180</SPAN>); <SPAN Class="source_comment">//上下反転(3Dモデル作成時はy軸は上方向、2D画面はy軸は下方向のため)</SPAN>
+	ObjRender_SetScaleXYZ(obj, <SPAN Class="source_number">0.5</SPAN>, <SPAN Class="source_number">0.5</SPAN>, <SPAN Class="source_number">0.5</SPAN>); <SPAN Class="source_comment">//拡大率を設定</SPAN>
+
+	<SPAN Class="source_reserve">let</SPAN> frame = <SPAN Class="source_number">0</SPAN>;
+	<SPAN Class="source_reserve">loop</SPAN>
+	{
+		<SPAN Class="source_comment">//キーの状態によってモデルを傾けたりする</SPAN>
+		<SPAN Class="source_reserve">if</SPAN>(GetVirtualKeyState(VK_LEFT) == KEY_PUSH || GetVirtualKeyState(VK_LEFT) == KEY_HOLD)
+		{
+			ObjRender_SetAngleY(obj, <SPAN Class="source_number">45</SPAN>);
+		}
+		<SPAN Class="source_reserve">else</SPAN> <SPAN Class="source_reserve">if</SPAN>(GetVirtualKeyState(VK_RIGHT) == KEY_PUSH || GetVirtualKeyState(VK_RIGHT) == KEY_HOLD)
+		{
+			ObjRender_SetAngleY(obj, -<SPAN Class="source_number">45</SPAN>);
+		}
+		<SPAN Class="source_reserve">else</SPAN>
+		{
+			ObjRender_SetAngleY(obj, <SPAN Class="source_number">0</SPAN>);
+		}
+
+		ObjRender_SetPosition(obj, GetPlayerX, GetPlayerY, <SPAN Class="source_number">0</SPAN>); <SPAN Class="source_comment">//自機の位置をモデルに適応する</SPAN>
+		ObjMesh_SetAnimation(obj, <SPAN Class="source_string">"AnimeName"</SPAN>, frame); <SPAN Class="source_comment">//アニメを設定</SPAN>
+		frame++;
+		<SPAN Class="source_reserve">yield</SPAN>;
+	}
+	</PRE></DIV>
+ </P>
+
+ </DIV></BODY>
+</HTML>
+
+

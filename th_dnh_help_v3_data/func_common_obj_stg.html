@@ -1,0 +1,795 @@
+<HTML>
+ <HEAD>
+  <TITLE>共通関数</TITLE>
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/html;charset=Shift_JIS">
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/css">
+  <LINK rel="stylesheet" href="style.css" type="text/css">
+ </HEAD>
+
+ <STYLE TYPE="text/css">
+
+ </STYLE>
+
+ <BODY link="#0000ff" alink="#0000ff" vlink="#0000ff">
+ <DIV class="allbody">
+
+ <HR>
+ <SPAN class = "section_title"><A name = "sec_ObjMove_">■移動オブジェクト操作(ObjMove_)</A></SPAN><BR>
+  移動オブジェクト操作用の共通関数です。<BR>
+  敵や弾オブジェクトに設定することで、移動を行うことができます。<BR>
+  各オブジェクトの関連性については「<A href = "other_spec.html#Object">オブジェクト</A>」を参照お願いします。<BR>
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjMove_SetX">ObjMove_SetX(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:x座標</SPAN><BR>
+  指定したオブジェクトのx座標を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjMove_SetY">ObjMove_SetY(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:y座標</SPAN><BR>
+  指定したオブジェクトのy座標を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjMove_SetPosition">ObjMove_SetPosition(引数：3)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:x座標</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:y座標</SPAN><BR>
+  指定したオブジェクトのx,y座標を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjMove_SetSpeed">ObjMove_SetSpeed(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:速度</SPAN><BR>
+  指定したオブジェクトの移動速度を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjMove_SetAngle">ObjMove_SetAngle(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:移動角度</SPAN><BR>
+  指定したオブジェクトの移動角度を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjMove_SetAcceleration">ObjMove_SetAcceleration(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:加速度</SPAN><BR>
+  指定したオブジェクトの加速度を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjMove_SetMaxSpeed">ObjMove_SetMaxSpeed(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:最大速度</SPAN><BR>
+  指定したオブジェクトの最大速度を設定します。<BR>
+  加速度を設定した場合には、この速度が上限となります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjMove_SetAngularVelocity">ObjMove_SetAngularVelocity(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:角速度</SPAN><BR>
+  指定したオブジェクトの角速度を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjMove_SetDestAtSpeed">ObjMove_SetDestAtSpeed(引数：4)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:x座標</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:y座標</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:移動速度</SPAN><BR>
+  指定した座標に向かって指定した速度で移動します。<BR>
+  指定座標に到達した場合は停止します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjMove_SetDestAtFrame">ObjMove_SetDestAtFrame(引数：4)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:x座標</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:y座標</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:フレーム</SPAN><BR>
+  指定した座標に向かって指定したフレームで移動します。<BR>
+  指定座標に到達した場合は停止します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjMove_SetDestAtWeight">ObjMove_SetDestAtWeight(引数：5)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:x座標</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:y座標</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:重み</SPAN><BR>
+  <SPAN class = "function_arg">　5) real:最大速度</SPAN><BR>
+  指定した座標へ向かって移動しますが、指定した座標に近づくと設定した重みによって減速します。<BR>
+  指定座標に到達した場合は停止します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjMove_AddPatternA1">ObjMove_AddPatternA1(引数：4)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:フレーム</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:速度(NO_CHANGEを指定した場合は、元の値を引き継ぐ)</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:角度(NO_CHANGEを指定した場合は、元の値を引き継ぐ)</SPAN><BR>
+  指定したフレームを経過した場合に、指定した速度と角度に変更します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjMove_AddPatternA2">ObjMove_AddPatternA2(引数：7)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:フレーム</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:速度(NO_CHANGEを指定した場合は、元の値を引き継ぐ)</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:角度(NO_CHANGEを指定した場合は、元の値を引き継ぐ)</SPAN><BR>
+  <SPAN class = "function_arg">　5) real:加速度</SPAN><BR>
+  <SPAN class = "function_arg">　6) real:角速度</SPAN><BR>
+  <SPAN class = "function_arg">　7) real:最大速度</SPAN><BR>
+  指定したフレームを経過した場合に、指定した移動パラメータに変更します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjMove_AddPatternA3">ObjMove_AddPatternA3(引数：8)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:フレーム</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:速度(NO_CHANGEを指定した場合は、元の値を引き継ぐ)</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:角度(NO_CHANGEを指定した場合は、元の値を引き継ぐ)</SPAN><BR>
+  <SPAN class = "function_arg">　5) real:加速度</SPAN><BR>
+  <SPAN class = "function_arg">　6) real:角速度</SPAN><BR>
+  <SPAN class = "function_arg">　7) real:最大速度</SPAN><BR>
+  <SPAN class = "function_arg">　8) real:弾画像ID</SPAN><BR>
+  指定したフレームを経過した場合に、指定した移動パラメータに変更します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjMove_AddPatternA4">ObjMove_AddPatternA4(引数：9)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:フレーム</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:速度(NO_CHANGEを指定した場合は、元の値を引き継ぐ)</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:角度(NO_CHANGEを指定した場合は、元の値を引き継ぐ)</SPAN><BR>
+  <SPAN class = "function_arg">　5) real:加速度</SPAN><BR>
+  <SPAN class = "function_arg">　6) real:角速度</SPAN><BR>
+  <SPAN class = "function_arg">　7) real:最大速度</SPAN><BR>
+  <SPAN class = "function_arg">　8) real:角度の基準とするオブジェクト</SPAN><BR>
+  <SPAN class = "function_arg">　9) real:弾画像ID</SPAN><BR>
+  指定したフレームを経過した場合に、指定した移動パラメータに変更します。<BR>
+  「角度を依存させるオブジェクト」は、角度の基準とするオブジェクトです。<BR>
+  例えば自機のオブジェクトIDを指定した場合は、角度に0を指定しただけで自機に向かって移動します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjMove_AddPatternB1">ObjMove_AddPatternB1(引数：4)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:フレーム</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:x速度(NO_CHANGEを指定した場合は、元の値を引き継ぐ)</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:y速度(NO_CHANGEを指定した場合は、元の値を引き継ぐ)</SPAN><BR>
+  指定したフレームを経過した場合に、指定した速度に変更します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjMove_AddPatternB2">ObjMove_AddPatternB2(引数：8)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:フレーム</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:x速度(NO_CHANGEを指定した場合は、元の値を引き継ぐ)</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:y速度(NO_CHANGEを指定した場合は、元の値を引き継ぐ)</SPAN><BR>
+  <SPAN class = "function_arg">　5) real:x加速度</SPAN><BR>
+  <SPAN class = "function_arg">　6) real:y加速度</SPAN><BR>
+  <SPAN class = "function_arg">　7) real:x最大(最小)速度</SPAN><BR>
+  <SPAN class = "function_arg">　8) real:y最大(最小)速度</SPAN><BR>
+  指定したフレームを経過した場合に、指定した移動パラメータに変更します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjMove_AddPatternB3">ObjMove_AddPatternB3(引数：9)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:フレーム</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:x速度(NO_CHANGEを指定した場合は、元の値を引き継ぐ)</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:y速度(NO_CHANGEを指定した場合は、元の値を引き継ぐ)</SPAN><BR>
+  <SPAN class = "function_arg">　5) real:x加速度</SPAN><BR>
+  <SPAN class = "function_arg">　6) real:y加速度</SPAN><BR>
+  <SPAN class = "function_arg">　7) real:x最大(最小)速度</SPAN><BR>
+  <SPAN class = "function_arg">　8) real:y最大(最小)速度</SPAN><BR>
+  <SPAN class = "function_arg">　9) real:弾画像ID</SPAN><BR>
+  指定したフレームを経過した場合に、指定した移動パラメータに変更します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjMove_GetX">ObjMove_GetX(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  指定したオブジェクトのx座標を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjMove_GetY">ObjMove_GetY(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  指定したオブジェクトのy座標を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjMove_GetSpeed">ObjMove_GetSpeed(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  指定したオブジェクトの移動速度を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjMove_GetAngle">ObjMove_GetAngle(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  指定したオブジェクトの移動角度を取得します。<BR>
+ </P><HR>
+
+
+ <HR>
+ <SPAN class = "section_title"><A name = "sec_ObjEnemy_">■敵オブジェクト操作(ObjEnemy_)</A></SPAN><BR>
+  敵オブジェクト操作用の共通関数です。<BR>
+  各オブジェクトの関連性については「<A href = "other_spec.html#Object">オブジェクト</A>」を参照お願いします。<BR>
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjEnemy_Create">ObjEnemy_Create(引数：1、返り値：real[オブジェクトID])</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:敵種別<BR>
+  　　OBJ_ENEMY：敵オブジェクト<BR>
+  　　OBJ_ENEMY_BOSS：敵ボスオブジェクト</SPAN><BR>
+  指定した敵オブジェクトを生成します。<BR>
+  この関数を呼び出しても、まだ敵は画面に表示されません。<BR>
+  ObjEnemy_Registで登録後に動作を開始します。<BR>
+  <BR>
+  敵ボスを作成するには、事前にボスのシーンオブジェクトが作成されている必要があります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjEnemy_Regist">ObjEnemy_Regist(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  指定した敵オブジェクトをアクティブにします。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjEnemy_GetInfo">ObjEnemy_GetInfo(引数：1、返り値：free)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) free:情報種別<BR>
+  　　INFO_LIFE：敵ライフ(real)<BR>
+  　　INFO_DAMAGE_RATE_SHOT：自弾へのダメージ割合(real:0～100)<BR>
+  　　INFO_DAMAGE_RATE_SPELL：スペル(ボム)へのダメージ割合(real:0～100)<BR>
+  　　INFO_SHOT_HIT_COUNT：前フレームの自機弾ヒット回数<BR></SPAN>
+  指定した敵オブジェクトの情報を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjEnemy_SetLife">ObjEnemy_SetLife(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:ライフ</SPAN><BR>
+  指定した敵オブジェクトのライフを設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjEnemy_AddLife">ObjEnemy_AddLife(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:ライフ</SPAN><BR>
+  指定した敵オブジェクトのライフを指定した値だけ増加します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjEnemy_SetDamageRate">ObjEnemy_SetDamageRate(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:自弾へのダメージ割合(0～100)</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:スペル(ボム)へのダメージ割合(0～100)</SPAN><BR>
+  自弾、ボムへの抵抗値を設定します。<BR>
+  0で無効化、100で元の威力です。<BR>
+  (100を超えた値も設定可能です。)<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjEnemy_SetIntersectionCircleToShot">ObjEnemy_SetIntersectionCircleToShot(引数：4)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:当たり判定x座標</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:当たり判定y座標</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:当たり判定半径</SPAN><BR>
+  自弾への当たり判定を登録します。<BR>
+  この円に自弾が接触すると敵にダメージを与えられます。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjEnemy_SetIntersectionCircleToPlayer">ObjEnemy_SetIntersectionCircleToPlayer(引数：4)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:当たり判定x座標</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:当たり判定y座標</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:当たり判定半径</SPAN><BR>
+  自機への当たり判定を登録します。<BR>
+  この円に自機が接触すると、自機は撃墜されます。<BR>
+ </P><HR>
+
+
+ <HR>
+ <SPAN class = "section_title"><A name = "sec_ObjEnemyBossScene_">■ボスシーンオブジェクト操作(ObjEnemyBossScene_)</A></SPAN><BR>
+  ボスシーンオブジェクト操作用の共通関数です。<BR>
+  各オブジェクトの関連性については「<A href = "other_spec.html#Object">オブジェクト</A>」を参照お願いします。<BR>
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjEnemyBossScene_Create">ObjEnemyBossScene_Create(引数：0、返り値：real[オブジェクトID])</A></SPAN><BR>
+  ボスシーンを生成します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjEnemyBossScene_Regist">ObjEnemyBossScene_Regist(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  ボスシーンを開始します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjEnemyBossScene_Add">ObjEnemyBossScene_Add(引数：3)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:ライフの段階(0～)</SPAN><BR>
+  <SPAN class = "function_arg">　3) char:スクリプトパス</SPAN><BR>
+  ボスシーンにボスを動作させるスクリプトを登録します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjEnemyBossScene_LoadInThread">ObjEnemyBossScene_LoadInThread(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  ボスシーンに登録されている全ての敵スクリプトをコンパイルします。<BR>
+  グローバル変数の初期化まで完了します。<BR>
+  コンパイルされるタイミングは保障されないため、<BR>
+  グローバル変数を定数以外で初期化する場合は@Initializeで行うようにしてください。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjEnemyBossScene_GetInfo">ObjEnemyBossScene_GetInfo(引数：2、返り値：depend)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:情報種別<BR>
+  　　INFO_IS_SPELL：スペルカードの場合はtrueを返します。<BR>
+  　　INFO_IS_LAST_SPELL：ラストスペルの場合はtrueを返します。<BR>
+  　　INFO_IS_DURABLE_SPELL：耐久スペルの場合はtrueを返します。<BR>
+  　　INFO_IS_LAST_STEP：最後のスペルの場合にtrueを返します。<BR>
+  　　INFO_TIMER：タイマーを秒単位で返します。(0～99が返ります)<BR>
+  　　INFO_TIMERF：タイマーをフレーム単位で返します。(制限なしの場合は-1が返ります。)<BR>
+  　　INFO_ORGTIMERF：タイマー初期値をフレーム単位で返します。(制限なしの場合は-1が返ります。)<BR>
+  　　INFO_SPELL_SCORE：スペルカードのスコアを返します。<BR>
+  　　INFO_REMAIN_STEP_COUNT：敵ボスの残りステップ数を返します。<BR>
+  　　INFO_ACTIVE_STEP_LIFE_COUNT：アクティブなステップのライフ数を返します。<BR>
+  　　INFO_ACTIVE_STEP_TOTAL_MAX_LIFE：アクティブなステップの全合計ライフ(初期値)を返します。<BR>
+  　　INFO_ACTIVE_STEP_TOTAL_LIFE：アクティブなステップの残り合計ライフを返します。<BR>
+  　　INFO_PLAYER_SHOOTDOWN_COUNT：このスペルで自機が撃墜された回数を返します。<BR>
+  　　INFO_PLAYER_SPELL_COUNT：このスペルで自機がスペルを使用した回数を返します。<BR>
+  　　INFO_ACTIVE_STEP_LIFE_RATE_LIST：アクティブなステップのライフ毎の割合を配列で返します。(0-1の範囲です)<BR>
+  　　INFO_CURRENT_LIFE：現在のスペルの敵ライフを返します。<BR>
+  　　INFO_CURRENT_LIFE_MAX：現在のスペルの敵ライフ最大値を返します。<BR></SPAN>
+  指定した情報を返します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjEnemyBossScene_SetSpellTimer">ObjEnemyBossScene_SetSpellTimer(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:タイマー</SPAN><BR>
+  タイマーを設定します。
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjEnemyBossScene_StartSpell">ObjEnemyBossScene_StartSpell(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  敵にスペルカードを発動させます。<BR>
+ </P><HR>
+
+
+ <HR>
+ <SPAN class = "section_title"><A name = "sec_ObjShot_">■弾(レーザー)オブジェクト操作(ObjShot_)</A></SPAN><BR>
+  弾オブジェクト操作用の共通関数です。<BR>
+  各オブジェクトの関連性については「<A href = "other_spec.html#Object">オブジェクト</A>」を参照お願いします。<BR>
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjShot_Create">ObjShot_Create(引数：1、返り値：real[オブジェクトID])</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:弾種別<BR>
+  　　OBJ_SHOT：通常弾<BR>
+  　　OBJ_LOOSE_LASER：射出型レーザー<BR>
+  　　OBJ_STRAIGHT_LASER：設置型レーザー<BR>
+  　　OBJ_CURVE_LASER：曲がるレーザー</SPAN><BR>
+  弾オブジェクトを生成します。<BR>
+  生成するだけで、ObjShot_Registを呼び出すまでは発射されません。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjShot_Regist">ObjShot_Regist(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  弾をアクティブにします(発射されます)。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjShot_SetAutoDelete">ObjShot_SetAutoDelete(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) bool:自動削除有無(true/false)</SPAN><BR>
+  自動削除の有無を設定します。<BR>
+  デフォルトで有効です。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjShot_FadeDelete">ObjShot_FadeDelete(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  弾をフェードアウトさせながら削除します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjShot_SetDeleteFrame">ObjShot_SetDeleteFrame(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:削除開始フレーム</SPAN><BR>
+  削除開始フレームになった時点で弾を削除します。<BR>
+  ただし遅延時間は除きます。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjShot_SetDelay">ObjShot_SetDelay(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:遅延時間</SPAN><BR>
+  弾の遅延時間を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjShot_SetSpellResist">ObjShot_SetSpellResist(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) bool:スペル耐性有無(true/false)</SPAN><BR>
+  弾のスペル(ボム)耐性を設定します。<BR>
+  通常弾はデフォルト無効、レーザーはデフォルト有効です。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjShot_SetGraphic">ObjShot_SetGraphic(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:弾画像ID</SPAN><BR>
+  弾画像IDを設定します。<BR>
+  弾画像については「<A href="other_spec.html#DefaultShot">弾画像(デフォルト)</A>」、「<A href="other_spec.html#AddShot">弾画像の追加</A>」を参照お願いします。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjShot_SetSourceBlendType">ObjShot_SetSourceBlendType(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:合成種別<BR>
+  　　BLEND_ALPHA：通常の描画方法です。<BR>
+  　　BLEND_ADD_RGB：RGBによる加算合成を行います。<BR>
+  　　BLEND_ADD_ARGB：ARGBによる加算合成を行います。(α値が適応される加算合成)<BR>
+  　　BLEND_MULTIPLY：乗算合成です。<BR>
+  　　BLEND_SUBTRACT：減算合成です。<BR>
+  　　BLEND_INV_DESTRGB：描画先の色を反転して合成します。</SPAN><BR>
+  遅延時間中の弾やレーザー元の画像合成方法を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjShot_SetDamage">ObjShot_SetDamage(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:弾の威力</SPAN><BR>
+  弾の威力を設定します。自機弾用です。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjShot_SetPenetration">ObjShot_SetPenetration(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:弾の貫通力</SPAN><BR>
+  弾の貫通力を設定します。自機弾用です。<BR>
+  この回数敵に触れても弾は消滅しません。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjShot_SetEraseShot">ObjShot_SetEraseShot(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) bool:弾消し性能有無(true/false)</SPAN><BR>
+  弾消し性能有無を設定します。自機弾用です。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjShot_SetSpellFactor">ObjShot_SetSpellFactor(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) bool:スペル効果付加(true/false)</SPAN><BR>
+  弾にスペル効果を付与します(スペルのダメージ割合が適応されるようになります)。自機弾用です。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjShot_ToItem">ObjShot_ToItem(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  弾をアイテムに変化させます。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjShot_AddShotA1">ObjShot_AddShotA1(引数：3)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:追加する弾オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:追加した弾をアクティブにするフレーム</SPAN><BR>
+  指定した弾に、弾を追加します。<BR>
+  追加した弾は「追加した弾をアクティブにするフレーム」経過後に発射されます。<BR>
+  <BR>
+  このとき追加する弾の座標は、追加先の弾からの相対位置の座標として判断されます。<BR>
+  例えば、追加する弾の座標が(0,0)の場合は、追加先の弾の座標から発射されます。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjShot_AddShotA2">ObjShot_AddShotA2(引数：5)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:追加する弾オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:追加した弾をアクティブにするフレーム</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:追加した弾を出現させる位置(追加先の弾からの距離)</SPAN><BR>
+  <SPAN class = "function_arg">　5) real:追加した弾を出現させる位置(追加先の弾からの角度)</SPAN><BR>
+  指定した弾に、弾を追加します。<BR>
+  追加した弾は「追加した弾をアクティブにするフレーム」経過後に発射されます。<BR>
+  <BR>
+  レーザーに弾を追加する場合で根元ではなく、根元から離れた位置に出現させたい場合に使用します。<BR>
+  発射時には指定した位置だけずれた位置に出現します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjShot_SetIntersectionCircleA1">ObjShot_SetIntersectionCircleA1(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:半径</SPAN><BR>
+  弾の座標を中心に円形の当たり判定を設定します。<BR>
+  この際、弾にもともと割り当てられているあたり判定は消滅します。<BR>
+  当たり判定を維持するには毎フレーム実行する必要があります。<BR>
+  1つの弾に対し、複数の当たり判定を割り当てることも可能です。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjShot_SetIntersectionCircleA2">ObjShot_SetIntersectionCircleA2(引数：4)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:x座標</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:y座標</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:半径</SPAN><BR>
+  指定した位置に円形の当たり判定を設定します。<BR>
+  この際、弾にもともと割り当てられているあたり判定は消滅します。<BR>
+  当たり判定を維持するには毎フレーム実行する必要があります。<BR>
+  1つの弾に対し、複数の当たり判定を割り当てることも可能です。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjShot_SetIntersectionLine">ObjShot_SetIntersectionLine(引数：6)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:先端x座標</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:先端y座標</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:終端x座標</SPAN><BR>
+  <SPAN class = "function_arg">　5) real:終端y座標</SPAN><BR>
+  <SPAN class = "function_arg">　6) real:線幅</SPAN><BR>
+  この弾の線形の当たり判定を登録します。<BR>
+  この際、弾にもともと割り当てられているあたり判定は消滅します。<BR>
+  当たり判定を維持するには毎フレーム実行する必要があります。<BR>
+  1つの弾に対し、複数の当たり判定を割り当てることも可能です。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjShot_SetIntersectionEnable">ObjShot_SetIntersectionEnable(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) bool:あたり判定有無(true/false)</SPAN><BR>
+  弾の当たり判定有無を設定します。<BR>
+  falseに設定した場合、敵や自機に当たらなくなります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjShot_SetItemChange">ObjShot_SetItemChange(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) bool:アイテム変化有無(true/false)</SPAN><BR>
+  弾のアイテム変化有無を設定します。<BR>
+  falseに設定した場合、弾消し時にアイテム化しなくなります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjShot_GetDamage">ObjShot_GetDamage(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  自機弾のダメージを取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjShot_GetPenetration">ObjShot_GetPenetration(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  自機弾の貫通数を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjShot_GetDelay">ObjShot_GetDelay(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  弾の残り遅延時間を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjShot_IsSpellResist">ObjShot_IsSpellResist(引数：1、返り値：bool)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  弾のスペル(ボム)耐性を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjShot_GetImageID">ObjShot_GetImageID(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  弾の画像IDを取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjLaser_SetLength">ObjLaser_SetLength(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:レーザーの長さ</SPAN><BR>
+  レーザーの長さを設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjLaser_SetRenderWidth">ObjLaser_SetRenderWidth(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:レーザーの幅</SPAN><BR>
+  レーザーの幅を設定します。<BR>
+  また当たり判定の幅が設定されていない場合は、この幅の1/2を当たり判定幅として設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjLaser_SetIntersectionWidth">ObjLaser_SetIntersectionWidth(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:レーザーの当たり判定の幅</SPAN><BR>
+  レーザーの当たり判定の幅を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjLaser_SetGrazeInvalidFrame">ObjLaser_SetGrazeInvalidFrame(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:無効グレイズフレーム数</SPAN><BR>
+  レーザーに一回グレイズした後の、グレイズ無効フレーム数を指定します。<BR>
+  0を指定した場合は、1度しかグレイズしなくなります。<BR>
+  デフォルト値は20です(1秒に3回グレイズする)。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjLaser_SetInvalidLength">ObjLaser_SetInvalidLength(引数：3)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:レーザー先端の当たり判定無効長</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:レーザー終端の当たり判定無効長</SPAN><BR>
+  レーザーの先端と終端の当たり判定除外長さを設定します。<BR>
+  デフォルトでは、レーザー長の前後10%が無効範囲となります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjLaser_SetItemDistance">ObjLaser_SetItemDistance(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:アイテムの出現間隔</SPAN><BR>
+  レーザーが削除されてアイテムに変化する時のアイテムの発生間隔を指定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjLaser_GetLength">ObjLaser_GetLength(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  指定したレーザーオブジェクトの長さを取得します。
+<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjStLaser_SetAngle">ObjStLaser_SetAngle(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:レーザーの角度</SPAN><BR>
+  設置型レーザーの角度を設定します。(移動角度とは異なります。)<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjStLaser_GetAngle">ObjStLaser_GetAngle(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  設置型レーザーの角度を取得します。(移動角度とは異なります。)<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjStLaser_SetSource">ObjStLaser_SetSource(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) bool:光源有無</SPAN><BR>
+  設置型レーザーの光源を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjCrLaser_SetTipDecrement">ObjCrLaser_SetTipDecrement(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:先端透明度減少率(0-1)</SPAN><BR>
+  曲がるレーザーの先端透明度減少率を指定します。<BR>
+  デフォルトは1.0です(先端が透明になります)。<BR>
+ </P><HR>
+
+ <HR>
+ <SPAN class = "section_title"><A name = "sec_ObjItem_">■アイテムオブジェクト操作(ObjItem_)</A></SPAN><BR>
+  アイテムオブジェクト操作用の共通関数です。<BR>
+  各オブジェクトの関連性については「<A href = "other_spec.html#Object">オブジェクト</A>」を参照お願いします。<BR>
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjItem_SetItemID">ObjItem_SetItemID(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:アイテムID</SPAN><BR>
+  アイテムIDを設定します。<BR>
+  アイテムIDについては「<A href="other_spec.html#UserItem">ユーザ定義アイテム</A>」を参照お願いします。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjItem_SetRenderScoreEnable">ObjItem_SetRenderScoreEnable(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:スコア描画有無</SPAN><BR>
+  アイテム取得時のスコア描画有無を設定します。デフォルトtrueです。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjItem_SetAutoCollectEnable">ObjItem_SetAutoCollectEnable(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:自動回収有無</SPAN><BR>
+  アイテムの自動回収の対象となるかを指定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjItem_SetDefinedMovePatternA1">ObjItem_SetDefinedMovePatternA1(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:移動パターン<BR>
+  　　ITEM_MOVE_DOWN：下方向へ移動<BR>
+  　　ITEM_MOVE_TOPLAYER：自機方向へ移動<BR>
+  </SPAN><BR>
+  アイテムの移動パターンを組み込みのパターンに設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjItem_GetInfo">ObjItem_GetInfo(引数：2、返り値：depend)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:情報種別<BR>
+  　　INFO_ITEM_SCORE：アイテムに設定されているスコア(real)<BR>
+  </SPAN><BR>
+  指定した情報を返します。<BR>
+ </P><HR>
+
+ <HR>
+ <SPAN class = "section_title"><A name = "sec_ObjPlayer_">■自機オブジェクト操作(ObjPlayer_)</A></SPAN><BR>
+  自機オブジェクト操作用の共通関数です。<BR>
+  GetPlayerObjectIDで取得できるIDで操作します。<BR>
+  各オブジェクトの関連性については「<A href = "other_spec.html#Object">オブジェクト</A>」を参照お願いします。<BR>
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjPlayer_AddIntersectionCircleA1">ObjPlayer_AddIntersectionCircleA1(引数：5)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:自機からの相対x座標(通常は0)</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:自機からの相対y座標(通常は0)</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:当たり判定半径</SPAN><BR>
+  <SPAN class = "function_arg">　5) real:グレイズ半径(これと第四引数の和がグレイズ半径になります)</SPAN><BR>
+  自機あたり判定を登録します。<BR>
+  一度登録すれば毎フレーム呼び出さなくても常に有効になります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjPlayer_AddIntersectionCircleA2">ObjPlayer_AddIntersectionCircleA2(引数：4)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:自機からの相対x座標(通常は0)</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:自機からの相対y座標(通常は0)</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:グレイズ半径</SPAN><BR>
+  自機グレイズ判定のみを登録します。<BR>
+  一度登録すれば毎フレーム呼び出さなくても常に有効になります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjPlayer_ClearIntersection">ObjPlayer_ClearIntersection(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  自機あたり判定を削除します。<BR>
+ </P><HR>
+
+
+ <HR>
+ <SPAN class = "section_title"><A name = "sec_ObjCol_">■当たり判定オブジェクト操作(ObjCol_)</A></SPAN><BR>
+  当たり判定オブジェクト操作用の共通関数です。<BR>
+  各オブジェクトの関連性については「<A href = "other_spec.html#Object">オブジェクト</A>」を参照お願いします。<BR>
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjCol_IsIntersected">ObjCol_IsIntersected(引数：1、返り値：bool)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  オブジェクトが他オブジェクトに接触したかを調べます。<BR>
+  接触した場合にtrueになります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjCol_GetListOfIntersectedEnemyID">ObjCol_GetListOfIntersectedEnemyID(引数：1、返り値：real配列[IDの配列]))</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  指定したオブジェクトが当たっている敵オブジェクトIDを返します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ObjCol_GetIntersectedCount">ObjCol_GetIntersectedCount(引数：1、返り値：bool))</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  指定したオブジェクトが前フレームに他のオブジェクトに<BR>
+  当たった回数 ( ex：敵が自弾に接触した回数など) を取得します。<BR>
+ </P><HR>
+
+ </DIV></BODY>
+</HTML>
+
+
+
+
+

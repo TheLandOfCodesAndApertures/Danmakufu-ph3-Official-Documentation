@@ -1,0 +1,571 @@
+<HTML>
+ <HEAD>
+  <TITLE>共通関数</TITLE>
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/html;charset=Shift_JIS">
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/css">
+  <LINK rel="stylesheet" href="style.css" type="text/css">
+ </HEAD>
+
+ <STYLE TYPE="text/css">
+  TABLE.tag {width:90%; vertical-align:top;background-color:RGB(255,255,255);border: 1px solid #cccccc;}
+  TR.tag {}
+  TD.tag_elementT {width:120px; background-color:#ffccff}
+  TD.tag_valueT {width:120px; background-color:#ccccff}
+  TD.tag_textT {background-color:#ccccff}
+  TD.tag_element {vertical-align:top; width:120px; border: 1px solid #ffccff;}
+  TD.tag_value {vertical-align:top; width:120px; border: 1px solid #ccccff;}
+  TD.tag_text {vertical-align:top; border: 1px solid #ccccff;}
+ </STYLE>
+
+ <BODY link="#0000ff" alink="#0000ff" vlink="#0000ff">
+ <DIV class="allbody">
+
+ <HR>
+ <SPAN class = "section_title"><A name="sec_math">■数学系</A></SPAN><BR>
+  数値の演算などを行う関数です。
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="min">min(引数：2、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:数値1</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:数値2</SPAN><BR>
+  引数に指定した数値のうち小さい方を返します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="max">max(引数：2、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:数値1</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:数値2</SPAN><BR>
+  引数に指定した数値のうち大きい方を返します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="log">log(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:値</SPAN><BR>
+  自然対数(eを底とする対数)を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="log10">log10(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:値</SPAN><BR>
+  常用対数(10を底とする対数)を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="cos">cos(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:値(0～360の値)</SPAN><BR>
+  コサインを取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="sin">sin(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:値(0～360の値)</SPAN><BR>
+  サインを取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="tan">tan(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:値</SPAN><BR>
+  タンジェントを取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="acos">acos(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:値</SPAN><BR>
+  アークコサイン(cosの逆関数)を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="asin">asin(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:値</SPAN><BR>
+  アークサイン(sinの逆関数)を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="atan">atan(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:値</SPAN><BR>
+  アークタンジェント(tanの逆関数)を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="atan2">atan2(引数：2、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:y値</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:x値</SPAN><BR>
+  線分(0,0)-(x,y)の角度(deg)を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="rand">rand(引数：2、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:最小値</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:最大値</SPAN><BR>
+  最小値と最大値の間の乱数(ランダムな実数)を取得します。<BR>
+  min>maxならrand(max,min)が返ります。<BR>
+  小数点以下の値もランダムに得られるので注意してください。<BR>
+  また、rand(x, y)は[x, y)ではなく[x, y]になり、yを含みます。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="round">round(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:値</SPAN><BR>
+  四捨五入を行います。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="truncate">truncate(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:値</SPAN><BR>
+  符号を問わず小数点以下を切り捨てます。<BR>
+  truncでも同じ関数が呼ばれます。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ceil">ceil(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:値</SPAN><BR>
+  +∞方向への切り上げを行います。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="floor">floor(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:値</SPAN><BR>
+  -∞方向への切り下げを行います。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="absolute">absolute(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:値</SPAN><BR>
+  絶対値を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="modc">modc(引数：2、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:除算対象値</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:除算値</SPAN><BR>
+  剰余を計算します。C++やJavaと同等の剰余計算を行います。<BR>
+　例えば、以下の計算値になります。<BR>
+　　-3 % 5 = -3<BR>
+ </P><HR>
+
+ <HR>
+ <SPAN class = "section_title"><A name="sec_text">■文字列操作</A></SPAN><BR>
+  文字列操作などを行う関数です。<BR>
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="InstallFont">InstallFont(引数：1、返り値：bool)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:フォントファイルへのパス</SPAN><BR>
+  フォントを追加します。<BR>
+  この関数で追加したフォントはObjText_SetFontTypeで指定可能になります。<BR>
+  (Windowsに標準で入っているフォントは追加しなくても使えます。)<BR>
+  関数に成功した場合はtrueが返ります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ToString">ToString(引数：1、返り値：char)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:値</SPAN><BR>
+  数値などを文字列に変換します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="IntToString">IntToString(引数：1、返り値：char)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:値</SPAN><BR>
+  数値などを整数の文字列に変換します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="itoa">itoa(引数：1、返り値：char)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:値</SPAN><BR>
+  整数を整数の文字列に変換します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="rtoa">rtoa(引数：1、返り値：char)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:値</SPAN><BR>
+  実数を整数の文字列に変換します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="rtos">rtos(引数：2、返り値：char)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:フォーマット</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:値</SPAN><BR>
+  実数をフォーマットにしたがって文字列に変換します。<BR>
+  フォーマットは以下の意味を持ちます。<BR>
+  <TABLE class = "tag">
+   <TR class = "tag">
+    <TD class = "tag_elementT">記号</TD> <TD class = "tag_textT">説明</TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">0</TD>
+    <TD class = "tag_text">数字</TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">#</TD>
+    <TD class = "tag_text">数字(ゼロだと表示されない)</TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">.</TD>
+    <TD class = "tag_text">小数点</TD>
+   </TR>
+  </TABLE>
+  例えば以下のような結果になります。<BR>
+  　rtos("000.000", 1.23) = "001.230"<BR>
+  　rtos("#00", 1.23) = " 01"<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="vtos">vtos(引数：2、返り値：char)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:フォーマット</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:値</SPAN><BR>
+  変数をフォーマットにしたがって文字列に変換します。<BR>
+  フォーマットは以下の意味を持ちます。<BR>
+  <TABLE class = "tag">
+   <TR class = "tag">
+    <TD class = "tag_elementT">記号</TD> <TD class = "tag_textT">説明</TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">d</TD>
+    <TD class = "tag_text">整数</TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">f</TD>
+    <TD class = "tag_text">実数</TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">s</TD>
+    <TD class = "tag_text">文字列</TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">数値</TD>
+    <TD class = "tag_text">フィールド幅</TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">-</TD>
+    <TD class = "tag_text">フィールド幅を指定したとき，空白を右に詰めて出力する。</TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">0</TD>
+    <TD class = "tag_text">フィールド幅指定の数値出力のとき，空白にあたる部分にゼロを埋める。</TD>
+   </TR>
+  </TABLE>
+  例えば以下のような結果になります。<BR>
+  　vtos("03d", 1.23) = "001"<BR>
+  　vtos("3d", 1.23) = "　1"<BR>
+  　vtos("-3d", 1.23) = "1　"<BR>
+  　vtos("03.5f", 1.23) = "001.23000"<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="atoi">atoi(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:値</SPAN><BR>
+  文字列を整数に変換します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ator">ator(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:値</SPAN><BR>
+  文字列を実数に変換します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="TrimString">TrimString(引数：1、返り値：char)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:値</SPAN><BR>
+  文字列の前後の空白を除去します。<BR>
+  例えば以下のような結果になります。<BR>
+  　TrimString("  ABC ") = "ABC"<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SplitString">SplitString(引数：2、返り値：char配列)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:分割元文字列</SPAN><BR>
+  <SPAN class = "function_arg">　2) char:切り分けに使用する文字(デリミタ)</SPAN><BR>
+  文字列を指定した文字(デリミタ)で切り分けます。<BR>
+  返ってくるのは文字列の配列になります。<BR>
+  例えば以下のような結果になります。<BR>
+  　SplitString("A/123/BCD", "/") = ["A", "123", "BCD"]<BR>
+ </P><HR>
+
+ <HR>
+ <SPAN class = "section_title"><A name="sec_path">■パス関連</A></SPAN><BR>
+  パス取得などを行う関数です。<BR>
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetFileDirectory">GetFileDirectory(引数：1、返り値：char)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:ファイルパス</SPAN><BR>
+  指定したファイルパスのフォルダを返します。<BR>
+  (指定したファイルパスの、ファイル名を除いた部分を返します)<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetFilePathList">GetFilePathList(引数：1、返り値：string配列)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:ファイル/フォルダ パス</SPAN><BR>
+  指定したファイルパス(もしくはフォルダパス)のフォルダにあるファイル一覧を返します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetDirectoryList">GetDirectoryList(引数：1、返り値：string配列)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:ファイル/フォルダ パス</SPAN><BR>
+  指定したファイルパス(もしくはフォルダパス)のフォルダにあるフォルダ一覧を返します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetModuleDirectory">GetModuleDirectory(引数：0、返り値：char)</A></SPAN><BR>
+  実行ファイルのディレクトリを返します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetMainStgScriptPath">GetMainStgScriptPath(引数：0、返り値：char)</A></SPAN><BR>
+  メインで実行しているスクリプトのパスを返します。<BR>
+  スクリプト選択画面で選択したスクリプトのパスが返ります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetMainPackageScriptPath">GetMainPackageScriptPath(引数：0、返り値：char)</A></SPAN><BR>
+  メインで実行しているパッケージスクリプトのパスを返します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetMainStgScriptDirectory">GetMainStgScriptDirectory(引数：0、返り値：char)</A></SPAN><BR>
+  メインで実行しているスクリプトのディレクトリを返します。<BR>
+  スクリプト選択画面で選択したスクリプトのディレクトリが返ります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetCurrentScriptDirectory">GetCurrentScriptDirectory(引数：0、返り値：char)</A></SPAN><BR>
+  自身のスクリプトのディレクトリが返ります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetScriptPathList">GetScriptPathList(引数：2、返り値：string配列)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:フォルダパス</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:スクリプト種別<BR>
+  　　TYPE_SCRIPT_ALL　　 ：全スクリプト<BR>
+  　　TYPE_SCRIPT_PLAYER　：自機スクリプト<BR>
+  　　TYPE_SCRIPT_SINGLE　：Singleスクリプト<BR>
+  　　TYPE_SCRIPT_PULRAL　：Pulralスクリプト<BR>
+  　　TYPE_SCRIPT_STAGE　 ：Stageスクリプト<BR>
+  　　TYPE_SCRIPT_PACKAGE ：Packageスクリプト<BR>
+  </SPAN>
+  指定したフォルダ内の指定した種別の、有効なスクリプトパス一覧を返します。<BR>
+ </P><HR>
+
+
+ <HR>
+ <SPAN class = "section_title"><A name="sec_datetime">■時間関連</A></SPAN><BR>
+  時間取得関連の関数です。<BR>
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetCurrentDateTimeS">GetCurrentDateTimeS(引数：0、返り値：char)</A></SPAN><BR>
+  現在日時を文字列で返します。<BR>
+  例えば、2012/09/16 12:34:56　の場合、"20120916123456"が返ります。<BR>
+  数値に変換したい場合、<BR>
+　　let strDateTime = GetCurrentDateTimeS();<BR>
+　　let year = atoi(strDateTime[0..4]);<BR>
+　のように、文字列→数値　の変換を行ってください。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetStageTime">GetStageTime(引数：0、返り値：real)</A></SPAN><BR>
+  ステージ開始時からの経過時間を返します。<BR>
+  単位はミリ秒です。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetPackageTime">GetPackageTime(引数：0、返り値：real)</A></SPAN><BR>
+  パッケージ開始時からの経過時間を返します。<BR>
+  単位はミリ秒です。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetCurrentFps">GetCurrentFps(引数：0、返り値：real)</A></SPAN><BR>
+  現在のFPSを返します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetReplayFps">GetReplayFps(引数：0、返り値：real)</A></SPAN><BR>
+  リプレイに保存されている現在のFPSを返します。<BR>
+  リプレイ中でない場合は常に0が返ります。<BR>
+  (リプレイ中かはIsReplayで判定できます。)<BR>
+ </P><HR>
+
+ <HR>
+ <SPAN class = "section_title"><A name="sec_debug">■デバッグ関連</A></SPAN><BR>
+  デバッグ用の関数です。<BR>
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="WriteLog">WriteLog(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:文字列</SPAN><BR>
+  ログに文字列を出力します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="RaiseError">RaiseError(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:文字列</SPAN><BR>
+  指定した文字列でエラーを発生させます。<BR>
+  スクリプトの実行は中断されます。<BR>
+ </P><HR>
+
+ <HR>
+ <SPAN class = "section_title"><A name="sec_common_data">■共通データ</A></SPAN><BR>
+  共通データを操作する関数です。<BR>
+  共通のデータ空間名は「""」です。<BR>
+ <BR><HR>
+
+ <!--
+ <P>
+  <SPAN class = "function_name"><A name="SetDefaultCommonDataArea">SetDefaultCommonDataArea(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) 文字列</SPAN><BR>
+  デフォルトの共通データ空間名を設定します。<BR>
+  共通データ空間名を省略して呼び出せる関数(SetCommonDataなど)の空間名を設定します。<BR>
+  初期値は「""」です。<BR>
+  <BR>
+  ステージスクリプト側で設定したばあいでも、自機スクリプト側で設定を上書きされる可能性があるため、<BR>
+  共通データにアクセスする一連の処理の前に設定しなおしたほうが良いです。<BR>
+ </P><HR>
+ -->
+
+ <P>
+  <SPAN class = "function_name"><A name="SetCommonData">SetCommonData(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:値の名前(文字列)</SPAN><BR>
+  <SPAN class = "function_arg">　2) free:保存する値</SPAN><BR>
+  共通データを保存する関数です。<BR>
+  デフォルトの共通データ空間が対象になります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetCommonData">GetCommonData(引数：2、返り値：free)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:値の名前(文字列)</SPAN><BR>
+  <SPAN class = "function_arg">　2) free:デフォルト値</SPAN><BR>
+  共通データを読みこむ関数です。<BR>
+  値が存在しなかったら第二引数が返ります。<BR>
+  デフォルトの共通データ空間が対象になります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ClearCommonData">ClearCommonData(引数：0)</A></SPAN><BR>
+  共通データを削除します。<BR>
+  デフォルトの共通データ空間が対象になります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="DeleteCommonData">DeleteCommonData(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:値の名前(文字列)</SPAN><BR> 
+  指定した共通の値を削除する関数です。<BR>
+  デフォルトの共通データ空間が対象になります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetAreaCommonData">SetAreaCommonData(引数：3)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:共通データ空間名</SPAN><BR>
+  <SPAN class = "function_arg">　2) char:値の名前</SPAN><BR>
+  <SPAN class = "function_arg">　3) free:保存する値</SPAN><BR>
+  共通データを保存する関数です。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetAreaCommonData">GetAreaCommonData(引数：3、返り値：free)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:共通データ空間名</SPAN><BR>
+  <SPAN class = "function_arg">　2) char:値の名前</SPAN><BR>
+  <SPAN class = "function_arg">　3) free:デフォルト値</SPAN><BR>
+  共通データを読みこむ関数です。<BR>
+  値が存在しなかったら第三引数が返ります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ClearAreaCommonData">ClearAreaCommonData(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:共通データ空間名</SPAN><BR>
+  共通データを削除します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="DeleteAreaCommonData">DeleteAreaCommonData(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:共通データ空間名</SPAN><BR>
+  <SPAN class = "function_arg">　2) char:値の名前</SPAN><BR> 
+  指定した共通の値を削除する関数です。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="CreateCommonDataArea">CreateCommonDataArea(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:共通データ空間名</SPAN><BR>
+  共通データを保存するメモリ空間を新たに作成します。<BR>
+  共通データ空間「""」は初期状態で作成済みです。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="IsCommonDataAreaExists">IsCommonDataAreaExists(引数：1、返り値：bool)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:共通データ空間名</SPAN><BR>
+  共通データを保存するメモリ空間が作成されているか調べます。<BR>
+  作成されている場合はtrueが返ります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="CopyCommonDataArea">CopyCommonDataArea(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:コピー先共通データ空間名</SPAN><BR>
+  <SPAN class = "function_arg">　2) char:コピー元共通データ空間名</SPAN><BR>
+  共通データメモリ空間をコピーします。<BR>
+  コピー元共通データ空間が無かった場合は何も起きません。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetCommonDataAreaKeyList">GetCommonDataAreaKeyList(引数：0、返り値：char配列)</A></SPAN><BR>
+  共通データメモリ空間の一覧を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetCommonDataValueKeyList">GetCommonDataValueKeyList(引数：1、返り値：char配列)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:コピー先共通データ空間名</SPAN><BR>
+  共通データメモリ空間内の値キー一覧を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SaveCommonDataAreaA1">SaveCommonDataAreaA1(引数：1、返り値：bool)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:共通データ空間名</SPAN><BR>
+  共通データをファイルに保存します。<BR>
+  成功した場合はtrueが返ります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="LoadCommonDataAreaA1">LoadCommonDataAreaA1(引数：1、返り値：bool)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:共通データ空間名</SPAN><BR>
+  共通データをファイルから読み込みます。<BR>
+  成功した場合はtrueが返ります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SaveCommonDataAreaA2">SaveCommonDataAreaA2(引数：2、返り値：bool)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:共通データ空間名</SPAN><BR>
+  <SPAN class = "function_arg">　2) char:ファイルパス</SPAN><BR>
+  任意のファイルパスで共通データをファイルに保存します。<BR>
+  成功した場合はtrueが返ります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="LoadCommonDataAreaA2">LoadCommonDataAreaA2(引数：2、返り値：bool)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:共通データ空間名</SPAN><BR>
+  <SPAN class = "function_arg">　2) char:ファイルパス</SPAN><BR>
+  任意のファイルパスから共通データをファイルから読み込みます。<BR>
+  成功した場合はtrueが返ります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SaveCommonDataAreaToReplayFile">SaveCommonDataAreaToReplayFile(引数：1、返り値：bool)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:共通データ空間名</SPAN><BR>
+  共通データをリプレイファイルに保存します。<BR>
+  成功した場合はtrueが返ります。<BR>
+  リプレイ中に実行した場合はエラーになります。<BR>
+  <BR>
+  関数を実行した時点の共通データをリプレイファイルのステージ毎の領域に保存します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="LoadCommonDataAreaFromReplayFile">LoadCommonDataAreaFromReplayFile(引数：1、返り値：bool)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:共通データ空間名</SPAN><BR>
+  共通データをリプレイファイルから読み込みます。<BR>
+  成功した場合はtrueが返ります。<BR>
+  リプレイ以外(通常プレイ)で実行した場合はエラーになります。<BR>
+  <BR>
+  共通データをリプレイファイルのステージ毎の領域から読み込みます。<BR>
+ </P><HR>
+
+ </DIV></BODY>
+</HTML>

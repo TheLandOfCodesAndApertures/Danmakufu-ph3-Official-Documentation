@@ -1,0 +1,925 @@
+<HTML>
+ <HEAD>
+  <TITLE>スクリプト記述方法</TITLE>
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/html;charset=Shift_JIS">
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/css">
+  <LINK rel="stylesheet" href="style.css" type="text/css">
+ </HEAD>
+
+ <STYLE TYPE="text/css">
+  TABLE.tag {width:90%; vertical-align:top;background-color:RGB(255,255,255);border: 1px solid #cccccc;}
+  TR.tag {}
+  TD.tag_elementT {width:120px; background-color:#ffccff}
+  TD.tag_valueT {width:120px; background-color:#ccccff}
+  TD.tag_textT {background-color:#ccccff}
+  TD.tag_element {vertical-align:top; width:120px; border: 1px solid #ffccff;}
+  TD.tag_value {vertical-align:top; width:120px; border: 1px solid #ccccff;}
+  TD.tag_text {vertical-align:top; border: 1px solid #ccccff;}
+ </STYLE>
+
+ <BODY link="#0000ff" alink="#0000ff" vlink="#0000ff">
+ <DIV class="allbody">
+ <SPAN class = "section_title">■スクリプト記述方法■</SPAN>
+ <BR><BR>
+
+
+ <SPAN class = "section_sub"><A name="Format">■スクリプトのフォーマット</A></SPAN><BR>
+ <P>スクリプトファイルのフォーマットは以下の形式を使用できます。<BR>
+    複数フォーマットが混在する状態で、#include を使用しファイル結合した場合は、<BR>
+    内部的には全てUnicodeに変換してファイルを結合します。<BR>
+    (不要な変換処理が入るため、フォーマットは1つに統一した方が速く動作します。)<BR>
+  <TABLE class = "tag">
+   <TR class = "tag">
+    <TD class = "tag_elementT">種別</TD> <TD class = "tag_textT">説明</TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">Shift-JIS</TD>
+    <TD class = "tag_text">
+     テキストエディタで、SJIS,Shift-JISを選択することで、保存することができる形式です。<BR>
+     (0.12mやph3 [.0]以前は、この形式のファイルのみ読み込むことができました)<BR>
+     日本語設定のWindowsでのみ正常に表示することができます。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">Unicode (UTF16LE)</TD>
+    <TD class = "tag_text">
+     テキストエディタで、Unicode,UTF16,UTF16LEを選択することで、保存することができる形式です。<BR>
+     ファイル先頭にBOM(Byte Order Mark)が必要です。<BR>
+     (Byte Order Markは、通常はテキストエディタが自動的に付加してくれます)<BR>
+    </TD>
+   </TR>
+  </TABLE>
+ </P>
+ <BR><HR>
+
+
+ <SPAN class = "section_sub"><A name="Header">■スクリプトヘッダ</A></SPAN><BR>
+ <P>スクリプトヘッダとは、弾幕風本体のメニューへの登録や自機スクリプトとして認識させるために<BR>
+    スクリプトの先頭に記述するテキストのことです。<BR>
+    「#～～～」で記述し、以下の種類があります。<BR>
+  <TABLE class = "tag">
+   <TR class = "tag">
+    <TD class = "tag_elementT">要素</TD> <TD class = "tag_textT">説明</TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">#東方弾幕風[xxx]</TD>
+    <TD class = "tag_text">
+     「#東方弾幕風」を記述することで東方弾幕風本体のメニューに登録することができます。<BR>
+     また「#TouhouDanmakufu」でも同様の意味があります。<BR>
+     <BR>
+     以下の種類があります。<BR>
+     ・#東方弾幕風[Single]：単発スクリプトとしてメニューに登録します。<BR>
+     ・#東方弾幕風[Plural]：連続再生スクリプトとしてメニューに登録します。<BR>
+     ・#東方弾幕風[Stage]：ステージスクリプトとしてメニューに登録します。<BR>
+     ・#東方弾幕風[Package]：パッケージスクリプトとしてメニューに登録します。<BR>
+     ・#東方弾幕風[Player]：自機スクリプトとして弾幕風に認識させます。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">#ScriptVersion[3]</TD>
+    <TD class = "tag_text">
+     スクリプトバージョン3であることを示します。<BR>
+     スクリプトバージョン3のみしか再生できないため必須です。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">#ID["XXX"]</TD>
+    <TD class = "tag_text">
+     スクリプトのIDです。<BR>
+     内部的にスクリプトを区別するのに使用します。<BR>
+     できるだけ他のスクリプトと一致しない名称にする方が良いです。<BR>
+     省略可能です。<BR>
+     省略した場合はファイル名になります。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">#Title["XXX"]</TD>
+    <TD class = "tag_text">
+     メニューのタイトルに使用される文字列です。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">#Text["XXX"]</TD>
+    <TD class = "tag_text">
+     メニューでの説明に使用される文字列です。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">#Image["XXX"]</TD>
+    <TD class = "tag_text">
+     メニューの画像に使用される画像ファイルへのパスです。<BR>
+     640×480の画像を指定します。<BR>
+     実行ファイル位置からの相対パスです。<BR>
+     ただし[./～]のようにパスの最初に「./」をかくと、スクリプトファイルのあるフォルダからの相対パスになります。<BR>
+     <BR>
+     省略可能です。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">#System["XXX"]</TD>
+    <TD class = "tag_text">
+     システムスクリプトへのパスです。<BR>
+     システムスクリプトではスコアや残機、敵ライフの表示などを行います。<BR>
+     <BR>
+     実行ファイル位置からの相対パスです。<BR>
+     ただし[./～]のようにパスの最初に「./」をかくと、スクリプトファイルのあるフォルダからの相対パスになります。<BR>
+     <BR>
+     省略可能です。<BR>
+     省略した場合「/script/default_system/Default_System.txt」のシステムスクリプトが適応されます。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">#Background["XXX"]</TD>
+    <TD class = "tag_text">
+     背景スクリプトへのパスです。<BR>
+     実行ファイル位置からの相対パスです。<BR>
+     ただし[./～]のようにパスの最初に「./」をかくと、スクリプトファイルのあるフォルダからの相対パスになります。<BR>
+     <BR>
+     省略可能です。<BR>
+     省略した場合、背景は黒となります。<BR>
+     <BR>
+     内部的には、このパスを使用して、LoadScript→StartScriptしているだけです。<BR>
+     省略した場合でも、独自に背景用のスクリプトをLoadScript→StartScriptすれば背景は描画されます。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">#BGM["XXX"]</TD>
+    <TD class = "tag_text">
+     BGMに使用されるファイルへのパスです。<BR>
+     実行ファイル位置からの相対パスです。<BR>
+     ただし[./～]のようにパスの最初に「./」をかくと、スクリプトファイルのあるフォルダからの相対パスになります。<BR>
+     <BR>
+     省略可能です。<BR>
+     省略した場合は無音になります。<BR>
+     内部的には、このパスを使用して、音声再生をしているだけです。<BR>
+     省略した場合でも、独自に音声再生を行えばBGMは鳴ります。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">#Player["XXX","YYY",...]</TD>
+    <TD class = "tag_text">
+     このスクリプトで使用できる自機スクリプトへのパスです。<BR>
+     「,」で区切って複数の自機を登録します。<BR>
+     実行ファイル位置からの相対パスです。<BR>
+     ただし[./～]のようにパスの最初に「./」をかくと、スクリプトファイルのあるフォルダからの相対パスになります。<BR>
+     <BR>
+     省略可能です。<BR>
+     省略した場合は「/script/player/」下のすべての自機スクリプトが使用可能になります。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">#ReplayName["XXX"]</TD>
+    <TD class = "tag_text">
+     リプレイ用の自機名称です。<BR>
+     8文字以内で指定します。<BR>
+    </TD>
+   </TR>
+  </TABLE>
+ </P>
+ <BR><HR>
+
+
+ <SPAN class = "section_sub"><A name="Embedded">■組み込みルーチン</A></SPAN><BR>
+ <P>組み込みルーチンは「@XXX」で記述される特別なルーチンのことです。<BR>
+    特定のタイミングで弾幕風本体から自動的に呼び出されます。<BR>
+    以下の種類があります。<BR>
+
+  <TABLE class = "tag">
+   <TR class = "tag">
+    <TD class = "tag_elementT">種類</TD> <TD class = "tag_textT">説明</TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">@Initialize</TD>
+    <TD class = "tag_text">
+     スクリプト初期化時に一度だけ呼び出されます。<BR>
+     1回目の@MainLoopが呼び出される直前に呼ばれます。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">@Finalize</TD>
+    <TD class = "tag_text">
+     スクリプト終了時に一度だけ呼び出されます。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">@MainLoop</TD>
+    <TD class = "tag_text">
+     スクリプトがアクティブな場合に毎フレーム一度ずつ呼び出されます。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">@Loading</TD>
+    <TD class = "tag_text">
+     主にLoadScriptInThreadでのスクリプト読み込み時に呼び出され、<BR>
+     別スレッドでの初期化を行います。<BR>
+     <BR>
+     テクスチャや音声の読み込みにのみ使用でき、<BR>
+     オブジェクトの生成などを行うとエラーになります。<BR>
+     乱数も使用できません。<BR>
+     (実行タイミングが制御できないため、リプレイの再生に影響が出るため。)<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">@Event</TD>
+    <TD class = "tag_text">
+     特定のイベントが発生したときに呼び出されます。<BR>
+     <A href = "description.html#Event">イベント</A>を参照願います。<BR>
+    </TD>
+   </TR>
+  </TABLE>
+ </P>
+ <BR><HR>
+
+ <SPAN class = "section_sub"><A name="Single">■Singleスクリプト</A></SPAN><BR>
+ <P>単発再生用スクリプトです。<BR>
+    スクリプトに「#東方弾幕風[Single]」と記述することで認識されます。<BR>
+    通常は敵のスペルカード1枚分に相当します。<BR>
+    以下に記述例を示します。<BR>
+<DIV Class="source"><PRE class="source">
+	#東方弾幕風[Single]
+	#ScriptVersion[<SPAN Class="source_number">3</SPAN>]
+	#Title[<SPAN Class="source_string">"星符「ミッドナイトレヴァリエ」"</SPAN>]
+	#Text[<SPAN Class="source_string">"Exルーミア最初のスペルカード：星符「ミッドナイトレヴァリエ」"</SPAN>]
+	#Image[<SPAN Class="source_string">"./img/ExRumia(星符「ミッドナイトレヴァリエ」).png"</SPAN>]
+	#Background[<SPAN Class="source_string">"script/default_system/Default_Background_IceMountain.txt"</SPAN>]
+
+	<SPAN Class="source_reserve">#include</SPAN><SPAN Class="source_string">"script/default_system/Default_ShotConst.txt"</SPAN>
+	<SPAN Class="source_reserve">#include</SPAN><SPAN Class="source_string">"script/default_system/Default_Effect.txt"</SPAN>
+
+	<SPAN Class="source_reserve">let</SPAN> objEnemy;
+	<SPAN Class="source_reserve">let</SPAN> bConcentrationMotion = <SPAN Class="source_reserve">false</SPAN>;
+	@Initialize
+	{
+		objEnemy = ObjEnemy_Create(OBJ_ENEMY_BOSS);
+		ObjEnemy_Regist(objEnemy);
+		ObjEnemy_SetDamageRate(objEnemy, <SPAN Class="source_number">10</SPAN>, <SPAN Class="source_number">10</SPAN>);<SPAN Class="source_comment">//披ダメージを10%に設定</SPAN>
+		TWork;
+		TRender;
+		TEnd;
+
+		DeleteShotAll(TYPE_ALL, TYPE_ITEM);<SPAN Class="source_comment">//出現と同時に敵弾を全て削除	</SPAN>
+	}
+
+	@MainLoop
+	{
+		<SPAN Class="source_reserve">let</SPAN> ex = ObjMove_GetX(objEnemy);
+		<SPAN Class="source_reserve">let</SPAN> ey = ObjMove_GetY(objEnemy);
+		ObjEnemy_SetIntersectionCircleToShot(objEnemy, ex, ey, <SPAN Class="source_number">32</SPAN>);<SPAN Class="source_comment">//当たり判定(自弾)登録</SPAN>
+		ObjEnemy_SetIntersectionCircleToPlayer(objEnemy, ex, ey, <SPAN Class="source_number">24</SPAN>);<SPAN Class="source_comment">//当たり判定(体当たり)登録</SPAN>
+
+		<SPAN Class="source_reserve">yield</SPAN>;
+	}
+
+	@Event
+	{
+		<SPAN Class="source_reserve">alternative</SPAN>(GetEventType())
+		<SPAN Class="source_reserve">case</SPAN>(EV_REQUEST_LIFE)
+		{
+			SetScriptResult(<SPAN Class="source_number">1500</SPAN>);<SPAN Class="source_comment">//ライフを1500に設定</SPAN>
+		}
+		<SPAN Class="source_reserve">case</SPAN>(EV_REQUEST_TIMER)
+		{
+			SetScriptResult(<SPAN Class="source_number">60</SPAN>);<SPAN Class="source_comment">//時間制限を60秒に設定</SPAN>
+		}
+		<SPAN Class="source_reserve">case</SPAN>(EV_REQUEST_SPELL_SCORE)
+		{
+			SetScriptResult(<SPAN Class="source_number">30000</SPAN>);<SPAN Class="source_comment">//スペルカードボーナスを30000に設定</SPAN>
+		}
+	}
+
+
+	<SPAN Class="source_comment">//～～～敵の制御など</SPAN>
+
+	<SPAN Class="source_comment">//----------------------------------------------------</SPAN>
+	<SPAN Class="source_comment">//終了待機タスク</SPAN>
+	<SPAN Class="source_comment">//----------------------------------------------------</SPAN>
+	<SPAN Class="source_reserve">task</SPAN> TEnd
+	{
+		<SPAN Class="source_reserve">while</SPAN>(ObjEnemy_GetInfo(objEnemy, INFO_LIFE) &gt; <SPAN Class="source_number">0</SPAN>)
+		{
+			<SPAN Class="source_reserve">yield</SPAN>;
+		}
+
+		<SPAN Class="source_reserve">let</SPAN> ex = ObjMove_GetX(objEnemy);
+		<SPAN Class="source_reserve">let</SPAN> ey = ObjMove_GetY(objEnemy);
+		TExplosionA(ex, ey, <SPAN Class="source_number">10</SPAN>, <SPAN Class="source_number">0.6</SPAN>);
+		DeleteShotAll(TYPE_ALL, TYPE_ITEM);<SPAN Class="source_comment">//敵弾を全て削除	</SPAN>
+
+		<SPAN Class="source_comment">//連続再生の場合は敵を削除することで、</SPAN>
+		<SPAN Class="source_comment">//次の段階に進みます。</SPAN>
+		<SPAN Class="source_comment">//必ず削除してください。</SPAN>
+		Obj_Delete(objEnemy);
+
+		<SPAN Class="source_reserve">loop</SPAN>(<SPAN Class="source_number">30</SPAN>){<SPAN Class="source_reserve">yield</SPAN>;}
+
+		<SPAN Class="source_comment">//最後はスクリプトをクローズしてください</SPAN>
+		CloseScript(GetOwnScriptID());
+	}
+
+</PRE></DIV>
+ </P>
+ <BR><HR>
+
+
+ <SPAN class = "section_sub"><A name="Plural">■連続再生スクリプト</A></SPAN><BR>
+ <P>連続再生用スクリプトです。<BR>
+    スクリプトに「#東方弾幕風[Plural]」と記述することで認識されます。<BR>
+    通常は敵のボス1体分に相当します。<BR>
+    以下に記述例を示します。<BR>
+<DIV Class="source"><PRE class="source">
+	#東方弾幕風[Plural]
+	#ScriptVersion[<SPAN Class="source_number">3</SPAN>]
+	#Title[<SPAN Class="source_string">"Exルーミアスクリプト連続再生"</SPAN>]
+	#Text[<SPAN Class="source_string">"Exルーミアスペルカード"</SPAN>]
+	#Image[<SPAN Class="source_string">"./img/ExRumia(星符「ミッドナイトレヴァリエ」).png"</SPAN>]
+	#Background[<SPAN Class="source_string">"script/default_system/Default_Background_IceMountain.txt"</SPAN>]
+
+	@Initialize
+	{
+		TPlural();
+	}
+
+	@MainLoop
+	{
+		<SPAN Class="source_reserve">yield</SPAN>;
+	}
+
+	@Finalize
+	{
+	}
+
+
+	<SPAN Class="source_reserve">task</SPAN> TPlural
+	{
+		<SPAN Class="source_reserve">let</SPAN> dir = GetCurrentScriptDirectory();
+
+		<SPAN Class="source_comment">//ボスシーンを作成します。</SPAN>
+		<SPAN Class="source_reserve">let</SPAN> obj = ObjEnemyBossScene_Create();
+		ObjEnemyBossScene_Add(obj, <SPAN Class="source_number">0</SPAN>, dir ~ <SPAN Class="source_string">"ExRumia01.txt"</SPAN>);
+		ObjEnemyBossScene_Add(obj, <SPAN Class="source_number">0</SPAN>, dir ~ <SPAN Class="source_string">"ExRumiaSpell01.txt"</SPAN>);
+		ObjEnemyBossScene_LoadInThread(obj);
+		ObjEnemyBossScene_Regist(obj);
+
+		<SPAN Class="source_comment">//敵ボスシーンが終了するまで待機</SPAN>
+		<SPAN Class="source_reserve">while</SPAN>(!Obj_IsDeleted(obj))
+		{
+			<SPAN Class="source_reserve">yield</SPAN>;
+		}
+
+		<SPAN Class="source_comment">//スクリプト終了</SPAN>
+		CloseScript(GetOwnScriptID());
+	}
+</PRE></DIV>
+ </P>
+ <BR><HR>
+
+
+ <SPAN class = "section_sub"><A name="Stage">■Stageスクリプト</A></SPAN><BR>
+ <P>ステージスクリプトです。<BR>
+    スクリプトに「#東方弾幕風[Stage]」と記述することで認識されます。<BR>
+    通常は1ステージ分に相当します。<BR>
+    以下に記述例を示します。<BR>
+    <BR>
+ <DIV Class="source"><PRE class="source">
+	#東方弾幕風[Stage]
+	#ScriptVersion[<SPAN Class="source_number">3</SPAN>]
+	#Title[<SPAN Class="source_string">"EXルーミアテストステージ"</SPAN>]
+	#Text[<SPAN Class="source_string">"EXルーミアテストステージ"</SPAN>]
+	#Image[<SPAN Class="source_string">"./img/ExRumia(星符「ミッドナイトレヴァリエ」).png"</SPAN>]
+	#Background[<SPAN Class="source_string">"script/default_system/Default_Background_IceMountain.txt"</SPAN>]
+
+	@Initialize
+	{
+		TStage();
+	}
+
+	@MainLoop
+	{
+		<SPAN Class="source_reserve">yield</SPAN>;
+	}
+
+	@Finalize
+	{
+	}
+
+
+	<SPAN Class="source_reserve">task</SPAN> TStage
+	{
+		<SPAN Class="source_reserve">let</SPAN> dir = GetCurrentScriptDirectory();
+
+		<SPAN Class="source_comment">//ボス再生</SPAN>
+		<SPAN Class="source_reserve">let</SPAN> path = dir ~ <SPAN Class="source_string">"ExRumia_Plural.txt"</SPAN>;
+		<SPAN Class="source_reserve">let</SPAN> idScript = LoadScriptInThread(path);
+		<SPAN Class="source_reserve">loop</SPAN>(<SPAN Class="source_number">60</SPAN>){<SPAN Class="source_reserve">yield</SPAN>;}<SPAN Class="source_comment">//1秒くらいあれば、コンパイル完了すると思われる。</SPAN>
+		StartScript(idScript);
+
+		<SPAN Class="source_comment">//敵ボスシーンが終了するまで待機</SPAN>
+		<SPAN Class="source_reserve">while</SPAN>(!IsCloseScript(idScript))
+		{
+			<SPAN Class="source_reserve">yield</SPAN>;
+		}
+
+		<SPAN Class="source_comment">//～～～敵の出現やボスの出現を繰り返す。</SPAN>
+
+		<SPAN Class="source_reserve">loop</SPAN>(<SPAN Class="source_number">240</SPAN>){<SPAN Class="source_reserve">yield</SPAN>;}
+
+	    <SPAN Class="source_comment">//ステージ終了</SPAN>
+		CloseStgScene();
+	}
+</PRE></DIV>
+ </P>
+ <BR><HR>
+
+
+ <SPAN class = "section_sub"><A name="Player">■自機スクリプト</A></SPAN><BR>
+ <P>自機スクリプトです。<BR>
+    スクリプトに「#東方弾幕風[Player]」と記述することで自機用のスクリプトとして認識されます。<BR>
+    以下に記述例を示します。<BR>
+    <BR>
+<DIV Class="source"><PRE class="source">
+	#Image[<SPAN Class="source_string">"./ExRumiaImage.png"</SPAN>]
+
+
+	<SPAN Class="source_reserve">let</SPAN> objPlayer = GetPlayerObjectID();
+	<SPAN Class="source_reserve">let</SPAN> objSlowShot = ID_INVALID;
+	<SPAN Class="source_reserve">let</SPAN> current = GetCurrentScriptDirectory();
+	@Initialize
+	{
+		<SPAN Class="source_reserve">let</SPAN> path = current ~ <SPAN Class="source_string">"Default_Player_RumiaShotData.txt"</SPAN>;
+		LoadPlayerShotData(path); <SPAN Class="source_comment">//自弾画像ロード</SPAN>
+
+		ObjPlayer_AddIntersectionCircleA(objPlayer, <SPAN Class="source_number">0</SPAN>, <SPAN Class="source_number">0</SPAN>, <SPAN Class="source_number">1</SPAN>, <SPAN Class="source_number">20</SPAN>); <SPAN Class="source_comment">//当たり判定登録</SPAN>
+
+		TImage();<SPAN Class="source_comment">//自機描画用タスク起動</SPAN>
+		TShot();<SPAN Class="source_comment">//弾発射用タスク起動</SPAN>
+		TMagicCircle();<SPAN Class="source_comment">//無敵時間魔法陣タスク起動</SPAN>
+	}
+
+	@MainLoop
+	{
+		<SPAN Class="source_reserve">yield</SPAN>;
+	}
+
+	@Finalize
+	{
+	}
+
+	@Event
+	{
+		<SPAN Class="source_reserve">alternative</SPAN>(GetEventType())
+		<SPAN Class="source_reserve">case</SPAN>(EV_REQUEST_SPELL)
+		{
+			<SPAN Class="source_comment">//スペルカード要求</SPAN>
+			<SPAN Class="source_reserve">let</SPAN> spell = GetPlayerSpell();<SPAN Class="source_comment">//残りスペル数</SPAN>
+			<SPAN Class="source_reserve">if</SPAN>(spell &gt;= <SPAN Class="source_number">1</SPAN>)
+			{
+				SetScriptResult(<SPAN Class="source_reserve">true</SPAN>);<SPAN Class="source_comment">//スペル発動可能</SPAN>
+				SetPlayerSpell(spell-<SPAN Class="source_number">1</SPAN>);<SPAN Class="source_comment">//スペル数を1減らす</SPAN>
+				TSpell();<SPAN Class="source_comment">//スペルタスク起動</SPAN>
+			}
+			<SPAN Class="source_reserve">else</SPAN>
+			{
+				SetScriptResult(<SPAN Class="source_reserve">false</SPAN>);<SPAN Class="source_comment">//スペル発動不可</SPAN>
+			}
+		}
+		<SPAN Class="source_reserve">case</SPAN>(EV_HIT)
+		{
+			<SPAN Class="source_comment">//被弾</SPAN>
+			TExplosion();
+		}
+		<SPAN Class="source_reserve">case</SPAN>(EV_PLAYER_REBIRTH)
+		{
+			<SPAN Class="source_comment">//復帰</SPAN>
+			SetPlayerSpell(<SPAN Class="source_number">3</SPAN>);
+			SetPlayerInvincibilityFrame(<SPAN Class="source_number">180</SPAN>);
+		}
+	}
+
+	<SPAN Class="source_comment">//～～～省略</SPAN>
+</PRE></DIV>
+ </P>
+ <BR><HR>
+
+
+ <SPAN class = "section_sub"><A name="MenuScript">■メニュー系スクリプト</A></SPAN><BR>
+ <P>一時停止中などに呼び出されるスクリプトで、<BR>
+    メニュー系シーンのカスタマイズを行えます。<BR>
+    サンプルは各デフォルトスクリプトを参照お願いします。<BR>
+    <BR>
+    いずれもSetScriptResultで特定の値を設定する必要があります。<BR>
+    これらのスクリプトでは自機や弾などの操作を行うことはできません。<BR>
+    <BR>
+  <TABLE class = "tag">
+   <TR class = "tag">
+    <TD class = "tag_elementT">種類</TD> <TD class = "tag_textT">説明</TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">一時停止</TD>
+    <TD class = "tag_text">
+     一時停止(ポーズ)中に呼び出されるスクリプトです。<BR>
+     システムスクリプト中で「SetPauseScriptPath」で使用スクリプトを設定します。<BR>
+     デフォルトでは「/script/default_system/Default_Pause.txt」が使用されます。<BR>
+     <BR>
+     SetScriptResultに以下のいずれかを設定する必要があります。<BR>
+     ・RESULT_CANCEL：再開<BR>
+     ・RESULT_END：スクリプト：再生終了<BR>
+     ・RESULT_RETRY：リトライ<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">STGシーン終了</TD>
+    <TD class = "tag_text">
+     ゲームオーバーやステージクリア時に呼び出されます。<BR>
+     デフォルトでは「/script/default_system/Default_EndScene.txt」が使用されます。<BR>
+     <BR>
+     SetScriptResultに以下のいずれかを設定する必要があります。<BR>
+     ・RESULT_SAVE_REPLAY：リプレイ保存<BR>
+     ・RESULT_END：スクリプト：再生終了<BR>
+     ・RESULT_RETRY：リトライ<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">リプレイ登録</TD>
+    <TD class = "tag_text">
+     リプレイ登録時に呼び出されます。<BR>
+     デフォルトでは「/script/default_system/Default_ReplaySaveScene.txt」が使用されます。<BR>
+     <BR>
+     SetScriptResultに以下のいずれかを設定する必要があります。<BR>
+     ・RESULT_CANCEL：キャンセル<BR>
+     ・RESULT_END：リプレイ保存終了<BR>
+    </TD>
+   </TR>
+  </TABLE>
+ </P>
+ <BR><HR>
+
+
+ <SPAN class = "section_sub"><A name="ItemScript">■アイテムカスタムスクリプト</A></SPAN><BR>
+  アイテムカスタムスクリプト内では、弾消しイベントやアイテム取得イベントを受けられます。<BR>
+  アイテム操作用のスクリプトはStartItemScript関数で起動します。<BR>
+  以下にアイテム動作カスタムスクリプトの記述例を示します。<BR>
+	<DIV Class="source"><PRE class="source">
+	@Initialize
+	{
+		<SPAN Class="source_comment">//弾削除時得点アイテム自動作成無効化</SPAN>
+		SetDefaultBonusItemEnable(<SPAN Class="source_reserve">false</SPAN>);
+
+		<SPAN Class="source_comment">//ユーザ定義アイテムデータ読み込み</SPAN>
+		<SPAN Class="source_reserve">let</SPAN> dir = GetCurrentScriptDirectory();
+		LoadItemData(dir ~ <SPAN Class="source_string">"ItemData.txt"</SPAN>)
+	}
+
+	@Event
+	{
+		<SPAN Class="source_reserve">alternative</SPAN>(GetEventType())
+		<SPAN Class="source_reserve">case</SPAN>(EV_GET_ITEM)
+		{
+			<SPAN Class="source_comment">//アイテム取得イベント</SPAN>
+			<SPAN Class="source_reserve">let</SPAN> itemType = GetEventArgument(<SPAN Class="source_number">0</SPAN>); <SPAN Class="source_comment">//アイテム種別取得</SPAN>
+			<SPAN Class="source_reserve">let</SPAN> objItem = GetEventArgument(<SPAN Class="source_number">1</SPAN>); <SPAN Class="source_comment">//アイテムオブジェクト取得</SPAN>
+
+			<SPAN Class="source_comment">//アイテム取得時処理</SPAN>
+		}
+		<SPAN Class="source_reserve">case</SPAN>(EV_DELETE_SHOT_TO_ITEM)
+		{
+			<SPAN Class="source_comment">//弾削除時アイテム作成イベント</SPAN>
+			<SPAN Class="source_reserve">let</SPAN> objShot = GetEventArgument(<SPAN Class="source_number">0</SPAN>); <SPAN Class="source_comment">//オブジェクト取得</SPAN>
+			<SPAN Class="source_reserve">let</SPAN> objPos = GetEventArgument(<SPAN Class="source_number">1</SPAN>); <SPAN Class="source_comment">//弾オブジェクト座標取得([0]=x, [1]=y)</SPAN>
+
+			<SPAN Class="source_comment">//弾削除時アイテム作成処理</SPAN>
+			TUserItem(objPos[<SPAN Class="source_number">0</SPAN>], objPos[<SPAN Class="source_number">1</SPAN>]);
+		}
+	}
+
+	<SPAN Class="source_comment">//ユーザ定義アイテム作成</SPAN>
+	<SPAN Class="source_reserve">task</SPAN> TUserItem(<SPAN Class="source_reserve">let</SPAN> itemX, <SPAN Class="source_reserve">let</SPAN> itemY)
+	{
+		<SPAN Class="source_reserve">let</SPAN> obj = CreateItemU1(<SPAN Class="source_number">1</SPAN>, itemX, itemY, <SPAN Class="source_number">10000</SPAN>);
+		ObjItem_SetDefinedMovePatternA1(obj, ITEM_MOVE_TOPLAYER);
+	}
+	</PRE></DIV>
+ <BR><HR>
+
+
+ <SPAN class = "section_sub"><A name="ShotScript">■弾カスタムスクリプト</A></SPAN><BR>
+  弾カスタムスクリプト内では、弾消しイベントなどを受けられます。<BR>
+  スクリプトはStartShotScript関数で起動します。<BR>
+  以下に弾動作カスタムスクリプトの記述例を示します。<BR>
+	<DIV Class="source"><PRE class="source">
+	@Initialize
+	{
+		<SPAN Class="source_comment">//弾消し(即消時)イベント有効</SPAN>
+		SetShotDeleteEventEnable(EV_DELETE_SHOT_IMMEDIATE, <SPAN Class="source_reserve">true</SPAN>);
+	}
+
+	@Event
+	{
+		<SPAN Class="source_reserve">alternative</SPAN>(GetEventType())
+		<SPAN Class="source_reserve">case</SPAN>(EV_DELETE_SHOT_IMMEDIATE)
+		{
+			<SPAN Class="source_comment">//弾消し時イベント有効</SPAN>
+			<SPAN Class="source_reserve">let</SPAN> objShot = GetEventArgument(<SPAN Class="source_number">0</SPAN>); <SPAN Class="source_comment">//オブジェクト取得</SPAN>
+			<SPAN Class="source_reserve">let</SPAN> objPos = GetEventArgument(<SPAN Class="source_number">1</SPAN>); <SPAN Class="source_comment">//弾オブジェクト座標取得([0]=x, [1]=y)</SPAN>
+
+			<SPAN Class="source_comment">//弾消し時動作記載</SPAN>
+		}
+	}
+	</PRE></DIV>
+ <BR><HR>
+
+
+ <SPAN class = "section_sub"><A name="PackageScript">■パッケージスクリプト</A></SPAN><BR>
+ <P>タイトル画面、リプレイ一覧画面、ステージの連続再生など、<BR>
+    すべての機能を作成するためのスクリプトです。<BR>
+    <BR>
+    パッケージスクリプト専用の関数は
+    <A href="func_package.html#sec_package" target="right">パッケージスクリプト専用関数</A>
+    を参照お願いします。<BR>
+    <BR>
+    記述方法は以下のサンプルスクリプトを参照お願いします。<BR>
+    /script/ExRumia/ExRumia_Package_Main.txt<BR>
+    <BR>
+    実行ファイルをパッケージスクリプト再生専用にするには、「<A href="other_spec.html#Definition" target="right">定義ファイル(th_dnh.def)</A>」を参照お願いします。<BR>
+    <BR>
+ </P>
+ <BR><HR>
+
+
+ <SPAN class = "section_sub"><A name="Event">■イベント(@Event)</A></SPAN><BR>
+ <P>@Eventは特定のタイミングで呼び出されます。<BR>
+    イベントの種類は、「GetEventType」で取得できます。<BR>
+    引数のあるイベントの場合は「GetEventArgument」で取得でき、<BR>
+    返値が必要なイベントの場合は「SetScriptResult」で返値を設定します。<BR>
+
+    <BR>
+    組み込みのイベントには、以下の種類があります。<BR>
+
+  <TABLE class = "tag">
+   <TR class = "tag">
+    <TD class = "tag_elementT">イベント種類</TD> <TD class = "tag_textT">説明</TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">EV_REQUEST_LIFE</TD>
+    <TD class = "tag_text">
+     敵ボスのライフの要求です。<BR>
+     敵ボススクリプトのみで呼び出されます。<BR>
+     <BR>
+     real値を「SetScriptResult」で返す必要があります。<BR>
+     要求された場合に無視するとエラーになります。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">EV_REQUEST_TIMER</TD>
+    <TD class = "tag_text">
+     敵ボスのタイマー要求です。<BR>
+     敵ボススクリプトのみで呼び出されます。<BR>
+     <BR>
+     real値を「SetScriptResult」で返す必要があります。<BR>
+     無視すると、無制限になります。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">EV_REQUEST_IS_LAST_SPELL</TD>
+    <TD class = "tag_text">
+     ラストスペル要求です。<BR>
+     敵ボススクリプトのみで呼び出されます。<BR>
+     <BR>
+     boolean値を「SetScriptResult」で返す必要があります。<BR>
+     無視すると、ラストスペルではなくなります。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">EV_REQUEST_IS_DURABLE_SPELL</TD>
+    <TD class = "tag_text">
+     耐久スペル要求です。<BR>
+     敵ボススクリプトのみで呼び出されます。<BR>
+     <BR>
+     boolean値を「SetScriptResult」で返す必要があります。<BR>
+     無視すると、耐久スペルではなくなります。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">EV_REQUEST_SPELL_SCORE</TD>
+    <TD class = "tag_text">
+     スペルカードスコア要求です。<BR>
+     敵ボススクリプトのみで呼び出されます。<BR>
+     <BR>
+     boolean値を「SetScriptResult」で返す必要があります。<BR>
+     無視すると、0点になります。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">EV_TIMEOUT</TD>
+    <TD class = "tag_text">
+     敵スペルのタイムアウト通知です。<BR>
+     アクティブな全スクリプトに通知されます。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">EV_START_BOSS_SPELL</TD>
+    <TD class = "tag_text">
+     敵スペルカード開始通知です。<BR>
+     アクティブな全スクリプトに通知されます。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">EV_GAIN_SPELL</TD>
+    <TD class = "tag_text">
+     スペルカード取得通知です。<BR>
+     アクティブな全スクリプトに通知されます。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">EV_START_BOSS_STEP</TD>
+    <TD class = "tag_text">
+     ボスの1ステップ開始通知です。(Singleの1スクリプト相当開始通知です。)<BR>
+     アクティブな全スクリプトに通知されます。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">EV_END_BOSS_STEP</TD>
+    <TD class = "tag_text">
+     ボスの1ステップ終了通知です。(Singleの1スクリプト相当終了通知です。)<BR>
+     アクティブな全スクリプトに通知されます。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">EV_PLAYER_SHOOTDOWN</TD>
+    <TD class = "tag_text">
+     自機撃墜通知です。<BR>
+     アクティブな全スクリプトに通知されます。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">EV_PLAYER_SPELL</TD>
+    <TD class = "tag_text">
+     自機スペル発動通知です。<BR>
+     アクティブな全スクリプトに通知されます。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">EV_PLAYER_REBIRTH</TD>
+    <TD class = "tag_text">
+     自機復帰通知です。<BR>
+     アクティブな全スクリプトに通知されます。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">EV_PAUSE_ENTER</TD>
+    <TD class = "tag_text">
+     一時停止開始通知です。<BR>
+     アクティブな全スクリプトに通知されます。<BR>
+     <BR>
+     音声の停止操作などを想定しています。<BR>
+     このイベント内では、乱数の使用、敵/弾オブジェクトの生成などSTGシーンに影響を与える処理は行わないでください。<BR>
+     リプレイがずれます。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">EV_PAUSE_LEAVE</TD>
+    <TD class = "tag_text">
+     一時停止解除通知です。<BR>
+     アクティブな全スクリプトに通知されます。<BR>
+     <BR>
+     音声の再開操作などを想定しています。<BR>
+     このイベント内では、乱数の使用、オブジェクトの生成などSTGシーンに影響を与える処理は行わないでください。<BR>
+     リプレイがずれます。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">EV_REQUEST_SPELL</TD>
+    <TD class = "tag_text">
+     自機スペル開始要求です。<BR>
+     自機スクリプトのみで呼び出されます。<BR>
+     <BR>
+     boolean値を「SetScriptResult」で返す必要があります。<BR>
+     スペルカードを呼び出せる場合にtrueを返します。<BR>
+     要求された場合に無視するとエラーになります。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">EV_GRAZE</TD>
+    <TD class = "tag_text">
+     かすり通知です。<BR>
+     自機スクリプトのみで呼び出されます。<BR>
+     <BR>
+     かすりのエフェクトや効果音を再生するのに使用します。<BR>
+     GetEventArgument(0)：前フレームのかすり回数(real)<BR>
+     GetEventArgument(1)：前フレームのかすった弾IDのリスト(real配列)<BR>
+     GetEventArgument(2)：前フレームのかすった弾座標のリスト(real配列[index][x, y])<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">EV_HIT</TD>
+    <TD class = "tag_text">
+     撃墜通知です。<BR>
+     自機スクリプトのみで呼び出されます。<BR>
+     <BR>
+     自機の撃墜エフェクトや効果音を再生するのに使用します。<BR>
+     GetEventArgument(0)：自機に当たった敵／弾ID(real)<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">EV_GET_ITEM</TD>
+    <TD class = "tag_text">
+     アイテム取得通知です。<BR>
+     自機スクリプト、アイテムスクリプトのみで呼び出されます。<BR>
+     <BR>
+     GetEventArgument(0)でどのアイテムを取得したかを確認できます。<BR>
+	・ITEM_POWER：パワーアップアイテム<BR>
+	・ITEM_POWER_S：パワーアップアイテム(小)<BR>
+	・ITEM_SPELL：スペル(ボム)アイテム<BR>
+	・ITEM_SPELL_S：スペル(ボム)アイテム(小)<BR>
+	・ITEM_POINT：点アイテム<BR>
+	・ITEM_POINT_S：点アイテム(小)<BR>
+     <BR>
+     GetEventArgument(1)でアイテムオブジェクトのIDを取得できます。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">EV_DELETE_SHOT_IMMEDIATE</TD>
+    <TD class = "tag_text">
+     敵弾の削除通知です。<BR>
+     弾動作カスタムスクリプトで呼び出されます。<BR>
+     弾動作カスタムスクリプトでのイベント通知は、<BR>
+     　SetShotDeleteEventEnable(EV_DELETE_SHOT_IMMEDIATE, true);<BR>
+     を呼び出すと有効になります。<BR>
+     <BR>
+     GetEventArgument(0)で弾オブジェクトのIDを取得できます。<BR>
+     GetEventArgument(1)で弾座標を取得できます。(real配列 [x, y])<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">EV_DELETE_SHOT_TO_ITEM</TD>
+    <TD class = "tag_text">
+     敵弾のアイテム化通知です。<BR>
+     アイテム動作カスタムスクリプトで呼び出されます。<BR>
+     <BR>
+     GetEventArgument(0)で弾オブジェクトのIDを取得できます。<BR>
+     GetEventArgument(1)で弾座標を取得できます。(real配列 [x, y])<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">EV_DELETE_SHOT_FADE</TD>
+    <TD class = "tag_text">
+     敵弾のフェード削除通知です。<BR>
+     弾動作カスタムスクリプトで呼び出されます。<BR>
+     弾動作カスタムスクリプトでのイベント通知は、<BR>
+     　SetShotDeleteEventEnable(EV_DELETE_SHOT_FADE, true);<BR>
+     を呼び出すと有効になります。<BR>
+     <BR>
+     GetEventArgument(0)で弾オブジェクトのIDを取得できます。<BR>
+     GetEventArgument(1)で弾座標を取得できます。(real配列 [x, y])<BR>
+    </TD>
+   </TR>
+  </TABLE>
+
+  <BR>
+    独自にイベントを通知したい場合は「NotifyEvent」もしくは「NotifyEventAll」関数を呼び出します。<BR>
+    その場合のイベント種別は、以下の値を使用してください。<BR>
+  <TABLE class = "tag">
+   <TR class = "tag">
+    <TD class = "tag_elementT">イベント種類</TD> <TD class = "tag_textT">説明</TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">EV_USER_SYSTEM</TD>
+    <TD class = "tag_text">
+     システムスクリプト用のユーザ定義イベント値です。<BR>
+     EV_USER_SYSTEM～EV_USER_SYSTEM + EV_USER_COUNT までの値を指定できます。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">EV_USER_STAGE</TD>
+    <TD class = "tag_text">
+     ステージ(敵)スクリプト用のユーザ定義イベント値です。<BR>
+     EV_USER_STAGE～EV_USER_STAGE + EV_USER_COUNT までの値を指定できます。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">EV_USER_PLAYER</TD>
+    <TD class = "tag_text">
+     自機スクリプト用のユーザ定義イベント値です。<BR>
+     EV_USER_PLAYER～EV_USER_PLAYER + EV_USER_COUNT までの値を指定できます。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">EV_USER_PACKAGE</TD>
+    <TD class = "tag_text">
+     パッケージスクリプト用のユーザ定義イベント値です。<BR>
+     EV_USER_PACKAGE～EV_USER_PACKAGE + EV_USER_COUNT までの値を指定できます。<BR>
+    </TD>
+   </TR>
+   <TR class = "tag">
+    <TD class = "tag_element">EV_USER</TD>
+    <TD class = "tag_text">
+     ユーザ定義イベント値です。<BR>
+     EV_USER～EV_USER + EV_USER_COUNT までの値を指定できます。<BR>
+    </TD>
+   </TR>
+  </TABLE>
+
+ </P>
+ <BR><HR>
+
+ </DIV></BODY>
+</HTML>

@@ -1,0 +1,848 @@
+<HTML>
+ <HEAD>
+  <TITLE>スクリプトリファレンスメニュー</TITLE>
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/html;charset=Shift_JIS">
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/css">
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/lavascript">
+  <LINK REL="stylesheet"HREF="style.css"TYPE="text/css">
+ </HEAD>
+
+ <STYLE TYPE="text/css">
+  .section_menu_title{font-weight:bold;color:RGB(64,0,128);text-align:left;}
+  .section_menu_sub{font-weight:bold;color:RGB(64,0,128);text-align:left;}
+ </STYLE>
+
+ <BODY BGCOLOR="#FFFFFF" LINK="#0000ff" ALINK="#ff00ff" VLINK="#222288">
+ <TABLE width="200"><TR><TD><BR>
+  <SPAN class = "section_menu_title">■東方弾幕風について■</SPAN><BR>
+  <A href="top.html#TOP" target="right">まえがき</A><BR>
+  <BR>
+  <A href="top.html#Key" target="right">操作方法</A><BR>
+  <BR>
+  <A href="whatsnew.html" target="right">更新履歴</A><BR>
+  <BR>
+  <BR>
+  <A href="th_dnh_help_v2tov3/th_dnh_help_v2tov3.html" target="_blank">v2との関数互換ヘルプ<BR>(Thanks to mrtode氏)</A><BR>
+  <BR>
+  <BR>
+  <A href="SecWriting.html" target="right">東方楽曲及びＺＵＮ氏作曲楽曲の二次使用に関する条件</A><BR>
+  <BR>
+  <HR>
+
+  <SPAN class = "section_menu_title">■スクリプト構文■</SPAN><BR>
+  <A href="syntax.html#Statement" target="right">ステートメント</A><BR>
+  <BR>
+  <A href="syntax.html#ReservedWord" target="right">予約語</A><BR>
+  <BR>
+  <A href="syntax.html#VariableDeclaration" target="right">変数宣言</A><BR>
+  <BR>
+  <A href="syntax.html#VariableArray" target="right">配列</A><BR>
+  <BR>
+  <A href="syntax.html#LocalScope" target="right">ローカルスコープ<BR>(ローカル変数)</A><BR>
+  <BR>
+  <A href="syntax.html#Operator" target="right">式と演算子</A><BR>
+  <BR>
+  <A href="syntax.html#LogicFormula" target="right">比較式、論理式</A><BR>
+  <BR>
+  <A href="syntax.html#if" target="right">分岐「if、alternative」</A><BR>
+  <BR>
+  <A href="syntax.html#while" target="right">ループ「loop、times、while、ascent、descent」</A><BR>
+  <BR>
+  <A href="syntax.html#break" target="right">脱出「break、return」</A><BR>
+  <BR>
+  <A href="syntax.html#SubRoutine" target="right">サブルーチン</A><BR>
+  <BR>
+  <A href="syntax.html#Function" target="right">ユーザー定義関数</A><BR>
+  <BR>
+  <A href="syntax.html#MicroThread" target="right">マイクロスレッド</A><BR>
+  <BR>
+  <A href="syntax.html#Comment" target="right">コメントアウト</A><BR>  
+  <BR>
+  <A href="syntax.html#Include" target="right">ファイル取り込み「#include」</A><BR>
+  <BR>
+  <HR>
+
+  <SPAN class = "section_menu_title">■スクリプト記述方法■</SPAN><BR>
+  <A href="description.html#Format" target="right">スクリプトのフォーマット</A><BR>
+  <BR>
+  <A href="description.html#Header" target="right">スクリプトヘッダ</A><BR>
+  <BR>
+  <A href="description.html#Embedded" target="right">組み込みルーチン</A><BR>
+  <BR>
+  <A href="description.html#Single" target="right">Singleスクリプト</A><BR>
+  <BR>
+  <A href="description.html#Plural" target="right">連続再生スクリプト</A><BR>
+  <BR>
+  <A href="description.html#Stage" target="right">Stageスクリプト</A><BR>
+  <BR>
+  <A href="description.html#Player" target="right">自機スクリプト</A><BR>
+  <BR>
+  <A href="description.html#MenuScript" target="right">メニュー系スクリプト</A><BR>
+  <BR>
+  <A href="description.html#ItemScript" target="right">アイテムカスタムスクリプト</A><BR>
+  <BR>
+  <A href="description.html#ShotScript" target="right">弾カスタムスクリプト</A><BR>
+  <BR>
+  <A href="description.html#PackageScript" target="right">パッケージスクリプト</A><BR>
+  <BR>
+  <A href="description.html#Event" target="right">イベント(@Event)</A><BR>
+  <BR>
+  <HR>
+
+  <SPAN class = "section_menu_title">■動作仕様■</SPAN><BR>
+  <A href="other_spec.html#DefaultShot" target="right">弾画像(デフォルト)</A><BR>
+  <BR>
+  <A href="other_spec.html#AddShot" target="right">弾画像の追加</A><BR>
+  <BR>
+  <A href="other_spec.html#UserItem" target="right">ユーザ定義アイテム</A><BR>
+  <BR>
+  <A href="other_spec.html#Object" target="right">オブジェクト</A><BR>
+  <BR>
+  <A href="other_spec.html#RenderPriority" target="right">描画優先度</A><BR>
+  <BR>
+  <A href="other_spec.html#Resource" target="right">使用可能ファイル(画像, 音声)</A><BR>
+  <BR>
+  <A href="other_spec.html#Text" target="right">テキスト表示</A><BR>
+  <BR>
+  <A href="other_spec.html#Shader" target="right">ピクセルシェーダ</A><BR>
+  <BR>
+  <A href="other_spec.html#Archive" target="right">アーカイブファイル</A><BR>
+  <BR>
+  <A href="other_spec.html#Definition" target="right">定義ファイル(th_dnh.def)</A><BR>
+  <BR>
+  <HR>
+
+  <SPAN class = "section_menu_title">■サンプル■</SPAN><BR><BR>
+  <A href="sample_shot.html" target="right">弾操作サンプル</A><BR>
+  <BR>
+  <A href="sample_render.html" target="right">画像表示サンプル(解説)</A><BR>
+  <BR>
+  <A href="sample_effect.html" target="right">エフェクトサンプル</A><BR>
+  <BR>
+  <A href="sample_pixcelshader.html" target="right">ピクセルシェーダサンプル</A><BR>
+  <BR>
+  <HR>
+
+  <SPAN class = "section_menu_title">■共通関数■</SPAN><BR><BR>
+  <SPAN class = "section_menu_sub"><A href="func_common_std.html#sec_math" target="right">■数学系</SPAN></A><BR>
+  <A href="func_common_std.html#min" target="right">min</A><BR>
+  <A href="func_common_std.html#max" target="right">max</A><BR>
+  <A href="func_common_std.html#log" target="right">log</A><BR>
+  <A href="func_common_std.html#log10" target="right">log10</A><BR>
+  <A href="func_common_std.html#cos" target="right">cos</A><BR>
+  <A href="func_common_std.html#sin" target="right">sin</A><BR>
+  <A href="func_common_std.html#tan" target="right">tan</A><BR>
+  <A href="func_common_std.html#acos" target="right">acos</A><BR>
+  <A href="func_common_std.html#asin" target="right">asin</A><BR>
+  <A href="func_common_std.html#atan" target="right">atan</A><BR>
+  <A href="func_common_std.html#atan2" target="right">atan2</A><BR>
+  <A href="func_common_std.html#rand" target="right">rand</A><BR>
+  <A href="func_common_std.html#round" target="right">round</A><BR>
+  <A href="func_common_std.html#truncate" target="right">truncate</A><BR>
+  <A href="func_common_std.html#ceil" target="right">ceil</A><BR>
+  <A href="func_common_std.html#floor" target="right">floor</A><BR>
+  <A href="func_common_std.html#absolute" target="right">absolute</A><BR>
+  <A href="func_common_std.html#modc" target="right">modc</A><BR>
+  <BR>
+  <BR>
+
+  <SPAN class = "section_menu_sub"><A href="func_common_std.html#sec_text" target="right">■文字列操作</SPAN></A><BR>
+  <A href="func_common_std.html#InstallFont" target="right">InstallFont</A><BR>
+  <A href="func_common_std.html#ToString" target="right">ToString</A><BR>
+  <A href="func_common_std.html#IntToString" target="right">IntToString</A><BR>
+  <A href="func_common_std.html#itoa" target="right">itoa</A><BR>
+  <A href="func_common_std.html#rtoa" target="right">rtoa</A><BR>
+  <A href="func_common_std.html#rtos" target="right">rtos</A><BR>
+  <A href="func_common_std.html#vtos" target="right">vtos</A><BR>
+  <A href="func_common_std.html#atoi" target="right">atoi</A><BR>
+  <A href="func_common_std.html#ator" target="right">ator</A><BR>
+  <A href="func_common_std.html#TrimString" target="right">TrimString</A><BR>
+  <A href="func_common_std.html#SplitString" target="right">SplitString</A><BR>
+  <BR>
+  <BR>
+
+  <SPAN class = "section_menu_sub"><A href="func_common_std.html#sec_path" target="right">■パス関連</SPAN></A><BR>
+  <A href="func_common_std.html#GetFileDirectory" target="right">GetFileDirectory</A><BR>
+  <A href="func_common_std.html#GetFilePathList" target="right">GetFilePathList</A><BR>
+  <A href="func_common_std.html#GetDirectoryList" target="right">GetDirectoryList</A><BR>
+  <A href="func_common_std.html#GetModuleDirectory" target="right">GetModuleDirectory</A><BR>
+  <A href="func_common_std.html#GetMainStgScriptPath" target="right">GetMainStgScriptPath</A><BR>
+  <A href="func_common_std.html#GetMainPackageScriptPath" target="right">GetMainPackageScriptPath</A><BR>
+  <A href="func_common_std.html#GetMainStgScriptDirectory" target="right">GetMainStgScriptDirectory</A><BR>
+  <A href="func_common_std.html#GetCurrentScriptDirectory" target="right">GetCurrentScriptDirectory</A><BR>
+  <A href="func_common_std.html#GetScriptPathList" target="right">GetScriptPathList</A><BR>
+  <BR>
+  <BR>
+
+  <SPAN class = "section_menu_sub"><A href="func_common_std.html#sec_datetime" target="right">■時間関連</SPAN></A><BR>
+  <A href="func_common_std.html#GetCurrentDateTimeS" target="right">GetCurrentDateTimeS</A><BR>
+  <A href="func_common_std.html#GetStageTime" target="right">GetStageTime</A><BR>
+  <A href="func_common_std.html#GetPackageTime" target="right">GetPackageTime</A><BR>
+  <A href="func_common_std.html#GetCurrentFps" target="right">GetCurrentFps</A><BR>
+  <A href="func_common_std.html#GetReplayFps" target="right">GetReplayFps</A><BR>
+  <BR>
+  <BR>
+
+  <SPAN class = "section_menu_sub"><A href="func_common_std.html#sec_debug" target="right">■デバッグ関連</SPAN></A><BR>
+  <A href="func_common_std.html#WriteLog" target="right">WriteLog</A><BR>
+  <A href="func_common_std.html#RaiseError" target="right">RaiseError</A><BR>
+  <BR>
+  <BR>
+
+  <SPAN class = "section_menu_sub"><A href="func_common_std.html#sec_common_data" target="right">■共通データ</SPAN></A><BR>
+  <!--<A href="func_common_std.html#SetDefaultCommonDataArea" target="right">SetDefaultCommonDataArea</A><BR>-->
+  <A href="func_common_std.html#SetCommonData" target="right">SetCommonData</A><BR>
+  <A href="func_common_std.html#GetCommonData" target="right">GetCommonData</A><BR>
+  <A href="func_common_std.html#ClearCommonData" target="right">ClearCommonData</A><BR>
+  <A href="func_common_std.html#DeleteCommonData" target="right">DeleteCommonData</A><BR>
+  <A href="func_common_std.html#SetAreaCommonData" target="right">SetAreaCommonData</A><BR>
+  <A href="func_common_std.html#GetAreaCommonData" target="right">GetAreaCommonData</A><BR>
+  <A href="func_common_std.html#ClearAreaCommonData" target="right">ClearAreaCommonData</A><BR>
+  <A href="func_common_std.html#DeleteAreaCommonData" target="right">DeleteAreaCommonData</A><BR>
+  <A href="func_common_std.html#CreateCommonDataArea" target="right">CreateCommonDataArea</A><BR>
+  <A href="func_common_std.html#IsCommonDataAreaExists" target="right">IsCommonDataAreaExists</A><BR>
+  <A href="func_common_std.html#CopyCommonDataArea" target="right">CopyCommonDataArea</A><BR>
+  <A href="func_common_std.html#GetCommonDataAreaKeyList" target="right">GetCommonDataAreaKeyList</A><BR>
+  <A href="func_common_std.html#GetCommonDataValueKeyList" target="right">GetCommonDataValueKeyList</A><BR>
+  <A href="func_common_std.html#SaveCommonDataAreaA1" target="right">SaveCommonDataAreaA1</A><BR>
+  <A href="func_common_std.html#LoadCommonDataAreaA1" target="right">LoadCommonDataAreaA1</A><BR>
+  <A href="func_common_std.html#SaveCommonDataAreaA2" target="right">SaveCommonDataAreaA2</A><BR>
+  <A href="func_common_std.html#LoadCommonDataAreaA2" target="right">LoadCommonDataAreaA2</A><BR>
+  <A href="func_common_std.html#SaveCommonDataAreaToReplayFile" target="right">SaveCommonDataAreaToReplayFile</A><BR>
+  <A href="func_common_std.html#LoadCommonDataAreaFromReplayFile" target="right">LoadCommonDataAreaFromReplayFile</A><BR>
+  <BR>
+  <BR>
+
+  <SPAN class = "section_menu_sub"><A href="func_common_dx.html#sec_sound" target="right">■音声操作関数</SPAN></A><BR>
+  <A href="func_common_dx.html#LoadSound" target="right">LoadSound</A><BR>
+  <A href="func_common_dx.html#RemoveSound" target="right">RemoveSound</A><BR>
+  <A href="func_common_dx.html#PlayBGM" target="right">PlayBGM</A><BR>
+  <A href="func_common_dx.html#PlaySE" target="right">PlaySE</A><BR>
+  <A href="func_common_dx.html#StopSound" target="right">StopSound</A><BR>
+  <BR>
+  <BR>
+
+  <SPAN class = "section_menu_sub"><A href="func_common_dx.html#sec_input" target="right">■キー入力</SPAN></A><BR>
+  <A href="func_common_dx.html#GetVirtualKeyState" target="right">GetVirtualKeyState</A><BR>
+  <A href="func_common_dx.html#SetVirtualKeyState" target="right">SetVirtualKeyState</A><BR>
+  <A href="func_common_dx.html#AddVirtualKey" target="right">AddVirtualKey</A><BR>
+  <A href="func_common_dx.html#AddReplayTargetVirtualKey" target="right">AddReplayTargetVirtualKey</A><BR>
+  <A href="func_common_dx.html#GetKeyState" target="right">GetKeyState</A><BR>
+  <A href="func_common_dx.html#GetMouseState" target="right">GetMouseState</A><BR>
+  <A href="func_common_dx.html#GetMouseX" target="right">GetMouseX</A><BR>
+  <A href="func_common_dx.html#GetMouseY" target="right">GetMouseY</A><BR>
+  <A href="func_common_dx.html#GetMouseMoveZ" target="right">GetMouseMoveZ</A><BR>
+  <A href="func_common_dx.html#SetSkipModeKey" target="right">SetSkipModeKey</A><BR>
+  <BR>
+  <BR>
+
+  <SPAN class = "section_menu_sub"><A href="func_common_dx.html#sec_render" target="right">■描画系</SPAN></A><BR>
+  <A href="func_common_dx.html#LoadTexture" target="right">LoadTexture</A><BR>
+  <A href="func_common_dx.html#LoadTextureInLoadThread" target="right">LoadTextureInLoadThread</A><BR>
+  <A href="func_common_dx.html#RemoveTexture" target="right">RemoveTexture</A><BR>
+  <A href="func_common_dx.html#GetTextureWidth" target="right">GetTextureWidth</A><BR>
+  <A href="func_common_dx.html#GetTextureHeight" target="right">GetTextureHeight</A><BR>
+  <A href="func_common_dx.html#SetFogEnable" target="right">SetFogEnable</A><BR>
+  <A href="func_common_dx.html#SetFogParam" target="right">SetFogParam</A><BR>
+  <A href="func_common_dx.html#ClearInvalidRenderPriority" target="right">ClearInvalidRenderPriority</A><BR>
+  <A href="func_common_dx.html#SetInvalidRenderPriorityA1" target="right">SetInvalidRenderPriorityA1</A><BR>
+  <A href="func_common_dx.html#GetReservedRenderTargetName" target="right">GetReservedRenderTargetName</A><BR>
+  <A href="func_common_dx.html#CreateRenderTarget" target="right">CreateRenderTarget</A><BR>
+  <A href="func_common_dx.html#RenderToTextureA1" target="right">RenderToTextureA1</A><BR>
+  <A href="func_common_dx.html#RenderToTextureB1" target="right">RenderToTextureB1</A><BR>
+  <A href="func_common_dx.html#SaveRenderedTextureA1" target="right">SaveRenderedTextureA1</A><BR>
+  <A href="func_common_dx.html#SaveRenderedTextureA2" target="right">SaveRenderedTextureA2</A><BR>
+  <A href="func_common_dx.html#SaveSnapShotA1" target="right">SaveSnapShotA1</A><BR>
+  <A href="func_common_dx.html#SaveSnapShotA2" target="right">SaveSnapShotA2</A><BR>
+  <A href="func_common_dx.html#IsPixelShaderSupported" target="right">IsPixelShaderSupported</A><BR>
+  <A href="func_common_dx.html#SetShader" target="right">SetShader</A><BR>
+  <A href="func_common_dx.html#SetShaderI" target="right">SetShaderI</A><BR>
+  <A href="func_common_dx.html#ResetShader" target="right">ResetShader</A><BR>
+  <A href="func_common_dx.html#ResetShaderI" target="right">ResetShaderI</A><BR>
+  <BR>
+  <BR>
+
+  <SPAN class = "section_menu_sub"><A href="func_common_dx.html#sec_camera_3d" target="right">■3Dカメラ</SPAN></A><BR>
+  <A href="func_common_dx.html#SetCameraFocusX" target="right">SetCameraFocusX</A><BR>
+  <A href="func_common_dx.html#SetCameraFocusY" target="right">SetCameraFocusY</A><BR>
+  <A href="func_common_dx.html#SetCameraFocusZ" target="right">SetCameraFocusZ</A><BR>
+  <A href="func_common_dx.html#SetCameraFocusXYZ" target="right">SetCameraFocusXYZ</A><BR>
+  <A href="func_common_dx.html#SetCameraRadius" target="right">SetCameraRadius</A><BR>
+  <A href="func_common_dx.html#SetCameraAzimuthAngle" target="right">SetCameraAzimuthAngle</A><BR>
+  <A href="func_common_dx.html#SetCameraElevationAngle" target="right">SetCameraElevationAngle</A><BR>
+  <A href="func_common_dx.html#SetCameraYaw" target="right">SetCameraYaw</A><BR>
+  <A href="func_common_dx.html#SetCameraPitch" target="right">SetCameraPitch</A><BR>
+  <A href="func_common_dx.html#SetCameraRoll" target="right">SetCameraRoll</A><BR>
+  <A href="func_common_dx.html#GetCameraX" target="right">GetCameraX</A><BR>
+  <A href="func_common_dx.html#GetCameraY" target="right">GetCameraY</A><BR>
+  <A href="func_common_dx.html#GetCameraZ" target="right">GetCameraZ</A><BR>
+  <A href="func_common_dx.html#GetCameraFocusX" target="right">GetCameraFocusX</A><BR>
+  <A href="func_common_dx.html#GetCameraFocusY" target="right">GetCameraFocusY</A><BR>
+  <A href="func_common_dx.html#GetCameraFocusZ" target="right">GetCameraFocusZ</A><BR>
+  <A href="func_common_dx.html#GetCameraRadius" target="right">GetCameraRadius</A><BR>
+  <A href="func_common_dx.html#GetCameraAzimuthAngle" target="right">GetCameraAzimuthAngle</A><BR>
+  <A href="func_common_dx.html#GetCameraElevationAngle" target="right">GetCameraElevationAngle</A><BR>
+  <A href="func_common_dx.html#GetCameraYaw" target="right">GetCameraYaw</A><BR>
+  <A href="func_common_dx.html#GetCameraPitch" target="right">GetCameraPitch</A><BR>
+  <A href="func_common_dx.html#GetCameraRoll" target="right">GetCameraRoll</A><BR>
+  <A href="func_common_dx.html#SetCameraPerspectiveClip" target="right">SetCameraPerspectiveClip</A><BR>
+  <BR>
+  <BR>
+
+
+  <SPAN class = "section_menu_sub"><A href="func_common_dx.html#sec_camera_2d" target="right">■2Dカメラ</SPAN></A><BR>
+  <A href="func_common_dx.html#Set2DCameraFocusX" target="right">Set2DCameraFocusX</A><BR>
+  <A href="func_common_dx.html#Set2DCameraFocusY" target="right">Set2DCameraFocusY</A><BR>
+  <A href="func_common_dx.html#Set2DCameraAngleZ" target="right">Set2DCameraAngleZ</A><BR>
+  <A href="func_common_dx.html#Set2DCameraRatio" target="right">Set2DCameraRatio</A><BR>
+  <A href="func_common_dx.html#Set2DCameraRatioX" target="right">Set2DCameraRatioX</A><BR>
+  <A href="func_common_dx.html#Set2DCameraRatioY" target="right">Set2DCameraRatioY</A><BR>
+  <A href="func_common_dx.html#Reset2DCamera" target="right">Reset2DCamera</A><BR>
+  <A href="func_common_dx.html#Get2DCameraX" target="right">Get2DCameraX</A><BR>
+  <A href="func_common_dx.html#Get2DCameraY" target="right">Get2DCameraY</A><BR>
+  <A href="func_common_dx.html#Get2DCameraAngleZ" target="right">Get2DCameraAngleZ</A><BR>
+  <A href="func_common_dx.html#Get2DCameraRatio" target="right">Get2DCameraRatio</A><BR>
+  <A href="func_common_dx.html#Get2DCameraRatioX" target="right">Get2DCameraRatioX</A><BR>
+  <A href="func_common_dx.html#Get2DCameraRatioY" target="right">Get2DCameraRatioY</A><BR>
+  <BR>
+  <BR>
+
+  <SPAN class = "section_menu_sub"><A href="func_common_stg.html#sec_script" target="right">■スクリプト操作</SPAN></A><BR>
+  <A href="func_common_stg.html#LoadScript" target="right">LoadScript</A><BR>
+  <A href="func_common_stg.html#LoadScriptInThread" target="right">LoadScriptInThread</A><BR>
+  <A href="func_common_stg.html#StartScript" target="right">StartScript</A><BR>
+  <A href="func_common_stg.html#CloseScript" target="right">CloseScript</A><BR>
+  <A href="func_common_stg.html#IsCloseScript" target="right">IsCloseScript</A><BR>
+  <A href="func_common_stg.html#SetScriptArgument" target="right">SetScriptArgument</A><BR>
+  <A href="func_common_stg.html#GetScriptArgument" target="right">GetScriptArgument</A><BR>
+  <A href="func_common_stg.html#GetScriptArgumentCount" target="right">GetScriptArgumentCount</A><BR>
+  <A href="func_common_stg.html#CloseStgScene" target="right">CloseStgScene</A><BR>
+  <A href="func_common_stg.html#GetOwnScriptID" target="right">GetOwnScriptID</A><BR>
+  <A href="func_common_stg.html#GetEventType" target="right">GetEventType</A><BR>
+  <A href="func_common_stg.html#GetEventArgument" target="right">GetEventArgument</A><BR>
+  <A href="func_common_stg.html#SetScriptResult" target="right">SetScriptResult</A><BR>
+  <A href="func_common_stg.html#GetScriptResult" target="right">GetScriptResult</A><BR>
+  <A href="func_common_stg.html#SetAutoDeleteObject" target="right">SetAutoDeleteObject</A><BR>
+  <A href="func_common_stg.html#NotifyEvent" target="right">NotifyEvent</A><BR>
+  <A href="func_common_stg.html#NotifyEventAll" target="right">NotifyEventAll</A><BR>
+  <A href="func_common_stg.html#GetScriptInfoA1" target="right">GetScriptInfoA1</A><BR>
+  <BR>
+  <BR>
+
+  <SPAN class = "section_menu_sub"><A href="func_common_stg.html#sec_system" target="right">■システム関連</SPAN></A><BR>
+  <A href="func_common_stg.html#SetStgFrame" target="right">SetStgFrame</A><BR>
+  <A href="func_common_stg.html#GetScore" target="right">GetScore</A><BR>
+  <A href="func_common_stg.html#AddScore" target="right">AddScore</A><BR>
+  <A href="func_common_stg.html#GetGraze" target="right">GetGraze</A><BR>
+  <A href="func_common_stg.html#AddGraze" target="right">AddGraze</A><BR>
+  <A href="func_common_stg.html#GetPoint" target="right">GetPoint</A><BR>
+  <A href="func_common_stg.html#AddPoint" target="right">AddPoint</A><BR>
+  <A href="func_common_stg.html#SetItemRenderPriorityI" target="right">SetItemRenderPriorityI</A><BR>
+  <A href="func_common_stg.html#SetShotRenderPriorityI" target="right">SetShotRenderPriorityI</A><BR>
+  <A href="func_common_stg.html#GetStgFrameRenderPriorityMinI" target="right">GetStgFrameRenderPriorityMinI</A><BR>
+  <A href="func_common_stg.html#GetStgFrameRenderPriorityMaxI" target="right">GetStgFrameRenderPriorityMaxI</A><BR>
+  <A href="func_common_stg.html#GetItemRenderPriorityI" target="right">GetItemRenderPriorityI</A><BR>
+  <A href="func_common_stg.html#GetShotRenderPriorityI" target="right">GetShotRenderPriorityI</A><BR>
+  <A href="func_common_stg.html#GetPlayerRenderPriorityI" target="right">GetPlayerRenderPriorityI</A><BR>
+  <A href="func_common_stg.html#GetCameraFocusPermitPriorityI" target="right">GetCameraFocusPermitPriorityI</A><BR>
+  <A href="func_common_stg.html#GetStgFrameLeft" target="right">GetStgFrameLeft</A><BR>
+  <A href="func_common_stg.html#GetStgFrameTop" target="right">GetStgFrameTop</A><BR>
+  <A href="func_common_stg.html#GetStgFrameWidth" target="right">GetStgFrameWidth</A><BR>
+  <A href="func_common_stg.html#GetStgFrameHeight" target="right">GetStgFrameHeight</A><BR>
+  <A href="func_common_stg.html#GetScreenWidth" target="right">GetScreenWidth</A><BR>
+  <A href="func_common_stg.html#GetScreenHeight" target="right">GetScreenHeight</A><BR>
+  <A href="func_common_stg.html#IsReplay" target="right">IsReplay</A><BR>
+  <A href="func_common_stg.html#AddArchiveFile" target="right">AddArchiveFile</A><BR>
+  <BR>
+  <BR>
+
+  <SPAN class = "section_menu_sub"><A href="func_common_stg.html#sec_player" target="right">■自機関連</SPAN></A><BR>
+  <A href="func_common_stg.html#GetPlayerObjectID" target="right">GetPlayerObjectID</A><BR>
+  <A href="func_common_stg.html#GetPlayerScriptID" target="right">GetPlayerScriptID</A><BR>
+  <A href="func_common_stg.html#SetPlayerSpeed" target="right">SetPlayerSpeed</A><BR>
+  <A href="func_common_stg.html#SetPlayerClip" target="right">SetPlayerClip</A><BR>
+  <A href="func_common_stg.html#SetPlayerLife" target="right">SetPlayerLife</A><BR>
+  <A href="func_common_stg.html#SetPlayerSpell" target="right">SetPlayerSpell</A><BR>
+  <A href="func_common_stg.html#SetPlayerPower" target="right">SetPlayerPower</A><BR>
+  <A href="func_common_stg.html#SetPlayerInvincibilityFrame" target="right">SetPlayerInvincibilityFrame</A><BR>
+  <A href="func_common_stg.html#SetPlayerDownStateFrame" target="right">SetPlayerDownStateFrame</A><BR>
+  <A href="func_common_stg.html#SetPlayerRebirthFrame" target="right">SetPlayerRebirthFrame</A><BR>
+  <A href="func_common_stg.html#SetPlayerRebirthLossFrame" target="right">SetPlayerRebirthLossFrame</A><BR>
+  <A href="func_common_stg.html#SetPlayerAutoItemCollectLine" target="right">SetPlayerAutoItemCollectLine</A><BR>
+  <A href="func_common_stg.html#SetForbidPlayerShot" target="right">SetForbidPlayerShot</A><BR>
+  <A href="func_common_stg.html#SetForbidPlayerSpell" target="right">SetForbidPlayerSpell</A><BR>
+  <A href="func_common_stg.html#GetPlayerX" target="right">GetPlayerX</A><BR>
+  <A href="func_common_stg.html#GetPlayerY" target="right">GetPlayerY</A><BR>
+  <A href="func_common_stg.html#GetPlayerState" target="right">GetPlayerState</A><BR>
+  <A href="func_common_stg.html#GetPlayerSpeed" target="right">GetPlayerSpeed</A><BR>
+  <A href="func_common_stg.html#GetPlayerClip" target="right">GetPlayerClip</A><BR>
+  <A href="func_common_stg.html#GetPlayerLife" target="right">GetPlayerLife</A><BR>
+  <A href="func_common_stg.html#GetPlayerSpell" target="right">GetPlayerSpell</A><BR>
+  <A href="func_common_stg.html#GetPlayerPower" target="right">GetPlayerPower</A><BR>
+  <A href="func_common_stg.html#GetPlayerInvincibilityFrame" target="right">GetPlayerInvincibilityFrame</A><BR>
+  <A href="func_common_stg.html#GetPlayerDownStateFrame" target="right">GetPlayerDownStateFrame</A><BR>
+  <A href="func_common_stg.html#GetPlayerRebirthFrame" target="right">GetPlayerRebirthFrame</A><BR>
+  <A href="func_common_stg.html#GetAngleToPlayer" target="right">GetAngleToPlayer</A><BR>
+  <A href="func_common_stg.html#IsPermitPlayerShot" target="right">IsPermitPlayerShot</A><BR>
+  <A href="func_common_stg.html#IsPermitPlayerSpell" target="right">IsPermitPlayerSpell</A><BR>
+  <A href="func_common_stg.html#IsPlayerLastSpellWait" target="right">IsPlayerLastSpellWait</A><BR>
+  <A href="func_common_stg.html#IsPlayerSpellActive" target="right">IsPlayerSpellActive</A><BR>
+  <A href="func_common_stg.html#GetPlayerID" target="right">GetPlayerID</A><BR>
+  <A href="func_common_stg.html#GetPlayerReplayName" target="right">GetPlayerReplayName</A><BR>
+  <BR>
+  <BR>
+
+  <SPAN class = "section_menu_sub"><A href="func_common_stg.html#sec_enemy" target="right">■敵関連</SPAN></A><BR>
+  <A href="func_common_stg.html#GetEnemyBossSceneObjectID" target="right">GetEnemyBossSceneObjectID</A><BR>
+  <A href="func_common_stg.html#GetEnemyBossObjectID" target="right">GetEnemyBossObjectID</A><BR>
+  <A href="func_common_stg.html#GetAllEnemyID" target="right">GetAllEnemyID</A><BR>
+  <A href="func_common_stg.html#GetIntersectionRegistedEnemyID" target="right">GetIntersectionRegistedEnemyID</A><BR>
+  <A href="func_common_stg.html#GetAllEnemyIntersectionPosition" target="right">GetAllEnemyIntersectionPosition</A><BR>
+  <A href="func_common_stg.html#GetEnemyIntersectionPosition" target="right">GetEnemyIntersectionPosition</A><BR>
+  <A href="func_common_stg.html#GetEnemyIntersectionPositionByIdA1" target="right">GetEnemyIntersectionPositionByIdA1</A><BR>
+  <A href="func_common_stg.html#GetEnemyIntersectionPositionByIdA2" target="right">GetEnemyIntersectionPositionByIdA2</A><BR>
+  <A href="func_common_stg.html#LoadEnemyShotData" target="right">LoadEnemyShotData</A><BR>
+  <A href="func_common_stg.html#ReloadEnemyShotData" target="right">ReloadEnemyShotData</A><BR>
+  <BR>
+  <BR>
+
+  <SPAN class = "section_menu_sub"><A href="func_common_stg.html#sec_shot" target="right">■弾関連</SPAN></A><BR>
+  <A href="func_common_stg.html#DeleteShotAll" target="right">DeleteShotAll</A><BR>
+  <A href="func_common_stg.html#DeleteShotInCircle" target="right">DeleteShotInCircle</A><BR>
+  <A href="func_common_stg.html#CreateShotA1" target="right">CreateShotA1</A><BR>
+  <A href="func_common_stg.html#CreateShotA2" target="right">CreateShotA2</A><BR>
+  <A href="func_common_stg.html#CreateShotOA1" target="right">CreateShotOA1</A><BR>
+  <A href="func_common_stg.html#CreateShotB1" target="right">CreateShotB1</A><BR>
+  <A href="func_common_stg.html#CreateShotB2" target="right">CreateShotB2</A><BR>
+  <A href="func_common_stg.html#CreateShotOB1" target="right">CreateShotOB1</A><BR>
+  <A href="func_common_stg.html#CreateLooseLaserA1" target="right">CreateLooseLaserA1</A><BR>
+  <A href="func_common_stg.html#CreateStraightLaserA1" target="right">CreateStraightLaserA1</A><BR>
+  <A href="func_common_stg.html#CreateCurveLaserA1" target="right">CreateCurveLaserA1</A><BR>
+  <A href="func_common_stg.html#SetShotIntersectionCircle" target="right">SetShotIntersectionCircle</A><BR>
+  <A href="func_common_stg.html#SetShotIntersectionLine" target="right">SetShotIntersectionLine</A><BR>
+  <A href="func_common_stg.html#GetShotIdInCircleA1" target="right">GetShotIdInCircleA1</A><BR>
+  <A href="func_common_stg.html#GetShotIdInCircleA2" target="right">GetShotIdInCircleA2</A><BR>
+  <A href="func_common_stg.html#GetShotCount" target="right">GetShotCount</A><BR>
+  <A href="func_common_stg.html#SetShotAutoDeleteClip" target="right">SetShotAutoDeleteClip</A><BR>
+  <A href="func_common_stg.html#GetShotDataInfoA1" target="right">GetShotDataInfoA1</A><BR>
+  <A href="func_common_stg.html#StartShotScript" target="right">StartShotScript</A><BR>
+  <BR>
+  <BR>
+
+  <SPAN class = "section_menu_sub"><A href="func_common_stg.html#sec_item" target="right">■アイテム関連</SPAN></A><BR>
+  <A href="func_common_stg.html#CreateItemA1" target="right">CreateItemA1</A><BR>
+  <A href="func_common_stg.html#CreateItemA2" target="right">CreateItemA2</A><BR>
+  <A href="func_common_stg.html#CreateItemU1" target="right">CreateItemU1</A><BR>
+  <A href="func_common_stg.html#CreateItemU2" target="right">CreateItemU2</A><BR>
+  <A href="func_common_stg.html#CollectAllItems" target="right">CollectAllItems</A><BR>
+  <A href="func_common_stg.html#CollectItemsByType" target="right">CollectItemsByType</A><BR>
+  <A href="func_common_stg.html#CollectItemsInCircle" target="right">CollectItemsInCircle</A><BR>
+  <A href="func_common_stg.html#CancelCollectItems" target="right">CancelCollectItems</A><BR>
+  <A href="func_common_stg.html#StartItemScript" target="right">StartItemScript</A><BR>
+  <A href="func_common_stg.html#SetDefaultBonusItemEnable" target="right">SetDefaultBonusItemEnable</A><BR>
+  <A href="func_common_stg.html#LoadItemData" target="right">LoadItemData</A><BR>
+  <A href="func_common_stg.html#ReloadItemData" target="right">ReloadItemData</A><BR>
+  <BR>
+  <BR>
+
+  <SPAN class = "section_menu_sub"><A href="func_common_stg.html#sec_other" target="right">■その他</SPAN></A><BR>
+  <A href="func_common_stg.html#StartSlow" target="right">StartSlow</A><BR>
+  <A href="func_common_stg.html#StopSlow" target="right">StopSlow</A><BR>
+  <A href="func_common_stg.html#IsIntersected_Line_Circle" target="right">IsIntersected_Line_Circle</A><BR>
+  <A href="func_common_stg.html#IsIntersected_Obj_Obj" target="right">IsIntersected_Obj_Obj</A><BR>
+  <A href="func_common_stg.html#GetObjectDistance" target="right">GetObjectDistance</A><BR>
+  <A href="func_common_stg.html#GetObject2dPosition" target="right">GetObject2dPosition</A><BR>
+  <A href="func_common_stg.html#Get2dPosition" target="right">Get2dPosition</A><BR>
+  <BR>
+  <BR>
+
+  <SPAN class = "section_menu_sub"><A href="func_common_obj_dx.html#sec_Obj_" target="right">■共通オブジェクト操作<BR>(Obj_)</SPAN></A><BR>
+  <A href="func_common_obj_dx.html#Obj_Delete" target="right">Obj_Delete</A><BR>
+  <A href="func_common_obj_dx.html#Obj_IsDeleted" target="right">Obj_IsDeleted</A><BR>
+  <A href="func_common_obj_dx.html#Obj_SetVisible" target="right">Obj_SetVisible</A><BR>
+  <A href="func_common_obj_dx.html#Obj_IsVisible" target="right">Obj_IsVisible</A><BR>
+  <A href="func_common_obj_dx.html#Obj_SetRenderPriority" target="right">Obj_SetRenderPriority</A><BR>
+  <A href="func_common_obj_dx.html#Obj_SetRenderPriorityI" target="right">Obj_SetRenderPriorityI</A><BR>
+  <A href="func_common_obj_dx.html#Obj_GetRenderPriority" target="right">Obj_GetRenderPriority</A><BR>
+  <A href="func_common_obj_dx.html#Obj_GetRenderPriorityI" target="right">Obj_GetRenderPriorityI</A><BR>
+  <A href="func_common_obj_dx.html#Obj_GetValue" target="right">Obj_GetValue</A><BR>
+  <A href="func_common_obj_dx.html#Obj_GetValueD" target="right">Obj_GetValueD</A><BR>
+  <A href="func_common_obj_dx.html#Obj_SetValue" target="right">Obj_SetValue</A><BR>
+  <A href="func_common_obj_dx.html#Obj_DeleteValue" target="right">Obj_DeleteValue</A><BR>
+  <A href="func_common_obj_dx.html#Obj_IsValueExists" target="right">Obj_IsValueExists</A><BR>
+  <A href="func_common_obj_dx.html#Obj_GetType" target="right">Obj_GetType</A><BR>
+  <BR>
+  <BR>
+
+  <SPAN class = "section_menu_sub"><A href="func_common_obj_dx.html#sec_ObjRender_" target="right">■描画オブジェクト操作<BR>(ObjRender_)</SPAN></A><BR>
+  <A href="func_common_obj_dx.html#ObjRender_SetX" target="right">ObjRender_SetX</A><BR>
+  <A href="func_common_obj_dx.html#ObjRender_SetY" target="right">ObjRender_SetY</A><BR>
+  <A href="func_common_obj_dx.html#ObjRender_SetZ" target="right">ObjRender_SetZ</A><BR>
+  <A href="func_common_obj_dx.html#ObjRender_SetPosition" target="right">ObjRender_SetPosition</A><BR>
+  <A href="func_common_obj_dx.html#ObjRender_SetAngleX" target="right">ObjRender_SetAngleX</A><BR>
+  <A href="func_common_obj_dx.html#ObjRender_SetAngleY" target="right">ObjRender_SetAngleY</A><BR>
+  <A href="func_common_obj_dx.html#ObjRender_SetAngleZ" target="right">ObjRender_SetAngleZ</A><BR>
+  <A href="func_common_obj_dx.html#ObjRender_SetAngleXYZ" target="right">ObjRender_SetAngleXYZ</A><BR>
+  <A href="func_common_obj_dx.html#ObjRender_SetScaleX" target="right">ObjRender_SetScaleX</A><BR>
+  <A href="func_common_obj_dx.html#ObjRender_SetScaleY" target="right">ObjRender_SetScaleY</A><BR>
+  <A href="func_common_obj_dx.html#ObjRender_SetScaleZ" target="right">ObjRender_SetScaleZ</A><BR>
+  <A href="func_common_obj_dx.html#ObjRender_SetScaleXYZ" target="right">ObjRender_SetScaleXYZ</A><BR>
+  <A href="func_common_obj_dx.html#ObjRender_SetColor" target="right">ObjRender_SetColor</A><BR>
+  <A href="func_common_obj_dx.html#ObjRender_SetColorHSV" target="right">ObjRender_SetColorHSV</A><BR>
+  <A href="func_common_obj_dx.html#ObjRender_SetAlpha" target="right">ObjRender_SetAlpha</A><BR>
+  <A href="func_common_obj_dx.html#ObjRender_SetBlendType" target="right">ObjRender_SetBlendType</A><BR>
+  <A href="func_common_obj_dx.html#ObjRender_GetX" target="right">ObjRender_GetX</A><BR>
+  <A href="func_common_obj_dx.html#ObjRender_GetY" target="right">ObjRender_GetY</A><BR>
+  <A href="func_common_obj_dx.html#ObjRender_GetZ" target="right">ObjRender_GetZ</A><BR>
+  <A href="func_common_obj_dx.html#ObjRender_GetAngleX" target="right">ObjRender_GetAngleX</A><BR>
+  <A href="func_common_obj_dx.html#ObjRender_GetAngleY" target="right">ObjRender_GetAngleY</A><BR>
+  <A href="func_common_obj_dx.html#ObjRender_GetAngleZ" target="right">ObjRender_GetAngleZ</A><BR>
+  <A href="func_common_obj_dx.html#ObjRender_GetScaleX" target="right">ObjRender_GetScaleX</A><BR>
+  <A href="func_common_obj_dx.html#ObjRender_GetScaleY" target="right">ObjRender_GetScaleY</A><BR>
+  <A href="func_common_obj_dx.html#ObjRender_GetScaleZ" target="right">ObjRender_GetScaleZ</A><BR>
+  <A href="func_common_obj_dx.html#ObjRender_GetBlendType" target="right">ObjRender_GetBlendType</A><BR>
+  <A href="func_common_obj_dx.html#ObjRender_SetZWrite" target="right">ObjRender_SetZWrite</A><BR>
+  <A href="func_common_obj_dx.html#ObjRender_SetZTest" target="right">ObjRender_SetZTest</A><BR>
+  <A href="func_common_obj_dx.html#ObjRender_SetFogEnable" target="right">ObjRender_SetFogEnable</A><BR>
+  <A href="func_common_obj_dx.html#ObjRender_SetPermitCamera" target="right">ObjRender_SetPermitCamera</A><BR>
+  <BR>
+  <BR>
+
+  <SPAN class = "section_menu_sub"><A href="func_common_obj_dx.html#sec_ObjPrim_" target="right">■頂点オブジェクト操作<BR>(ObjPrim_)</SPAN></A><BR>
+  <A href="func_common_obj_dx.html#ObjPrim_Create" target="right">ObjPrim_Create</A><BR>
+  <A href="func_common_obj_dx.html#ObjPrim_SetPrimitiveType" target="right">ObjPrim_SetPrimitiveType</A><BR>
+  <A href="func_common_obj_dx.html#ObjPrim_SetVertexCount" target="right">ObjPrim_SetVertexCount</A><BR>
+  <A href="func_common_obj_dx.html#ObjPrim_GetVertexCount" target="right">ObjPrim_GetVertexCount</A><BR>
+  <A href="func_common_obj_dx.html#ObjPrim_SetTexture" target="right">ObjPrim_SetTexture</A><BR>
+  <A href="func_common_obj_dx.html#ObjPrim_SetVertexPosition" target="right">ObjPrim_SetVertexPosition</A><BR>
+  <A href="func_common_obj_dx.html#ObjPrim_GetVertexPosition" target="right">ObjPrim_GetVertexPosition</A><BR>
+  <A href="func_common_obj_dx.html#ObjPrim_SetVertexUV" target="right">ObjPrim_SetVertexUV</A><BR>
+  <A href="func_common_obj_dx.html#ObjPrim_SetVertexUVT" target="right">ObjPrim_SetVertexUVT</A><BR>
+  <A href="func_common_obj_dx.html#ObjPrim_SetVertexColor" target="right">ObjPrim_SetVertexColor</A><BR>
+  <A href="func_common_obj_dx.html#ObjPrim_SetVertexAlpha" target="right">ObjPrim_SetVertexAlpha</A><BR>
+  <BR>
+  <BR>
+
+  <SPAN class = "section_menu_sub"><A href="func_common_obj_dx.html#sec_ObjSprite2D_" target="right">■2D矩形オブジェクト操作<BR>(ObjSprite2D_)</SPAN></A><BR>
+  <A href="func_common_obj_dx.html#ObjSprite2D_SetSourceRect" target="right">ObjSprite2D_SetSourceRect</A><BR>
+  <A href="func_common_obj_dx.html#ObjSprite2D_SetDestRect" target="right">ObjSprite2D_SetDestRect</A><BR>
+  <A href="func_common_obj_dx.html#ObjSprite2D_SetDestCenter" target="right">ObjSprite2D_SetDestCenter</A><BR>
+  <BR>
+  <BR>
+
+  <SPAN class = "section_menu_sub"><A href="func_common_obj_dx.html#sec_ObjSpriteList2D_" target="right">■2D矩形リストオブジェクト操作<BR>(ObjSpriteList2D_)</SPAN></A><BR>
+  <A href="func_common_obj_dx.html#ObjSpriteList2D_SetSourceRect" target="right">ObjSpriteList2D_SetSourceRect</A><BR>
+  <A href="func_common_obj_dx.html#ObjSpriteList2D_SetDestRect" target="right">ObjSpriteList2D_SetDestRect</A><BR>
+  <A href="func_common_obj_dx.html#ObjSpriteList2D_SetDestCenter" target="right">ObjSpriteList2D_SetDestCenter</A><BR>
+  <A href="func_common_obj_dx.html#ObjSpriteList2D_AddVertex" target="right">ObjSpriteList2D_AddVertex</A><BR>
+  <A href="func_common_obj_dx.html#ObjSpriteList2D_CloseVertex" target="right">ObjSpriteList2D_CloseVertex</A><BR>
+  <A href="func_common_obj_dx.html#ObjSpriteList2D_ClearVertexCount" target="right">ObjSpriteList2D_ClearVertexCount</A><BR>
+  <BR>
+  <BR>
+
+  <SPAN class = "section_menu_sub"><A href="func_common_obj_dx.html#sec_ObjSprite3D_" target="right">■3D矩形オブジェクト操作<BR>(ObjSprite3D_)</SPAN></A><BR>
+  <A href="func_common_obj_dx.html#ObjSprite3D_SetSourceRect" target="right">ObjSprite3D_SetSourceRect</A><BR>
+  <A href="func_common_obj_dx.html#ObjSprite3D_SetDestRect" target="right">ObjSprite3D_SetDestRect</A><BR>
+  <A href="func_common_obj_dx.html#ObjSprite3D_SetSourceDestRect" target="right">ObjSprite3D_SetSourceDestRect</A><BR>
+  <A href="func_common_obj_dx.html#ObjSprite3D_SetBillboard" target="right">ObjSprite3D_SetBillboard</A><BR>
+  <BR>
+  <BR>
+
+  <SPAN class = "section_menu_sub"><A href="func_common_obj_dx.html#sec_ObjMesh_" target="right">■3Dメッシュオブジェクト操作<BR>(ObjMesh_)</SPAN></A><BR>
+  <A href="func_common_obj_dx.html#ObjMesh_Create" target="right">ObjMesh_Create</A><BR>
+  <A href="func_common_obj_dx.html#ObjMesh_Load" target="right">ObjMesh_Load</A><BR>
+  <A href="func_common_obj_dx.html#ObjMesh_SetColor" target="right">ObjMesh_SetColor</A><BR>
+  <A href="func_common_obj_dx.html#ObjMesh_SetAlpha" target="right">ObjMesh_SetAlpha</A><BR>
+  <A href="func_common_obj_dx.html#ObjMesh_SetAnimation" target="right">ObjMesh_SetAnimation</A><BR>
+  <A href="func_common_obj_dx.html#ObjMesh_SetCoordinate2D" target="right">ObjMesh_SetCoordinate2D</A><BR>
+  <BR>
+  <BR>
+
+  <SPAN class = "section_menu_sub"><A href="func_common_obj_dx.html#sec_ObjText_" target="right">■テキストオブジェクト操作<BR>(ObjText_)</SPAN></A><BR>
+  <A href="func_common_obj_dx.html#ObjText_Create" target="right">ObjText_Create</A><BR>
+  <A href="func_common_obj_dx.html#ObjText_SetText" target="right">ObjText_SetText</A><BR>
+  <A href="func_common_obj_dx.html#ObjText_SetFontType" target="right">ObjText_SetFontType</A><BR>
+  <A href="func_common_obj_dx.html#ObjText_SetFontSize" target="right">ObjText_SetFontSize</A><BR>
+  <A href="func_common_obj_dx.html#ObjText_SetFontBold" target="right">ObjText_SetFontBold</A><BR>
+  <A href="func_common_obj_dx.html#ObjText_SetFontColorTop" target="right">ObjText_SetFontColorTop</A><BR>
+  <A href="func_common_obj_dx.html#ObjText_SetFontColorBottom" target="right">ObjText_SetFontColorBottom</A><BR>
+  <A href="func_common_obj_dx.html#ObjText_SetFontBorderWidth" target="right">ObjText_SetFontBorderWidth</A><BR>
+  <A href="func_common_obj_dx.html#ObjText_SetFontBorderType" target="right">ObjText_SetFontBorderType</A><BR>
+  <A href="func_common_obj_dx.html#ObjText_SetFontBorderColor" target="right">ObjText_SetFontBorderColor</A><BR>
+  <A href="func_common_obj_dx.html#ObjText_SetMaxWidth" target="right">ObjText_SetMaxWidth</A><BR>
+  <A href="func_common_obj_dx.html#ObjText_SetMaxHeight" target="right">ObjText_SetMaxHeight</A><BR>
+  <A href="func_common_obj_dx.html#ObjText_SetLinePitch" target="right">ObjText_SetLinePitch</A><BR>
+  <A href="func_common_obj_dx.html#ObjText_SetSidePitch" target="right">ObjText_SetSidePitch</A><BR>
+  <A href="func_common_obj_dx.html#ObjText_SetTransCenter" target="right">ObjText_SetTransCenter</A><BR>
+  <A href="func_common_obj_dx.html#ObjText_SetAutoTransCenter" target="right">ObjText_SetAutoTransCenter</A><BR>
+  <A href="func_common_obj_dx.html#ObjText_SetHorizontalAlignment" target="right">ObjText_SetHorizontalAlignment</A><BR>
+  <A href="func_common_obj_dx.html#ObjText_SetSyntacticAnalysis" target="right">ObjText_SetSyntacticAnalysis</A><BR>
+  <A href="func_common_obj_dx.html#ObjText_GetTextLength" target="right">ObjText_GetTextLength</A><BR>
+  <A href="func_common_obj_dx.html#ObjText_GetTextLengthCU" target="right">ObjText_GetTextLengthCU</A><BR>
+  <A href="func_common_obj_dx.html#ObjText_GetTextLengthCUL" target="right">ObjText_GetTextLengthCUL</A><BR>
+  <A href="func_common_obj_dx.html#ObjText_GetTotalWidth" target="right">ObjText_GetTotalWidth</A><BR>
+  <A href="func_common_obj_dx.html#ObjText_GetTotalHeight" target="right">ObjText_GetTotalHeight</A><BR>
+  <BR>
+  <BR>
+
+  <SPAN class = "section_menu_sub"><A href="func_common_obj_dx.html#sec_ObjShader_" target="right">■シェーダオブジェクト操作<BR>(ObjShader_)</SPAN></A><BR>
+  <A href="func_common_obj_dx.html#ObjShader_Create" target="right">ObjShader_Create</A><BR>
+  <A href="func_common_obj_dx.html#ObjShader_SetShaderF" target="right">ObjShader_SetShaderF</A><BR>
+  <A href="func_common_obj_dx.html#ObjShader_SetShaderO" target="right">ObjShader_SetShaderO</A><BR>
+  <A href="func_common_obj_dx.html#ObjShader_ResetShader" target="right">ObjShader_ResetShader</A><BR>
+  <A href="func_common_obj_dx.html#ObjShader_SetTechnique" target="right">ObjShader_SetTechnique</A><BR>
+  <A href="func_common_obj_dx.html#ObjShader_SetVector" target="right">ObjShader_SetVector</A><BR>
+  <A href="func_common_obj_dx.html#ObjShader_SetFloat" target="right">ObjShader_SetFloat</A><BR>
+  <A href="func_common_obj_dx.html#ObjShader_SetFloatArray" target="right">ObjShader_SetFloatArray</A><BR>
+  <A href="func_common_obj_dx.html#ObjShader_SetTexture" target="right">ObjShader_SetTexture</A><BR>
+  <BR>
+  <BR>
+
+  <SPAN class = "section_menu_sub"><A href="func_common_obj_dx.html#sec_ObjSound_" target="right">■音声オブジェクト操作<BR>(ObjSound_)</SPAN></A><BR>
+  <A href="func_common_obj_dx.html#ObjSound_Create" target="right">ObjSound_Create</A><BR>
+  <A href="func_common_obj_dx.html#ObjSound_Load" target="right">ObjSound_Load</A><BR>
+  <A href="func_common_obj_dx.html#ObjSound_Play" target="right">ObjSound_Play</A><BR>
+  <A href="func_common_obj_dx.html#ObjSound_Stop" target="right">ObjSound_Stop</A><BR>
+  <A href="func_common_obj_dx.html#ObjSound_SetVolumeRate" target="right">ObjSound_SetVolumeRate</A><BR>
+  <A href="func_common_obj_dx.html#ObjSound_SetPanRate" target="right">ObjSound_SetPanRate</A><BR>
+  <A href="func_common_obj_dx.html#ObjSound_SetFade" target="right">ObjSound_SetFade</A><BR>
+  <A href="func_common_obj_dx.html#ObjSound_SetLoopEnable" target="right">ObjSound_SetLoopEnable</A><BR>
+  <A href="func_common_obj_dx.html#ObjSound_SetLoopTime" target="right">ObjSound_SetLoopTime</A><BR>
+  <A href="func_common_obj_dx.html#ObjSound_SetLoopSampleCount" target="right">ObjSound_SetLoopSampleCount</A><BR>
+  <A href="func_common_obj_dx.html#ObjSound_SetRestartEnable" target="right">ObjSound_SetRestartEnable</A><BR>
+  <A href="func_common_obj_dx.html#ObjSound_SetSoundDivision" target="right">ObjSound_SetSoundDivision</A><BR>
+  <A href="func_common_obj_dx.html#ObjSound_IsPlaying" target="right">ObjSound_IsPlaying</A><BR>
+  <A href="func_common_obj_dx.html#ObjSound_GetVolumeRate" target="right">ObjSound_GetVolumeRate</A><BR>
+  <BR>
+  <BR>
+
+  <SPAN class = "section_menu_sub"><A href="func_common_obj_dx.html#sec_ObjFile_" target="right">■ファイルオブジェクト操作<BR>(ObjFile_)</SPAN></A><BR>
+  <A href="func_common_obj_dx.html#ObjFile_Create" target="right">ObjFile_Create</A><BR>
+  <A href="func_common_obj_dx.html#ObjFile_Open" target="right">ObjFile_Open</A><BR>
+  <A href="func_common_obj_dx.html#ObjFile_OpenNW" target="right">ObjFile_OpenNW</A><BR>
+  <A href="func_common_obj_dx.html#ObjFile_Store" target="right">ObjFile_Store</A><BR>
+  <A href="func_common_obj_dx.html#ObjFile_Open" target="right">ObjFile_GetSize</A><BR>
+  <BR>
+  <BR>
+
+  <SPAN class = "section_menu_sub"><A href="func_common_obj_dx.html#sec_ObjFileT_" target="right">■テキストファイルオブジェクト操作<BR>(ObjFileT_)</SPAN></A><BR>
+  <A href="func_common_obj_dx.html#ObjFileT_GetLineCount" target="right">ObjFileT_GetLineCount</A><BR>
+  <A href="func_common_obj_dx.html#ObjFileT_GetLineText" target="right">ObjFileT_GetLineText</A><BR>
+  <A href="func_common_obj_dx.html#ObjFileT_SplitLineText" target="right">ObjFileT_SplitLineText</A><BR>
+  <A href="func_common_obj_dx.html#ObjFileT_AddLine" target="right">ObjFileT_AddLine</A><BR>
+  <A href="func_common_obj_dx.html#ObjFileT_ClearLine" target="right">ObjFileT_ClearLine</A><BR>
+  <BR>
+  <BR>
+
+  <SPAN class = "section_menu_sub"><A href="func_common_obj_dx.html#sec_ObjFileB_" target="right">■バイナリファイルオブジェクト操作<BR>(ObjFileB_)</SPAN></A><BR>
+  <A href="func_common_obj_dx.html#ObjFileB_SetByteOrder" target="right">ObjFileB_SetByteOrder</A><BR>
+  <A href="func_common_obj_dx.html#ObjFileB_SetCharacterCode" target="right">ObjFileB_SetCharacterCode</A><BR>
+  <A href="func_common_obj_dx.html#ObjFileB_GetPointer" target="right">ObjFileB_GetPointer</A><BR>
+  <A href="func_common_obj_dx.html#ObjFileB_Seek" target="right">ObjFileB_Seek</A><BR>
+  <A href="func_common_obj_dx.html#ObjFileB_ReadBoolean" target="right">ObjFileB_ReadBoolean</A><BR>
+  <A href="func_common_obj_dx.html#ObjFileB_ReadByte" target="right">ObjFileB_ReadByte</A><BR>
+  <A href="func_common_obj_dx.html#ObjFileB_ReadShort" target="right">ObjFileB_ReadShort</A><BR>
+  <A href="func_common_obj_dx.html#ObjFileB_ReadInteger" target="right">ObjFileB_ReadInteger</A><BR>
+  <A href="func_common_obj_dx.html#ObjFileB_ReadLong" target="right">ObjFileB_ReadLong</A><BR>
+  <A href="func_common_obj_dx.html#ObjFileB_ReadFloat" target="right">ObjFileB_ReadFloat</A><BR>
+  <A href="func_common_obj_dx.html#ObjFileB_ReadDouble" target="right">ObjFileB_ReadDouble</A><BR>
+  <A href="func_common_obj_dx.html#ObjFileB_ReadString" target="right">ObjFileB_ReadString</A><BR>
+  <BR>
+  <BR>
+
+  <SPAN class = "section_menu_sub"><A href="func_common_obj_stg.html#sec_ObjMove_" target="right">■移動オブジェクト操作<BR>(ObjMove_)</SPAN></A><BR>
+  <A href="func_common_obj_stg.html#ObjMove_SetX" target="right">ObjMove_SetX</A><BR>
+  <A href="func_common_obj_stg.html#ObjMove_SetY" target="right">ObjMove_SetY</A><BR>
+  <A href="func_common_obj_stg.html#ObjMove_SetPosition" target="right">ObjMove_SetPosition</A><BR>
+  <A href="func_common_obj_stg.html#ObjMove_SetSpeed" target="right">ObjMove_SetSpeed</A><BR>
+  <A href="func_common_obj_stg.html#ObjMove_SetAngle" target="right">ObjMove_SetAngle</A><BR>
+  <A href="func_common_obj_stg.html#ObjMove_SetAcceleration" target="right">ObjMove_SetAcceleration</A><BR>
+  <A href="func_common_obj_stg.html#ObjMove_SetMaxSpeed" target="right">ObjMove_SetMaxSpeed</A><BR>
+  <A href="func_common_obj_stg.html#ObjMove_SetAngularVelocity" target="right">ObjMove_SetAngularVelocity</A><BR>
+  <A href="func_common_obj_stg.html#ObjMove_SetDestAtSpeed" target="right">ObjMove_SetDestAtSpeed</A><BR>
+  <A href="func_common_obj_stg.html#ObjMove_SetDestAtFrame" target="right">ObjMove_SetDestAtFrame</A><BR>
+  <A href="func_common_obj_stg.html#ObjMove_SetDestAtWeight" target="right">ObjMove_SetDestAtWeight</A><BR>
+  <A href="func_common_obj_stg.html#ObjMove_AddPatternA1" target="right">ObjMove_AddPatternA1</A><BR>
+  <A href="func_common_obj_stg.html#ObjMove_AddPatternA2" target="right">ObjMove_AddPatternA2</A><BR>
+  <A href="func_common_obj_stg.html#ObjMove_AddPatternA3" target="right">ObjMove_AddPatternA3</A><BR>
+  <A href="func_common_obj_stg.html#ObjMove_AddPatternA4" target="right">ObjMove_AddPatternA4</A><BR>
+  <A href="func_common_obj_stg.html#ObjMove_AddPatternB1" target="right">ObjMove_AddPatternB1</A><BR>
+  <A href="func_common_obj_stg.html#ObjMove_AddPatternB2" target="right">ObjMove_AddPatternB2</A><BR>
+  <A href="func_common_obj_stg.html#ObjMove_AddPatternB3" target="right">ObjMove_AddPatternB3</A><BR>
+  <A href="func_common_obj_stg.html#ObjMove_GetX" target="right">ObjMove_GetX</A><BR>
+  <A href="func_common_obj_stg.html#ObjMove_GetY" target="right">ObjMove_GetY</A><BR>
+  <A href="func_common_obj_stg.html#ObjMove_GetSpeed" target="right">ObjMove_GetSpeed</A><BR>
+  <A href="func_common_obj_stg.html#ObjMove_GetAngle" target="right">ObjMove_GetAngle</A><BR>
+  <BR>
+  <BR>
+
+  <SPAN class = "section_menu_sub"><A href="func_common_obj_stg.html#sec_ObjEnemy_" target="right">■敵オブジェクト操作<BR>(ObjEnemy_)</SPAN></A><BR>
+  <A href="func_common_obj_stg.html#ObjEnemy_Create" target="right">ObjEnemy_Create</A><BR>
+  <A href="func_common_obj_stg.html#ObjEnemy_Regist" target="right">ObjEnemy_Regist</A><BR>
+  <A href="func_common_obj_stg.html#ObjEnemy_GetInfo" target="right">ObjEnemy_GetInfo</A><BR>
+  <A href="func_common_obj_stg.html#ObjEnemy_SetLife" target="right">ObjEnemy_SetLife</A><BR>
+  <A href="func_common_obj_stg.html#ObjEnemy_AddLife" target="right">ObjEnemy_AddLife</A><BR>
+  <A href="func_common_obj_stg.html#ObjEnemy_SetDamageRate" target="right">ObjEnemy_SetDamageRate</A><BR>
+  <A href="func_common_obj_stg.html#ObjEnemy_SetIntersectionCircleToShot" target="right">ObjEnemy_SetIntersectionCircleToShot</A><BR>
+  <A href="func_common_obj_stg.html#ObjEnemy_SetIntersectionCircleToPlayer" target="right">ObjEnemy_SetIntersectionCircleToPlayer</A><BR>
+  <BR>
+  <BR>
+
+  <SPAN class = "section_menu_sub"><A href="func_common_obj_stg.html#sec_ObjEnemyBossScene_" target="right">■ボスシーンオブジェクト操作<BR>(ObjEnemyBossScene_)</SPAN></A><BR>
+  <A href="func_common_obj_stg.html#ObjEnemyBossScene_Create" target="right">ObjEnemyBossScene_Create</A><BR>
+  <A href="func_common_obj_stg.html#ObjEnemyBossScene_Regist" target="right">ObjEnemyBossScene_Regist</A><BR>
+  <A href="func_common_obj_stg.html#ObjEnemyBossScene_Add" target="right">ObjEnemyBossScene_Add</A><BR>
+  <A href="func_common_obj_stg.html#ObjEnemyBossScene_LoadInThread" target="right">ObjEnemyBossScene_LoadInThread</A><BR>
+  <A href="func_common_obj_stg.html#ObjEnemyBossScene_GetInfo" target="right">ObjEnemyBossScene_GetInfo</A><BR>
+  <A href="func_common_obj_stg.html#ObjEnemyBossScene_SetSpellTimer" target="right">ObjEnemyBossScene_SetSpellTimer</A><BR>
+  <A href="func_common_obj_stg.html#ObjEnemyBossScene_StartSpell" target="right">ObjEnemyBossScene_StartSpell</A><BR>
+  <BR>
+  <BR>
+
+  <SPAN class = "section_menu_sub"><A href="func_common_obj_stg.html#sec_ObjShot_" target="right">■弾(レーザー)オブジェクト操作<BR>(ObjShot_)</SPAN></A><BR>
+  <A href="func_common_obj_stg.html#ObjShot_Create" target="right">ObjShot_Create</A><BR>
+  <A href="func_common_obj_stg.html#ObjShot_Regist" target="right">ObjShot_Regist</A><BR>
+  <A href="func_common_obj_stg.html#ObjShot_SetAutoDelete" target="right">ObjShot_SetAutoDelete</A><BR>
+  <A href="func_common_obj_stg.html#ObjShot_FadeDelete" target="right">ObjShot_FadeDelete</A><BR>
+  <A href="func_common_obj_stg.html#ObjShot_SetDeleteFrame" target="right">ObjShot_SetDeleteFrame</A><BR>
+  <A href="func_common_obj_stg.html#ObjShot_SetDelay" target="right">ObjShot_SetDelay</A><BR>
+  <A href="func_common_obj_stg.html#ObjShot_SetSpellResist" target="right">ObjShot_SetSpellResist</A><BR>
+  <A href="func_common_obj_stg.html#ObjShot_SetGraphic" target="right">ObjShot_SetGraphic</A><BR>
+  <A href="func_common_obj_stg.html#ObjShot_SetSourceBlendType" target="right">ObjShot_SetSourceBlendType</A><BR>
+  <A href="func_common_obj_stg.html#ObjShot_SetDamage" target="right">ObjShot_SetDamage</A><BR>
+  <A href="func_common_obj_stg.html#ObjShot_SetPenetration" target="right">ObjShot_SetPenetration</A><BR>
+  <A href="func_common_obj_stg.html#ObjShot_SetEraseShot" target="right">ObjShot_SetEraseShot</A><BR>
+  <A href="func_common_obj_stg.html#ObjShot_SetSpellFactor" target="right">ObjShot_SetSpellFactor</A><BR>
+  <A href="func_common_obj_stg.html#ObjShot_ToItem" target="right">ObjShot_ToItem</A><BR>
+  <A href="func_common_obj_stg.html#ObjShot_AddShotA1" target="right">ObjShot_AddShotA1</A><BR>
+  <A href="func_common_obj_stg.html#ObjShot_AddShotA2" target="right">ObjShot_AddShotA2</A><BR>
+  <A href="func_common_obj_stg.html#ObjShot_SetIntersectionCircleA1" target="right">ObjShot_SetIntersectionCircleA1</A><BR>
+  <A href="func_common_obj_stg.html#ObjShot_SetIntersectionCircleA2" target="right">ObjShot_SetIntersectionCircleA2</A><BR>
+  <A href="func_common_obj_stg.html#ObjShot_SetIntersectionLine" target="right">ObjShot_SetIntersectionLine</A><BR>
+  <A href="func_common_obj_stg.html#ObjShot_SetIntersectionEnable" target="right">ObjShot_SetIntersectionEnable</A><BR>
+  <A href="func_common_obj_stg.html#ObjShot_SetItemChange" target="right">ObjShot_SetItemChange</A><BR>
+  <A href="func_common_obj_stg.html#ObjShot_GetDelay" target="right">ObjShot_GetDamage</A><BR>
+  <A href="func_common_obj_stg.html#ObjShot_GetDelay" target="right">ObjShot_GetPenetration</A><BR>
+  <A href="func_common_obj_stg.html#ObjShot_GetDelay" target="right">ObjShot_GetDelay</A><BR>
+  <A href="func_common_obj_stg.html#ObjShot_IsSpellResist" target="right">ObjShot_IsSpellResist</A><BR>
+  <A href="func_common_obj_stg.html#ObjShot_GetImageID" target="right">ObjShot_GetImageID</A><BR>
+  <A href="func_common_obj_stg.html#ObjLaser_SetLength" target="right">ObjLaser_SetLength</A><BR>
+  <A href="func_common_obj_stg.html#ObjLaser_SetRenderWidth" target="right">ObjLaser_SetRenderWidth</A><BR>
+  <A href="func_common_obj_stg.html#ObjLaser_SetIntersectionWidth" target="right">ObjLaser_SetIntersectionWidth</A><BR>
+  <A href="func_common_obj_stg.html#ObjLaser_SetGrazeInvalidFrame" target="right">ObjLaser_SetGrazeInvalidFrame</A><BR>
+  <A href="func_common_obj_stg.html#ObjLaser_SetInvalidLength" target="right">ObjLaser_SetInvalidLength</A><BR>
+  <A href="func_common_obj_stg.html#ObjLaser_SetItemDistance" target="right">ObjLaser_SetItemDistance</A><BR>
+  <A href="func_common_obj_stg.html#ObjLaser_GetLength" target="right">ObjLaser_GetLength</A><BR>
+  <A href="func_common_obj_stg.html#ObjStLaser_SetAngle" target="right">ObjStLaser_SetAngle</A><BR>
+  <A href="func_common_obj_stg.html#ObjStLaser_GetAngle" target="right">ObjStLaser_GetAngle</A><BR>
+  <A href="func_common_obj_stg.html#ObjStLaser_SetSource" target="right">ObjStLaser_SetSource</A><BR>
+  <A href="func_common_obj_stg.html#ObjCrLaser_SetTipDecrement" target="right">ObjCrLaser_SetTipDecrement</A><BR>
+  <BR>
+  <BR>
+
+  <SPAN class = "section_menu_sub"><A href="func_common_obj_stg.html#sec_ObjItem_" target="right">■アイテムオブジェクト操作<BR>(ObjItem_)</SPAN></A><BR>
+  <A href="func_common_obj_stg.html#ObjItem_SetItemID" target="right">ObjItem_SetItemID</A><BR>
+  <A href="func_common_obj_stg.html#ObjItem_SetRenderScoreEnable" target="right">ObjItem_SetRenderScoreEnable</A><BR>
+  <A href="func_common_obj_stg.html#ObjItem_SetAutoCollectEnable" target="right">ObjItem_SetAutoCollectEnable</A><BR>
+  <A href="func_common_obj_stg.html#ObjItem_SetDefinedMovePatternA1" target="right">ObjItem_SetDefinedMovePatternA1</A><BR>
+  <A href="func_common_obj_stg.html#ObjItem_GetInfo" target="right">ObjItem_GetInfo</A><BR>
+  <BR>
+  <BR>
+
+  <SPAN class = "section_menu_sub"><A href="func_common_obj_stg.html#sec_ObjPlayer_" target="right">■自機オブジェクト操作<BR>(ObjPlayer_)</SPAN></A><BR>
+  <A href="func_common_obj_stg.html#ObjPlayer_AddIntersectionCircleA1" target="right">ObjPlayer_AddIntersectionCircleA1</A><BR>
+  <A href="func_common_obj_stg.html#ObjPlayer_AddIntersectionCircleA2" target="right">ObjPlayer_AddIntersectionCircleA2</A><BR>
+  <A href="func_common_obj_stg.html#ObjPlayer_ClearIntersection" target="right">ObjPlayer_ClearIntersection</A><BR>
+  <BR>
+  <BR>
+
+  <SPAN class = "section_menu_sub"><A href="func_common_obj_stg.html#sec_ObjCol_" target="right">■当たり判定オブジェクト操作<BR>(ObjCol_)</SPAN></A><BR>
+  <A href="func_common_obj_stg.html#ObjCol_IsIntersected" target="right">ObjCol_IsIntersected</A><BR>
+  <A href="func_common_obj_stg.html#ObjCol_GetListOfIntersectedEnemyID" target="right">ObjCol_GetListOfIntersectedEnemyID</A><BR>
+  <A href="func_common_obj_stg.html#ObjCol_GetIntersectedCount" target="right">ObjCol_GetIntersectedCount</A><BR>
+  <BR>
+  <BR>
+
+<!--
+  <HR>
+  <SPAN class = "section_menu_title">■敵(ステージ)スクリプト専用関数■</SPAN><BR><BR>
+  <SPAN class = "section_menu_sub"><A href="func_enemy.html#sec_enemy" target="right">■敵(ステージ)専用関数</SPAN></A><BR>
+  <A href="func_enemy.html#LoadEnemyShotData" target="right">LoadEnemyShotData</A><BR>
+  <BR>
+  <BR>
+-->
+
+  <HR>
+  <SPAN class = "section_menu_title">■自機スクリプト専用関数■</SPAN><BR><BR>
+  <SPAN class = "section_menu_sub"><A href="func_player.html#sec_player" target="right">■自機専用関数</SPAN></A><BR>
+  <A href="func_player.html#CreatePlayerShotA1" target="right">CreatePlayerShotA1</A><BR>
+  <A href="func_player.html#CallSpell" target="right">CallSpell</A><BR>
+  <A href="func_player.html#LoadPlayerShotData" target="right">LoadPlayerShotData</A><BR>
+  <A href="func_player.html#ReloadPlayerShotData" target="right">ReloadPlayerShotData</A><BR>
+  <A href="func_player.html#GetSpellManageObject" target="right">GetSpellManageObject</A><BR>
+  <BR>
+  <BR>
+
+  <SPAN class = "section_menu_sub"><A href="func_player.html#sec_ObjSpell_" target="right">■スペルオブジェクト操作<BR>(ObjSpell_)</SPAN></A><BR>
+  <A href="func_player.html#ObjSpell_Create" target="right">ObjSpell_Create</A><BR>
+  <A href="func_player.html#ObjSpell_Regist" target="right">ObjSpell_Regist</A><BR>
+  <A href="func_player.html#ObjSpell_SetDamage" target="right">ObjSpell_SetDamage</A><BR>
+  <A href="func_player.html#ObjSpell_SetEraseShot" target="right">ObjSpell_SetEraseShot</A><BR>
+  <A href="func_player.html#ObjSpell_SetIntersectionCircle" target="right">ObjSpell_SetIntersectionCircle</A><BR>
+  <A href="func_player.html#ObjSpell_SetIntersectionLine" target="right">ObjSpell_SetIntersectionLine</A><BR>
+  <BR>
+  <BR>
+
+
+  <HR>
+  <SPAN class = "section_menu_title">■システムスクリプト専用関数■</SPAN><BR><BR>
+  <SPAN class = "section_menu_sub"><A href="func_system.html#sec_system" target="right">■システムスクリプト専用関数</SPAN></A><BR>
+  <A href="func_system.html#SetPauseScriptPath" target="right">SetPauseScriptPath</A><BR>
+  <A href="func_system.html#SetEndSceneScriptPath" target="right">SetEndSceneScriptPath</A><BR>
+  <A href="func_system.html#SetReplaySaveSceneScriptPath" target="right">SetReplaySaveSceneScriptPath</A><BR>
+  <A href="func_system.html#GetTransitionRenderTargetName" target="right">GetTransitionRenderTargetName</A><BR>
+  <BR>
+  <BR>
+
+
+  <HR>
+  <SPAN class = "section_menu_title">■弾カスタムスクリプト専用関数■</SPAN><BR><BR>
+  <SPAN class = "section_menu_sub"><A href="func_shot.html#sec_shot" target="right">■弾カスタムスクリプト専用関数</SPAN></A><BR>
+  <A href="func_shot.html#SetShotDeleteEventEnable" target="right">SetShotDeleteEventEnable</A><BR>
+  <BR>
+  <BR>
+
+
+  <HR>
+  <SPAN class = "section_menu_title">■パッケージスクリプト専用関数■</SPAN><BR><BR>
+  <SPAN class = "section_menu_sub"><A href="func_package.html#sec_package" target="right">■パッケージスクリプト専用関数</SPAN></A><BR>
+  <A href="func_package.html#ClosePackage" target="right">ClosePackage</A><BR>
+
+  <A href="func_package.html#InitializeStageScene" target="right">InitializeStageScene</A><BR>
+  <A href="func_package.html#FinalizeStageScene" target="right">FinalizeStageScene</A><BR>
+  <A href="func_package.html#StartStageScene" target="right">StartStageScene</A><BR>
+  <A href="func_package.html#SetStageIndex" target="right">SetStageIndex</A><BR>
+  <A href="func_package.html#SetStageMainScript" target="right">SetStageMainScript</A><BR>
+  <A href="func_package.html#SetStagePlayerScript" target="right">SetStagePlayerScript</A><BR>
+  <A href="func_package.html#SetStageReplayFile" target="right">SetStageReplayFile</A><BR>
+  <A href="func_package.html#GetStageSceneState" target="right">GetStageSceneState</A><BR>
+  <A href="func_package.html#GetStageSceneResult" target="right">GetStageSceneResult</A><BR>
+  <A href="func_package.html#PauseStageScene" target="right">PauseStageScene</A><BR>
+  <A href="func_package.html#TerminateStageScene" target="right">TerminateStageScene</A><BR>
+  <BR>
+  <A href="func_package.html#GetLoadFreePlayerScriptList" target="right">GetLoadFreePlayerScriptList</A><BR>
+  <A href="func_package.html#GetFreePlayerScriptCount" target="right">GetFreePlayerScriptCount</A><BR>
+  <A href="func_package.html#GetFreePlayerScriptInfo" target="right">GetFreePlayerScriptInfo</A><BR>
+  <BR>
+  <A href="func_package.html#LoadReplayList" target="right">LoadReplayList</A><BR>
+  <A href="func_package.html#GetValidReplayIndices" target="right">GetValidReplayIndices</A><BR>
+  <A href="func_package.html#IsValidReplayIndex" target="right">IsValidReplayIndex</A><BR>
+  <A href="func_package.html#GetReplayInfo" target="right">GetReplayInfo</A><BR>
+  <A href="func_package.html#SetReplayInfo" target="right">SetReplayInfo</A><BR>
+  <A href="func_package.html#SaveReplay" target="right">SaveReplay</A><BR>
+  <BR>
+  <BR>
+
+ </TD></TR>
+ </BODY>
+</HTML>

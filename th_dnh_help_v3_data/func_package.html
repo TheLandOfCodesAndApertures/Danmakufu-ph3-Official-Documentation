@@ -1,0 +1,179 @@
+<HTML>
+ <HEAD>
+  <TITLE>パッケージスクリプト専用関数</TITLE>
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/html;charset=Shift_JIS">
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/css">
+  <LINK rel="stylesheet" href="style.css" type="text/css">
+ </HEAD>
+
+ <STYLE TYPE="text/css">
+ </STYLE>
+
+ <BODY link="#0000ff" alink="#0000ff" vlink="#0000ff">
+ <DIV class="allbody">
+
+ <HR>
+ <SPAN class = "section_title"><A name="sec_package">■パッケージスクリプト専用関数</A></SPAN><BR>
+  パッケージスクリプト専用の関数です。
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ClosePackage">ClosePackage(引数：0)</A></SPAN><BR>
+  パッケージスクリプトを終了します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="InitializeStageScene">InitializeStageScene(引数：0)</A></SPAN><BR>
+  ステージの連続再生開始前に1回だけ呼び出します。<BR>
+  呼び出すことでステージ用の初期化処理が行われます。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="FinalizeStageScene">FinalizeStageScene(引数：0)</A></SPAN><BR>
+  ステージの連続再生終了時に1回だけ呼び出します。<BR>
+  呼び出すことでステージ用の終了処理が行われます。<BR>
+  (主にリプレイの作成処理を行っています。)<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="StartStageScene">StartStageScene(引数：0)</A></SPAN><BR>
+  ステージシーンを開始します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetStageIndex">SetStageIndex(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:ステージのインデックス</SPAN><BR>
+  次に実行するステージのインデックスを指定します。<BR>
+  すでに指定したインデックスを指定するとエラーになります。<BR>
+  任意の値を指定できます。連番でなくても問題ありません。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetStageMainScript">SetStageMainScript(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:ステージスクリプトのファイルパス</SPAN><BR>
+  次に実行するステージスクリプトのパスを指定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetStagePlayerScript">SetStagePlayerScript(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:自機スクリプトのファイルパス</SPAN><BR>
+  次に実行するステージの自機スクリプトのパスを指定します。<BR>
+  指定可能なのは、パッケージスクリプトの#Playerで設定されている自機のみです。<BR>
+  #Playerが空の場合は、/script/player/フォルダ下の全自機を指定可能です。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetStageReplayFile">SetStageReplayFile(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:リプレイファイルパス</SPAN><BR>
+  リプレイファイルのパスを指定します。<BR>
+  InitializeStageSceneのあとに1回だけ実行します。<BR>
+  この関数を実行した場合は、ステージスクリプトがリプレイ再生になります。<BR>
+  <BR>
+  リプレイファイルはステージごとに情報を保持するため、<BR>
+  最初のステージから実行しなくても、途中ステージからリプレイ再生できます。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetStageSceneState">GetStageSceneState(引数：0、返り値：real)</A></SPAN><BR>
+  実行中のステージ状態を返します。<BR>
+  　STAGE_STATE_FINISHED：ステージ終了<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetStageSceneResult">GetStageSceneResult(引数：0、返り値：real)</A></SPAN><BR>
+  ステージが終了した要因を取得します。<BR>
+  　STAGE_RESULT_CLEARED：ステージクリア<BR>
+  　STAGE_RESULT_PLAYER_DOWN：自機残機0<BR>
+  　STAGE_RESULT_BREAK_OFF：ステージの途中終了<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="PauseStageScene">PauseStageScene(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) bool:true/一時停止、false:再開</SPAN><BR>
+  実行中のステージシーンを一時停止します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="TerminateStageScene">TerminateStageScene(引数：0)</A></SPAN><BR>
+  ステージシーンを途中終了します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetLoadFreePlayerScriptList">GetLoadFreePlayerScriptList(引数：0)</A></SPAN><BR>
+  /script/player/フォルダ下の自機スクリプト情報をロードします。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetFreePlayerScriptCount">GetFreePlayerScriptCount(引数：0)</A></SPAN><BR>
+  ロードした/script/player/フォルダ下の自機スクリプト情報数を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetFreePlayerScriptInfo">GetFreePlayerScriptInfo(引数：2、返り値：可変)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:自機スクリプトのインデックス(GetFreePlayerScriptCount未満の値)</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:情報種別<BR>
+  　　INFO_SCRIPT_PATH　　　 ：スクリプトパス(char)<BR>
+  　　INFO_SCRIPT_ID　　　　 ：#ID 情報(char)<BR>
+  　　INFO_SCRIPT_TITLE　　　：#Title 情報(char)<BR>
+  　　INFO_SCRIPT_TEXT　　　 ：#Text 情報(char)<BR>
+  　　INFO_SCRIPT_IMAGE　　　：#Image 情報(char)<BR>
+  　　INFO_SCRIPT_REPLAY_NAME：#ReplayName 情報(char)<BR>
+  </SPAN>
+  自機スクリプト情報を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="LoadReplayList">LoadReplayList(引数：0)</A></SPAN><BR>
+  リプレイ情報をロードします。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetValidReplayIndices">GetValidReplayIndices(引数：0、返り値：real配列)</A></SPAN><BR>
+  ロードしたリプレイ情報の有効なインデックスリストを返します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="IsValidReplayIndex">IsValidReplayIndex(引数：1、返り値：bool)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:リプレイのインデックス</SPAN><BR>
+  ロードしたリプレイ情報で、指定したインデックスが有効かを調べます。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetReplayInfo">GetReplayInfo(引数：2、返り値：可変)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:リプレイのインデックス(GetValidReplayIndicesで取得できた値のみ有効)</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:情報種別<BR>
+  　　REPLAY_FILE_PATH　：リプレイファイルパス(char)<BR>
+  　　REPLAY_DATE_TIME　：リプレイ保存時刻(char)<BR>
+  　　REPLAY_USER_NAME　：登録ユーザ名(char)<BR>
+  　　REPLAY_TOTAL_SCORE：統合スコア(real)<BR>
+  　　REPLAY_FPS_AVERAGE：平均fps(real)<BR>
+  　　REPLAY_PLAYER_NAME：自機名称(char)<BR>
+  　　REPLAY_STAGE_INDEX_LIST：有効なステージインデックスリスト(real配列)<BR>
+  　　REPLAY_STAGE_START_SCORE_LIST：ステージ開始時のスコアリスト<BR>
+  　　　(REPLAY_STAGE_INDEX_LISTの順に保持)(real配列)<BR>
+  　　REPLAY_STAGE_LAST_SCORE_LIST：ステージ終了時のスコアリスト<BR>
+  　　　(REPLAY_STAGE_INDEX_LISTの順に保持)(real配列)<BR>
+  　　REPLAY_COMMENT：リプレイ保存時に指定した任意の文字列(char)<BR>
+  </SPAN>
+  リプレイ情報を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetReplayInfo">SetReplayInfo(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:情報種別<BR>
+  　　REPLAY_COMMENT：任意の文字列(char)、例えば難易度を記載したりできます。<BR>　　　(複数情報必要な場合、","区切りで保存し、読み込み時にSplitStringで切り分けるなどが良いと思います。)<BR>
+  </SPAN>
+  <SPAN class = "function_arg">　2) 可変(情報種別にる):設定する値</SPAN><BR>
+  保存対象の情報を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SaveReplay">SaveReplay(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:リプレイのインデックス</SPAN><BR>
+  <SPAN class = "function_arg">　2) char:ユーザ名</SPAN><BR>
+  リプレイファイルを指定したインデックスで保存します。<BR>
+ </P><HR>
+
+ </DIV></BODY>
+</HTML>
+

@@ -1,0 +1,1023 @@
+<HTML>
+ <HEAD>
+  <TITLE>共通関数</TITLE>
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/html;charset=Shift_JIS">
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/css">
+  <LINK rel="stylesheet" href="style.css" type="text/css">
+ </HEAD>
+
+ <STYLE TYPE="text/css">
+
+ </STYLE>
+
+ <BODY link="#0000ff" alink="#0000ff" vlink="#0000ff">
+ <DIV class="allbody">
+
+ <HR>
+ <SPAN class = "section_title"><A name = "sec_script">■スクリプト操作</A></SPAN><BR>
+  スクリプトの操作に関連した関数です。
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="LoadScript">LoadScript(引数：1、返り値：real[スクリプトのID])</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:スクリプトファイルのパス</SPAN><BR>
+  指定したスクリプトファイルをロードしコンパイルします。<BR>
+  (グローバルな変数の初期化と、@Loadgingまでを呼び出します。)<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="LoadScriptInThread">LoadScriptInThread(引数：1、返り値：real[スクリプトのID])</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:スクリプトファイルのパス</SPAN><BR>
+  指定したスクリプトファイルを別スレッドでロードしコンパイルします。<BR>
+  (グローバルな変数の初期化と、@Loadgingまでを呼び出します。)<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="StartScript">StartScript(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:スクリプトID</SPAN><BR>
+  指定したスクリプトを開始します。<BR>
+  (@Initializeが呼び出され、@MainLoopが開始されます。)<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="CloseScript">CloseScript(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:スクリプトID</SPAN><BR>
+  指定したスクリプトを終了します。<BR>
+  この関数が呼び出されるまで、スクリプトは動作し続けます。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="IsCloseScript">IsCloseScript(引数：1、返り値：bool)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:スクリプトID</SPAN><BR>
+  指定したスクリプトが終了したかを調べます。<BR>
+  終了した場合trueが返ります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetScriptArgument">SetScriptArgument(引数：3)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:スクリプトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:値のインデックス</SPAN><BR>
+  <SPAN class = "function_arg">　3) free:任意の値</SPAN><BR>
+  StartScript開始前に、開始するスクリプトに渡す値を設定します。<BR>
+  開始されたスクリプト側で、GetScriptArgumentで渡した値を取得できます。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetScriptArgument">GetScriptArgument(引数：1、返り値：free)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:値のインデックス</SPAN><BR>
+  StartScript開始前に、SetScriptArgumentで設定された値を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetScriptArgumentCount">GetScriptArgumentCount(引数：0、返り値：real)</A></SPAN><BR>
+  StartScript開始前に、SetScriptArgumentで設定された値の数を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="CloseStgScene">CloseStgScene(引数：0)</A></SPAN><BR>
+  STGシーンを終了します。<BR>
+  (スクリプト選択画面に戻ります。)<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetOwnScriptID">GetOwnScriptID(引数：0、返り値：real[スクリプトのID])</A></SPAN><BR>
+  実行中の自身のスクリプトIDを取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetEventType">GetEventType(引数：0、返り値：real[定数])</A></SPAN><BR>
+  @Event中でイベントの種別を取得します。<BR>
+  「<A href = "description.html#Event">イベント(@Event)</A>」を参照お願いします。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetEventArgument">GetEventArgument(引数：1、返り値：depend[イベントによります])</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:引数のインデックス</SPAN><BR>
+  @Event中でイベントの引数を取得します。<BR>
+  「<A href = "description.html#Event">イベント(@Event)</A>」を参照お願いします。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetScriptResult">SetScriptResult(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) free:イベントへの返り値</SPAN><BR>
+  スクリプトの処理結果を設定します。<BR>
+  主に@Event中でイベントの処理結果を設定します。<BR>
+  「<A href = "description.html#Event">イベント(@Event)</A>」を参照お願いします。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetScriptResult">GetScriptResult(引数：1、返り値：free)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:スクリプトID</SPAN><BR>
+  SetScriptResultで設定した処理結果を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetAutoDeleteObject">SetAutoDeleteObject(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) bool:自動削除有効/無効</SPAN><BR>
+  スクリプト終了時に、自動的にオブジェクトを削除するかを設定します。<BR>
+  デフォルトはfalseです。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="NotifyEvent">NotifyEvent(引数：3)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:スクリプトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:イベント種別</SPAN><BR>
+  <SPAN class = "function_arg">　3) free:任意の値</SPAN><BR>
+  指定したIDのスクリプトの@Eventを呼び出します。<BR>
+  イベント種別はEV_USERより大きい値を使用します。<BR>
+  「<A href = "description.html#Event">イベント(@Event)</A>」を参照お願いします。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="NotifyEventAll">NotifyEventAll(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:イベント種別</SPAN><BR>
+  <SPAN class = "function_arg">　2) free:任意の値</SPAN><BR>
+  全てのスクリプトの@Eventを呼び出します。<BR>
+  イベント種別はEV_USERより大きい値を使用します。<BR>
+  「<A href = "description.html#Event">イベント(@Event)</A>」を参照お願いします。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetScriptInfoA1">GetScriptInfoA1(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:スクリプトパス</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:情報種別<BR>
+  　　INFO_SCRIPT_TYPE　　　 ：スクリプト種別(real)<BR>
+  　  　　　TYPE_SCRIPT_PLAYER　：自機スクリプト<BR>
+  　  　　　TYPE_SCRIPT_SINGLE　：Singleスクリプト<BR>
+  　  　　　TYPE_SCRIPT_PULRAL　：Pulralスクリプト<BR>
+  　  　　　TYPE_SCRIPT_STAGE　 ：Stageスクリプト<BR>
+  　  　　　TYPE_SCRIPT_PACKAGE ：Packageスクリプト<BR>
+  　　INFO_SCRIPT_PATH　　　 ：スクリプトパス(char)<BR>
+  　　INFO_SCRIPT_ID　　　　 ：#ID 情報(char)<BR>
+  　　INFO_SCRIPT_TITLE　　　：#Title 情報(char)<BR>
+  　　INFO_SCRIPT_TEXT　　　 ：#Text 情報(char)<BR>
+  　　INFO_SCRIPT_IMAGE　　　：#Image 情報(char)<BR>
+  　　INFO_SCRIPT_REPLAY_NAME：#ReplayName 情報(char)<BR>
+  </SPAN>
+  スクリプト情報を取得します。<BR>
+ </P><HR>
+
+ <HR>
+ <SPAN class = "section_title"><A name = "sec_system">■システム関連</A></SPAN><BR>
+  システムの操作に関連した関数です。
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetStgFrame">SetStgFrame(引数：6)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:STG空間矩形(左)</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:STG空間矩形(上)</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:STG空間矩形(右)</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:STG空間矩形(下)</SPAN><BR>
+  <SPAN class = "function_arg">　5) real:STG空間最小描画優先度</SPAN><BR>
+  <SPAN class = "function_arg">　6) real:STG空間最大描画優先度</SPAN><BR>
+  STG空間のフレームを設定します。<BR>
+  デフォルト値は 矩形(32, 16, 416, 464) 描画優先度(20, 80)です。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetScore">GetScore(引数：0、返り値：real)</A></SPAN><BR>
+  現在のスコアを取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="AddScore">AddScore(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:スコア</SPAN><BR>
+  スコアを加算します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetGraze">GetGraze(引数：0、返り値：real)</A></SPAN><BR>
+  グレイズ(かすり回数)を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="AddGraze">AddGraze(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:グレイズ</SPAN><BR>
+  グレイズ(かすり回数)を加算します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetPoint">GetPoint(引数：0、返り値：real)</A></SPAN><BR>
+  ポイント(得点アイテム取得数)を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="AddPoint">AddPoint(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:ポイント</SPAN><BR>
+  ポイント(得点アイテム取得数)を加算します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetItemRenderPriorityI">SetItemRenderPriorityI(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) 描画優先度</SPAN><BR>
+  アイテムのデフォルト描画優先度を設定します。<BR>
+  描画優先度については「<A href = "other_spec.html#RenderPriority">描画優先度</A>」を参照。
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetShotRenderPriorityI">SetShotRenderPriorityI(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:描画優先度</SPAN><BR>
+  弾のデフォルト描画優先度を設定します。<BR>
+  描画優先度については「<A href = "other_spec.html#RenderPriority">描画優先度</A>」を参照。
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetStgFrameRenderPriorityMinI">GetStgFrameRenderPriorityMinI(引数：0、返り値：real)</A></SPAN><BR>
+  STGフレーム最小描画優先度を取得します。(0-100)<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetStgFrameRenderPriorityMaxI">GetStgFrameRenderPriorityMaxI(引数：0、返り値：real)</A></SPAN><BR>
+  STGフレーム最大描画優先度を取得します。(0-100)<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetItemRenderPriorityI">GetItemRenderPriorityI(引数：0、返り値：real)</A></SPAN><BR>
+  アイテムデフォルト描画優先度を取得します。(0-100)<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetShotRenderPriorityI">GetShotRenderPriorityI(引数：0、返り値：real)</A></SPAN><BR>
+  弾のデフォルト描画優先度を取得します。(0-100)<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetPlayerRenderPriorityI">GetPlayerRenderPriorityI(引数：0、返り値：real)</A></SPAN><BR>
+  自機の描画優先度を取得します。(0-100)<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetCameraFocusPermitPriorityI">GetCameraFocusPermitPriorityI(引数：0、返り値：real)</A></SPAN><BR>
+  2Dカメラ有効の最大描画優先度を取得します。(0-100)<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetStgFrameLeft">GetStgFrameLeft(引数：0、返り値：real)</A></SPAN><BR>
+  STG空間の左端座標を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetStgFrameTop">GetStgFrameTop(引数：0、返り値：real)</A></SPAN><BR>
+  STG空間の上端座標を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetStgFrameWidth">GetStgFrameWidth(引数：0、返り値：real)</A></SPAN><BR>
+  STG空間の幅を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetStgFrameHeight">GetStgFrameHeight(引数：0、返り値：real)</A></SPAN><BR>
+  STG空間の高さを取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetScreenWidth">GetScreenWidth(引数：0、返り値：real)</A></SPAN><BR>
+  スクリーン(描画領域)の幅を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetScreenHeight">GetScreenHeight(引数：0、返り値：real)</A></SPAN><BR>
+  スクリーン(描画領域)の高さを取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="IsReplay">IsReplay(引数：0、返り値：bool)</A></SPAN><BR>
+  リプレイ中ならtrueを返します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="AddArchiveFile">AddArchiveFile(引数：1、返り値：bool)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:アーカイブファイルパス</SPAN><BR>
+  画像や音声を読み込むとき検索対象とする、アーカイブファイルを追加します。<BR>
+  正常にアーカイブファイルを認識した場合はtrueが返ります。<BR>
+ </P><HR>
+
+ <HR>
+ <SPAN class = "section_title"><A name = "sec_player">■自機関連</A></SPAN><BR>
+  自機の操作に関連した関数です。
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetPlayerObjectID">GetPlayerObjectID(引数：0、返り値：real)</A></SPAN><BR>
+  自機オブジェクトのIDを取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetPlayerScriptID">GetPlayerScriptID(引数：0、返り値：real)</A></SPAN><BR>
+  自機スクリプトのIDを取得します。<BR>
+  自機スクリプト内でGetOwnScriptIDを実行したときと同じ値を返します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetPlayerSpeed">SetPlayerSpeed(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:通常移動速度</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:低速移動速度</SPAN><BR>
+  自機の移動速度を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetPlayerClip">SetPlayerClip(引数：4)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:移動可能範囲(左)</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:移動可能範囲(上)</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:移動可能範囲(右)</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:移動可能範囲(下)</SPAN><BR>
+  自機の移動可能範囲を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetPlayerLife">SetPlayerLife(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:自機ライフ</SPAN><BR>
+  自機の残ライフを設定します。(整数でなくてもよいです)<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetPlayerSpell">SetPlayerSpell(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:自機スペル(ボム)</SPAN><BR>
+  自機の残スペルを設定します。(整数でなくてもよいです)<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetPlayerPower">SetPlayerPower(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:自機パワー</SPAN><BR>
+  自機のパワーを設定します。(整数でなくてもよいです)<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetPlayerInvincibilityFrame">SetPlayerInvincibilityFrame(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:無敵時間(フレーム単位)</SPAN><BR>
+  自機の無敵時間を設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetPlayerDownStateFrame">SetPlayerDownStateFrame(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:自機撃墜時間(フレーム単位)</SPAN><BR>
+  自機の自機撃墜～復帰までの時間(フレーム)を設定します。<BR>
+  (GetPlayerStateがSTATE_DOWNを示す時間)<BR>
+  初期値は120です。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetPlayerRebirthFrame">SetPlayerRebirthFrame(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:喰らいボム受付時間(フレーム単位)</SPAN><BR>
+  自機の喰らいボム受付時間(フレーム)を設定します。<BR>
+  (GetPlayerStateがSTATE_HITを示す時間)<BR>
+  初期値は15です。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetPlayerRebirthLossFrame">SetPlayerRebirthLossFrame(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:喰らいボム受付時間減少量(フレーム単位)</SPAN><BR>
+  自機の喰らいボム受付減少時間を設定します。<BR>
+  1回被弾するごとにこの値だけ、喰らいボム受付時間が短くなります。<BR>
+  初期値は3です。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetPlayerAutoItemCollectLine">SetPlayerAutoItemCollectLine(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:自動アイテム回収ライン(y座標)</SPAN><BR>
+  自動アイテム回収ラインを(y座標)設定します。<BR>
+  この値より小さい位置に自機を移動させると、アイテムは自動回収されます。<BR>
+  負の値を設定すると無効になります。<BR>
+  初期値は無効です。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetForbidPlayerShot">SetForbidPlayerShot(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) bool:自弾禁止フラグ</SPAN><BR>
+  自弾の有効／無効を設定します。<BR>
+  trueの場合は、自弾の発射ができなくなります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetForbidPlayerSpell">SetForbidPlayerSpell(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) bool:自スペル禁止フラグ</SPAN><BR>
+  自スペルの有効／無効を設定します。<BR>
+  trueの場合は、自スペルの発動ができなくなります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetPlayerX">GetPlayerX(引数：0、返り値：real)</A></SPAN><BR>
+  自機のx座標を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetPlayerY">GetPlayerY(引数：0、返り値：real)</A></SPAN><BR>
+  自機のy座標を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetPlayerState">GetPlayerState(引数：0、返り値：real[定数])</A></SPAN><BR>
+  以下の自機の状態を取得します。<BR>
+  　STATE_NORMAL：通常状態です。<BR>
+  　STATE_HIT：被弾状態(喰らいボム発動可能時間)です。<BR>
+  　STATE_DOWN：撃墜後復帰前状態です。<BR>
+  　STATE_END：残機0で終了状態です。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetPlayerSpeed">GetPlayerSpeed(引数：0、返り値：real配列)</A></SPAN><BR>
+  自機移動速度を返します。<BR>
+  　[0]=通常移動速度<BR>
+  　[1]=低速移動速度<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetPlayerClip">GetPlayerClip(引数：0、返り値：real配列)</A></SPAN><BR>
+  自機移動可能範囲を返します。<BR>
+  　[0]=移動可能範囲(左)<BR>
+  　[1]=移動可能範囲(上)<BR>
+  　[2]=移動可能範囲(右)<BR>
+  　[3]=移動可能範囲(下)<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetPlayerLife">GetPlayerLife(引数：0、返り値：real)</A></SPAN><BR>
+  自機ライフを取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetPlayerSpell">GetPlayerSpell(引数：0、返り値：real)</A></SPAN><BR>
+  自機スペルを取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetPlayerPower">GetPlayerPower(引数：0、返り値：real)</A></SPAN><BR>
+  自機パワーを取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetPlayerInvincibilityFrame">GetPlayerInvincibilityFrame(引数：0、返り値：real)</A></SPAN><BR>
+  自機無敵時間(フレーム)を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetPlayerDownStateFrame">GetPlayerDownStateFrame(引数：0、返り値：real)</A></SPAN><BR>
+  自機の自機撃墜～復帰までの時間(フレーム)を取得します。<BR>
+  (GetPlayerStateがSTATE_DOWNを示す時間)<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetPlayerRebirthFrame">GetPlayerRebirthFrame(引数：0、返り値：real)</A></SPAN><BR>
+  自機の喰らいボム受付時間(フレーム)を取得します。<BR>
+  (GetPlayerStateがSTATE_HITを示す時間)<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetAngleToPlayer">GetAngleToPlayer(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  指定したオブジェクトから自機方向への角度を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="IsPermitPlayerShot">IsPermitPlayerShot(引数：0、返り値：bool)</A></SPAN><BR>
+  自機の弾発射が許可されているかを調べます。<BR>
+  発射可能な場合はtrueが返ります。<BR>
+  必ずしもSetForbidPlayerShotで設定した状態と連動するとは限りません。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="IsPermitPlayerSpell">IsPermitPlayerSpell(引数：0、返り値：bool)</A></SPAN><BR>
+  自機スペルの発動が許可されているかを調べます。<BR>
+  発動可能な場合はtrueが返ります。<BR>
+  必ずしもSetForbidPlayerSpellで設定した状態と連動するとは限りません。<BR>
+  例えば、ラストスペル発動中は強制的にfalseになります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="IsPlayerLastSpellWait">IsPlayerLastSpellWait(引数：0、返り値：bool)</A></SPAN><BR>
+  自機喰らいボム受付時間中かを調べます。<BR>
+  喰らいボム受付時間中はtrueが返ります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="IsPlayerSpellActive">IsPlayerSpellActive(引数：0、返り値：bool)</A></SPAN><BR>
+  自機がボム使用中かを調べます。<BR>
+  ボム使用中はtrueが返ります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetPlayerID">GetPlayerID(引数：0、返り値：char)</A></SPAN><BR>
+  自機スクリプトのIDが返ります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetPlayerReplayName">GetPlayerReplayName(引数：0、返り値：char)</A></SPAN><BR>
+  自機スクリプトのリプレイ保存名称が返ります。<BR>
+ </P><HR>
+
+ <HR>
+ <SPAN class = "section_title"><A name = "sec_enemy">■敵関連</A></SPAN><BR>
+  敵の操作に関連した関数です。
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetEnemyBossSceneObjectID">GetEnemyBossSceneObjectID(引数：0、返り値：real)</A></SPAN><BR>
+  ボスシーンオブジェクトのIDを取得します。<BR>
+  ボスシーンでない場合はID_INVALIDが返ります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetEnemyBossObjectID">GetEnemyBossObjectID(引数：0、返り値：real配列[IDの配列])</A></SPAN><BR>
+  現在出現しているボスのIDを取得します。<BR>
+  敵オブジェクトIDが配列で返ります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetAllEnemyID">GetAllEnemyID(引数：0、返り値：real配列[IDの配列])</A></SPAN><BR>
+  現在出現している全ての敵のIDを取得します。<BR>
+  敵オブジェクトIDが配列で返ります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetIntersectionRegistedEnemyID">GetIntersectionRegistedEnemyID(引数：0、返り値：real配列[IDの配列])</A></SPAN><BR>
+  自機ショットへの当たり判定を持つすべての敵オブジェクトIDを取得します。<BR>
+  敵オブジェクトIDが配列で返ります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetAllEnemyIntersectionPosition">GetAllEnemyIntersectionPosition(引数：0、返り値：real二次元配列)</A></SPAN><BR>
+  全ての敵の当たり判定位置を取得します。<BR>
+  二次元配列が返ります。([<インデックス>][<0:x座標, 1:y座標>])<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetEnemyIntersectionPosition">GetEnemyIntersectionPosition(引数：3、返り値：real二次元配列)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:x座標</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:y座標</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:最大取得数</SPAN><BR>
+  指定した位置に近い、敵の当たり判定位置を取得します。<BR>
+  二次元配列が返ります。([<インデックス>][<0:x座標, 1:y座標>])<BR>
+  配列の0番目が最も近いあたり判定の座標になります。
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetEnemyIntersectionPositionByIdA1">GetEnemyIntersectionPositionByIdA1(引数：1、返り値：real二次元配列)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:敵オブジェクトID</SPAN><BR>
+  指定した敵オブジェクトIDの、全あたり判定位置を取得します。<BR>
+  二次元配列が返ります。([<インデックス>][<0:x座標, 1:y座標>])<BR>
+  配列の0番目が最も敵に近いあたり判定の座標になります。
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetEnemyIntersectionPositionByIdA2">GetEnemyIntersectionPositionByIdA2(引数：3、返り値：real二次元配列)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:敵オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:x座標</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:y座標</SPAN><BR>
+  指定した敵オブジェクトIDの、全あたり判定位置を取得します。<BR>
+  二次元配列が返ります。([<インデックス>][<0:x座標, 1:y座標>])<BR>
+  配列の0番目が最も指定した位置に近い判定の座標になります。
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="LoadEnemyShotData">LoadEnemyShotData(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:弾設定ファイルへのパス</SPAN><BR>
+  敵弾画像をロードします。<BR>
+  何回でも呼び出せ、複数回読んだ場合はIDが異なってさえいれば、次々と登録されます。<BR>
+  同名ファイルは1度しか読み込めません。<BR>
+  「<A href="other_spec.html#AddShot">弾画像の追加</A>」を参照お願いします。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ReloadEnemyShotData">ReloadEnemyShotData(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:弾設定ファイルへのパス</SPAN><BR>
+  敵弾画像をリロードします。(LoadEnemyShotDataを呼ばずにいきなり呼び出してもよいです)<BR>
+  何回でも呼び出せ、複数回読んだ場合はIDが異なってさえいれば、次々と登録されます。<BR>
+  LoadEnemyShotDataと異なり同名ファイルも読み込めます。<BR>
+  「<A href="other_spec.html#AddShot">弾画像の追加</A>」を参照お願いします。<BR>
+ </P><HR>
+
+ <HR>
+ <SPAN class = "section_title"><A name = "sec_shot">■弾関連</A></SPAN><BR>
+  弾の操作に関連した関数です。
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="DeleteShotAll">DeleteShotAll(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:削除対象<BR>
+  　　TYPE_ALL：全敵弾<BR>
+  　　TYPE_SHOT：スペル耐性のない弾全て<BR>
+  　　TYPE_CHILD：子になる弾全て(未実装)</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:削除後の状態<BR>
+  　　TYPE_IMMEDIATE：即座に消滅<BR>
+  　　TYPE_FADE：フェードしながら消滅<BR>
+  　　TYPE_ITEM：アイテムに変化</SPAN><BR>
+  全ての敵弾を削除します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="DeleteShotInCircle">DeleteShotInCircle(引数：5)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:削除対象<BR>
+  　　TYPE_ALL：全敵弾<BR>
+  　　TYPE_SHOT：スペル耐性のない弾全て<BR>
+  　　TYPE_CHILD：子になる弾全て(未実装)</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:削除後の状態<BR>
+  　　TYPE_IMMEDIATE：即座に消滅<BR>
+  　　TYPE_FADE：フェードしながら消滅<BR>
+  　　TYPE_ITEM：アイテムに変化</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:円の中心x座標</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:円の中心y座標</SPAN><BR>
+  <SPAN class = "function_arg">　5) real:円の半径</SPAN><BR>
+  指定した円内の全ての敵弾を削除します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="CreateShotA1">CreateShotA1(引数：6、返り値：real[オブジェクトID])</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:x座標</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:y座標</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:速度</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:角度</SPAN><BR>
+  <SPAN class = "function_arg">　5) real:弾画像ID</SPAN><BR>
+  <SPAN class = "function_arg">　6) real:遅延時間</SPAN><BR>
+  指定した位置に敵弾を出現させます。<BR>
+  出現させた弾にさらに操作を加える場合は、ObjShot_XXXを使用してください。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="CreateShotA2">CreateShotA2(引数：8、返り値：real[オブジェクトID])</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:x座標</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:y座標</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:速度</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:角度</SPAN><BR>
+  <SPAN class = "function_arg">　5) real:加速度</SPAN><BR>
+  <SPAN class = "function_arg">　6) real:最大速度</SPAN><BR>
+  <SPAN class = "function_arg">　7) real:弾画像ID</SPAN><BR>
+  <SPAN class = "function_arg">　8) real:遅延時間</SPAN><BR>
+  指定した位置に敵弾を出現させます。<BR>
+  出現させた弾にさらに操作を加える場合は、ObjShot_XXXを使用してください。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="CreateShotOA1">CreateShotOA1(引数：5、返り値：real[オブジェクトID])</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:速度</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:角度</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:弾画像ID</SPAN><BR>
+  <SPAN class = "function_arg">　5) real:遅延時間</SPAN><BR>
+  指定したオブジェクトの座標位置に敵弾を出現させます。<BR>
+  出現させた弾にさらに操作を加える場合は、ObjShot_XXXを使用してください。<BR>
+  (OA1はオーエー1です。ゼロエー1ではありません。)<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="CreateShotB1">CreateShotB1(引数：6、返り値：real[オブジェクトID])</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:x座標</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:y座標</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:x速度</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:y速度</SPAN><BR>
+  <SPAN class = "function_arg">　5) real:弾画像ID</SPAN><BR>
+  <SPAN class = "function_arg">　6) real:遅延時間</SPAN><BR>
+  指定した位置に敵弾を出現させます。<BR>
+  出現させた弾にさらに操作を加える場合は、ObjShot_XXXを使用してください。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="CreateShotB2">CreateShotB2(引数：10、返り値：real[オブジェクトID])</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:x座標</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:y座標</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:x速度</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:y速度</SPAN><BR>
+  <SPAN class = "function_arg">　5) real:x加速度</SPAN><BR>
+  <SPAN class = "function_arg">　6) real:y加速度</SPAN><BR>
+  <SPAN class = "function_arg">　7) real:x最大(最小)速度</SPAN><BR>
+  <SPAN class = "function_arg">　8) real:y最大(最小)速度</SPAN><BR>
+  <SPAN class = "function_arg">　9) real:弾画像ID</SPAN><BR>
+  <SPAN class = "function_arg">　10) real:遅延時間</SPAN><BR>
+  指定した位置に敵弾を出現させます。<BR>
+  出現させた弾にさらに操作を加える場合は、ObjShot_XXXを使用してください。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="CreateShotOB1">CreateShotOB1(引数：5、返り値：real[オブジェクトID])</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:x速度</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:y速度</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:弾画像ID</SPAN><BR>
+  <SPAN class = "function_arg">　5) real:遅延時間</SPAN><BR>
+  指定したオブジェクトの座標位置に敵弾を出現させます。<BR>
+  出現させた弾にさらに操作を加える場合は、ObjShot_XXXを使用してください。<BR>
+  (OB1はオービー1です。ゼロビー1ではありません。)<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="CreateLooseLaserA1">CreateLooseLaserA1(引数：8、返り値：real[オブジェクトID])</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:x座標</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:y座標</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:速度</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:角度</SPAN><BR>
+  <SPAN class = "function_arg">　5) real:レーザーの長さ</SPAN><BR>
+  <SPAN class = "function_arg">　6) real:レーザーの幅</SPAN><BR>
+  <SPAN class = "function_arg">　7) real:弾画像ID</SPAN><BR>
+  <SPAN class = "function_arg">　8) real:遅延時間</SPAN><BR>
+  指定した位置に射出型レーザーを出現させます。<BR>
+  出現させたレーザーにさらに操作を加える場合は、ObjLaser_XXXを使用してください。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="CreateStraightLaserA1">CreateStraightLaserA1(引数：8、返り値：[オブジェクトID])</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:x座標</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:y座標</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:角度</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:レーザーの長さ</SPAN><BR>
+  <SPAN class = "function_arg">　5) real:レーザーの幅</SPAN><BR>
+  <SPAN class = "function_arg">　6) real:消滅フレーム</SPAN><BR>
+  <SPAN class = "function_arg">　7) real:弾画像ID</SPAN><BR>
+  <SPAN class = "function_arg">　8) real:遅延時間</SPAN><BR>
+  指定した位置に設置型レーザーを出現させます。<BR>
+  出現させたレーザーにさらに操作を加える場合は、ObjLaser_XXXを使用してください。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="CreateCurveLaserA1">CreateCurveLaserA1(引数：8、返り値：[オブジェクトID])</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:x座標</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:y座標</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:速度</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:角度</SPAN><BR>
+  <SPAN class = "function_arg">　5) real:レーザーの長さ</SPAN><BR>
+  <SPAN class = "function_arg">　6) real:レーザーの幅</SPAN><BR>
+  <SPAN class = "function_arg">　7) real:弾画像ID</SPAN><BR>
+  <SPAN class = "function_arg">　8) real:遅延時間</SPAN><BR>
+  指定した位置に曲がるレーザーを出現させます。<BR>
+  出現させたレーザーにさらに操作を加える場合は、ObjMove_XXX,ObjLaser_XXXを使用してください。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetShotIntersectionCircle">SetShotIntersectionCircle(引数：3)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:x座標</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:y座標</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:半径</SPAN><BR>
+  指定した位置に円形の弾の当たり判定を設定します。<BR>
+  この範囲に入った自機は撃墜されます。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetShotIntersectionLine">SetShotIntersectionLine(引数：5)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:先端x座標</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:先端y座標</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:終端x座標</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:終端y座標</SPAN><BR>
+  <SPAN class = "function_arg">　5) real:線幅</SPAN><BR>
+  指定した位置に線形の弾の当たり判定を設定します。<BR>
+  この範囲に入った自機は撃墜されます。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetShotIdInCircleA1">GetShotIdInCircleA1(引数：3、返り値：オブジェクトIDの配列)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:x座標</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:y座標</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:半径</SPAN><BR>
+  指定した円内にある弾オブジェクトIDを配列で取得します。<BR>
+  自機スクリプト内では敵の弾だけを、敵スクリプト内では自機の弾IDだけを取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetShotIdInCircleA2">GetShotIdInCircleA2(引数：4、返り値：オブジェクトIDの配列)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:x座標</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:y座標</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:半径</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:対象<BR>
+  　全弾：TARGET_ALL<BR>
+  　敵弾：TARGET_ENEMY<BR>
+  　自機弾：TARGET_PLAYER<BR>
+  </SPAN><BR>
+  指定した円内にある弾オブジェクトIDを配列で取得します。<BR>
+　全弾/敵弾/自機弾を区別可能です。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetShotCount">GetShotCount(引数：1、返り値：real)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:対象<BR>
+  　全弾：TARGET_ALL<BR>
+  　敵弾：TARGET_ENEMY<BR>
+  　自機弾：TARGET_PLAYER<BR>
+  </SPAN><BR>
+  存在している弾の数を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetShotAutoDeleteClip">SetShotAutoDeleteClip(引数：4)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:弾自動削除境界(左、初期値：64)</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:弾自動削除境界(上、初期値：64)</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:弾自動削除境界(右、初期値：64)</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:弾自動削除境界(下、初期値：64)</SPAN><BR>
+  弾が自動削除される境界を設定します。<BR>
+  STGシーンの外側で弾の消えない境界を設定します。<BR>
+  あまり大きな値を設定すると、いつまでたっても弾が消えなくなり<BR>
+  重くなるので注意してください。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetShotDataInfoA1">GetShotDataInfoA1(引数：3、返り値：可変)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:弾画像のID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:自機側(TARGET_PLAYER)/敵側(TARGET_ENEMY)</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:情報種別<BR>
+  　　INFO_RECT　　　　 ：弾画像矩形(real配列([左,上,右,下]))<BR>
+  　　INFO_DELAY_COLOR　：遅延色(real配列([R,G,B]))<BR>
+  　　INFO_BLEND　　　　：描画合成種別(real:BLEND_ALPHA, BLEND_ADD_RGB, BLEND_ADD_ARGB)<BR>
+  　　INFO_COLLISION　　：当たり判定半径(real)<BR>
+  　　INFO_COLLISION_LIST：当たり判定半径リスト(複数判定版)(2次元real配列([r,x,y]))<BR>
+  </SPAN>
+  弾画像IDを指定して、情報を取得します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="StartShotScript">StartShotScript(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:スクリプトパス<BR></SPAN>
+  弾動作カスタム用のスクリプトを開始します。<BR>
+ </P><HR>
+
+
+ <HR>
+ <SPAN class = "section_title"><A name = "sec_item">■アイテム関連</A></SPAN><BR>
+  アイテムの操作に関連した関数です。
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="CreateItemA1">CreateItemA1(引数：4、返り値：[オブジェクトID])</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:アイテム種別<BR>
+  　　ITEM_1UP　　：1アップ<BR>
+  　　ITEM_1UP_S　：1アップ(小)<BR>
+  　　ITEM_SPELL　：スペル大<BR>
+  　　ITEM_SPELL_S：スペル(小)<BR>
+  　　ITEM_POWER　：パワーアップ<BR>
+  　　ITEM_POWER_S：パワーアップ(小)<BR>
+  　　ITEM_POINT　：得点<BR>
+  　　ITEM_POINT_S：得点(小)<BR>
+  </SPAN>
+  <SPAN class = "function_arg">　2) real:x座標</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:y座標</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:得点</SPAN><BR>
+  アイテムを出現させます。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="CreateItemA2">CreateItemA2(引数：6、返り値：[オブジェクトID])</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:アイテム種別<BR>
+  　　ITEM_1UP　　：1アップ<BR>
+  　　ITEM_1UP_S　：1アップ(小)<BR>
+  　　ITEM_SPELL　：スペル大<BR>
+  　　ITEM_SPELL_S：スペル(小)<BR>
+  　　ITEM_POWER　：パワーアップ<BR>
+  　　ITEM_POWER_S：パワーアップ(小)<BR>
+  　　ITEM_POINT　：得点<BR>
+  　　ITEM_POINT_S：得点(小)<BR>
+  　　ITEM_USER　 ：ユーザ定義アイテム<BR>
+  </SPAN>
+  <SPAN class = "function_arg">　2) real:x座標</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:y座標</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:移動先x座標</SPAN><BR>
+  <SPAN class = "function_arg">　5) real:移動先y座標</SPAN><BR>
+  <SPAN class = "function_arg">　6) real:得点</SPAN><BR>
+  アイテムを出現させます。<BR>
+  アイテムは移動先座標に移動した後、緩やかに落ちてきます。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="CreateItemU1">CreateItemU1(引数：4、返り値：[オブジェクトID])</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:アイテムID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:x座標</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:y座標</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:得点</SPAN><BR>
+  ユーザ定義アイテムを出現させます。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="CreateItemU2">CreateItemU2(引数：6、返り値：[オブジェクトID])</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:アイテムID</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:x座標</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:y座標</SPAN><BR>
+  <SPAN class = "function_arg">　4) real:移動先x座標</SPAN><BR>
+  <SPAN class = "function_arg">　5) real:移動先y座標</SPAN><BR>
+  <SPAN class = "function_arg">　6) real:得点</SPAN><BR>
+  ユーザ定義アイテムを出現させます。<BR>
+  アイテムは移動先座標に移動した後、緩やかに落ちてきます。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="CollectAllItems">CollectAllItems(引数：0)</A></SPAN><BR>
+  全アイテムを自機に向かって移動するように設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="CollectItemsByType">CollectItemsByType(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:アイテム種別<BR>
+  　　<A href = "#CreateItemA1">CreateItemA1</A>に指定するアイテム種別と同じです。</SPAN><BR>
+  指定した種別のアイテムを自機に向かって移動するように設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="CollectItemsInCircle">CollectItemsInCircle(引数：3)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:x座標</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:y座標</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:半径</SPAN><BR>
+  指定した円内のアイテムを自機に向かって移動するように設定します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="CancelCollectItems">CancelCollectItems(引数：0)</A></SPAN><BR>
+  自動アイテム回収中(自機にアイテムが向かってくる)状態をキャンセルします。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="StartItemScript">StartItemScript(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:スクリプトパス<BR></SPAN>
+  ユーザアイテム処理用のスクリプトを開始します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="LoadItemData">LoadItemData(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:アイテム設定ファイルへのパス</SPAN><BR>
+  アイテムをロードします。<BR>
+  何回でも呼び出せ、複数回読んだ場合はIDが異なってさえいれば、次々と登録されます。<BR>
+  同名ファイルは1度しか読み込めません。<BR>
+  「<A href="other_spec.html#AddItem">アイテムの追加</A>」を参照お願いします。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="ReloadItemData">ReloadItemData(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:アイテム設定ファイルへのパス</SPAN><BR>
+  アイテムをリロードします。(LoadItemDataを呼ばずにいきなり呼び出してもよいです)<BR>
+  何回でも呼び出せ、複数回読んだ場合はIDが異なってさえいれば、次々と登録されます。<BR>
+  LoadItemDataと異なり同名ファイルも読み込めます。<BR>
+  「<A href="other_spec.html#AddItem">アイテムの追加</A>」を参照お願いします。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetDefaultBonusItemEnable">SetDefaultBonusItemEnable(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) bool:弾消し時システム組み込み得点アイテム出現有無</SPAN><BR>
+  弾消し時システム組み込み得点アイテム出現有無を設定します。<BR>
+ </P><HR>
+
+
+ <HR>
+ <SPAN class = "section_title"><A name = "sec_other">■その他</A></SPAN><BR>
+  その他の関数です。
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="StartSlow">StartSlow(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:スロー対象(TARGET_ALL固定)</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:擬似FPS(1-60)</SPAN><BR>
+  擬似的にスローをかけます。<BR>
+  敵と自機が使用した場合、同時実行状態になりますが、より遅い方のFPSが適用されます。<BR>
+  極端なスローをかけると画面がカクつきます。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="StopSlow">StopSlow(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:スロー対象(TARGET_ALL固定)</SPAN><BR>
+  擬似スローを解除します。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="IsIntersected_Line_Circle">IsIntersected_Line_Circle(引数：8、返り値：bool)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) 線分始点x座標</SPAN><BR>
+  <SPAN class = "function_arg">　2) 線分始点y座標</SPAN><BR>
+  <SPAN class = "function_arg">　3) 線分終点x座標</SPAN><BR>
+  <SPAN class = "function_arg">　4) 線分終戦y座標</SPAN><BR>
+  <SPAN class = "function_arg">　5) 線分の幅</SPAN><BR>
+  <SPAN class = "function_arg">　6) 円の中心x座標</SPAN><BR>
+  <SPAN class = "function_arg">　7) 円の中心y座標</SPAN><BR>
+  <SPAN class = "function_arg">　8) 円の半径</SPAN><BR>
+  線分と円が接触しているかを調べます。<BR>
+  　true：接触、false：非接触<BR>
+  が返ります。(線には幅はありませんが？という突っ込みは無しの方向で…)<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="IsIntersected_Obj_Obj">IsIntersected_Obj_Obj(引数：2、返り値：bool)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID1</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:オブジェクトID2</SPAN><BR>
+  オブジェクト同士が接触しているかを返します。<BR>
+  　true：接触、false：非接触<BR>
+  現状は弾/レーザーオブジェクトにのみ使用可能です。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetObjectDistance">GetObjectDistance(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID1</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:オブジェクトID2</SPAN><BR>
+  オブジェクト間の距離を取得します。<BR>
+  いずれかが無効なオブジェクトの場合は負の値が返ります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetObject2dPosition">GetObject2dPosition(引数：1、返り値：real配列)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:オブジェクトID</SPAN><BR>
+  3D座標に配置されたオブジェクトの2D座標を取得します。<BR>
+  [x, y]の配列が返ります。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="Get2dPosition">Get2dPosition(引数：3、返り値：real配列)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:x座標</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:y座標</SPAN><BR>
+  <SPAN class = "function_arg">　3) real:z座標</SPAN><BR>
+  指定した3D座標を2D座標に変換した値を返します。<BR>
+  [x, y]の配列が返ります。<BR>
+ </P><HR>
+
+
+ </DIV></BODY>
+</HTML>
+

@@ -1,0 +1,50 @@
+<HTML>
+ <HEAD>
+  <TITLE>システムスクリプト専用関数</TITLE>
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/html;charset=Shift_JIS">
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/css">
+  <LINK rel="stylesheet" href="style.css" type="text/css">
+ </HEAD>
+
+ <STYLE TYPE="text/css">
+ </STYLE>
+
+ <BODY link="#0000ff" alink="#0000ff" vlink="#0000ff">
+ <DIV class="allbody">
+
+ <HR>
+ <SPAN class = "section_title"><A name="sec_system">■システムスクリプト専用関数</A></SPAN><BR>
+  システムスクリプト専用の関数です。
+ <BR><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetPauseScriptPath">SetPauseScriptPath(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:一時停止中スクリプトへのパス</SPAN><BR>
+  一時停止中に呼び出されるメニュー系スクリプトを設定します。<BR>
+  <A href = "description.html#MenuScript">メニュー系スクリプト</A>を参照お願いします。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetEndSceneScriptPath">SetEndSceneScriptPath(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:STGシーン終了時スクリプトへのパス</SPAN><BR>
+  STGシーン終了時に呼び出されるメニュー系スクリプトを設定します。<BR>
+  <A href = "description.html#MenuScript">メニュー系スクリプト</A>を参照お願いします。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="SetReplaySaveSceneScriptPath">SetReplaySaveSceneScriptPath(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:リプレイ保存シーンスクリプトへのパス</SPAN><BR>
+  リプレイ保存シーン時に呼び出されるメニュー系スクリプトを設定します。<BR>
+  <A href = "description.html#MenuScript">メニュー系スクリプト</A>を参照お願いします。<BR>
+ </P><HR>
+
+ <P>
+  <SPAN class = "function_name"><A name="GetTransitionRenderTargetName">GetTransitionRenderTargetName(引数：0)</A></SPAN><BR>
+  メニュー系スクリプト専用です。<BR>
+  メニュー系スクリプトが呼び出される直前のシーンの画像テクスチャを取得します。<BR>
+  主に直前シーンを背景として使用したい場合に使います。<BR>
+ </P><HR>
+
+ </DIV></BODY>
+</HTML>
+

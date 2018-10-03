@@ -1,0 +1,493 @@
+<HTML>
+ <HEAD>
+  <TITLE>ピクセルシェーダサンプル</TITLE>
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/html;charset=Shift_JIS">
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/css">
+  <LINK rel="stylesheet" href="style.css" type="text/css">
+ </HEAD>
+
+ <STYLE TYPE="text/css">
+
+ </STYLE>
+
+ <BODY link="#0000ff" alink="#0000ff" vlink="#0000ff">
+ <DIV class="allbody">
+
+ <HR>
+ <SPAN class = "section_title"><A name = "sec_sound">■ピクセルシェーダサンプル</A></SPAN><BR>
+ <P>ピクセルシェーダのサンプルです。
+ </P>
+
+ <P>
+  <TABLE class = "sample">
+   <TR class = "sample">
+    <TD class = "sample_elementT">SamplePS</TD> <TD class = "tag_textT">ピクセルシェーダサンプル</TD>
+   </TR>
+   <TR class = "sample">
+    <TD class = "sample_element">PS01</TD>
+    <TD class = "sample_text"><A href = "#PS01">モノクロフィルタ</A></TD>
+   </TR>
+   <TR class = "sample">
+    <TD class = "sample_element">PS02</TD>
+    <TD class = "sample_text"><A href = "#PS02">マスク処理</A></TD>
+   </TR>
+   <TR class = "sample">
+    <TD class = "sample_element">PS03</TD>
+    <TD class = "sample_text"><A href = "#PS03">ボス周囲のゆらぎ(シェーダ版)</A></TD>
+   </TR>
+  </TABLE>
+ </P>
+ <BR><HR>
+
+
+ <P>
+  <TABLE class = "sample_ex">
+   <TR class = "sample">
+    <TD class = "sample_textT" colspan="2"><A name="PS01">PS01 モノクロフィルタ</A></TD>
+   </TR>
+   <TR class = "sample">
+    <TD class = "sample_image"><IMG src = "img/sample_pixelshader_PS01.jpg"></TD>
+    <TD class = "sample_text">
+     モノクロフィルタです。<BR>
+     頂点色とテクスチャのRGB値を平均し、出力色とします。
+     <BR>
+    </TD>
+   </TR>
+  </TABLE>
+<DIV Class="source"><PRE class="source">
+<SPAN Class="source_comment">//SamplePS01.txt</SPAN>
+<SPAN Class="source_reserve">task</SPAN> TSamplePS1
+{
+	<SPAN Class="source_comment">//パス設定</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> dir = GetCurrentScriptDirectory();
+	<SPAN Class="source_reserve">let</SPAN> pathShader = dir ~ <SPAN Class="source_string">"SamplePS01_HLSL.txt"</SPAN>;
+
+	<SPAN Class="source_comment">//シェーダ生成</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> objShader = ObjShader_Create();
+	ObjShader_SetShaderF(objShader, pathShader);
+	ObjShader_SetTechnique(objShader, <SPAN Class="source_string">"TecMonotone"</SPAN>);
+
+	<SPAN Class="source_reserve">loop</SPAN>
+	{
+		<SPAN Class="source_comment">//特定の描画優先度にシェーダを適応</SPAN>
+		SetShaderI(objShader, <SPAN Class="source_number">0</SPAN>, <SPAN Class="source_number">100</SPAN>);
+		<SPAN Class="source_reserve">loop</SPAN>(<SPAN Class="source_number">180</SPAN>){<SPAN Class="source_reserve">yield</SPAN>;}
+
+		<SPAN Class="source_comment">//シェーダ解除</SPAN>
+		ResetShaderI(<SPAN Class="source_number">0</SPAN>, <SPAN Class="source_number">100</SPAN>);
+		<SPAN Class="source_reserve">loop</SPAN>(<SPAN Class="source_number">180</SPAN>){<SPAN Class="source_reserve">yield</SPAN>;}
+	}
+
+}
+</PRE></DIV>
+<DIV Class="source"><PRE class="source">
+<SPAN Class="source_comment">//SamplePS01_HLSL.txt</SPAN>
+<SPAN Class="source_comment">//================================================================</SPAN>
+<SPAN Class="source_comment">//大域設定値</SPAN>
+<SPAN Class="source_comment">//Texture</SPAN>
+<SPAN Class="source_reserve">sampler</SPAN> sampler0_ : <SPAN Class="source_reserve">register</SPAN>(s0);
+
+<SPAN Class="source_comment">//================================================================</SPAN>
+<SPAN Class="source_comment">//--------------------------------</SPAN>
+<SPAN Class="source_comment">//ピクセルシェーダ入力値</SPAN>
+<SPAN Class="source_reserve">struct</SPAN> PS_INPUT
+{
+	<SPAN Class="source_reserve">float4</SPAN> diffuse : COLOR0;  <SPAN Class="source_comment">//ディフューズ色</SPAN>
+	<SPAN Class="source_reserve">float2</SPAN> texCoord : TEXCOORD0; <SPAN Class="source_comment">//テクスチャ座標</SPAN>
+	<SPAN Class="source_reserve">float2</SPAN> vPos : VPOS; <SPAN Class="source_comment">//描画先座標</SPAN>
+};
+
+<SPAN Class="source_comment">//--------------------------------</SPAN>
+<SPAN Class="source_comment">//ピクセルシェーダ出力値</SPAN>
+<SPAN Class="source_reserve">struct</SPAN> PS_OUTPUT
+{
+    <SPAN Class="source_reserve">float4</SPAN> color : COLOR0; <SPAN Class="source_comment">//出力色</SPAN>
+};
+
+
+<SPAN Class="source_comment">//================================================================</SPAN>
+<SPAN Class="source_comment">// シェーダ</SPAN>
+<SPAN Class="source_comment">//--------------------------------</SPAN>
+<SPAN Class="source_comment">//ピクセルシェーダ</SPAN>
+PS_OUTPUT PsMonotone( PS_INPUT In ) : COLOR0
+{
+	PS_OUTPUT Out;
+
+	<SPAN Class="source_comment">//テクスチャの色</SPAN>
+	<SPAN Class="source_reserve">float4</SPAN> colorTexture = tex2D(sampler0_, In.texCoord);
+
+	<SPAN Class="source_comment">//頂点ディフーズ色</SPAN>
+	<SPAN Class="source_reserve">float4</SPAN> colorDiffuse = In.diffuse;
+
+	<SPAN Class="source_comment">//合成</SPAN>
+	<SPAN Class="source_reserve">float4</SPAN> color = colorTexture * colorDiffuse;
+
+	<SPAN Class="source_comment">//モノトーンの計算</SPAN>
+	Out.color.rgb = ( color.r + color.g + color.b ) * <SPAN Class="source_number">0.3333f</SPAN>;
+	Out.color.a = color.a;
+
+	<SPAN Class="source_reserve">return</SPAN> Out;
+}
+
+
+<SPAN Class="source_comment">//================================================================</SPAN>
+<SPAN Class="source_comment">//--------------------------------</SPAN>
+<SPAN Class="source_comment">//technique</SPAN>
+<SPAN Class="source_reserve">technique</SPAN> TecMonotone
+{
+	<SPAN Class="source_reserve">pass</SPAN> P0
+	{
+		PixelShader = compile ps_3_0 PsMonotone();
+	}
+}
+</PRE></DIV>
+ </P>
+ <BR><HR>
+
+
+ <P>
+  <TABLE class = "sample_ex">
+   <TR class = "sample">
+    <TD class = "sample_textT" colspan="2"><A name="PS02">PS02 マスク処理</A></TD>
+   </TR>
+   <TR class = "sample">
+    <TD class = "sample_image"><IMG src = "img/sample_pixelshader_PS02_1.jpg"><IMG src = "img/sample_pixelshader_PS02_2.jpg"></TD>
+    <TD class = "sample_text">
+     マスク処理です。<BR>
+     マスク用テクスチャのRGB値を使用し、RGB=黒に近いほどα値を減少し描画します。<BR>
+     マスク用テクスチャが黒色の箇所は、描画されません。<BR>
+     <BR>
+     この例では、背景より上の描画優先度にマスクを適応しています。<BR>
+     (背景にはマスクは適用されていません)<BR>
+     <BR>
+    </TD>
+   </TR>
+  </TABLE>
+<DIV Class="source"><PRE class="source">
+<SPAN Class="source_comment">//SamplePS02.txt</SPAN>
+<SPAN Class="source_reserve">task</SPAN> TSamplePS2
+{
+	<SPAN Class="source_comment">//パス設定</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> dir = GetCurrentScriptDirectory();
+	<SPAN Class="source_reserve">let</SPAN> pathShader = dir ~ <SPAN Class="source_string">"SamplePS02_HLSL.txt"</SPAN>;
+
+	<SPAN Class="source_comment">//シェーダ生成</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> objShader = ObjShader_Create();
+	ObjShader_SetShaderF(objShader, pathShader);
+	ObjShader_SetTechnique(objShader, <SPAN Class="source_string">"TecMask"</SPAN>);
+
+	<SPAN Class="source_comment">//シェーダにマスク画像を設定</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> pathMask = dir ~ <SPAN Class="source_string">"SamplePS02_Mask.png"</SPAN>;
+	ObjShader_SetTexture(objShader, <SPAN Class="source_string">"textureMask_"</SPAN>, pathMask);
+
+	<SPAN Class="source_comment">//特定の描画優先度にシェーダを適応</SPAN>
+	SetShaderI(objShader, <SPAN Class="source_number">30</SPAN>, <SPAN Class="source_number">100</SPAN>);
+
+}
+</PRE></DIV>
+<DIV Class="source"><PRE class="source">
+<SPAN Class="source_comment">//SamplePS02_HLSL.txt</SPAN>
+<SPAN Class="source_comment">//================================================================</SPAN>
+<SPAN Class="source_comment">//大域設定値</SPAN>
+<SPAN Class="source_comment">//Texture</SPAN>
+<SPAN Class="source_reserve">sampler</SPAN> sampler0_ : <SPAN Class="source_reserve">register</SPAN>(s0);
+
+<SPAN Class="source_comment">//--------------------------------</SPAN>
+<SPAN Class="source_comment">//マスク用テクスチャ</SPAN>
+<SPAN Class="source_comment">//画面幅(マスクテクスチャサイズ)</SPAN>
+<SPAN Class="source_reserve">const</SPAN> <SPAN Class="source_reserve">float</SPAN> SCREEN_WIDTH = <SPAN Class="source_number">640</SPAN>;
+<SPAN Class="source_reserve">const</SPAN> <SPAN Class="source_reserve">float</SPAN> SCREEN_HEIGHT = <SPAN Class="source_number">480</SPAN>;
+texture textureMask_;
+<SPAN Class="source_reserve">sampler</SPAN> samplerMask_ = sampler_state
+{ 
+	Texture = &lt;textureMask_&gt;;
+};
+
+
+<SPAN Class="source_comment">//================================================================</SPAN>
+<SPAN Class="source_comment">//--------------------------------</SPAN>
+<SPAN Class="source_comment">//ピクセルシェーダ入力値</SPAN>
+<SPAN Class="source_reserve">struct</SPAN> PS_INPUT
+{
+	<SPAN Class="source_reserve">float4</SPAN> diffuse : COLOR0;  <SPAN Class="source_comment">//ディフューズ色</SPAN>
+	<SPAN Class="source_reserve">float2</SPAN> texCoord : TEXCOORD0; <SPAN Class="source_comment">//テクスチャ座標</SPAN>
+	<SPAN Class="source_reserve">float2</SPAN> vPos : VPOS; <SPAN Class="source_comment">//描画先座標</SPAN>
+};
+
+<SPAN Class="source_comment">//--------------------------------</SPAN>
+<SPAN Class="source_comment">//ピクセルシェーダ出力値</SPAN>
+<SPAN Class="source_reserve">struct</SPAN> PS_OUTPUT
+{
+    <SPAN Class="source_reserve">float4</SPAN> color : COLOR0; <SPAN Class="source_comment">//出力色</SPAN>
+};
+
+
+<SPAN Class="source_comment">//================================================================</SPAN>
+<SPAN Class="source_comment">// シェーダ</SPAN>
+<SPAN Class="source_comment">//--------------------------------</SPAN>
+<SPAN Class="source_comment">//ピクセルシェーダ</SPAN>
+PS_OUTPUT PsMask( PS_INPUT In ) : COLOR0
+{
+	PS_OUTPUT Out;
+
+	<SPAN Class="source_comment">//テクスチャの色</SPAN>
+	<SPAN Class="source_reserve">float4</SPAN> colorTexture = tex2D(sampler0_, In.texCoord);
+
+	<SPAN Class="source_comment">//頂点ディフーズ色</SPAN>
+	<SPAN Class="source_reserve">float4</SPAN> colorDiffuse = In.diffuse;
+
+	<SPAN Class="source_comment">//合成</SPAN>
+	<SPAN Class="source_reserve">float4</SPAN> color = colorTexture * colorDiffuse;
+	Out.color = color;
+	<SPAN Class="source_reserve">if</SPAN>(color.a &gt; <SPAN Class="source_number">0</SPAN>)
+	{
+		<SPAN Class="source_comment">//--------------------------------</SPAN>
+		<SPAN Class="source_comment">//マスク用のテクスチャから色成分を取得</SPAN>
+		<SPAN Class="source_comment">//UVでの位置は画像ファイルの横幅と高さからの割合</SPAN>
+		<SPAN Class="source_comment">//例えば、640x480の画像の位置(320,240)はUVでは0.5,0.5になる。</SPAN>
+		<SPAN Class="source_reserve">float2</SPAN> maskUV;
+
+		<SPAN Class="source_comment">//描画先からマスク用テクスチャの位置を計算</SPAN>
+		maskUV.x = In.vPos.x / SCREEN_WIDTH;
+		maskUV.y = In.vPos.y / SCREEN_HEIGHT;
+		<SPAN Class="source_reserve">float4</SPAN> colorMask = tex2D(samplerMask_, maskUV);
+
+		<SPAN Class="source_comment">//マスクのRGB値を出力結果のα値として合成する</SPAN>
+		Out.color.a = ( colorMask.r + colorMask.g + colorMask.b ) * <SPAN Class="source_number">0.3333f</SPAN> * color.a;
+	}
+
+
+	<SPAN Class="source_reserve">return</SPAN> Out;
+}
+
+
+<SPAN Class="source_comment">//================================================================</SPAN>
+<SPAN Class="source_comment">//--------------------------------</SPAN>
+<SPAN Class="source_comment">//technique</SPAN>
+<SPAN Class="source_reserve">technique</SPAN> TecMask
+{
+	<SPAN Class="source_reserve">pass</SPAN> P0
+	{
+		PixelShader = compile ps_3_0 PsMask();
+	}
+}
+</PRE></DIV>
+ </P>
+ <BR><HR>
+
+
+
+ <P>
+  <TABLE class = "sample_ex">
+   <TR class = "sample">
+    <TD class = "sample_textT" colspan="2"><A name="PS03">PS03 ボス周囲のゆらぎ(シェーダ版)</A></TD>
+   </TR>
+   <TR class = "sample">
+    <TD class = "sample_image"><IMG src = "img/sample_pixelshader_PS03.jpg"></TD>
+    <TD class = "sample_text">
+     ボス周囲のゆらぎエフェクト(シェーダ版)です。<BR>
+     ←の画像ではゆらいでいるのがわかりづらいので<BR>
+       実際の動きは本体付属のサンプルスクリプトを実行お願いします。<BR>
+     <BR>
+     以下の手順で行えます。<BR>
+     1) 描画用テクスチャに背景を描画する。<BR>
+     2) 背景を描画したテクスチャをゆがませて、画面に描画する。<BR>
+     <BR>
+    </TD>
+   </TR>
+  </TABLE>
+<DIV Class="source"><PRE class="source">
+<SPAN Class="source_comment">//SamplePS03.txt</SPAN>
+<SPAN Class="source_reserve">task</SPAN> TWaveCircle()
+{
+	<SPAN Class="source_comment">//レンダリングターゲットに使用するテクスチャ</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> renderTexture = GetReservedRenderTargetName(<SPAN Class="source_number">0</SPAN>);
+
+	<SPAN Class="source_reserve">let</SPAN> frame = <SPAN Class="source_number">0</SPAN>; <SPAN Class="source_comment">//フレーム</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> baseEffectRadius = <SPAN Class="source_number">128</SPAN>; <SPAN Class="source_comment">//基準エフェクト半径</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> outerFluct = <SPAN Class="source_number">16</SPAN>; <SPAN Class="source_comment">//エフェクト半径の最大変化量</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> effectRadius = <SPAN Class="source_number">0</SPAN>; <SPAN Class="source_comment">//エフェクト半径</SPAN>
+
+
+	<SPAN Class="source_reserve">let</SPAN> priEffectMin = <SPAN Class="source_number">20</SPAN>; <SPAN Class="source_comment">//エフェクトをかける最小優先度</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> priEffectMax = <SPAN Class="source_number">28</SPAN>; <SPAN Class="source_comment">//エフェクトをかける最大優先度</SPAN>
+
+	<SPAN Class="source_comment">//背景のみエフェクトの対象とする</SPAN>
+	<SPAN Class="source_comment">//エフェクトの描画でまかなえるため、</SPAN>
+	<SPAN Class="source_comment">//優先度20～28の通常描画を無効にする。</SPAN>
+	SetInvalidRenderPriorityA1(priEffectMin, priEffectMax);
+
+	<SPAN Class="source_reserve">let</SPAN> frameWidth = GetStgFrameWidth();
+	<SPAN Class="source_reserve">let</SPAN> frameHeight = GetStgFrameHeight();
+	<SPAN Class="source_reserve">let</SPAN> frameLeft = GetStgFrameLeft();
+	<SPAN Class="source_reserve">let</SPAN> frameRight = frameLeft + frameWidth;
+	<SPAN Class="source_reserve">let</SPAN> frameTop = GetStgFrameTop();
+	<SPAN Class="source_reserve">let</SPAN> frameBottom = frameTop + frameHeight;
+
+
+	<SPAN Class="source_comment">//--------------------------------</SPAN>
+	<SPAN Class="source_comment">//ゆがみオブジェクト</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> objWave = ObjPrim_Create(OBJ_SPRITE_2D); <SPAN Class="source_comment">//2Dスプライトオブジェクト生成</SPAN>
+	Obj_SetRenderPriorityI(objWave, <SPAN Class="source_number">25</SPAN>); <SPAN Class="source_comment">//描画優先度を設定</SPAN>
+	ObjPrim_SetTexture(objWave, renderTexture); <SPAN Class="source_comment">//テクスチャを設定</SPAN>
+	ObjSprite2D_SetSourceRect(objWave, frameLeft, frameTop, frameRight, frameBottom);
+	ObjSprite2D_SetDestRect(objWave, <SPAN Class="source_number">0</SPAN>, <SPAN Class="source_number">0</SPAN>, frameWidth, frameHeight);
+	Obj_SetRenderPriorityI(objWave, priEffectMax + <SPAN Class="source_number">1</SPAN>);
+
+	<SPAN Class="source_comment">//ゆがみオブジェクトにシェーダを設定</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> pathShader = GetCurrentScriptDirectory ~ <SPAN Class="source_string">"SamplePS03_HLSL.txt"</SPAN>;
+	ObjShader_SetShaderF(objWave, pathShader);
+	ObjShader_SetTechnique(objWave, <SPAN Class="source_string">"TecWave"</SPAN>);
+
+
+	<SPAN Class="source_comment">//ボスのライフが0になるまでエフェクトをかける。</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> objEnemy = GetEnemyBossObjectID[<SPAN Class="source_number">0</SPAN>];
+	<SPAN Class="source_reserve">while</SPAN>(ObjEnemy_GetInfo(objEnemy, INFO_LIFE) &gt; <SPAN Class="source_number">0</SPAN>)
+	{
+		<SPAN Class="source_comment">//エフェクト半径</SPAN>
+		effectRadius = baseEffectRadius + outerFluct * sin(frame*<SPAN Class="source_number">4</SPAN>);
+
+		<SPAN Class="source_reserve">let</SPAN> enemyX = ObjMove_GetX(objEnemy); <SPAN Class="source_comment">//敵座標X</SPAN>
+		<SPAN Class="source_reserve">let</SPAN> enemyY = ObjMove_GetY(objEnemy); <SPAN Class="source_comment">//敵座標Y</SPAN>
+
+		<SPAN Class="source_comment">//--------------------------------</SPAN>
+		<SPAN Class="source_comment">//優先度20～28(背景)をエフェクト用のテクスチャに描画</SPAN>
+		<SPAN Class="source_comment">//シェーダ解除</SPAN>
+		RenderToTextureA1(renderTexture, priEffectMin, priEffectMax, <SPAN Class="source_reserve">true</SPAN>);
+
+		<SPAN Class="source_comment">//--------------------------------</SPAN>
+		<SPAN Class="source_comment">//シェーダにパラメータを設定</SPAN>
+		ObjShader_SetFloat(objWave, <SPAN Class="source_string">"frame_"</SPAN>, frame);
+		ObjShader_SetFloat(objWave, <SPAN Class="source_string">"enemyX_"</SPAN>, enemyX + frameLeft);
+		ObjShader_SetFloat(objWave, <SPAN Class="source_string">"enemyY_"</SPAN>, enemyY + frameTop);
+		ObjShader_SetFloat(objWave, <SPAN Class="source_string">"waveRadius_"</SPAN>, effectRadius);
+
+		frame++;
+		<SPAN Class="source_reserve">yield</SPAN>;
+	}
+
+	<SPAN Class="source_comment">//エフェクト用オブジェクト削除</SPAN>
+	Obj_Delete(objWave);
+	ClearInvalidRenderPriority();
+}
+
+</PRE></DIV>
+<DIV Class="source"><PRE class="source">
+<SPAN Class="source_comment">//SamplePS03_HLSL.txt</SPAN>
+<SPAN Class="source_comment">//================================================================</SPAN>
+<SPAN Class="source_comment">//大域設定値</SPAN>
+<SPAN Class="source_comment">//Texture</SPAN>
+<SPAN Class="source_reserve">sampler</SPAN> sampler0_ : <SPAN Class="source_reserve">register</SPAN>(s0);
+
+<SPAN Class="source_comment">//--------------------------------</SPAN>
+<SPAN Class="source_comment">//ゆがみ生成用パラメータ</SPAN>
+<SPAN Class="source_reserve">static</SPAN> <SPAN Class="source_reserve">const</SPAN> <SPAN Class="source_reserve">float</SPAN> RENDER_WIDTH = <SPAN Class="source_number">1024</SPAN>; <SPAN Class="source_comment">//レンダリングテクスチャの幅</SPAN>
+<SPAN Class="source_reserve">static</SPAN> <SPAN Class="source_reserve">const</SPAN> <SPAN Class="source_reserve">float</SPAN> RENDER_HEIGHT = <SPAN Class="source_number">1024</SPAN>; <SPAN Class="source_comment">//レンダリングテクスチャの高さ</SPAN>
+
+<SPAN Class="source_reserve">float</SPAN> frame_; <SPAN Class="source_comment">//フレーム数</SPAN>
+<SPAN Class="source_reserve">float</SPAN> enemyX_; <SPAN Class="source_comment">//敵の位置X</SPAN>
+<SPAN Class="source_reserve">float</SPAN> enemyY_; <SPAN Class="source_comment">//敵の位置Y</SPAN>
+<SPAN Class="source_reserve">float</SPAN> waveRadius_; <SPAN Class="source_comment">//エフェクトの半径</SPAN>
+
+
+<SPAN Class="source_comment">//================================================================</SPAN>
+<SPAN Class="source_comment">//--------------------------------</SPAN>
+<SPAN Class="source_comment">//ピクセルシェーダ入力値</SPAN>
+<SPAN Class="source_reserve">struct</SPAN> PS_INPUT
+{
+	<SPAN Class="source_reserve">float4</SPAN> diffuse : COLOR0;  <SPAN Class="source_comment">//ディフューズ色</SPAN>
+	<SPAN Class="source_reserve">float2</SPAN> texCoord : TEXCOORD0; <SPAN Class="source_comment">//テクスチャ座標</SPAN>
+	<SPAN Class="source_reserve">float2</SPAN> vPos : VPOS; <SPAN Class="source_comment">//描画先座標</SPAN>
+};
+
+<SPAN Class="source_comment">//--------------------------------</SPAN>
+<SPAN Class="source_comment">//ピクセルシェーダ出力値</SPAN>
+<SPAN Class="source_reserve">struct</SPAN> PS_OUTPUT
+{
+    <SPAN Class="source_reserve">float4</SPAN> color : COLOR0; <SPAN Class="source_comment">//出力色</SPAN>
+};
+
+
+<SPAN Class="source_comment">//================================================================</SPAN>
+<SPAN Class="source_comment">// シェーダ</SPAN>
+<SPAN Class="source_comment">//--------------------------------</SPAN>
+<SPAN Class="source_comment">//ピクセルシェーダ</SPAN>
+PS_OUTPUT PsWave( PS_INPUT In ) : COLOR0
+{
+	PS_OUTPUT Out;
+
+	<SPAN Class="source_comment">//--------------------------------</SPAN>
+	<SPAN Class="source_comment">//ゆらぎを計算</SPAN>
+	<SPAN Class="source_reserve">float</SPAN> dist2 = pow(In.vPos.x-enemyX_ ,<SPAN Class="source_number">2</SPAN>) + pow(In.vPos.y-enemyY_ ,<SPAN Class="source_number">2</SPAN>);
+	<SPAN Class="source_reserve">float</SPAN> dist = sqrt(dist2);
+	<SPAN Class="source_reserve">float</SPAN> sinTheta = (In.vPos.y - enemyY_) / dist;
+	<SPAN Class="source_reserve">float</SPAN> cosTheta = (In.vPos.x - enemyX_) / dist;
+
+	<SPAN Class="source_comment">//歪み作成用のsinに使用する角度パラメータ</SPAN>
+	<SPAN Class="source_reserve">float</SPAN> angle = In.vPos.y - enemyY_ + In.vPos.x - enemyX_ + frame_;
+	angle = radians(angle);
+
+	<SPAN Class="source_comment">//該当ピクセルの歪みの半径を計算</SPAN>
+	<SPAN Class="source_comment">//エフェクト半径の1/16を最大の歪み幅とする</SPAN>
+	<SPAN Class="source_reserve">float</SPAN> waveRadius = waveRadius_ + waveRadius_/<SPAN Class="source_number">16</SPAN> * (-<SPAN Class="source_number">1</SPAN> + sin(angle));
+
+	<SPAN Class="source_comment">//中心から距離が離れるほど影響を小さくする</SPAN>
+	<SPAN Class="source_reserve">float</SPAN> powerRatio = (waveRadius - dist) / waveRadius;
+	<SPAN Class="source_reserve">if</SPAN>(powerRatio &lt; <SPAN Class="source_number">0</SPAN>){powerRatio = <SPAN Class="source_number">0</SPAN>;}
+
+	<SPAN Class="source_comment">//色情報を取得する位置のバイアス値</SPAN>
+	<SPAN Class="source_reserve">float</SPAN> biasRadius = waveRadius * powerRatio;
+	<SPAN Class="source_reserve">float</SPAN> biasX = biasRadius * cosTheta;
+	<SPAN Class="source_reserve">float</SPAN> biasY = biasRadius * sinTheta;
+
+	<SPAN Class="source_comment">//テクスチャの色情報を取得する位置</SPAN>
+	<SPAN Class="source_reserve">float2</SPAN> texUV;
+	texUV.x = -biasX / RENDER_WIDTH + In.texCoord.x;
+	texUV.y = -biasY / RENDER_HEIGHT + In.texCoord.y;
+
+
+	<SPAN Class="source_comment">//--------------------------------</SPAN>
+	<SPAN Class="source_comment">//テクスチャの色</SPAN>
+	<SPAN Class="source_reserve">float4</SPAN> colorTexture = tex2D(sampler0_, texUV);
+
+	<SPAN Class="source_comment">//頂点ディフーズ色</SPAN>
+	<SPAN Class="source_reserve">float4</SPAN> colorDiffuse = In.diffuse;
+
+	<SPAN Class="source_comment">//合成</SPAN>
+	<SPAN Class="source_reserve">float4</SPAN> color = colorTexture * colorDiffuse;
+
+	<SPAN Class="source_comment">//色を赤っぽく変化させる</SPAN>
+	<SPAN Class="source_reserve">if</SPAN>(powerRatio &gt; <SPAN Class="source_number">0</SPAN>)
+	{
+		color.g = color.g * (<SPAN Class="source_number">1</SPAN> - powerRatio);
+		color.b = color.b * (<SPAN Class="source_number">1</SPAN> - powerRatio);
+	}
+
+	Out.color = color;
+
+	<SPAN Class="source_reserve">return</SPAN> Out;
+}
+
+
+<SPAN Class="source_comment">//================================================================</SPAN>
+<SPAN Class="source_comment">//--------------------------------</SPAN>
+<SPAN Class="source_comment">//technique</SPAN>
+<SPAN Class="source_reserve">technique</SPAN> TecWave
+{
+	<SPAN Class="source_reserve">pass</SPAN> P0
+	{
+		PixelShader = compile ps_3_0 PsWave();
+	}
+}
+</PRE></DIV>
+ </P>
+ <BR><HR>
+
+
+
+ </DIV></BODY>
+</HTML>
+
+
+
+

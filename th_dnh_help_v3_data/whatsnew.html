@@ -1,0 +1,1511 @@
+<!DOCTYPE HTML PUBLIC"-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<HTML>
+ <HEAD>
+  <TITLE>東方弾幕風更新履歴</TITLE>
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/html;charset=Shift_JIS">
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/css">
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/lavascript">
+  <LINK REL="stylesheet"HREF="style.css"TYPE="text/css">
+ </HEAD>
+
+
+
+ <BODY BGCOLOR="#FFFFFF" LINK="#0000ff" ALINK="#ff00ff" VLINK="#222288">
+  <BR>
+ <P><FONT color="#800040"><A name="WhatNew"><STRONG>東方弾幕風更新履歴</STRONG></A></FONT></P>
+ <P>
+    <UL>
+	 <FONT color="#000080">yyyy/MM/dd(未実装&バグmemo)</FONT>
+	  <LI>エルミートスプライン曲線上移動(ScriptVersion2のSetMovePositionHermite相当)</LI>
+	  <LI>時間停止</LI>
+	  <LI>特定のオリジナル拡張子（例えば.dlogとか）の物理ファイルに対して読み書きができる機能(y氏)</LI>
+      <LI>弾の当たり判定を矩形で登録(danmaku氏)</LI>
+      <LI>出現したアイテムが移動先座標に移動するまでのフレームを指定できるような機能の実装(ガラス草氏)</LI>
+      <LI>弾の当たり判定を継続的に設定できる機能(mrtode氏)</LI>
+	  <LI>指定した種類（敵、自機、ボス、システム…etc）のスクリプト全ての@Eventを呼び出す関数(507@GW氏)</LI>
+	  <LI>スクリプト側からの自機撃墜(memo氏)</LI>
+	  <LI>保存した共通データを削除する機能(まおべりる(47、48の人)氏)</LI>
+	  <LI>GetEnemyIntersectionPositionByIdA2の上位互換で、当たり判定の半径も取得できる関数(mrtode氏)</LI>
+	  <LI>敵の無敵時間の設定 (v0.12mでいうSetInvincibility互換) の関数(mrtode氏)</LI>
+	  <LI>弾とレーザーを分けたカウント(まおべりる氏)</LI>
+	  <LI>マウスを特定の座標に移動させる機能(E.O氏)</LI>
+	  <LI>残機0で終了状態(GetPlayerStateがSTATE_END)となった際、その状態から復帰する関数(Unknown User氏)</LI>
+	  <LI>アイテムオブジェクトに、被弾復帰中などでも取得できるよう設定できないでしょうか(memo氏)</LI>
+	  <LI>設置型レーザーの角速度を設定したい(ObjStLaser_SetAngularVelocityみたいな)(まおべりる氏)</LI>
+	  <LI>最後に保存したリプレイのユーザー名を取得する機能(ごれさん氏)</LI>
+	  <LI>テキストオブジェクトに、影をつける機能が欲しいです。(ごれさん氏)</LI>
+      <LI>別のオブジェクトの上に指定したオブジェクトを描画する、マスク機能(ごれ氏)</LI>
+      <LI>アイテムオブジェクトの吸引半径設定(ごれ氏)</LI>
+      <LI>アイテムオブジェクトの当り判定設定(ごれ氏)</LI>
+      <LI>@Eventの EV_DELETE_SHOT(弾が消された時これを呼び出す)(Miransu氏)</LI>
+      <LI>2つ以上のボスのライフ管理(Fraug氏)</LI>
+      <LI>α値の取得機能(Ultima Power氏)</LI>
+      <LI>音声再生位置の取得機能(Ultima Power氏)</LI>
+      <LI>音声ファイルをロードしたままにする機能(Harley Pulido氏)</LI>
+      <LI>2D/3Dオブジェクト両方の位置を変更する機能(Harley Pulido氏)</LI>
+      <LI>ObjMove_SetSpeedのObjRender版(Y氏)</LI>
+      <LI>弾のデフォルトのフェードアウトするという部分をユーザーが書き換えられるように(Grn氏)</LI>
+      <LI>弾のグレイズ種別設定(ごれ氏)</LI>
+      <LI>遅延色の描画優先度を#UserShotDataに設定できるように(Ultima Power氏)</LI>
+      <LI>背景のクリア色を設定する機能(Ultima Power氏)</LI>
+      <LI>特定の解像度だけをconfig.exeで指定できるようにする機能(Ultima Power氏)</LI>
+      <LI>WorldViewProjectionをピクセルシェーダに渡す機能(Ultima Power氏)</LI>
+      <BR><BR>
+      [報告のあったバグ]<BR>
+      <LI>エラーメッセージのダイアログを閉じても、強制終了させるまで同じダイアログが表示され続ける事がある(Thanks to memo氏)</LI>
+      <LI>全くキー操作していないとたまに数秒間隔で画面がちらつくことがある(Thanks to mrtode氏)</LI>
+      <LI>レンダリングテクスチャに加算/反転合成を行うとα値が0になる(Thanks to ごれ氏)</LI>    
+      <LI>ユーザー定義アイテムを呼び出した直後(恐らく30Fくらい)に出現座標と重なるように取得すると、アイテム取得通知が行われていない?(Thanks to ごれ氏)</LI>
+      <LI>アイテムスクリプトのEV_DELETE_SHOT_TO_ITEMでObjMove関数で制御した後にObjItem_SetDefinedMovePatternA1のITEM_MOVE_TOPLAYERを実行すると、座標が0で初期化されてしまうことがある(Thanks to ごれ氏)</LI>
+      <LI>2Dカメラの外にある弾の当たり判定が正しくない？(Thanks to Harley Pulido氏)</LI>
+      <LI>ObjPlayer_AddIntersectionCircleA1の自機のあたり判定の部分を0にしてもあたり判定が消えない(Thanks to S氏)</LI>
+      <LI>ObjSound_SetLoopTimeで指定したループ時間と重なるタイミングでPauseStageSceneを実行すると、BGMの再生がおかしくなる(連続再生でのポーズは未検証)(Thanks to ごれ氏)</LI>
+      <LI>ObjLaser_SetInvalidLengthがOBJ_CURVE_LASERに適応されない(Thanks to Ultima Power氏)</LI>
+      <BR><BR>
+      [その他ご意見]<BR>
+      <LI>自機選択画面で、選択項目位置を設定したい(Thanks to まおべりる氏)</LI>
+      <LI>弾幕風ヘルプファイルに『ObjText_SetFontType』関数で使えるフォント名称を一覧で記述してほしい(Thanks to mrtode氏)</LI>
+    </UL>
+
+	<UL>
+	 <FONT color="#000080">2015/01/18([.1 pre6a])</FONT>
+      <LI>弾カスタムスクリプトでtaskが動作しなかったのを修正(Thanks to Grn氏)</LI>
+      <LI>ObjShot_SetDeleteFrameを設定して削除された弾のEV_DELETE_SHOT_IMMEDIATEが発生していなかったのを修正(Thanks to Grn氏)</LI>
+      <LI>GetFilePathListがGetFileListで定義されてしまっていたのを修正(Thanks to Ultima Power氏)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2015/01/12([.1 pre6])</FONT>
+      <LI>自機撃墜時のEV_HITイベントに当たったオブジェクトのIDを引き渡すようにした。</LI>
+      <LI>自弾のダメージと貫通力を取得する機能(ObjShot_GetDamage, ObjShot_GetPenetration)</LI>
+      <LI>自機の速度を取得する機能(GetPlayerSpeed)</LI>
+      <LI>自機の移動範囲クリップを取得する機能(GetPlayerClip)</LI>
+      <LI>フォルダ内の全ファイルパスを取得する機能(GetFilePathList)</LI>
+      <LI>リプレイ保存時、残機とボム数が、整数値で切り捨てられていたのを修正(Thanks to Ultima Power氏)</LI>
+      <LI>ObjSound_SetVolumeRateの音量指定が、リニアに変化していなかったのを修正(Thanks to ごれ氏)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2015/01/05([.1 pre5])</FONT>
+      <LI>弾カスタム用スクリプト(StartShotScript,ヘルプ：弾カスタムスクリプト)</LI>
+      <LI>弾消し時イベント通知(SetShotDeleteEventEnable)</LI>
+      <LI>弾の残り遅延時間を取得する関数(ObjShot_GetDelay)</LI>
+      <LI>レーザーがアイテム化する間隔を設定する関数(ObjLaser_SetItemDistance)</LI>
+      <LI>EV_GRAZEをアイテムスクリプトにも通知するように変更</LI>
+      <LI>SetInvalidRenderPriorityA1の描画無広範囲が正しくなかったのを修正(Thanks to myst氏, Miransu Uwabami氏)</LI>
+      <LI>ObjShader_SetShaderOが動作していなかったのを修正</LI>
+      <LI>GetObjectDistanceに無効なオブジェクトを設定した場合に、ソフトが落ちていたのを修正(-1を返す)(Thanks to Grn氏)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2014/07/12([.1 pre4])</FONT>
+      <LI>ピクセルシェーダ対応<BR>
+			－関数：ObjShader_XXX,SetShaderI,ResetShaderI,IsPixelShaderSupported<BR>
+			－ヘルプ：「ピクセルシェーダ」<BR>
+			－サンプル「SamplePS01,SamplePS02,SamplePS03」</LI>
+      <LI>自機の当たり判定をグレイズのみ設定する機能(ObjPlayer_AddIntersectionCircleA2)</LI>
+      <LI>共通データを再生成すると、既存のデータが消えていたのを修正(Thanks to Grn氏)</LI>
+      <LI>SaveRenderedTextureA1,A2関数でファイル出力に失敗していたのを修正(Thanks to ごれ氏)</LI>
+      <LI>ObjRender_SetFogEnableの適用範囲が正しくなかったのを修正(Thanks to Ultima Power氏)</LI>
+      <LI>NotifyEvent or NotifyEventAllが一時停止などのスクリプトに通知されなかったのを修正(Thanks to Ultima Power氏)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2014/03/02([.1 pre3])</FONT>
+      <LI>左右の音声ボリューム割合を指定する機能(ObjSound_SetPanRate)</LI>
+      <LI>オブジェクトの表示/非表示状態取得機能(Obj_IsVisible)</LI>
+      <LI>色をHSVで指定する機能(ObjRender_SetColorHSV)</LI>
+      <LI>頂点の位置を取得する機能(ObjPrim_GetVertexPosition)</LI>
+      <LI>テキストの全行分での幅と高さを取得する機能(ObjText_GetTotalWidth,ObjText_GetTotalHeight)</LI>
+      <LI>弾に線形の当たり判定を指定する機能(ObjShot_SetIntersectionLine)</LI>
+      <LI>レーザーのグレイズ無効期間を指定する機能(ObjLaser_SetGrazeInvalidFrame)</LI>
+      <LI>曲がるレーザーの先端透明度減少率を指定する機能(ObjCrLaser_SetTipDecrement)</LI>
+      <LI>#UserShotDataでデフォルトの遅延色を指定する機能(ShotDataでdelay_colorを指定しない場合の色指定)</LI>
+      <LI>パッドデバイスを指定する機能(config.exeで指定可能にした)</LI>
+      <LI>解像度960×720,1280×960に対応(config.exeで指定可能にした)</LI>
+      <LI>空のファイルをincludeしたら不正終了していたのを修正(Thanks to Sparen氏)</LI>
+      <LI>SaveRenderedTextureA1,A2が正常に機能していなかったのを修正(Thanks to Miransu Uwabami氏)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2014/01/22([.1 pre2])</FONT>
+      <LI>Unicode対応の影響で、スクリプトが動作しないことがあったのを修正(Thanks to Sparen,ごれ氏)</LI>
+      <LI>日本語ロケールと英語ロケールでデフォルトフォントが異なったのを修正(Thanks to Sparen)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2014/01/13([.1 pre1])</FONT>
+      <LI>Unicode対応。スクリプトや定義ファイルにUnicodeを使用する場合は、UTF16LE(Byte Order Mark必要)で保存する必要があります。(ヘルプの「スクリプトのフォーマット」参照)</LI>
+      <LI>#UserShotDataで弾種別ごと個別に遅延時間中描画ブレンド種別(delay_render)を指定できるようにした。</LI>
+      <LI>レーザー元や遅延時間のブレンド種別を設定する機能(ObjShot_SetSourceBlendType)</LI>
+      <LI>テキストの字間を設定する機能(ObjText_SetSidePitch)</LI>
+      <LI>レーザー元や遅延時間のデフォルトブレンド種別をARGBに変更</LI>
+      <LI>弾の遅延時間中にfixed_angleやangular_velocityが適応されなかったのを修正(Thanks to ごれ氏)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2014/01/12([.0])</FONT>
+      <LI>ある程度機能がそろったので、ph3 [.0]とした。</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2013/12/22([.0 pre23])</FONT>
+      <LI>レーザーや通常弾にObjRender_SetBlendTypeが有効に動作するように変更</LI>
+      <LI>#UserShotDataで弾種別ごと個別に遅延時間画像(delay_rect)を指定できるように変更</LI>
+      <LI>#UserShotDataでrenderにMULTIPLY,SUBTRACT,INV_DESTRGBを指定できるように変更</LI>
+      <LI>ObjRender_SetFogEnableでフォグを無効にできなかったのを修正(Thanks to Harley Pulido氏)</LI>
+      <LI>カメラのYaw Pitch Roll回転設定がステージ終了時にリセットされていなかったのを修正(Thanks to Harley Pulido氏)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2013/12/08([.0 pre22])</FONT>
+      <LI>カメラのYaw Pitch Roll回転設定(SetCameraYaw, SetCameraPitch, SetCameraRoll)</LI>
+      <LI>ルビを除いた文字数を取得する機能(ObjText_GetTextLengthCU, ObjText_GetTextLengthCUL)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2013/11/25([.0 pre21])</FONT>
+      <LI>減算合成にα値を適応するように変更</LI>
+      <LI>指定したファイルパスからフォルダパスだけ返す機能(GetFileDirectory)</LI>
+      <LI>指定したフォルダ内のフォルダ一覧を返す機能(GetDirectoryList)</LI>
+      <LI>実行中のパッケージスクリプトパスを返す機能(GetMainPackageScriptPath)</LI>
+      <LI>指定したフォルダの有効なスクリプトファイルパス一覧を返す機能(GetScriptPathList)</LI>
+      <LI>指定したスクリプトの情報を返す機能(GetScriptInfoA1)</LI>
+      <LI>弾の当たり判定、描画種別を返す機能(GetShotDataInfoA1のINFO_BLEND, INFO_COLLISION, INFO_COLLISION_LIST)</LI>
+      <LI>カメラXYZ座標を設定する機能(SetCameraFocusXYZ)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2013/11/02([.0 pre20])</FONT>
+      <LI>テキストオブジェクトで空白や"[]"を表示するための置換文字列(ヘルプ「■テキスト表示」に記載： =(空白), &osb;=[, &csb;=])</LI>
+      <LI>パスに"../"などがあると、ユニークなパスにならず別のファイルとして読み込んでしまっていたため、../を除去し正規化したパスに変換するように修正(Thanks to vehona氏)</LI>
+      <LI>pre18以降、自機の操作が効かなくなり、エラー落ちすることがあったのを修正(Thanks to ごれ/Miransu氏)</LI>
+      <LI>th_dnh.defの最終行の設定が無視されていたのを修正(Thanks to Miransu氏)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2013/10/06([.0 pre19])</FONT>
+      <LI>ステージ／パッケージスクリプト間でイベントを通知できるように変更(Thanks to Miransu氏)</LI>
+      <LI>th_dnh.defファイルのウインドウタイトルに半角スペースが使えなかったのを修正(Thanks to ごれ氏)</LI>
+      <LI>th_dnh.defで指定したスクリーンサイズによっては、指定したサイズで起動できなかったのを修正(Thanks to zxcv氏)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2013/09/29([.0 pre18])</FONT>
+      <LI>ログウィンドウにScriptタブを追加。(無限ループ等で固まってしまった時の強制終了用ボタンを配置)</LI>
+      <LI>パッケージスクリプトでEV_USERを使えなかったのを修正(Thanks to Miransu氏)</LI>
+      <LI>スクリプト終了時に2Dカメラの回転角度をリセットしていなかったのを修正(Thanks to Miransu氏)</LI>
+      <LI>弾の座標が負のとき当たり判定を登録していなかったのを修正(Thanks to CK Crash氏)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2013/09/23([.0 pre17])</FONT>
+      <LI>ObjSpriteList2D_で、矩形の追加を終了し、以降の座標変換を追加済みの矩形全てに適応する機能(ObjSpriteList2D_CloseVertex)</LI>
+      <LI>pre16でUserItemDataで追加したアイテムが全て加算合成になっていたのを修正(Thanks to ごれ氏)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2013/09/23([.0 pre16])</FONT>
+	  <LI>UserItemDataで弾の描画時の合成方法にα値適当加算合成(ADD_ARGB)を追加</LI>
+	  <LI>2Dカメラの回転、X/Y方向個別拡大縮小機能(Set2DCameraAngleZ, Set2DCameraRatioX, Set2DCameraRatioY)</LI>
+	  <LI>リプレイのステージごとのスコアを取得する機能(GetReplayInfoのREPLAY_STAGE_START_SCORE_LIST,REPLAY_STAGE_LAST_SCORE_LIST)</LI>
+	  <LI>ObjEnemy_GetInfo関数でINFO_SHOT_HIT_COUNTを使用した際に、自機も弾としてカウントしていたのを修正(Thanks to Unknown User氏)</LI>
+	  <LI>メニューの決定キャンセルボタンが画面遷移直後に連続で効いていたのを修正(Thanks to tomozipi氏)</LI>
+	  <LI>SetCameraPerspectiveClipがスクリプト終了後にリセットされていなかったのを修正(Thanks to Helepolis氏)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2013/08/16([.0 pre15])</FONT>
+      <LI>パースペクティブ射影行列変換時のクリップ距離を指定する機能(SetCameraPerspectiveClip)</LI>
+      <LI>UserShotDataで複数の当たり判定を設定する機能</LI>
+      <LI>UserShotDataで弾の描画時の合成方法にα値適当加算合成(ADD_ARGB)を追加</LI>
+      <LI>高速再生モードのキー(左Ctrl)を変更する機能(SetSkipModeKey)</LI>
+      <LI>ObjMove_AddPatternA3/ObjMove_AddPatternA4系の関数での、弾画像ID変化後の回転角度の引継ぎがされていなかったのを修正(Thanks to ごれ氏</LI>
+      <LI>#includeが最終行だと異常扱いになっていたのを修正(Thanks to himajin9氏)</LI>
+      <LI>スクリプトロード中の表示をNow Loding→Now Loadingに修正(Thanks to noname氏)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2013/06/30([.0 pre14])</FONT>
+	  <LI>弾消し時に、弾がアイテムに変化するかを設定する機能(ObjShot_SetItemChange)</LI>
+	  <LI>オブジェクトの合成方法を取得する機能(ObjRender_GetBlendType)</LI>
+	  <LI>オブジェクトの描画優先度を取得する機能(Obj_GetRenderPriority,Obj_GetRenderPriorityI)</LI>
+	  <LI>ObjRender_SetBlendTypeの合成種別を追加(BLEND_ADD_ARGB, BLEND_INV_DESTRGB)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2013/05/12([.0 pre13])</FONT>
+	  <LI>ログウィンドウの位置を記録するようにした</LI>
+	  <LI>弾とアイテムの描画優先度を設定可能に変更</LI>
+	  <LI>弾の遅延色(ディレイカラー)を取得する機能(GetShotDataInfoA1のINFO_DELAY_COLOR)</LI>
+	  <LI>ObjEnemy_GetInfoの第二引数にINFO_SHOT_HIT_COUNTを使用した際、敵オブジェクト生成後の最初の1フレームのみ、ヒット回数でない値が戻って来たのを修正(Thanks to memo氏)</LI>
+	  <LI>パッケージスクリプトをdefファイルから読み込んだ時に、スクリプトでエラーが起きた場合、ソフトが終了していなかったのを修正(Thanks to ごれさん氏)</LI>
+	  <LI>ステージスクリプト以外からGetStgFrameTop,Left,Width,Heightを呼べなかったのを修正(Thanks to Miransu Uwabami氏)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2013/04/07([.0 pre12])</FONT>
+      <LI>ログウィンドウのInfoタブに、動作中のマイクロスレッド数とオブジェクト数の表示を追加(解放忘れで重くなるのを検知できるようにするため)</LI>
+      <LI>任意パスでの共通データ保存読み込み機能(SaveCommonDataAreaA2,LoadCommonDataAreaA2)</LI>
+      <LI>レンダリング用テクスチャ作成機能(CreateRenderTarget)</LI>
+      <LI>オブジェクトIDを引数として、弾の当たり判定の大きさを取得する関数(GetShotDataInfoA1:INFO_RECT)</LI>
+      <LI>レーザーに対してボムでの弾消しや弾消去関数でアイテム化するとイベント通知されていなかったのを修正(Thanks to ごれさん氏)</LI>
+      <LI>ObjMove_AddPatternで弾画像を変更する場合に、弾の回転速度が前の弾のままだったのを修正(Thanks to ごれさん氏)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2013/02/17([.0 pre11])</FONT>
+      <LI>pre9の修正でSetFogEnableが無視されるようになっていたのを修正</LI>
+      <LI>EV_GRAZEでかすり元の弾オブジェクトや、座標を取得できるように変更(EV_GRAZEイベント参照お願いします)</LI>
+      <LI>ObjEnemyBossScene_GetInfo関数に現在のスペル（通常弾幕）の体力とその最大値を習得する機能(INFO_CURRENT_LIFE, INFO_CURRENT_LIFE_MAX)</LI>
+      <LI>敵に当たったショットの数を取得する(v0.12mでいうGetHitCount)機能(ObjEnemy_GetInfo:INFO_SHOT_HIT_COUNT)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2013/02/11([.0 pre10])</FONT>
+      <LI>オブジェクトの角度と拡大率を取得する機能(ObjRender_GetAngleX/Y/Z, ObjRender_GetScaleX/Y/Z)</LI>
+      <LI>pre9で3DメッシュオブジェクトのZ比較とフォグの反映に不具合があったのを修正(Thanks to memo氏)</LI>
+      <LI>イベント通知中に別のイベントを呼び出すと、SetScriptResultで設定した値が消えてしまうのを修正(Thanks to ごれさん氏)</LI>
+      <LI>レーザーに対してボムでの弾消しや弾消去関数でアイテム化するとイベント通知されていなかったのを修正(Thanks to ごれさん氏)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2013/02/02([.0 pre9])</FONT>
+      <LI>リプレイ時にFPSを表示しないように変更</LI>
+      <LI>リプレイに保存されているFPSを取得する機能(GetReplayFps)</LI>
+      <LI>コンフィグに「マウスカーソルの非表示」を追加</LI>
+      <LI>オブジェクトにフォグの有効無効を設定する機能(ObjRender_SetFogEnable)</LI>
+      <LI>ObjSprite2D_SetDestCenter、ObjSprite2D_SetDestRectで画像の中心を指定して回転した場合に挙動が異なっていたのを修正(Thanks to memo氏)</LI>
+      <LI>単発、連続再生、ステージスクリプトにおいて、STGシーン終了時スクリプトからリプレイ保存シーンへ移動した後、「GetTransitionRenderTargetNameで、直前のシーンの画像テクスチャの取得がうまくいかなくなっていたのを修正(Thanks to myst氏)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2012/12/22([.0 pre8])</FONT>
+      <LI>オブジェクト弾にObjShot_SetIntersectionCircleA1,A2で当たり判定を設定した際に、ObjCol_GetListOfIntersectedEnemyIDでそのオブジェクト弾が接触している敵のIDが取得できなかったのを修正(Thanks to grom氏)</LI>
+      <LI>ファイルアーカイバを起動すると何も操作していない状態であるにもかかわらずCPU使用率が高くなっていたのを修正(Unknown User氏)</LI>
+      <LI>Obj_GetTypeで、引数0となっており使用できなかったのを修正(Thanks to memo氏)</LI>
+      <LI>ObjPrim_Create(OBJ_SPRITE_3D)→ObjSprite3D_SetDestRectでX/Y座標が逆に設定されていたのを修正(Thanks to memo氏)</LI>
+      <LI>同一フレーム内で同じ弾が複数回消された場合、消された回数ぶんイベントが呼び出されていたのを修正(Thanks to memo氏)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2012/09/30([.0 pre7])</FONT>
+      <LI>オブジェクトが前フレームで接触した回数を取得する機能(ObjCol_GetIntersectedCount)</LI>
+      <LI>3Dアニメモデル(elemファイルモデル)にα値が適応されていなかったのを修正(Thanks to zxcv氏)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2012/09/23([.0 pre6])</FONT>
+      <LI>弾の描画角度を移動方向に関係なく固定する機能(UserShotDataのfixed_angle=true)</LI>
+      <LI>3Dアニメモデル(elemファイルモデル)にフォグが適応されていなかったのを修正(Thanks to zxcv氏)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2012/09/17([.0 pre5])</FONT>
+	  <LI>現在日時を文字列で取得する機能(GetCurrentDateTimeS)</LI>
+	  <LI>3D座標を2D座標に変換する機能(GetObject2dPosition, Get2dPosition)</LI>
+	  <LI>FPSを取得する機能(GetCurrentFps)</LI>
+	  <LI>スクリプト開始からの経過時間を取得する機能(GetStageTime, GetPackageTime)</LI>
+	  <LI>オブジェクト同士の接触を調べる機能(IsIntersected_Obj_Obj)</LI>
+	  <LI>STGシーンでのFPS表示を行わないように変更(システムスクリプト等で独自に描画する必要があります)</LI>
+	  <LI>Rキーによるリセットを左Ctrl+左Shift+Rに変更、BackSpaceキーをAddVirtualKeyで上書きした場合、BackSpaceでリトライ無効に変更</LI>
+	  <LI>点アイテムの取得を自機スクリプトに通知するように変更</LI>
+	  <LI>「index」を変数に使用できなかったのを、使用できるように変更</LI>
+	  <LI>テキストファイルに文字列データを出力する機能のObjFile_OpenNWより前にObjFileT_AddLineした場合も、行を追加するように変更</LI>
+	  <LI>テキストファイルに文字列データを出力する機能で、追加した行を削除する機能(ObjFileT_ClearLine)</LI>
+	  <LI>2Dカメラ拡大時の表示に誤りがあったのを修正</LI>
+	  <LI>ユーザ定義弾、ユーザ定義アイテムの画像ファイル指定に「../」を使用できなかったのを修正(Thanks to myst氏)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2012/08/05([.0 pre4])</FONT>
+	  <LI>60fps調整の誤差を修正</LI>
+	  <LI>アーカイブしたファイルの終端をうまく検出できないことがあったのを修正(Thanks to 無名氏)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2012/07/29([.0 pre3])</FONT>
+      <LI>テキストファイルに文字列データを出力する機能(ObjFile_OpenNW, ObjFile_Store, ObjFileT_AddLine)</LI>
+      <LI>Rキーでリセット後にアーカイブファイル内のファイルを読めないことがあったのを修正(Thanks to Unknown User氏)</LI>
+      <LI>パッケージスクリプト側で一度でもポーズ→解除した後にReset2DCamera()を実行すると表示がおかしくなったのを修正(Thanks to nono氏)</LI>
+      <LI>弾が優先度20-80内しか表示できなかったのを修正(Thanks to E.O氏)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2012/07/22([.0 pre2])</FONT>
+	  <LI>リプレイファイルに任意の文字列を保存する機能(SetReplayInfoのREPLAY_COMMENT)</LI>
+	  <LI>マウスのホイールの変化量を取得する機能(GetMouseMoveZ)</LI>
+	  <LI>FileArchiverで1ファイルにまとめたものをプレイした後、スクリプト選択画面で、選択位置が引き継がれなかったのを修正(Thanks to Unknown User氏)</LI>
+	  <LI>速度と角度の双方が指定されていない弾に対し、ObjMove_AddPatternB系の関数を使用すると弾幕風が異常終了したのを修正(Thanks to Unknown User氏)</LI>
+	  <LI>パッケージスクリプト側でロードしたスクリプトにおいて、「IsCloseScript」でスクリプトが終了したかどうかがわからなくなることがあったのを修正(Thanks to myst氏)</LI>
+	  <LI>GetTextureWidthとGetTextureHeightが0しか返していなかったのを修正(Thanks to E.O氏)</LI>
+      <BR><BR>[ヘルプ]<BR>
+	  <LI>エフェクトサンプル：ボス周囲のゆらぎ</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2012/07/15([.0 pre1])</FONT>
+      <LI>キーボードのキー状態を取得する機能(GetKeyState)</LI>
+      <LI>マウスのボタン状態を取得する機能(GetMouseState)</LI>
+      <LI>マウスの座標を取得する機能(GetMouseX, GetMouseY)</LI>
+      <LI>仮想キーの状態を上書きする機能(SetVirtualKeyState)</LI>
+      <LI>仮想キーを追加する機能(AddVirtualKey)</LI>
+      <LI>リプレイ対象のキーを追加する機能(AddReplayTargetVirtualKey)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2012/07/15(ph3 β6)</FONT>
+	  <LI>Packageスクリプト再生機能(ヘルプの「パッケージスクリプト」を参照お願いします)</LI>
+	  <LI>指定したパッケージスクリプトのみをth_dnh.exeで再生する機能(ヘルプの「定義ファイル(th_dnh.def)」を参照お願いします)</LI>
+	  <LI>基本スクリーンサイズを変更する機能(描画領域を640*480以上にする機能)(ヘルプの「定義ファイル(th_dnh.def)」を参照お願いします)</LI>
+	  <LI>アーカイブファイル対応(/th_dnh//tools/FileArchiver.exe と ヘルプの「アーカイブファイル」を参照お願いします)</LI>
+	  <LI>スクリプト終了時、自動オブジェクト削除機能(SetAutoDeleteObject)</LI>
+	  <LI>エラー発生機能(RaiseError)</LI>
+	  <LI>共通データをリプレイファイルに保存/読込する機能(SaveCommonDataAreaToReplayFile,LoadCommonDataAreaFromReplayFile)</LI>
+	  <LI>弾画像の角速度(angular_velocity)に対応</LI>
+	  <LI>オブジェクトの種別を取得する機能(Obj_GetType)</LI>
+	  <LI>自由な解像度に対応させるため、フルスクリーン表示を擬似フルスクリーン化</LI>
+	  <LI>ユーザ定義アイテム(ヘルプの「ユーザ定義アイテム」を参照お願いします)</LI>
+	  <LI>弾消し時に、システム組み込みの得点アイテムの出現有無設定機能(SetDefaultBonusItemEnable)</LI>
+	  <LI>指定した円範囲のアイテムを吸い寄せる機能(CollectItemsInCircle)</LI>
+	  <LI>自動回収状態にしたアイテムの、自動回収状態を解除する機能(CancelCollectItems)</LI>
+	  <LI>再生できないwavファイルがあったのを修正(Thanks to nono氏)</LI>
+      <BR><BR>
+      [pre5→pre6での変更]<BR>
+	  <LI>ユーザ定義アイテムで、画面外にアイテムがあるときの画像を指定できる機能(out)</LI>
+	  <LI>CreateItemU2について、移動先の座標を指定しても反映されなかったのを修正(Thanks to zxcv氏)</LI>
+	  <LI>ユーザ定義アイテムにおいて、「ObjItem_SetAutoCollectEnable」でアイテムの自動回収の対象としても、「CollectAllItems」によるアイテムの回収の対象にならなかったのを修正(Thanks to myst氏)</LI>
+	  <LI>アイテムオブジェクトにおいて、「ObjMove_」系の函数を適用すると）「ObjItem_SetDefinedMovePatternA1」でアイテムの移動パターンを組み込みのパターンに戻さない限り、アイテムの自動回収が行われなくなったのを修正(Thanks to myst氏)</LI>
+	  <LI>ユーザ定義アイテムを 1 個取得した際、アイテムスクリプトの@Eventの「EV_GET_ITEM」（アイテム取得通知）が 2 回行われてしまったのを修正(Thanks to myst氏)</LI>
+      <BR><BR>
+      [pre4→pre5での変更]<BR>
+      <LI>描画領域を640*480以上にする機能で、指定できる範囲を(640,480)-(1920,1200)に変更(4:3以外でも動作するように変更)</LI>
+      <LI>PauseStageScene呼び出し時に、EV_PAUSE_ENTER/EV_PAUSE_LEAVEイベントを呼び出していなかったのを修正</LI>
+      <BR><BR>
+      [pre2→pre3での変更]<BR>
+	  <LI>パッケージスクリプト中で 一時停止→解除 するとカメラの座標が正常でなくなる現象を修正(Thanks to mrtode氏)</LI>
+      <BR><BR>
+      [pre1→pre2での変更]<BR>
+	  <LI>ステージを一時停止する機能(PauseStageScene・パッケージスクリプト側で一時停止も制御するように変更)</LI>
+	  <LI>ステージを途中終了する機能(TerminateStageScene)</LI>
+	  <LI>リプレイファイル内の有効なステージインデックスを配列で取得する機能(GetReplayInfoにREPLAY_STAGE_INDEX_LISTを指定)</LI>
+	  <LI>ヘルプのFinalizeStageScen→FinalizeStageSceneに修正(Thanks to Unknown User氏)</LI>
+	  <LI>パッケージスクリプトで再生するステージスクリプトに#東方弾幕風[Stage]がないとソフトが落ちていたのを修正(Thanks to Len氏)</LI>
+	  <LI>パッケージスクリプトで一部の描画系関数(GetReservedRenderTargetNameなど)を使用できなかったのを修正(Thanks to Len氏)</LI>
+	  <LI>存在しないステージインデックスのリプレイを再生しようとしたときエラーとするように修正(Thanks to myst氏)</LI>
+	  <LI>GetStageSceneStateの返り値の定数が誤っていたのを修正(STAGE_STAGE_FINISHED→STAGE_STATE_FINISHED)</LI>
+	  <LI>パッケージスクリプト中にステージスクリプトを編集しても、編集が反映されなかったのを修正</LI>
+	  <LI>リプレイ対応のため、SetStagePlayerScriptにはパッケージスクリプトの#Playerで有効な自機しか指定できないように変更</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2012/06/10(ph3 β5)</FONT>
+	  <LI>自機の復帰時間 (STATE_DOWNになっている時間)を変更する機能(SetPlayerDownStateFrame,GetPlayerDownStateFrame)</LI>
+	  <LI>ObjEnemy_GetInfoに、敵の被ダメージレート(ショット、スペル両方個別に) を取得できる機能(INFO_DAMAGE_RATE_SHOT, INFO_DAMAGE_RATE_SPELL)</LI>
+	  <LI>音声のループ位置をサンプル数で指定できる機能(ObjSound_SetLoopSampleCount)</LI>
+	  <LI>音声を前回停止位置からリスタートする機能(ObjSound_SetRestartEnable)</LI>
+	  <LI>STG空間の左端上端の座標を取得する機能(GetStgFrameLeft, GetStgFrameTop)</LI>
+	  <LI>テキスト表示時に改行などのタグを無視する機能(ObjText_SetSyntacticAnalysis)</LI>
+	  <LI>共通データ空間表示機能をデバッグウィンドウのタブ(Common Data)に追加</LI>
+	  <LI>共通データ空間をコピーする機能(CopyCommonDataArea)</LI>
+	  <LI>共通データ空間の一覧を取得する機能(GetCommonDataAreaKeyList)</LI>
+	  <LI>共通データ空間の値のキー一覧を取得する機能(GetCommonDataValueKeyList)</LI>
+	  <LI>一時停止開始/解除時にスクリプトにイベント通知する機能(EV_PAUSE_ENTER, EV_PAUSE_LEAVE)</LI>
+      <LI>ObjMesh_Createを呼ぶと落ちることがあったのを修正(Thanks to grom氏)</LI>
+      <LI>Set2DCameraFocusX、Set2DCameraFocusYで設定した焦点座標が、毎フレームごとに初期化されてしまっていたのを修正。(Thanks to zxcv氏)</LI>
+      <LI>Set2DCameraRatioが機能しなくなっていたのを修正(Thanks to zxcv氏)</LI>
+      <LI>自機スクリプトでGetPlayerX,Yなどを用いて自機に別のオブジェクトを重ねて動かすと、オブジェクトの動作が自機より1フレーム遅れてしまっていたのを修正(Thanks to grom氏)</LI>
+      <LI>音声のループ時間指定がずれていたのを修正(Thanks to Len氏)</LI>
+      <LI>ObjFileB_GetPointerの引数が1つであるにもかかわらず引数の数が2つ必要になっていたのを修正(Thanks to Len氏)</LI>
+      <LI>テキストオブジェクトに「ObjRender_SetPermitCamera」が適用されなかったのを修正(Thanks to myst氏)</LI>
+      <LI>ObjEnemyBossScene_GetInfo(INFO_SPELL_SCORE)を呼び出すと、残りスコアが減少していたのを修正(Thanks to myst氏)</LI>
+      <LI>特定の配列演算で落ちていたのを修正(Thanks to myst氏)</LI>
+      <LI>ObjText_SetFontTypeで指定しても使用できない欧文フォントがあったのを修正(Thanks to memo氏)</LI>
+      <LI>メニュー系スクリプトを終了する瞬間に、左Ctrlキーを離すと、高速再生が解除されないことがあったのを修正(Thanks to myst氏)</LI>
+      <LI>テキストオブジェクトに"[]"や"[\"]"を指定するとソフトが落ちていたのを修正(Thanks to myst氏)</LI>
+      <LI>SetStgFrameについて、STG空間矩形(左)を大きく設定すると、ボムによる弾消しアイテム（白いアイテム）が画面左途中で消えたのを修正(Thanks to 打開策氏)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2012/03/04(ph3 β4)</FONT>
+	  <LI>バイナリファイルを読み込む機能(ObjFileB_)</LI>
+	  <LI>テキストファイルを読み込む機能(ObjFileT_)</LI>
+	  <LI>文字列を指定した文字で切り分ける機能(SplitString)</LI>
+	  <LI>文字列の前後の空白を除去する機能(TrimString)</LI>
+	  <LI>指定したオブジェクトが当たっている敵オブジェクトIDを返す機能(ObjCol_GetListOfIntersectedEnemyID)</LI>
+	  <LI>自機スクリプトのIDを取得する関数(GetPlayerScriptID)</LI>
+	  <LI>2つのオブジェクトの距離を取得する関数(GetObjectDistance)</LI>
+	  <LI>自機の選択位置を前のスクリプトで選択した位置を引き継ぐように変更</LI>
+	  <LI>GetAngleToPlayerの対象を、2D矩形オブジェクト等にも適用可能に修正(Thanks to mrtode氏)</LI>
+      <LI>ブラー中はデフォ自機ボム発動時の震動が無視されていたのを修正(Thanks to memo氏)</LI>
+      <LI>喰らいボムを発動させたとき、ボムの発動と自機の撃墜が同時に発生してしていたのを修正(Thanks to ren氏, mrtode氏)</LI>
+      <LI>カメラフォーカス有効優先度が69の場合に、優先度70にもカメラが適応されていたのを修正(Thanks to mrtode氏)</LI>
+      <LI>スクリプト開始時に、3Dカメラのパラメータが初期化されていなかったのを修正(Thanks to mrtode氏)</LI>
+      <LI>マイクロスレッド内で、NotifyEventAllを実行すると正常動作しなかったのを修正(Thanks to Unknown User氏)</LI>
+	  <BR><BR>
+	  [β4 実装機能で、pre版内での修正]
+	  <LI>3Dカメラの初期化が@Initialize後に行われてしまっていたのを修正(pre1 Thanks to memo氏)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2011/11/13(ph3 β3)</FONT>
+	  <LI>mp3再生機能</LI>
+      <LI>擬似スロー(StartSlow, StopSlow)</LI>
+	  <LI>弾のx加速度とy加速度を指定する機能(CreateShotB1, ObjMove_AddPatternB1, など)</LI>
+      <LI>Obj_GetValueで値が存在しないときに返る値を設定できる機能(Obj_GetValueD)</LI>
+      <LI>指定した弾IDが自機スペルの耐性を持っているかいないかがわかる機能(ObjShot_IsSpellResist)</LI>
+      <LI>曲がるレーザーを簡易生成する関数(CreateCurveLaserA1)</LI>
+	  <LI>弾オブジェクトに対してObjRender_SetAngle系列、ObjRender_SetScale系列、ObjRender_SetBlendTypeを適応させるようにした(当たり判定は変化しません)</LI>
+	  <LI>敵側と自機側で定数が重なる可能性があるので、ユーザ定義イベントの定数追加(EV_USER_SYSTEM,EV_USER_STAGE,EV_USER_PLAYER, それぞれEV_USER_COUNTの数だけ使用可能)</LI>
+	  <LI>弾が画面外で消える距離を設定する機能(SetShotAutoDeleteClip)</LI>
+	  <LI>指定したオブジェクトの中心座標から通常弾を簡易生成する機能(CreateShotOA1,CreateShotOB1)</LI>
+	  <LI>線と円が接触しているかを調べる機能(IsIntersected_Line_Circle)</LI>
+	  <LI>PlayBGMでwavファイルをループ再生させる際、特定の秒数を終端に指定すると正常にループしなかったのを修正(Thanks to zxcv氏)</LI>
+	  <BR><BR>
+	  [β3 実装機能で、pre版内での修正]
+	  <LI>StartSlowでの擬似スロー中にキー入力が効きづらいことがあったのを修正(pre3 Thanks to mrtode氏)</LI>
+	  <LI>mp3 ID3v2形式で正常再生できなかったのを修正(pre3 Thanks to まおべりる氏)</LI>
+	  <LI>弾へのObjRender_SetBlendTypeがうまく動作していなかったのを修正(pre3 Thanks to memo氏)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2011/10/18(ph3 β2++)</FONT>
+      <LI>β2+でoggのBGM再生時、2秒以内のファイルしか再生できなくなっていたのを修正</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2011/10/16(ph3 β2+)</FONT>
+      <LI>β2でレーザーの当たり判定が動作しないことがあったのを修正(Thanks to 507@GW, nono氏)</LI>
+      <LI>β2で音声停止(ObjSound_Stop)が正常動作しなくなっていたのを修正(Thanks to mrtode氏)</LI>
+      <LI>ogg再生の不具合を修正(Thanks to mrtode氏)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2011/10/10(ph3 β2)</FONT>
+      <LI>ph3のヘルプに、v2とph3の関数対応を追加(Thanks to mrtode氏)</LI>
+	  <LI>自機のスクリプトIDを取得する機能(GetPlayerID,GetPlayerReplayName)</LI>
+	  <LI>弾数を取得する機能(GetShotCount)</LI>
+	  <LI>レーザーの光源の有無を切り替える機能ObjStLaser_SetSource）</LI>
+      <LI>レーザーの当たり登録が正しくなかったのを修正(Thanks to 507@GW)</LI>
+      <LI>GetShotIdInCircleA1を自機スクリプトで使うと自機の弾のIDも読み取っていたのを修正(Thanks to nono氏)</LI>
+      <LI>3D自由変形オブジェクトでのObjPrim_SetVertexUV、UVTの挙動がおかし買ったのを修正(Thanks to nono氏)</LI>
+      <LI>レーザーと弾の当たり判定が動かないことがあったのを修正(Thanks to mrtode氏)</LI>
+      <LI>弾に毎フレームボム耐性無効を設定し続けると、ボム耐性が無効にならなかったのを修正(Thanks to mrtode氏)</LI>
+      <LI>フルスクリーン時に高速再生できなくなっていたのを修正(Thanks to mrtode氏)</LI>
+      <LI>GetVirtualKeyStateの引数の１つ、『VK_SPELL』が未定義エラーになっていたのを修正(VK_BOMBで動作していましたが、互換用にVK_BOMBも残します。)(Thanks to mrtode氏)</LI>
+      <LI>スクリプトヘッダの "#BGM[]" でBGMを再生させると、スクリプトを終了させてもBGMが流れ続けたのを修正(Thanks to myst氏)</LI>
+      <LI>"PlayBGM" 関数でBGMを再生させるとき、BGMループ開始秒を "0" 以外にすると、BGMのループが開始されるときに弾幕風が落ちる可能性があったのを修正(Thanks to myst氏)</LI>
+      <LI>同フレームで複数回PlaySEを呼ぶと音がおかしくなったのを修正(Thanks to 507@GW氏)</LI>
+      <LI>ObjSound_SetVolumeRateを再生前に呼び出すと、音量に反映されなかったのを修正(Thanks to mrtode氏)</LI>
+      <LI>#Player[]に任意の自機を指定しても使用できなかったのを修正(Thanks to nono氏)</LI>]
+      <LI>ObjStLaser_GetAngleが整数角度しか返せていなかったのを修正(Thanks to nono氏)</LI>
+      <LI>共通データを保存→読み込み→保存するとソフトが落ちたのを修正(Thanks to nono氏)</LI>
+      <LI>ディレクトリ選択の2ページ目以降の状態で、下位のディレクトリに移動したときに不正なページに移動してしまったのを修正(Thanks to mrtode氏)</LI>
+      <LI>OK,CANCELキーがリプレイ対象になっていなかったのを修正</LI>(Thanks to mrtode氏)
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2011/07/01(ph3 β1)</FONT>
+      <LI>コンフィグ実装(config.exe)</LI>
+      <LI>ユーザ定義キー(VK_USER1,VK_USER2)</LI>
+	  <LI>スクリプト選択画面と自機選択画面にイメージを表示可能にしました。</LI>
+	  <LI>リプレイ再生中か調べる機能(IsReplay)</LI>
+	  <LI>リプレイが長いほど、リプレイ再生重くなったのを修正</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2011/06/26(ph3 α17)</FONT>
+	  <LI>リプレイ実装</LI>
+	  <LI>共通データ保存機能(SaveCommonDataAreaA1, LoadCommonDataAreaA1)</LI>
+	  <LI>文字列操作系機能(itoa, rtoa, rtos, atoi, ator, vtos)</LI>
+	  <LI>自機方向への角度を取得する機能(GetAngleToPlayer)</LI>
+	  <LI>指定範囲内にある弾のIDを配列として取得する機能(GetShotIdInCircleA1,GetShotIdInCircleA2)</LI>
+	  <LI>弾の画像番号を取得する機能(ObjShot_GetImageID)</LI>
+	  <LI>負の数を扱った剰余計算を数学的に正しい動作に修正(新：-3 % 5 = 2、旧：-3 % 5 = -3になります。旧動作はmodcで残しました。)(Thanks to mrtode氏)</LI>
+	  <LI>弾の速度、加速度の反映をv0.12mと同等に修正(弾を作成直後から即移動するように変更)(Thanks to mrtode氏)</LI>
+	  <LI>メニューのトップから「Directory」を選んで、2ページ目以降でキャンセルすると不正なページに移動したのを修正(Thanks to mrtode氏)</LI>
+	  <LI>自機ボム呼び出し時に 自機撃墜回数がカウントされたのを修正(Thanks to memo氏)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2011/06/11(ph3 α16)</FONT>
+	  <LI>エルフレイナファイル(.elem)の読み込み再生機能(ObjMesh_Loadの機能追加、ObjMesh_SetAnimation)</LI>
+	  <LI>3Dメッシュオブジェクトを2D座標指定で描画する機能(ObjMesh_SetCoordinate2D：ヘルプの「画像表示サンプル(解説)」に「自機や敵に3Dモデルを使用」を追加)</LI>
+	  <LI>テキストの水平描画位置を指定する機能(ObjText_SetHorizontalAlignment)</LI>
+	  <LI>SetPlayerLifeを呼び出せなかったのを修正(Thanks to memo氏)</LI>
+	  <LI>メタセコイアファイル読み込み時、モデルのZ座標が逆になっていたのを修正</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2011/06/05(ph3 α15)</FONT>
+      <LI>弾画像をリロードする機能(ReloadEnemyShotData,ReloadPlayerShotData)</LI>
+      <LI>弾オブジェクトに対してObjRender_SetAlphaが効かなくなっていたのを修正(Thanks to 507@GW氏)</LI>
+	  <LI>フォグが設定されていない場合に、3Dのオブジェクトが正常に表示されないことがあったのを修正(Thanks to ガラス草氏)</LI>
+	  <LI>ObjSoundでの音声再生が正常に動作しないことがあったのを修正(Thanks to ガラス草氏)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2011/05/29(ph3 α14)</FONT>
+	  <LI>フォントを追加する機能(InstallFont)</LI>
+	  <LI>ポイント関連機能(GetPoint, AddPoint)</LI>
+	  <LI>弾の当たり判定操作機能(ObjShot_SetIntersectionCircleA1, ObjShot_SetIntersectionCircleA2, ObjShot_SetIntersectionEnable)</LI>
+      <LI>配列の操作でメモリリークする可能性があったのを修正(Thanks to 507@GW氏)</LI>
+      <LI>GetPlayerRenderPriorityIが常に0を返していたのを修正(Thanks to 507@GW氏)</LI>
+      <LI>ObjSpell_SetIntersectionLineが正常に動作しないことがあったのを修正(Thanks to 507@GW氏)</LI>
+      <LI>自機側レーザにディレイが発生していたのを修正(Thanks to 507@GW氏)</LI>
+      <LI>ユーザー定義弾のShotDataにて透明度を設定すると、色も暗くなっていたのを修正(Thanks to 507@GW氏)</LI>
+      <LI>ObjShot_Createで作成したOBJ_LOOSE_LASERが正常動作しなかったのを修正(Thanks to ガラス草氏)</LI>
+      <LI>SetCommonDataなど共通データ操作機能が動作しなかったのを修正(Thanks to ガラス草氏)</LI>
+      <LI>ClearAreaCommonDataの引数は1つのところ2つ指定が必要になっていたのを修正(Thanks to ガラス草氏)</LI>
+      <LI>固定レーザーのディレイ中に発射点を移動させる事ができなかったのを修正(Thanks to memo氏)</LI>
+      <LI>NotifyEventもしくはイベント中にイベントを呼ぶと不正な動作になる可能性があったのを修正(Thanks to memo氏)</LI>
+      <LI>オブジェクト弾が最初の1フレームだけ(0,0)に表示されていたのを修正(Thanks to 507@GW氏)</LI>
+      <LI>CreateLooseLaserA1で発射させたレーザーが逆向きに表示されていたのを修正(Thanks to memo氏)</LI>
+      <LI>固定型レーザーに対してObjShot_AddShotA1、ObjShot_AddShotA2が動作していなかったのを修正(Thanks to memo氏)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2011/05/22(ph3 α13)</FONT>
+	  <LI>アイテム回収機能(CollectAllItems, CollectItemsByType)</LI>
+	  <LI>描画優先度設定機能(SetItemRenderPriorityI, SetShotRenderPriorityI)</LI>
+	  <LI>自機あたり判定クリア機能(ObjPlayer_ClearIntersection)</LI>
+	  <LI>自機喰らいボムの設定機能機能(SetPlayerRebirthFrame, SetPlayerRebirthLossFrame, GetPlayerRebirthFrame)</LI>
+	  <LI>自動アイテム回収ライン設定機能(SetPlayerAutoItemCollectLine)</LI>
+	  <LI>喰らいボム受付中か調べる機能(IsPlayerLastSpellWait)</LI>
+	  <LI>敵の当たり判定位置を検出する機能(GetIntersectionRegistedEnemyID, GetEnemyIntersectionPositionByIdA1, GetEnemyIntersectionPositionByIdA2)</LI>
+	  <LI>スナップショットを保存する機能(SaveSnapShotA1, SaveSnapShotA2)</LI>
+	  <LI>オブジェクトが接触したか調べる機能(ObjCol_IsIntersected)</LI>
+	  <LI>3Dメッシュでmqoファイルを読み込んだとき、2番目以降の材質を当てられたポリゴンが表示されなかったのを修正(Thanks to ガラス草氏)</LI>
+	  <LI>自機移動速度設定関数(SetPlayerSpeed)を呼べなかったのを機能(Thanks to 507@GW氏)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2011/05/05(ph3 α12)</FONT>
+	  <LI>ひとまず本体を実装</LI>
+	  <LI>テキスト表示に振り仮名をふれるように修正(ヘルプに「テキスト表示」の項目を追加)</LI>
+	  <LI>メニュー系スクリプト(STGシーン終了)設定機能(SetEndSceneScriptPath)</LI>
+	  <LI>特定のタイミングで落ちていたのを修正(Thanks to ガラス草氏)</LI>
+	  <LI>アイテム取得時のイベントが不正だったのを修正(アイテム取得イベントはEV_GET_ITEMに統一)(Thanks to ガラス草氏)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2010/10/24(ph3 α11)</FONT>
+	  <LI>一時停止を実装(STGシーン中にESCキーで一時停止します。)<BR>
+          一時停止中シーンはカスタマイズ可能です。<BR>
+          (ヘルプの「メニュー系スクリプト」を参照お願いします。)</LI>
+	  <LI>一時停止中スクリプト設定機能(SetPauseScriptPath)</LI>
+	  <LI>メニュー系スクリプトが呼び出し直前シーンの画像テクスチャ取得機能(GetTransitionRenderTargetName)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2010/10/24(ph3 α10)</FONT>
+	  <LI>アニメーション有りの弾に対応。</LI>
+	  <LI>オブジェクトに任意の値を割り付ける機能<BR>(Obj_GetValue, Obj_SetValue, Obj_DeleteValue, Obj_IsValueExists)</LI>
+	  <LI>任意の位置に弾の当たり判定を登録する機能<BR>(SetShotIntersectionCircle, SetShotIntersectionLine)</LI>
+	  <LI>非スレッドセーフなロジックがあり、突然落ちる可能性があったのを修正。</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2010/07/11(ph3 α9)</FONT>
+	  <LI>レーザーの当たり判定が正確でなかったのを修正。</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2010/07/11(ph3 α8)</FONT>
+	  <LI>MQO読み込み時に不正な箇所にアクセスしていたのを修正。</LI>
+	  <LI>スクリプト解析時に不正な処理を行う可能性があったのを修正。</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2010/07/04(ph3 α7)</FONT>
+	  <LI>ObjText_の回転・拡大を実装。</LI>
+	  <LI>ObjText_の回転・拡大の中心を指定する関数。</LI><BR>
+          　・ObjText_SetTransCenter<BR>
+          　・ObjText_SetAutoTransCenter<BR>
+	  <LI>設置型レーザー作成関数名称のミスを修正。(×StgStraightLaserA1 → ○CreateStraightLaserA1)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2010/06/27(ph3 α6)</FONT>
+	  <LI>現フレームをテクスチャに描画するために以下の関数を追加。</LI><BR>
+          　(この関数の組み合わせでモーションブラーなどを実装可能です)<BR>
+          　・ClearInvalidRenderPriority<BR>
+          　・SetInvalidRenderPriorityA1<BR>
+          　・GetReservedRenderTargetName<BR>
+          　・RenderToTextureA1<BR>
+          　・RenderToTextureB1<BR>
+	  <LI>ヘルプにエフェクトサンプル追加(E01：モーションブラー)。</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2010/05/30(ph3 α5)</FONT>
+	  <LI>ログウィンドウのテクスチャ一覧がちらついていたのを修正。</LI>
+	  <LI>ログファイルがない状態で起動しようとすると、想定外の位置にフォルダを作成しようとすることがあったのを修正。</LI>
+	  <LI>スクリプトが終了してもテクスチャが解放されないことがあったのを修正。</LI>
+	  <LI>システムスクリプトに「#System["./../test.txt"]」のような相対パスを指定すると読めなかったのを修正。(Thanks to ぺり氏)</LI>
+	  <LI>#include で読み込むファイルが見つからないと落ちていたのを修正(Thanks to ぺり氏)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2010/05/23(ph3 α4)</FONT>
+	  <LI>デバッグ用のパネルを実装しました。現状では自機を常時無敵にする操作のみ行えます。</LI>
+	  <LI>viewerでのスクリプト選択を、本体と似たような感じで行えるようにしました。</LI>
+	  <LI>GetMainStgScriptDirectoryが「メインで実行しているスクリプトのパス」を返していたのを修正(Thanks to ぺり氏)</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2010/05/16(ph3 α3)</FONT>
+	  <LI>ヘルプに「弾操作サンプル」のA01～A04を記述。</LI>
+	  <LI>弾に弾を追加する関数実装。(ObjShot_AddShot)</LI>
+	  <LI>一定時間で弾を削除する関数実装。(ObjShot_SetDeleteFrame)</LI>
+	  <LI>自機の無敵時間が2倍速で減っていたのを修正</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2010/05/09(ph3 α2)</FONT>
+	  <LI>レーザーをまったく使えなかったのを修正</LI>
+	  <LI>追加の弾画像の読み込み時に、当たり判定を指定できるように修正</LI>
+	  <LI>GetMainStgScriptDirectoryがディレクトリではなくフルパスを返していたのを修正</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2010/05/05(ph3 α1)</FONT>
+	  <LI>ScriptVersion3試作版を公開。</LI>
+	</UL>
+
+	<UL>
+	 <FONT color="#000080">2006/10/09(ver0.12m)</FONT>
+	  <LI>デバッグ用ウィンドウを変更</LI>
+	  <LI>共通データ名前空間そのものの存在有無を取得する機能(IsCommonDataAreaExists)</LI>
+	  <LI>絵画するフレームか調べる機能(IsRenderFrame)</LI>
+	  <LI>OnEnemySpellとは別に、ラストスペル中かどうかを取得する関数(OnEnemyLastSpell)</LI>
+	  <LI>ボスのFinalizeにて、タイムアウトになったのか判定する関数(IsTimeOut)。何で倒されたか判定するには、BeVanishedとIsTimeOutで確かめられます。</LI>
+	  <LI>レンダリングターゲット作成機能(CreateRenderTarget、SetRenderTarget、ClearRenderTarget)</LI>
+	  <LI>敵が本体なのか使い魔なのかを調べる機能(IsMaster)</LI>
+	  <LI>BGMフェードアウト(FadeOutMusic)</LI>
+	  <LI>フレーム部分描画設定機能(SetRenderFrame(ステージ専用))</LI>
+	  <LI>共通の関数として自機の高速、低速移動の速度の値を取得する機能(GetPlayerInfo)</LI>
+	  <LI>クリア時の画面効果を省いて即座にリプレイ保存シーンに進む機能(SetClearFrameEffectEnable)</LI>
+	  <LI>自機スクリプトのCutIn関数をスペルカード関数内でも呼び出せるように変更</LI>
+	  <LI>プレイ終了時に、高速再生解除をいったん解除するように変更</LI>
+	  <LI>空の文字列("")を要素に持つ配列をコモンデータに入れてSaveCommonDataExでファイル保存後読み込むと落ちたのを修正(Thanks to mitica氏)</LI>
+	  <LI>弾スクリプト（script_shot）内でオブジェクト弾を作成したとき、ObjShot_ToItemが使えなかったのを修正(Thanks to END氏)</LI>
+	  <LI>GetPlayerType()のUSER_PLAYERが未定義エラーだったのを修正(Thanks to mitica氏)</LI>
+	  <LI>アーカイブ済みスクリプトで、弾スクリプトが使用できなかったのを修正(Thanks to Ria氏)</LI>
+	  <LI>GetMissCountがラストスペル中被弾時にも増加していたのを修正(Thanks to Ria氏)</LI>
+	</UL>	
+	<UL>
+	 <FONT color="#000080">2006/07/30(ver0.12l)</FONT>
+	  <LI>LoadCommonDataExで(ファイルがないなど)読み込みに失敗したらエラーを出さず、falseを返すように変更</LI>
+	  <LI>ObjShot_ToItemがステージスクリプトで使えなかったのを修正(Thanks to Ria氏)</LI>
+	  <LI>残機ゼロの時にミスするとOnMissedが反映されなかったのを修正(Thanks to Ria氏)</LI>
+	  <LI>DeleteEnemyShotToItemが自機スクリプトで未定義エラーだったのを修正(Thanks to Ria氏)</LI>
+	  <LI>アーカイブされたスクリプトのカレントディレクトリの取得がうまくいかなかったのを修正(SaveCommonData等もうまく動作できていませんでした)(Thanks to 淀川氏)</LI>
+	  <LI>自機スクリプト動作中に、ClearByteCodeCash()でバイトコードを破棄すると弾幕風が落ちてしまったのを修正(Thanks to mitica氏)</LI>
+	  <LI>Pluralスクリプトで、すべてのファイルが見つからないと落ちたのを修正(Thanks to Mc氏)</LI>
+	  <LI>ボス撃破時にザコのスクリプトの@FinalizeでGetEnemyLifeを呼ぶと落ちたのを修正(Thanks to Ria氏)</LI>
+	  <LI>自機スクリプトが見つからない時、エラーメッセージを吐いた後に不正落ちしたのを修正(Thanks to Ria氏)</LI>
+	</UL>
+    <UL>
+	 <FONT color="#000080">2006/06/07(ver0.12k2)</FONT>
+	  <LI>共通データの実装を大幅に変えた結果不安定なっていたのを修正</LI>
+	</UL>
+    <UL>
+	 <FONT color="#000080">2006/06/04(ver0.12k)</FONT>
+	  <LI>複数の共通データ空間を作成できるようにしました。(スクリプト間共通データ用関数参照)</LI>
+	  <LI>敵ボスを含め全ての敵を倒す機能(SetLifeZeroToAllEnemy)</LI>
+	  <LI>エフェクトオブジェクトの頂点数をリサイズする機能(ObjEffect_ResizeVertexCount)</LI>
+	  <LI>会話イベントのテキスト表示で、一定時間待った後キー入力を待つ機能(TextOutC)</LI>
+	  <LI>GetSpellCardBonusScoreをプレイヤースクリプトでも有効にした。</LI>
+	  <LI>IsForbidBombがラストスペル中にも真を返すようにしました。</LI>
+	  <LI>SaveSnapShotに指定するパスに"player"フォルダも有効にしました。</LI>
+	  <LI>SetScore時にスペル取得条件初期化をするようにしました。</LI>
+	  <LI>時間停止中は、自機の無敵時間を減少させないようにしました。</LI>
+	  <LI>残機のない状態でミスをすると@MainLoopにも@Missedにも処理が回ってこなったのを修正(Thanks to Mc氏)</LI>
+	  <LI>ステージ側で毎フレームGetTimerを行っていると、落ちるバグを修正(Thanks to mitica氏)</LI>
+	  <LI>OBJ_SINUATE_LASERにおいてObj_SetCollisionToPlayerの設定が反映されなかったのを修正(Thanks to Ria氏)</LI>
+	  <LI>音声ファイル読み込み再生パスがファイル名だけで処理されていたのを修正(Thanks to Ria氏)</LI>
+	  <LI>時間停止中では、必ず自機のあたり判定が登録されていたのを修正(Thanks to mitica氏)</LI>
+	  <LI>Collision_Obj_Objが自機スクリプトで使えなかったのを修正(Thanks to Ria氏)</LI>
+	</UL>
+    <UL>
+	 <FONT color="#000080">2006/04/02(ver0.12j)</FONT>
+	  <LI>エフェクトレイヤに8を設定できるようにしました。外枠部分に描画できます。</LI>
+	  <LI>矩形範囲内のスナップショットをファイルに保存する関数(SaveSnapShot)</LI>
+	  <LI>点数レート有効／無効切り替え(SetRateScoreSystemEnable)</LI>
+	  <LI>基本ステータス表示有効／無効切り替え(SetDefaultStatusVisible)</LI>
+	  <LI>スクリプト開始からの経過時間をミリ秒単位で取得する機能(GetTime)</LI>
+	  <LI>範囲内の敵弾数をカウントする関数(GetEnemyShotCountEx)</LI>
+	  <LI>敵弾をアイテムに変えず、瞬時に消去する関数(DeleteEnemyShotImmediatelyInCircle)</LI>
+	  <LI>自機スクリプトで、スローをかける機能(Slow)</LI>
+	  <LI>自機がボムを発動可能か調べる機能(IsForbidBomb)</LI>
+	  <LI>デバッグ窓を閉じてからBSキーでリトライすると窓が再生成されなかったのを修正(Thanks to Mc氏)</LI>
+	  <LI>グレイズ半径を0に設定した場合でも、レーザーに対してはグレイズ数が増加していたのを修正(Thanks to mitica氏)</LI>
+	  <LI>自機スクリプトにおいて、スクリプト開始直後にGetTimeOfPlayerInvincibility()を実行するとエラーが発生したのを修正(Thanks to mitica氏)</LI>
+	  <LI>多重includeに対応できてなかったのを対応(Thanks to Mc氏)</LI>
+	  <LI>ラストスペルを連続再生の最初に持ってくると、ミスしてもボーナスが取得できたのを修正(Thanks to Ria氏)</LI>
+	  <LI>自機のかすり判定が敵の当たり判定に適当される不具合がおきたのを修正(これまでのリプレイがずれるかもしれません)(Thanks to Ria氏)正</LI>
+	  <LI>自機から遠すぎる位置に、自機の当たり判定を設定できなかったのを修正(Thanks to Ria氏)</LI>
+	</UL>
+    <UL>
+	 <FONT color="#000080">2006/02/25(ver0.12i)</FONT>
+	  <LI>自機スクリプトで、@SpellCardを呼び出す機能(CallSpellCard)</LI>
+	  <LI>強制的に自機をミスさせる関数(ShootDownPlayer)</LI>
+	  <LI>自機撃墜中か調べる共通の関数(OnPlayerMissed)</LI>
+	  <LI>自機のレーザーは遅延時間後即座に判定がでるようにしました</LI>
+	  <LI>ポーズ中もモーションブラーの残り時間が減っていたのを修正(Thanks to END氏)</LI>
+	  <LI>OBJ_SINUATE_LASERで作成したレーザーにObj_SetAutoDeleteでの自動消滅が無効にならなかったのを修正(Thanks to Ria氏)</LI>
+	</UL>
+   	<UL>
+	 <FONT color="#000080">2005/12/23(ver0.12h2)</FONT>
+	  <LI>OnBorderOfLifeで返ってくる真偽値が逆になっていたのを修正(Thanks to mitica氏)</LI>
+	  <LI>敵がスペル発動中か調べる関数(OnEnemySpell)</LI>
+	</UL>
+  	<UL>
+	 <FONT color="#000080">2005/12/11(ver0.12h)</FONT>
+	  <LI>自機スクリプトで喰らいボム有効フレーム数を取得する関数(GetRebirthFrame)</LI>
+	  <LI>自機スクリプトで喰らいボム有効フレーム中であるかどうか取得する関数(OnBorderOfLife）</LI>
+	  <LI>自機スクリプトで自機の組み込みエフェクトを設定する関数(SetAutoEffect)</LI>
+	  <LI>曲がるレーザーを操作する関数(ObjSinuateLaser_)</LI>
+	  <LI>敵の情報を取得する関数(GetEnemyInfoDefault)</LI>
+	  <LI>ボス以外の敵を消滅させる関数(DeleteAllEnemyWithoutBoss)</LI>
+	  <LI>エフェクト表示レイヤーの指定(SetEffectLayer)</LI>
+	</UL>
+  	<UL>
+	 <FONT color="#000080">2005/11/05(ver0.12g)</FONT>
+	  <LI>画面上の敵弾数を取得する関数(GetEnemyShotCount)</LI>
+	  <LI>自機スペルスクリプト内でSetPlayerX,SetPlayerYを実装</LI>
+	  <LI>自機スクリプト内でDeleteEnemyShotToItemInCircleを有効にした</LI>
+	  <LI>範囲円内の敵弾を消去する関数(DeleteEnemyShotInCircle)</LI>
+	  <LI>くらいボム受付時間減少量設定関数(SetRebirthFrameReduction)</LI>
+	  <LI>自機が撃墜中か返す関数(OnMissed)</LI>
+	  <LI>ミス時にマイクロスレッド動作の弾が停止したり違和感が有ったので、
+	      自機スクリプトに「@Missed」を追加しました。
+		  自機撃墜時に"@MainLoop"の代わりに実行されます。
+		  "@MainLoop"と同じ動作でよいのなら"@Missed{MainLoop}"とかけます。
+		  (@xxxは内部的にはサブルーチン扱い。ただし、撃墜中に弾が撃てたら変なので、OnMissed関数で判断してください。)
+	  </LI>
+	  <LI>ミスがあったので関数名修正(Ribirth→Rebirth、互換をとるためにどっちでも呼べます)</LI>
+	  <LI>ユーザ定義ボタン(自由に使えるキーです。キーボードでは"C"キーになっています)</LI>
+	</UL>
+  	<UL>
+	 <FONT color="#000080">2005/10/10(ver0.12f)</FONT>
+	  <LI>リトライさせる関数(Retry)</LI>
+	  <LI>共通データをリプレイファイルにインプラントする関数(SaveCommonDataInReplayFile,LoadCommonDataFromReplayFile)</LI>
+	  <LI>プレイヤースクリプトにおいて自機のグレイズ半径を設定できる関数(SetGrazeCircle)</LI>
+	  <LI>オブジェクト弾がアイテムになるかならないか指定する関数(ObjShot_ToItem)</LI>
+	  <LI>アーカイブされている自機スクリプトを使えなかったのを修正</LI> 
+	  <LI>エフェクトオブジェクトをObj_Deleteした瞬間に落ちる可能性があったのを修正(Thanks to 氷祟氏)</LI>
+	  <LI>弾幕風用のアーカイバを微修正(v0.01c)</LI>
+	</UL>
+  	<UL>
+	 <FONT color="#000080">2005/09/04(ver0.12e)</FONT>
+	  <LI>文字列内で「"」を使えるようにしました。「"abc"\""def"」のように、「""」の外に書きます。</LI>
+	  <LI>"#東方弾幕風"の代わりに"#TouhouDanmakufu"を使えるようにした</LI>
+	  <LI>#BGM[]で再生した音声が停止されなかったのを修正(Thanks to NightFog氏)</LI>
+	  <LI>効果音としてwavヘッダつきmp3を再生できなかったのを修正(Thanks to 氷祟氏)</LI>
+	  <LI>一番最初に作られたオブジェクト弾が表示されなくなっていたのを修正(Thanks to ロベール氏)</LI>
+	</UL>
+  	<UL>
+	 <FONT color="#000080">2005/08/23(ver0.12d3)</FONT>
+	  <LI>素のwavファイルをストリーミング再生したら即落ちたのを修正</LI>
+	  <LI>midiファイルを再生したら即落ちたのを修正</LI>
+	</UL>
+  	<UL>
+	 <FONT color="#000080">2005/08/22(ver0.12d2)</FONT>
+	  <LI>BGM再生に不具合があったので修正(スクリプト再生開始時に関係ないBGMが鳴るなど)</LI>	  
+	</UL>
+  	<UL>
+	 <FONT color="#000080">2005/08/21(ver0.12d)</FONT>
+	  <LI>BGMが鳴らない環境があったようなので、鳴るようにしました。<BR>
+	      (mp3のデコードには、acmStream系のAPIを用いています。<BR>
+		  どうも環境によっては同時に複数のストリームを開けないようです。<BR>
+		  そこでacmStreamOpenに失敗するような環境では、<BR>
+	      mp3は同時に1ファイルしか再生できなくしました。<BR>
+		  oggにはacmStream系を使わないので、上記の処理は関係ありません。<BR>
+		  これはDirectAudioにmp3の再生を丸投げしていると回避できないので<BR>
+		  midi以外の再生をDirectAudioからDirectSoundにしました。<BR>
+		  音声が多少違って聞こえるかもしれません。<BR>
+		  あと、再生終了が妙に遅い時があります。)</LI>
+	  <LI>ボムで落ちる可能性があったのを修正</LI>
+	  <LI>SetPlayerInvincibility(0)で自機の無敵時間を解除できるようにしました</LI>	  
+	</UL>
+  	<UL>
+	 <FONT color="#000080">2005/07/31(ver0.12c2)</FONT>
+	  <LI>ボム発動中は、敵弾の当たり判定を登録しなかったのを、登録するように変更</LI>
+	  <LI>script_spell内でSetIntersectionCircleを一回だけ実行しても、敵弾が削除されなかったのを修正(Thanks to Raticate氏)</LI>
+	  <LI>script_spell中のSetPlayerInvincibilityでは、120フレーム以下は無視されていたのを修正(Thanks to Raticate氏)</LI>
+	  <LI>CutInの時間停止中にEndを実行すると時間停止が解除されなかったのを修正(Thanks to Raticate氏)</LI>
+	</UL>
+  	<UL>
+	 <FONT color="#000080">2005/07/30(ver0.12c)</FONT>
+	  <LI>config.exeの"option"に、#Playerが無いスクリプトに対する処理の項目を追加</LI>
+	  <LI>エフェクトオブジェクト解説を追加</LI>
+	  <LI>エフェクトオブジェクトの呼び出し元のスクリプトが削除されたら、エフェクトオブジェクトも削除されるようにした</LI>
+	  <LI>BeParentVanishedで親の親も参照できるようにした</LI>
+	  <LI>ボムショット弾が当たった後、フェードしながら消えたのを即座に消えるように変更</LI>
+	  <LI>画像が正方形ではない場合に、ObjEffectのV値が不正な値だったのを修正</LI>
+	  <LI>#Playerの記述がないスクリプトでは、自機選択をスキップできなかったを修正(Thanks to ロベール氏)</LI>
+	  <LI>COODINATE_TYPE_PARENT がうまく動作しなかったのを修正?(Thanks to ロベール氏)</LI>
+	  <LI>敵スクリプト内で呼び出したCreateEnemyFromFileでは、子が親を認識できなかったのを修正</LI>
+	  <LI>自機選択画面で2ページ目以降のテキストが正しくなかったのを修正(Thanks to 氷祟氏)</LI>
+	</UL>
+  	<UL>
+	 <FONT color="#000080">2005/07/24(ver0.12b2)</FONT>
+	  <LI>ステージスクリプト以外で#Playerの記述がないものは、自動的に#Player[FREE]を挿入するようにしました。(単発ものならたぶん会話イベントは無いと思うんですが、問題あったら戻します。)</LI>
+	  <LI>自機選択画面で、ファイル名を表示するようにしました</LI>
+	  <LI>アーカイブ内のスクリプトから、#Player[FREE]の自機ファイルを選択できなかったのを修正</LI>
+	  <LI>自機数が6の倍数のとき、プレイヤー選択画面のページ数がおかしなことになったのを修正</LI>
+	</UL>
+  	<UL>
+	 <FONT color="#000080">2005/07/24(ver0.12b)</FONT>
+	  <LI>#Player[FREE]を指定してあるスクリプトでは、playerフォルダ内の全自機を選択できるようにしました</LI>
+	  <LI>ヘルプのサンプルにエフェクトオブジェクト解説を加えました</LI>
+	  <LI>付属の自機スクリプトサンプルのRumia.txtを更新しました。(低速移動時ボムのエフェクトが変わっています)</LI>
+	  <LI>script_spell内からのObjShotはボム属性にしました</LI>
+	  <LI>自機スペルカードの当たり判定用にObjEffectから派生させたObjSpellを実装</LI>
+	  <LI>敵を列挙して情報を取得する関数群(EnumEnemyBegin,EnumEnemyEnd,EnumEnemyGetID,GetEnemyInfo)</LI>
+	  <LI>ObjEffect_に描画先レイヤ指定関数(ObjEffect_SetLayer)</LI>
+	  <LI>敵スクリプトからもCreateEnemyFromFileを呼べるように変更</LI>
+	  <LI>Clear()でクリアしたかゲームオーバーかを取得する関数(IsClear)</LI>
+	  <LI>効果音を停止する関数(StopSE)</LI>
+	  <LI>喰らいボムとしてスペルカードを発動したかを取得する関数(IsLastSpell)</LI>
+	  <LI>残り喰らいボム受付時間を取得する関数(GetRebirthFrame)</LI>
+	  <LI>prand, prand_intの初期化用関数(psrand,ヘルプになかったのも修正)</LI>
+	  <LI>SetCoordinatesType→SetCoordinateTypeに変更</LI>
+	  <LI>script_spell内でSetSpeedを有効に</LI>
+	  <LI>script_enemy_mainの雑魚敵がやられるとその敵が出現させたscript_enemyの敵もやられるようにした</LI>
+	  <LI>#Playerのないスクリプトを選択すると、常にキャラ選択が行われれたのを修正(Thanks to ロベール氏)</LI>
+	  <LI>BeParentVanishedがうまく働かなかったのを修正(Thanks to ロベール氏)</LI>
+	  <LI>COODINATE_TYPE_PARENT の挙動がおかしかったのを修正(Thanks to ロベール氏)</LI>
+	  <LI>古いリプレイファイルが存在したら、不正なリプレイが項目に表示されたのを修正(Thanks to ロベール氏)</LI>
+	  <LI>自作自機の場合、会話イベント中(ForbidShot含む)でもショットが撃ててしまったのを修正(Thanks to No.6氏)</LI>
+	</UL>
+  	<UL>
+	 <FONT color="#000080">2005/07/18(ver0.12a)</FONT>
+	  <LI>自機スクリプトを実装しました<BR>
+	  (ヘルプに"自機の作製"で追加しています。<BR>
+	  また本体にサンプルの自機スクリプトをつけました。<BR>
+	  たぶん説明が足りないのでまた追加します。<BR>
+	  自機スクリプトの実装により、今までの本体とリプレイの互換性は失われました)</LI>
+	  <LI>毎回同じ乱数種で生成される乱数(prand, prand_int)</LI>
+	  <LI>敵の座標系を設定する関数(SetCoordinatesType,SetOrigin)</LI>
+	  <LI>エフェクトオブジェクト操作関数(ObjEffect_xxx)</LI>
+	  <LI>更新内容が多いので恐ろしくバグがありそうです。実装漏れも多そう・・・。</LI>
+	</UL>
+  	<UL>
+	 <FONT color="#000080">2005/07/09(ver0.11m)</FONT>
+	  <LI>レーザーがアイテムに変わるとき、直線上にアイテムを並べるように変更</LI>
+	  <LI>リプレイ中か否かを取得する関数(IsReplay)</LI>
+	  <LI>config.exeのキーコンフィグに不具合が合ったのを修正(Thanks to MAKINA氏)</LI>
+	  <LI>Collision_Obj_Objでレーザー同士を判定するとき不具合があったのを修正(Thanks to MAKINA氏)</LI>
+	  <LI>オブジェクト弾で組み込みの弾画像とユーザー定義の弾画像を切り替えると、おかしなことになったのを修正(Thanks to MAKINA氏)</LI>
+	</UL>
+  	<UL>
+	 <FONT color="#000080">2005/07/02(ver0.11l)</FONT>
+	  <LI>画面遷移を、スクリプト選択[→キャラクタ選択]→ゲーム開始にしました。</LI>
+	  <LI>config.exeを更新しました。"option"タブが追加されています(ついでにconfig.datとkey.datをconfig.datに統一したので、今までの設定はリセットされます)。</LI>	  
+	  <LI>高速再生の仕様を変えました。PageUpを押せば押すほど高速になります(Ctrlキーと同時押しで、一気に最高速。)。PageDownで等速に戻ります。また、スペースキーは押している間高速再生されます。離せば解除されます。</LI>
+	  <LI>リプレイ中は会話イベントが自動で高速再生になったのをやめにしました。</LI>
+	  <LI>ボムが弱すぎる感じがするので調整しました。</LI>
+	  <LI>mp3、oggの再生終了後に落ちる可能性があったのを修正</LI>
+	  <LI>リプレイデータが長くなると、リプレイ再生が異様に重くなったのを修正</LI>
+	  <LI>スペルカード発動中に、VanishEnemyを呼ぶと落ちたのを修正(Thanks to 司戸菱安氏)</LI>
+	  <LI>SetShotKillTime(X,0)すると遅延時間のエフェクトがでなかったのを修正(Thanks to MAKINA氏)</LI>
+	</UL>
+  	<UL>
+	 <FONT color="#000080">2005/06/25(ver0.11k)</FONT>
+	  <LI>弾の自動削除が起こる境界を設定する関数(SetShotAutoDeleteClip)</LI>
+	  <LI>mp3、ogg音声がアーカイブ内から再生できなかったのを修正</LI>
+	  <LI>フルスクリーン時に等倍のスナップショットが写らなかったのを修正</LI>
+	  <LI>モーションブラー中の弾がスナップショットに写らなかったのを修正(Thanks to HAL900氏)</LI>
+	  <LI>"描画間隔=可変"のときのfpsを1秒間あたりの描画回数ではなく1秒間あたりのメインループ実行回数に変更</LI>	
+	</UL>
+  	<UL>
+	 <FONT color="#000080">2005/06/19(ver0.11j2)</FONT>
+	  <LI>読み込む音声ファイルによっては突然落ちたのを修正</LI>
+	</UL>
+  	<UL>
+	 <FONT color="#000080">2005/06/19(ver0.11j)</FONT>
+	  <LI>Homeキーでsnapshotフォルダにスクリーンショットを保存するようにしました。(画面全体、STGシーンのみ、STGシーンを 1/2 に縮小したものを同時に保存します)</LI>
+	  <LI>演算子の優先順位の変更によるa[0][0]の記述、!a[1]の記述。</LI>
+	  <LI>オブジェクトレーザーはデフォルトでは AutoDelete が無効だったのを有効に変更</LI>
+	  <LI>多重includeにたぶん対応(うまく実装できていないかもしれないです)</LI>
+	  <LI>SetText("")でCutIn,SetText等で表示されたスペルカードの名前が消えるようにしました</LI>
+	  <LI>ObjShot_SetGraphicを指定しないときは画像無し＆自動的に判定無効にするように変更</LI>
+	  <LI>残りコンティニュー可能数を取得する機能(GetAllowedContinueCount)</LI>
+	  <LI>スクリプト途中でもコンティニュー可能回数を変更できる関数(SetAllowedContinueCount)</LI>
+	  <LI>イベント関数にて一定フレームで会話が進む機能(TextOutB)</LI>
+	  <LI>現在ボスが出ているか判定する関数(IsBossExisting)</LI>
+	  <LI>画面上のアイテムを回収する関数(CollectItems)</LI>
+	  <LI>メッセージダイアログを表示してスクリプトを終了させる関数(RaiseError、assert)</LI>
+	  <LI>GetSpellCardBonusScoreの値が間違っていたのを修正(Thanks to MAKINA氏)</LI>
+	  <LI>SetEffectForZeroLife( 0, 0, 0 )するとスペルカードボーナスが得られなかったのを修正(Thanks to MAKINA氏)</LI>
+	  <LI>config.exeが非アクティブでもEnterキー入力に反応して弾幕風が起動してしまったのを修正(Thanks to MAKINA氏)</LI>
+	  <LI>配列にboolean値を入れてOutputDebugStringすると必ずtrueになっていたのを修正(Thanks to MAKINA氏)</LI>
+	  <LI>SetFontColorで指定する色にミスがあったので修正(Thanks to Akechi氏)</LI>
+	  <LI>GetVersionが実装されていなかったのを修正(Thanks to 司戸菱安氏)</LI>
+	  <LI>配列のsliceにバグがあったのを修正(Thanks to 司戸菱安氏)</LI>
+	  <LI>ascent、descentでbreakできなかったのを修正(Thanks to 司戸菱安氏)</LI>
+	</UL> 
+  	<UL>
+	 <FONT color="#000080">2005/06/05(ver0.11i3)</FONT>
+	  <LI>変数を多重定義を通すことにしました。(いままで公開していただいたスクリプトがエラーになるのはつらいです。いずれエラーにできるようになるオプションでもつけます。その時もデフォルトでは多重宣言はエラーにならないようにすると思います。)</LI>
+	</UL> 
+  	<UL>
+	 <FONT color="#000080">2005/06/05(ver0.11i2)</FONT>
+	  <LI>script_enemyの敵が消えると、即落ちする可能性があったのを修正(Thanks to MAKINA氏)</LI>
+	</UL> 
+  	<UL>
+	 <FONT color="#000080">2005/06/05(ver0.11i)</FONT>
+	  <LI>インデックス付きループ(ascent、descent)。ヘルプのループに説明を追加しています。(Thanks to YT氏)</LI>
+	  <LI>起動画面をconfig.exeとして分離。KeyConfig.exeもconfig.exeに統合。</LI>
+	  <LI>エラーのあるスクリプトはキャッシュから削除するように変更</LI>
+	  <LI>リプレイ再生終了後即座にメニューに戻らずに、通常クリアと同様ボタン入力があってから戻るように変更</LI>
+	  <LI>DeleteName()で名前がフェードアウトするように変更</LI>
+	  <LI>親敵へのダメージ比率も設定できる関数(SetDamageRateEx)</LI>
+	  <LI>自機の弾を封じる関数(ForbidShot)</LI>
+	  <LI>現在のFPSを取得する関数(GetFps)</LI>
+	  <LI>現時点のスペルボーナスの予定値を返す機能(GetSpellCardBonusScore)</LI>
+	  <LI>背景が時間停止中か判断する関数(IsBGStopping)</LI>
+	  <LI>変数を多重定義してもエラーになってなかったのを修正</LI>
+	  <LI>スクリプトショットに回転やアニメーションのユーザ定義の弾画像を使えなかったのを修正(Thanks to HAL900氏)</LI>
+	  <LI>スクリプトショットの描画方法の初期化をしていなかったのを修正(Thanks to HAL900氏)</LI>
+	  <LI>会話中に「最初からやり直す」を行うと会話が残ったのを修正(Thanks to ロベール氏)</LI>
+	  <LI>ステージスクリプト中で会話イベントを呼び出すと不具合が起きたのを修正(Thanks to ロベール氏)</LI>
+	  <LI>ラストスペル中に森羅結界は発動できないように修正(Thanks to ロベール氏)</LI>
+	  <LI>森羅結界発動中にアイテムが自動回収されなかったのを修正(Thanks to ロベール氏)</LI>
+	  <LI>配列に、空の配列を代入できなかったのを修正(Thanks to MAKINA氏)</LI>
+	  <LI>DeleteCommonDataが動作しなかったのを修正(Thanks to MAKINA氏)</LI>
+	  <LI>最後のスペルカード時、GotSpellCardBonus()が必ずfalseになっていたのを修正(Thanks to No.6氏)</LI>
+	</UL> 
+  	<UL>
+	 <FONT color="#000080">2005/05/02(ver0.11h2)</FONT>
+	  <LI>リプレイやコンフィグデータの保存ができなくなっていたのを修正</LI>
+	</UL> 
+  	<UL>
+	 <FONT color="#000080">2005/05/02(ver0.11h)</FONT>
+	  <LI>ステージスクリプト中で、一度でもバイトコードになおしたスクリプトは、キャッシュしておくようにした</LI>
+	  <LI>ステージスクリプト中での敵スクリプトファイルの先読みロード機能(CompileEnemyFromFile)</LI>
+	  <LI>ステージスクリプト中でキャッシュしてあるバイトコードを削除する関数(ClearByteCodeCash)</LI>
+	  <LI>スペル失敗確定時に敵の魔方陣を変えるようにした</LI>
+	  <LI>SetEffectForZeroLifeで死ぬまで遅延した時間分はスペル背景を保持するように変更</LI>
+	  <LI>画像や音声のデータ部分のみまとめても外部のスクリプト側から読めるようにした(AddArchiveFile)</LI>
+	  <LI>関数追加(DeleteCommonData、GetArgumentDefault)</LI>
+	  <LI>CreateShotFromScript、CreateEnemyFromScriptの最後の引数に配列を与えられなかったのを修正</LI>
+	  <LI>スクリプトエンジンのメモリリークをたぶん修正(Thanks to MAKINA氏)</LI>
+	  <LI>リプレイより先にスクリプトがあるとFPSの表示がおかしくなったのを修正(Thanks to MAKINA氏)</LI>
+	  <LI>ClearCommonDataが実装されてなかったのを修正(Thanks to END氏)</LI>
+	  <LI>MotionBlurあるいはMotionBlurEXのADDで、タイプをALLにすると、残機と残ボム表示が消えてしまったのを修正(Thanks to END氏)</LI>
+	  <LI>rand_int(a, b)関数で乱数を発生させたとき、bを含まなかったのを修正(Thanks to END氏)</LI>
+	  <LI>弾スクリプトで、ユーザ定義の弾画像が使えなかったのを修正(Thanks to HAL900氏)</LI>
+	  <LI>LoadUserShotDataを連続で呼ぶと不具合がおきたのを修正(Thanks to HAL900氏)</LI>
+	</UL> 
+  	<UL>
+	 <FONT color="#000080">2005/03/20(ver0.11g)</FONT>
+	  <LI>弾の画像を追加できる機能に角速度を指定できるようにした。(回転する星弾などに使えます)</LI>
+	</UL>
+  	<UL>
+	 <FONT color="#000080">2005/03/18(ver0.11f2)</FONT>
+	  <LI>SaveCommonDataがセキュリティ的に危険だったので修正(Thanks to  MAKINA氏)</LI>
+	</UL>
+  	<UL>
+	 <FONT color="#000080">2005/03/18(ver0.11f)</FONT>
+	  <LI>弾の画像を追加できる機能。CreateShot等の引数に与える弾画像を追加できます。アニメーションする弾も可能です。(LoadUserShotData)</LI>
+	  <LI>CommonDataを保存する機能(SaveCommonData、LoadCommonData)</LI>
+	  <LI>ALPHA合成でモーションブラーする機能(MotionBlurEx)</LI>
+	  <LI>SetGraphicScaleが機能していなかったのを修正(Thanks to  MAKINA氏)</LI>
+	</UL>
+  	<UL>
+	 <FONT color="#000080">2005/02/06(ver0.11e2)</FONT>
+	  <LI>ラストスペル展開状態で喰らいボム猶予時間内にボムキーを押すと復活したのを修正(Thanks to  Akechi氏)</LI>
+	  <LI>ラストスペル展開状態で被弾後自機復帰時に残ボム数が初期化されたのを修正(Thanks to  Akechi氏)</LI>
+	  <LI>GetTimeOfSuperNaturalBorderで森羅結界の残り展開時間ではなく、Graze数が返されたのを修正。(Thanks to  Akechi氏)</LI>
+	  <LI>GotSpellCardBonus()が機能していなかったのを修正(Thanks to  Akechi氏)</LI>
+	</UL>
+  	<UL>
+	 <FONT color="#000080">2005/02/01(ver0.11e)</FONT>
+	  <LI>画面外アイテムマーカー</LI>
+	  <LI>ラストスペル(LastSpell)(@InitializeでSetScore()等と共に関数指定するとボム・残機共に無効になり被弾してもミスにならない代わり敵ライフ0)</LI>
+	  <LI>Stageスクリプトでワールド座標に描画するための関数(DrawGraphic3D、SetViewTo、SetViewFrom、SetPerspectiveClip、WriteZBuffer、UseZBuffer、SetFog)</LI>
+	  <LI>@Finalizeにてスペルカードが取れたかどうかを返す機能(GotSpellCardBonus)</LI>
+	  <LI>無敵の残り時間を返す関数(GetTimeOfInvincibility、GetTimeOfPlayerInvincibility)</LI>
+	  <LI>森羅結界の残り時間を返す関数(GetTimeOfSuperNaturalBorder)</LI>
+	  <LI>SetScore前にミス／ボムしても、SetScore後にノーミス・ノーボムでボスを倒すと、カード取得エフェクトが発動した（ボーナスは0点）のを修正(Thanks to  END氏)</LI>
+	  <LI>「最初からやりなおす」をするとノルマが表示されなくなったのを修正(Thanks to  飛車ちゅう氏)</LI>
+	  <LI>Directoryからスクリプトを選んだ場合＃PlayLevelが反映されなかったのを修正(Thanks to  Akechi氏)</LI>
+	</UL>
+  	<UL>
+	 <FONT color="#000080">2004/12/05(ver0.11d)</FONT>
+	  <LI>整数の乱数を返す関数(rand_int)</LI>
+	  <LI>rand(min,max)で、min>maxならrand(max,min)が返るようにした</LI>
+	  <LI>会話イベント中にカットイン画像の手前にボスの名前(と二つ名)を表示できる機能(SetNameFromText、SetNameFromTexture、DeleteName)</LI>
+	  <LI>GetKeyStateでメッセージスキップボタンに関するもの(VK_SKIP)</LI>
+	  <LI>プレイレベルを表示する機能(#PlayLevel[～])</LI>
+	  <LI>SetShotDataA_XYの仕様を変更(減速したり進行方向が途中で逆転できるように)</LI>
+	  <LI>VK_SLOWMOVEが定義されていなかったのを修正(Thanks to ロベール氏)</LI>
+	  <LI>SetNormPoint()で負の値を設定してもノルマ表示が消えなかったのを修正(Thanks to  Akechi氏)</LI>
+	  <LI>森羅結界が回っていなかったのを修正(Thanks to  Akechi氏)</LI>
+	  <LI>ボム禁止時でも喰らいボム猶予時間内にボムキーを押すと復帰できたのを修正(Thanks to  Akechi氏)</LI>
+	  <LI>ORANGE11の弾画像の切り出し位置がおかしいかったのを修正(Thanks to  END氏)</LI>
+	</UL>
+  	<UL>
+	 <FONT color="#000080">2004/10/24(ver0.11c)</FONT>
+	  <LI>可変フレームスキップモード(起動画面の描画間隔に「可変」が追加されています)</LI>
+	  <LI>PlayMusicで存在しないファイルを指定したとき自動的にデフォルトBGMを読みに行くようにした</LI>
+	  <LI>ボム無効機能(ForbidBomb)</LI>
+	  <LI>関数追加(AddPoint、AddBomb、GetCommonDataDefault、SetShotDataA_XY)</LI>
+	  <LI>Point表示の右側に000/XXXみたいにノルマ値を表示する機能(SetNormPoint)</LI>
+	  <LI>イベント中に無敵を切るとイベント中なのにショット・ボムが撃ててしまったのを修正(Thanks to Makina氏)</LI>
+	</UL>
+  	<UL>
+	 <FONT color="#000080">2004/09/20(ver0.11b)</FONT>
+	  <LI>キーの状態を取得できるようにした(GetKeyState)</LI>
+	  <LI>アイテムの表示優先度を下げた</LI>
+	  <LI>Y座標が自機に重なっても敵マーカーが消えないようにした</LI>
+	  <LI>SetShotDirectionTypeを使用しても、設置型レーザー(CreateLaserA、CreateLaserB)に効果が現れなかったのを修正(Thanks to Age氏)</LI>
+	  <LI>CreateEnemyFromScriptで弾スクリプトを呼べてしまったのを修正(Thanks to Makina氏)</LI>
+      <LI>SetPlayerX、SetPlayerYがステージスクリプトでは使えなかったのを修正(Thanks to Makina氏)</LI>
+	</UL>
+  	<UL>
+	 <FONT color="#000080">2004/08/30(ver0.11a)</FONT>
+	  <LI>弾をオブジェクト操作用関数で制御できるようにした(これでより柔軟に弾幕を作製できます。サンプルを参照してみてください。)</LI>
+	  <LI>当り判定関数(Collision_Line_Circle、Collision_Obj_Obj)</LI>
+	  <LI>デバッグ用キーを使用したか取得する関数(UsedDebugKey)</LI>
+	  <LI>敵マーカーを設定する関数(SetEnemyMarker)</LI>
+	  <LI>SetCommonDataが配列を保存できなかったのを修正</LI>
+	  <LI>GetCommonDataを使った時要素が無かったら落ちたのを修正</LI>
+	  <LI>SetEffectForZeroLifeでスローがかかってる間だとポーズが解除できなくなるのを修正(Thanks to Makina氏)</LI>
+	  <LI>弾スクリプト内でDeleteEnemyShotToItemを使うと落ちたのを修正(Thanks to Makina氏)</LI> 
+	  <LI>ORANGE02の弾が変だったのを修正(Thanks to 京都人氏)</LI> 
+	</UL>
+  	<UL>
+	 <FONT color="#000080">2004/08/22(ver0.10v2)</FONT>
+	  <LI>SetScoreが2つ以上あると落ちていたのを修正</LI>
+	  <LI>イベントスクリプトでWaitと使うと停止から復帰しなかったのを修正(Thanks to Akechi氏)</LI>
+	  <LI>Quitにカーソルを合わせてzキーを押しても終了しなかったのを修正(Thanks to Akechi氏)</LI>
+	  <LI>AddLifeにバグがあったのを修正(Thanks to Akechi氏)</LI>
+	  <LI>敵スペルカード展開中・森羅結界展開中に被弾してもスペルカードボーナスが0にならなかったのを修正(Thanks to Akechi氏)</LI> 
+	</UL> 
+  	<UL>
+	 <FONT color="#000080">2004/08/21(ver0.10v)</FONT>
+	  <LI>ランダム再生実装</LI>
+	  <LI>無敵時間中に自機の回りに円を表示するようにした</LI>
+	  <LI>弾にORANGE追加</LI>
+	  <LI>画面効果専用ステージオブジェクト(@DrawBottomObject、@DrawTopObject)</LI>
+	  <LI>プレイヤーが低速攻撃中か否かを取得する関数(GetPlayerMoveState)</LI>
+	  <LI>敵スクリプトの@Finalizeにて自殺か他殺かを取得する関数(BeVanished)</LI>
+	  <LI>前回のフレーム中にショットを何発食らったか取得する関数(GetHitCount)</LI>
+	  <LI>x、y方向のベクトルで弾を作製する関数(CreateShot11、CreateShot12)</LI>
+	  <LI>指定円内の敵弾をアイテムに変える関数(DeleteEnemyShotToItemInCircle)</LI>
+	  <LI>森羅結界発動関数(SuperNaturalBorder)</LI>
+ 	  <LI>↑上記実装時に内部を整理したので、これまでのリプレイは再生不可にしました</LI>
+	  <LI>イベントスクリプトのWaitが機能していなかったのを修正(Thanks to Makina氏)</LI>
+	  <LI>GetPlayerTypeが弾スクリプトで使えなかったのを修正(Thanks to Makina氏)</LI>
+	  <LI>mainでないscriptはBackSpace等でリロードしても更新されなかったのを修正(Thanks to SysK氏)</LI>
+	  <LI>長さ35以下のレーザーは当たり判定が無かったのを修正(Thanks to SysK氏)</LI> 
+	</UL> 
+  	<UL>
+	 <FONT color="#000080">2004/08/02(ver0.10u2)</FONT>
+	  <LI>弾スクリプト内でDrawGraphicDefault()を使っても描画されないことがあったのを修正(Thanks to END氏)</LI>
+	</UL> 
+  	<UL>
+	 <FONT color="#000080">2004/08/01(ver0.10u)</FONT>
+	  <LI>@Finalize中でも弾スクリプトを使用可能にした</LI>
+	  <LI>積分関数(integral)</LI>
+	  <LI>ボスが画面外にいてもマーカーが表示されたのを修正(Thanks to Akechi氏)</LI>
+	  <LI>会話イベントでSelectを使うと表示が変になるのを修正(Thanks to Akechi氏)</LI>
+	</UL> 
+  	<UL>
+	 <FONT color="#000080">2004/07/26(ver0.10t)</FONT>
+	  <LI>会話イベントの途中でステージをクリアできる関数をイベント関数に追加(StageClear)</LI>
+	  <LI>ボスの死亡～消滅間の時間、スロー、モーションブラーの設定をする関数(SetEffectForZeroLife、このせいで単発再生以外のこれまでのリプレイがずれそうです)</LI>
+	  <LI>弾スクリプトにおいて遅延時間を取得する関数(GetDelayTime)</LI>
+	  <LI>未実装の魔理沙ボム効果音も置き換えられるようにした。</LI>
+	  <LI>スクリプトのインデックスファイルをつくるようにした(スクリプト選択画面に行く毎に更新するのでほとんど速度的な意味が無いです。起動時のみに更新とかにすればもっと速いんですが…)</LI>
+	  <LI>配列を要素数を得る関数(length)をヘルプに書き忘れていたので修正(Thanks to MAKINA氏)</LI>
+	  <LI>霊夢(霊)のホーミング弾が画面外の敵を追い続けるのを修正(Thanks to MAKINA氏)</LI>
+	</UL> 
+  	<UL>
+	 <FONT color="#000080">2004/07/12(ver0.10s3)</FONT>
+	  <LI>ボス以外の敵がスクリプト弾を使うと不具合(リプレイがずれたり、落ちたり)が起きる可能性があったのを修正(これでリプレイバグは全部消えたかな…)</LI>
+	</UL> 
+  	<UL>
+	 <FONT color="#000080">2004/06/26(ver0.10s2)</FONT>
+	  <LI>アーカイブ内にあるファイルから#include_script、#include_functionできなかったのを修正</LI>
+	  <LI>スクリプト弾内にエラーがあったら即落ちたのを修正</LI>
+	  <LI>同名のスクリプトを登録してないのにエラーがでる可能性があったのを修正</LI>
+	  <LI>SetTimer(～);で制限時間をセットしていないと(BackSpaceなどで)リトライした時スペカボーナスが変になるのを修正(Thanks to Akechi氏)</LI>
+	  <LI>SetLife(0);とするとライフゲージがおかしなことになるのを修正(Thanks to Akechi氏)</LI>
+	  <LI>スクリプト弾内でCreateLaserCを呼んだら即落ちたのを修正(Thanks to ＺＭＩ氏)</LI>
+	</UL> 
+  	<UL>
+	 <FONT color="#000080">2004/06/13(ver0.10s)</FONT>
+	  <LI>Microsoft Visual C++ Toolkit 2003でビルドするようにしました。最適化がかかるので速度が改善されています。(自宅はVC++6.0 Standardのみなので最適化してなかったのです…)</LI>
+	  <LI>関数追加(DrawText,SetFontColor,ToString)</LI>
+	  <LI>簡易的なファイル取り込みを実装(単なる置換で制限が強いです：#include_script、#include_function)</LI>
+	  <LI>@Initialize内でMagicCircle(false)を呼んでもマーカーが消えなかったのを修正(Thanks to END氏)</LI>
+	</UL> 
+  	<UL>
+	 <FONT color="#000080">2004/06/05(ver0.10r)</FONT>
+	  <LI>スクリプトの選択にDirectoryを追加。(元のフォルダ構造のまま選択できます)</LI>
+	  <LI>敵ボスのマーカーを実装</LI>
+	  <LI>fpsを小数点以下まで表示するように変更</LI>
+	  <LI>コンフィグにトリプルバッファの抑制を追加(今までのコンフィグデータは消えます)</LI>
+	  <LI>弾スクリプトを用いている状態でゲームオーバーになったら、アプリケーションが落ちる可能性があったのを修正</LI>
+	  <LI>自機カットイン時に魔方陣が動いていたのを修正</LI>
+	  <LI>一部メモリリークしていたのを修正</LI>
+	  <LI>メニューでの「Esc」キーの挙動が変だったのを修正(Thanks to KU氏)</LI>
+	  <LI>ヘルプにFAQを追加</LI>
+	</UL> 
+  	<UL>
+	 <FONT color="#000080">2004/05/25(ver0.10q3)</FONT>
+	  <LI>SetScoreより先にSetTimerが実行されると、魔方陣が縮小されていかないのを修正</LI>
+	  <LI>敵スクリプト内で弾スクリプトを呼び、BackSpaceでリトライすると落ちるのを修正(Thanks to さく氏)</LI>
+	</UL> 
+  	<UL>
+	 <FONT color="#000080">2004/05/24(ver0.10q2)</FONT>
+	  <LI>弾スクリプトのFinalizeが実行されていなかったのを修正(Thanks to さく氏)</LI>
+	  <LI>MagicCircle(false)をSetScoreより前に実行すると落ちていたのを修正(Thanks to さく氏)</LI>
+	</UL> 
+  	<UL>
+	 <FONT color="#000080">2004/05/23(ver0.10q)</FONT>
+	  <LI>弾の画像を修正(xxx_01,xxx_02)</LI>
+	  <LI>魔法陣を変更</LI>
+	  <LI>Defaultの背景を変更(多少重い？ スペルカード使用時のDefault背景も追加)</LI>
+ 	  <LI>関数追加(Continued,AddGraze)</LI>
+	  <LI>DeleteEnemyShotを用いた後、消滅中のレーザーにあたり判定が残っていたのを修正(Thanks to Akechi氏)</LI>
+	</UL> 
+  	<UL>
+	 <FONT color="#000080">2004/04/19(ver0.10p)</FONT>
+ 	  <LI>BackGroundをUserのみ（背景無し）で強制終了されていたのを修正(v0.10p2) (Thanks to さく氏)</LI>
+	  <LI>BackGround[User(Img X Y)]で長時間プレイすると背景が変になるのをたぶん修正(Thanks to Akechi氏)</LI>
+	  <LI>Continueした場合、Pointは0にならないのを修正(Thanks to Akechi氏)</LI>
+	  <LI>ExpertExが霊符にだけ適用されなかったのを修正(Thanks to Akechi氏)</LI>
+	  <LI>アイテム回収時の得点が変だったのを修正(Thanks to 切☆氏)</LI>
+	  <LI>OnDelayの動作が変だったのを修正(Thanks to 切☆氏)</LI>
+	</UL> 
+	<UL>
+	 <FONT color="#000080">2004/04/12(ver0.10o)</FONT>
+	  <LI>関数追加(VanishEnemy)</LI>
+	  <LI>ステージスクリプト再生時、複数の敵が出現している状態でリトライ等を行うと落ちたのを修正(Thanks to SysK氏)</LI>
+	  <LI>ノンディレクショナルレーザー発射時に関係無い座標にレーザーが見えたのを修正(Thanks to Akechi氏)</LI>
+	  <LI>画面外にでた弾の消滅のタイミングが変だったのを修正(Thanks to Akechi氏)</LI>
+	</UL> 
+  	<UL>
+	 <FONT color="#000080">2004/04/04(ver0.10n)</FONT>
+	  <LI>関数追加(Concentration02：氷の結晶?を集めるようなエフェクト)</LI>
+	  <LI>サウンドカードによってはタイトルに戻る等の時に、固まる可能性があったのを修正(スクリプト終了時に固まったことがある環境に有効)</LI>
+	  <LI>リトライした後にリプレイを取り、そのリプレイを見るとリトライする前の最終Grazeや最終Scoreが加算されていたのを修正(Thanks to Akechi氏)</LI>
+	</UL> 
+  	<UL>
+	 <FONT color="#000080">2004/03/28(ver0.10m)</FONT>
+	  <LI>「画面周りを毎回描画」にチェックが入っていても無視されていたのを修正(v0.10m4)</LI>
+	  <LI>コメントアウト直後に「}」があるとエラーになっていたのを修正(v0.10m4 Thanks to KU氏)</LI>
+	  <LI>GetPlayerLife、GetPlayerBomb、GetGraze、GetPointが動作しなかったのを修正(v0.10m3 Thanks to Akechi氏)</LI>
+	  <LI>SetShotColorにバグがあったのを修正(v0.10m2)</LI>	 
+	  <LI>関数追加(SetShotColor、GetPlayerLife、GetPlayerBomb、GetGraze、GetPoint)</LI>
+	  <LI>アーカイブから読みこんだデータでメモリリークしていたのを修正</LI>
+	  <LI>レーザーやマジックナパーム等で、敵のあたり判定が複数登録されているとあたり判定の数だけダメージが倍増するのを修正(Thanks to 切☆氏)</LI>
+	  <LI>#BackGroundの不具合修正(Thanks to Akechi氏)</LI>
+	  <LI>リトライ時にAddScoreを使うと得点が加算されるのを修正(Thanks to Akechi氏)</LI>
+	  <LI>SetMovePositionRandom01が変だったのを修正(Thanks to Akechi氏)</LI>
+	</UL> 
+ 	<UL>
+	 <FONT color="#000080">2004/03/21(ver0.10l)</FONT>
+	  <LI>一部VRAMを解放しないバグを修正(v0.10dからあったバグのようです。特定の環境ではこのせいでものすごく重かったはず…)</LI>
+	  <LI>敵弾を得点アイテムに変える関数(DeleteEnemyShotToItem)</LI>
+	  <LI>霊夢(夢)修正</LI>
+	  <LI>コンティニュー/終了の選択画面で数字の周りだけ明るかったのを修正(Thanks to とくしん氏)</LI>
+	  <LI>ボム発動中にリトライすると不具合が起きていたのを修正(Thanks to Akechi氏)</LI>
+	</UL> 
+ 	<UL>
+	 <FONT color="#000080">2004/03/14(ver0.10k)</FONT>
+	  <LI>アイテム設置関数(CreateItem)</LI>
+	  <LI>ゲーム中のボム使用回数取得関数(GetBombCount)</LI>
+	  <LI>スペルカード残り時間取得関数(GetTimer)</LI>
+ 	  <LI>得点を増加させる関数(AddScore)</LI>
+	  <LI>敵のライフを増減させる関数(AddLife)</LI>
+	  <LI>バージョン情報を取得する関数(GetVersion)</LI>
+	  <LI>一部の効果音を実装しました(効果音を置き換えたい方は、ヘルプの「音声について」をどうぞ。)</LI>
+	  <LI>描画処理改善(環境によっては多少軽くなるかも)</LI>
+	  <LI>霊夢(霊)修正</LI>
+	  <LI>レーザー遅延時間中の描画が変だったのを修正</LI>
+ 	  <LI>ScriptVersion[1]でCreateLaserBを使ったら落ちていたのを修正</LI>
+	  <LI>「特殊文字が変です」のエラー時にエラー行が変だったのを修正(Thanks to 水野とうき氏)</LI>
+  	  <LI>リプレイ名入力画面で8文字入力したら落ちていたのを修正(Thanks to とくしん氏)</LI>
+	  <LI>魔理沙(恋)のレーザーの当たり判定が裏まであったのを修正(Thanks to とくしん氏)</LI>
+	  <LI>SetDamageRateのボム値がショット値に連動していたのを修正(Thanks to Akechi氏)</LI>
+	</UL> 
+ 	<UL>
+	 <FONT color="#000080">2004/03/07(ver0.10j)</FONT>
+	  <LI>魔理沙(恋)</LI>
+	  <LI>曲げられるレーザー実装(CreateLaserC、SetLaserDataC)</LI>
+	  <LI>弾スクリプト内で曲げられるレーザー実装(SetLaser、SetCollosionLaser、DrawLaser)</LI>
+	  <LI>デバッグキー、コンティニュー回数、残機の設定をする関数(ExpertEx)</LI>
+	  <LI>移動速度変更(指摘されていたので…)</LI>
+	  <LI>GetPlayerTypeの返り値を特定の定数に(REIMU_A、REIMU_B、MARISA_A、MARISA_B)</LI>
+	  <LI>ヘルプに配列の解説</LI>
+	  <LI>短くなったくらいボム待ち時間が戻らないのを修正</LI>
+	  <LI>enemy_script内でCreateLaserBを使うと不正終了するのを修正(Thanks to SysK氏)</LI>
+	</UL>
+	<UL>
+	 <FONT color="#000080">2004/02/29(ver0.10i)</FONT>
+	  <LI>魔理沙(魔)</LI>
+	  <LI>会話イベント選択肢関数(Select)</LI>
+	  <LI>スペルカード中のミス回数取得関数関数(GetMissCountInThisSpell、GetBombCountInThisSpell)</LI>
+ 	  <LI>会話イベント中にエラーがあると即落ちていたのを修正</LI>
+	  <LI>弾スクリプト自前描画時に弾スクリプトが消えると画像が変に見えたのを修正</LI>
+	  <LI>弾Explosion01を沢山呼び出すと止まるバグを修正(Thanks to 旭風氏)</LI>
+	</UL>
+	<UL>
+	 <FONT color="#000080">2004/02/22(ver0.10h)</FONT>
+	  <LI>ステージを作製可能にした(<A href="reference_v2.html#Stage">解説</A>)</LI>
+   	  <LI>条件分岐構文追加(alternative C言語のswitchのようなもの)</LI>
+ 	  <LI>スクリプト間で共通の値を保存する関数(SetCommonData、GetCommonData)</LI>
+	  <LI>自機を無敵にする関数(SetPlayerInvincibility)</LI>
+	  <LI>残機を増やす関数(ExtendPlayer)</LI>
+	  <LI>絶対値を返す関数(absolute)</LI>
+	  <LI>DeleteEnemyShotに引き数(CHILD)を追加</LI>
+   	  <LI>リプレイ保存時にEscでポーズをかけるとずれていたのを修正</LI>
+	  <LI>「@BackGround」使用時にリトライすると背景が変になるバグ修正</LI>
+	  <LI>弾スクリプトで画像が壊れて描画されることがあるのを修正</LI>
+	  <LI>CutIn(KOUMA)関数にアーカイブにある画像を指定すると読みこめなかったのを修正</LI>
+ 	  <LI>CreateScriptEnemyで作製した敵のGetCurrentScriptDirectoryが動作していなかったのを修正</LI>
+	  <LI>OutputDebugStringの引数にboolean変数を入れると常にtrueなるのを修正(Thanks to おとたけ氏)</LI>
+	  <LI>xxx05系の弾で遅延時間中の設定し忘れを修正(Thanks to 切☆氏)</LI>
+	</UL>
+	<BR>
+	<UL>
+  	 <FONT color="#000080">2004/02/16(ver0.10g)</FONT>
+   	 <LI>#BGM[...]でBGMの指定を可能に</LI>
+	 <LI>「@BackGround」でスペルカード時の背景を描画できるように</LI>
+     <LI>コメントアウトのバグ修正(Thanks to SysK氏)</LI>
+     <LI>SetMovePosition01の挙動が変だったのを修正(Thanks to SysK氏)</LI>
+     <LI>弾スクリプト内でSetCollisionBが動作しなかったのを修正(Thanks to おとたけ氏)</LI>
+	</UL>
+	<BR>
+	<UL>
+   	 <FONT color="#000080">2004/02/13(ver0.10f)</FONT>
+ 	 <LI>再生毎に乱数種を変更し、リプレイファイルに保存する形式に変更(何度も申し訳ない。)</LI>
+	 <LI>リトライ毎にメモリリークしていたのを修正</LI>
+	 <LI>特定の弾が使えなかったのを修正(Thanks to おとたけ氏)</LI>
+	</UL>
+	<BR>
+	<UL>
+  	 <FONT color="#000080">2004/02/11(ver0.10e)</FONT>
+ 	 <LI>専用の圧縮アーカイブされたファイルを実行可能に</LI>
+	 <LI>乱数の生成をMT法にした</LI>
+	 <LI>(より高性能な乱数が得られます。</LI>
+	 <LI>ただし、これまで乱数を使っていたスクリプトのリプレイは、ずれるので再生不可にしました。)</LI>
+	 <LI>敵スペルカード使用時の魔法陣出現関数(MagicCircle)</LI>
+	 <LI>アーカイブされたスクリプトのリプレイが再生できなかったのを修正</LI>
+	 <LI>連続再生時に弾スクリプトを使っていると落ちるバグ修正(Thanks to SysK氏)</LI>
+	 <LI>特定の弾(WHITE21,WHITE32)が使えなかったのを修正(Thanks to SysK氏)</LI>
+	 <LI>GetLifeの値が100倍されていたのを修正(Thanks to SysK氏)</LI>
+	</UL>
+	<BR>
+	<UL>
+  	 <FONT color="#000080">2004/02/08(ver0.10d)</FONT>
+ 	 <LI>スクリプトの検索を「script」フォルダ内全てにしました。</LI>
+	 <LI>(「script」フォルダ内のフォルダも検索対象になります)</LI>
+ 	 <LI>専用の簡易アーカイブされたファイルを実行可能に。</LI>
+ 	 <LI>コンティニュー、デバッグキーの使用を不可にする関数(Expert)</LI>
+ 	 <LI>デバッグ情報出力用関数(CreateDebugWindow、OutputDebugString)</LI>
+ 	 <LI>配列のスライシングが可能に</LI>
+ 	 <LI>メニューの遷移等を改善</LI>
+	 <LI>弾スクリプトを高速化</LI>
+	 <LI>配列の要素に代入したら落ちていたのを修正</LI>
+	 <LI>弾スクリプトが画面外に出たら自動消滅していたのを修正</LI>
+	 <LI>(Thanks to 水野とうき氏)</LI>
+	 <LI>マイクロスレッドにバグがあったのを修正(Thanks to KU氏)</LI>
+	</UL>
+	<BR>
+	<UL>
+	 <FONT color="#000080">2004/01/28(ver0.10c)</FONT>
+	 <LI>少しでも構文にエラーがあったら即落ちていたのを修正(Thanks to KU氏)</LI>
+	 <LI>SetX()、SetY()が動作しなかったのを修正(Thanks to 切☆氏)</LI>
+	 <LI>GetPlayerY()が動作しなかったのを修正</LI>
+ 	 <LI>ScriptVersion[1]の弾スクリプトでCreateLaser01を呼べなかったのを修正</LI>
+	</UL>
+	<BR>
+	<UL>
+  	 <FONT color="#000080">2004/01/27(ver0.10b)</FONT>
+	 <LI>WindowModeを変更したら特定の場面で画面が伸びていたのを修正(Thanks to RD氏)</LI>
+	 <LI>ユーザー関数の仮引数に「let」をかいたらエラーだったのを修正(Thanks to KU氏)</LI>
+	 <LI>型の違う返り値のユーザー関数をかくとエラーになったのを修正</LI>
+	 <LI>taskのreturnが無視されていたのを修正</LI>
+	</UL>
+    <BR>
+	<UL>
+  	 <FONT color="#000080">2004/01/26(ver0.10a)</FONT></LI>
+	 <LI>スクリプトエンジン変更(<A href="reference_v2.html#Changed">概要</A>)</LI>
+     <LI>(<A href="http://hp.vector.co.jp/authors/VA028375/" target="_blank">YT氏</A>にスクリプトエンジンを提供していただきました。)</LI>
+	</UL>
+    <BR>
+	<UL>
+  	 <FONT color="#000080">2004/01/21(ver0.01f)</FONT>
+	 <LI>音源選択のバグ修正(Thanks to 水野とうき氏)</LI>
+	 <LI>レンダリングターゲットに正方形を使えない環境で、</LI>
+	 <LI>敵を倒した瞬間等に落ちていたのを修正(Thanks to リンクス氏)</LI>
+	 <LI>「次回から起動ウインドウを表示しない」にチェックを入れなくても、次回起動時に起動ウインドウが表示されなくなる可能性のあるバグを修正(Thanks to リンクス氏)</LI>
+	</UL>
+    <BR>
+	<UL>
+	 <FONT color="#000080">2004/01/19(ver0.01e)</FONT>
+	 <LI>リプレイ保存のバグを修正(できたはず…)</LI>
+	 <LI>(これまでのバージョンのリプレイファイルはバグがあるので再生不可にしました)</LI>
+	</UL>
+    <BR>
+	<UL>
+  	 <FONT color="#000080">2004/01/18(ver0.01d)</FONT>
+	 <LI>音源を選択可能にした(起動ウィンドウで選択可)</LI>
+	 <LI>起動ウィンドウに「次回から起動ウィンドウを表示しない」を追加(config.datを削除すれば再び表示されるようになります)</LI>
+	 <LI>弾画像追加(WHITE、結晶弾(xxx23))</LI>
+	 <LI>数値演算関数追加(tan、acos、asin、atan、log、log10)</LI>
+	 <LI>プレイヤーがミスした回数を取得する関数(GetMissCount)</LI>
+	 <LI>レーザーは遅延時間中でも弾をだせるように変更</LI>
+	 <LI>遅延時間内に弾が動いていたのを修正(Thanks to KU氏)</LI>
+     <LI>atan2()の戻り値がラジアンだったのを修正(仕様と思っていた方申し訳ない)(Thanks to KU氏)</LI>
+	</UL>
+    <BR>
+	<UL>
+  	 <FONT color="#000080">2004/01/12(ver0.01c)</FONT>
+	 <LI><A href="reference_v2.html#ScriptEvent">会話イベント</A>を実装</LI>
+	 <LI>カットイン関数(CutIn)</LI>
+	 <LI>射出型レーザー関数(CreateLaser01)</LI>
+	 <LI>霊夢(霊)の直進弾に当たり判定がなかったのを修正</LI>
+	</UL>
+    <BR>
+	<UL>
+  	 <FONT color="#000080">2004/01/09(ver0.01b)</FONT>
+	 <LI>霊夢(霊)の弾変更</LI>
+	 <LI>ESCキーに当たるボタンを、パッドに設定可能にした</LI>
+  	 <LI>自機の斜め移動に補正をかけた(今までのリプレイは確実にずれるので再生不可にしました)</LI>
+  	 <LI>弾画像追加(XXX05)</LI>
+  	 <LI>引数の無い返り値のある関数が変だったのを修正(Thanks to フレア氏)</LI>
+	 <LI>連続再生でSetShotDirectionTypeの影響が継続していたのを修正(Thanks to フレア氏)</LI>
+	 <LI>弾スクリプトでEndを行うとSetText、エフェクト等が解除されていたのを修正(Thanks to SysK氏)</LI>
+	 <LI>ホーミング弾(霊夢(霊))のバグ修正(Thanks to 水野とうき氏)</LI>
+	</UL>
+    <BR>
+	<UL>
+  	 <FONT color="#000080">2004/01/05(ver0.01a)</FONT>
+  	 <LI>ある程度の機能がそろったので試作版→β版に</LI>
+ 	 <LI>敵の複数体出現をサポート(CreateEnemyFromScript)</LI>
+	 <LI>弾画像追加(XXX22,XXX31,XXX32)</LI>
+ 	 <LI>自機のタイプを判別する関数(GetPlayerType)</LI>
+	 <LI>デバッグ用キーをヘルプに記述</LI>		
+	 <LI>組み込み関数の呼び出しを多少高速化</LI>	
+	 <LI>条件式のバグを修正(Thanks to 水野とうき氏)</LI>
+	</UL>
+    <BR>
+	<UL>
+  	 <FONT color="#000080">2004/01/03(ver0.00l)</FONT>
+	 <LI>自機の座標を制御する関数(SetPlayerX,SetPlayerY)</LI>
+	 <LI>時間を止める関数(TimeStop)</LI>
+	 <LI>耐久弾幕を宣言する関数(SetDurableSpellCard)</LI>
+ 	 <LI>得点の内わけをヘルプに記述</LI>
+	 <LI>@Initialize内でCreateLaserBを呼ぶと不具合が起きていたのを修正(Thanks to SysK氏)</LI>
+	</UL>
+    <BR>
+	<UL>
+  	 <FONT color="#000080">2004/01/01(ver0.00k)</FONT>
+	 <LI>背景を変更可能に(リファレンスの必須部分に解説)</LI>
+ 	 <LI>タイトルの「Quit」が無視されていたのを修正(Thanks to 水野とうき氏)</LI>
+	 <LI>拡張子midiのファイルが鳴らなかったのを修正(Thanks to D-F氏)</LI>
+     <LI>(間違って拡張子wavのmidiしか鳴らないようになっていました)</LI>
+	</UL>	
+	<BR>
+	<UL>
+  	 <FONT color="#000080">2003/12/30(ver0.00j)</FONT>
+	 <LI>スクリプトの連続再生サポート(<A href="reference_v2.html#Plural">解説</A>)</LI>
+ 	 <LI>コード中に全角文字が含まれていたらエラーをだすように修正</LI>
+	 <LI>SetScoreの効果が追加されました(SetScoreで得点を設定するとスペルカードボーナス対象になります)</LI>
+	 <LI>SetLaserDataAで移動角度を設定できなかったバグを修正</LI>			
+	 <LI>弾スクリプトで敵ライフを取得する関数(GetEnemyLife)</LI>
+	</UL>	
+	<BR>
+	<UL>
+  	 <FONT color="#000080">2003/12/27(ver0.00i)</FONT>
+ 	 <LI>変数の操作を高速化(このおかげでバグ増加の気配)</LI>	
+ 	 <LI>スクリプトで動作する弾を作製可能にした(非常に重い…)</LI>
+     <LI>弾スクリプト機能追加に伴い、</LI>
+	 <LI>リファレンス内の関数配置が変わっています。</LI></LI>
+     <LI>敵の自弾に対する抵抗値を指定する関数(SetDamageRate)</LI>
+     <LI>ボムが発動中かどうかを取得する関数(OnBomb)</LI>
+     <LI>敵弾を削除する関数(DeleteEnemyShot)</LI>
+	 <LI>数値解析部分のバグ修正(+(x)でエラー誤検出でした)</LI>
+ 	 <LI>エラー時の行数表示間違い修正(またずれていた…)</LI>
+	</UL>
+	<BR>
+ 	<UL>
+  	 <FONT color="#000080">2003/12/21(ver0.00h)</FONT>
+ 	 <LI>弾画像追加、一部変更(XXX12、XXX21)</LI>
+	 <LI>敵の当たり判定(体当たり用)登録関数(SetCollisionB)</LI>
+	 <LI>弾を発射した順序で描画するように変更</LI>
+	 <LI>(弾の管理法が変わったのでバグがありそう)</LI>
+	 <LI>スクリプト初期化時に失敗する可能性のあるバグ修正(Thanks to SysK氏)</LI>
+	 <LI>SetMovePositionRandom01が動作しなかった(同梱のExRumiaが止まってた…)のを修正(Thanks to SysK氏)</LI>
+	</UL>
+	<BR>
+	<UL>
+  	 <FONT color="#000080">2003/12/20(ver0.00g)</FONT>
+	 <LI>関数実装(引数付きのサブルーチン)</LI>
+ 	 <LI>スクリプトエラー検出強化(←これで多少つくりやすくなるはず…)</LI>
+ 	 <LI>弾画像一部追加差し替え(XXX04、XXX11)</LI>
+	 <LI>SetAlphaが無視されて半透明描画ができなかったのを修正</LI>
+	 <LI>数値解析部分のバグ修正(Thanks to SysK氏)</LI>
+  	 <LI>変数名等に「_」を使えなかったのを修正</LI>
+	 <LI>曲線軌道移動関数追加(SetMovePositionHermite)</LI>
+ 	 <LI>効果音再生関数追加(LoadSE、PlaySE、DeleteSE)</LI>
+	</UL>
+	<BR>
+	<UL>
+  	 <FONT color="#000080">2003/12/17(ver0.00f)</FONT>
+	 <LI>小数点以下をカットする関数を追加(int)</LI>
+	 <LI>擬似モーションブラー関数追加(MotionBlur01)</LI>
+	 <LI>全てのオブジェクトの動きをスローにする関数追加(Slow)</LI>
+	 <LI>音声系関数追加(PlayMusic、DeleteMusic)</LI>
+	 <LI>多少速度改善(たぶん10%程度…)</LI>
+	 <LI>自機にあたった敵弾は消えなくなりました</LI>
+	 <LI>コメントアウトに微妙なバグがあったので修正。</LI>
+	</UL>		
+	<BR>
+	<UL>
+  	 <FONT color="#000080">2003/12/14(ver0.00e)</FONT>
+	 <LI>リプレイを保存可能にした</LI>	
+	 <LI>敵の残りライフを取得する関数を追加(GetLife)</LI>
+	 <LI>敵のスペル名等を表示するための関数追加(SetText)</LI>		
+	 <LI>サブルーチン実装</LI>
+	</UL>
+	<BR>
+	<UL>
+ 	 <FONT color="#000080">2003/12/11(ver0.00d)</FONT>
+	 <LI>敵を倒した瞬間落ちる可能性のあるバグ修正(Thanks to 切☆氏)</LI>
+	 <LI>CreateShot02が変だったのを修正</LI>	
+	 <LI>サンプル(4：分裂する弾)</LI>
+	</UL>
+	<BR>
+	<UL>
+     <FONT color="#000080">2003/12/07(ver0.00c)</FONT>
+	 <LI>スクリプトエラー部分の行数表示(一部)</LI>
+	 <LI>サンプル(1～3)</LI>
+	</UL>
+	<BR>
+	<UL>
+     <FONT color="#000080">2003/11/30(ver0.00b)</FONT>
+	 <LI>バグを多量になおした…。</LI>
+     <LI>ヘルプ公開。</LI>
+	</UL>
+	<BR>
+	<UL>
+	 <FONT color="#000080">2003/11/24(ver0.00a)</FONT>
+     <LI>試作版公開</LI>
+	</UL>
+ </P>
+
+
+ </BODY>
+</HTML>

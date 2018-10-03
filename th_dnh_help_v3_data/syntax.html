@@ -1,0 +1,595 @@
+<HTML>
+ <HEAD>
+  <TITLE>スクリプト構文</TITLE>
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/html;charset=Shift_JIS">
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/css">
+  <LINK rel="stylesheet" href="style.css" type="text/css">
+ </HEAD>
+
+ <STYLE TYPE="text/css">
+  TABLE.tag {width:90%; vertical-align:top;background-color:RGB(255,255,255);border: 1px solid #cccccc;}
+  TR.tag {}
+  TD.tag_elementT {width:120px; background-color:#ffccff}
+  TD.tag_valueT {width:120px; background-color:#ccccff}
+  TD.tag_textT {background-color:#ccccff}
+  TD.tag_element {vertical-align:top; width:120px; border: 1px solid #ffccff;}
+  TD.tag_value {vertical-align:top; width:120px; border: 1px solid #ccccff;}
+  TD.tag_text {vertical-align:top; border: 1px solid #ccccff;}
+ </STYLE>
+
+ <BODY link="#0000ff" alink="#0000ff" vlink="#0000ff">
+ <DIV class="allbody">
+ <SPAN class = "section_title">■スクリプト構文■</SPAN>
+ <BR><BR>
+
+ <SPAN class = "section_sub"><A name="Statement">■ステートメント</A></SPAN><BR>
+ <P>ステートメントとは命令のひと塊のことです。<BR>
+    制御文以外のステートメントの区切りには「;」(セミコロン)が必要です。
+    「;」は区切りですので、最後の文には不要ですが、書くことを推奨します。<BR>
+ <DIV Class="source"><PRE class="source">
+	<SPAN Class="source_reserve">let</SPAN> r = <SPAN Class="source_number">0</SPAN>;
+	
+	<SPAN Class="source_reserve">let</SPAN> px = GetPlayerX();
+	
+	<SPAN Class="source_comment">//↑のようにステートメントの最後には</SPAN>
+	<SPAN Class="source_comment">//「;」が必須です。</SPAN>
+ </PRE></DIV>
+ </P>
+ <BR><HR>
+
+ <SPAN class = "section_sub"><A name="ReservedWord">■予約語</A></SPAN><BR>
+ <P>予約語に指定されている単語は、変数名やサブルーチン名に使えません。<BR>
+    以下の単語が予約語です。<BR>
+    alternative、ascent、break、case、descent、else、function、<BR>
+	if、in、local、loop、real、return、let、others、<BR>
+	sub、task、times、while、yield<BR>
+ </P>
+ <P>また、次の変数やサブルーチンが、組み込みで用意されています。<BR>
+    これらも変数名やサブルーチン名に使わないようにしてください。<BR>
+    add、append、compare、concatenate、divide、false<BR>
+	index、length、multiply、not、negative、pi、power<BR>
+	predecessor、remainder、result、slice、<BR>
+	successor、subtract、true
+ </P>
+ <TABLE border="1">
+  <TR><TD>a ~ b</TD><TD>concatenate(a, b)</TD></TR>
+  <TR><TD>a + b</TD><TD>add(a, b)</TD></TR>
+  <TR><TD>a - b</TD><TD>subtract(a, b)</TD></TR>
+  <TR><TD>a * b</TD><TD>multiply(a, b)</TD></TR>
+  <TR><TD>a / b</TD><TD>divide(a, b)</TD></TR>
+  <TR><TD>a % b</TD><TD>remainder(a, b)</TD></TR>
+  <TR><TD>a ^ b</TD><TD>power(a, b)</TD></TR>
+  <TR><TD>a[b]</TD><TD>index(a, b), index!(a, b)←左辺値の時</TD></TR>
+  <TR><TD>a[b..c]</TD><TD>slice(a,b,c)</TD></TR>
+  <TR><TD>! a</TD><TD>not(a)</TD></TR>
+  <TR><TD>+ a</TD><TD>a</TD></TR>
+  <TR><TD>- a</TD><TD>negative(a)</TD></TR>
+  <TR><TD>a++</TD><TD>a = successor(a)</TD></TR>
+  <TR><TD>a--</TD><TD>a = predcessor(a)</TD></TR>
+  <TR><TD>(|a|)</TD><TD>a = absolute(a)</TD></TR>
+  <TR><TD>true</TD><TD>論理型の真を返す関数</TD></TR>
+  <TR><TD>false</TD><TD>論理型の偽を返す関数</TD></TR>
+  <TR><TD>pi</TD><TD>πを返す</TD></TR>
+ </TABLE>
+ </P>
+ <BR><HR>
+
+ <SPAN class = "section_sub"><A name="VariableDeclaration">■変数宣言</A></SPAN><BR>
+ <P>変数とは数値等を入れておく箱のようなものです。<BR>
+    real, char, booleanまたそれらの配列が使えます。<BR>
+    realは数値です。<BR>
+    charは文字です。charの配列が文字列です。<BR>
+    booleanは真偽値です。<BR>
+	<BR>
+	1, 1.0, 0.001, 100 …real型<BR>
+	true,false…boolean型<BR>
+    'a', 'b', 'あ' …char型(内部的にwchar_tで格納するため全角文字もOKです)<BR>
+	<BR>
+	ただし、型を明示的に扱うことはできません。自動で判断されます。<BR>
+    変数宣言は「let」を用います。<BR>
+    「real」でも変数を宣言できますが実体は「let」と同じです。<BR>
+ <PRE>
+  <SPAN Class="source_reserve">let</SPAN> a; <SPAN Class="source_comment">//aという変数を宣言</SPAN>
+  <SPAN Class="source_reserve">let</SPAN> a = <SPAN Class="source_number">32</SPAN>; <SPAN Class="source_comment">//aという変数を宣言(real型)して、32で初期化</SPAN>
+  <SPAN Class="source_reserve">let</SPAN> b = <SPAN Class="source_reserve">true</SPAN>; <SPAN Class="source_comment">//bという変数を宣言(boolean型)して、trueで初期化</SPAN>
+  <SPAN Class="source_reserve">let</SPAN> str = <SPAN Class="source_string">"もじれつ"</SPAN>;<SPAN Class="source_comment">//strという変数を宣言(char型)して、"もじれつ"で初期化</SPAN>
+ </PRE>
+    なお、C言語と違い並べて宣言することはできません。<BR>
+ <PRE>
+  <SPAN Class="source_reserve">let</SPAN> a,b; <SPAN Class="source_comment">//×</SPAN>
+ </PRE>
+ </P>
+ <BR><HR>
+
+ <SPAN class = "section_sub"><A name="VariableArray"">■配列</A></SPAN><BR>
+ <P>変数を扱うとき、変数名1つにつき1つの値を割り当てられました。<BR>
+    ことろがこれでは10、20個など多くのデータを使うとき、<BR>
+	それだけの数の変数を準備する必要があり、宣言に手間がかかります。<BR>
+    そこで同じタイプの変数をまとめて扱うために配列というものが準備されています。<BR>
+	配列を使うときは次のように宣言します。<BR>
+ </P>
+ <PRE>
+  <SPAN Class="source_reserve">let</SPAN> a = [<SPAN Class="source_number">1</SPAN>,<SPAN Class="source_number">2</SPAN>,<SPAN Class="source_number">3</SPAN>];<SPAN Class="source_comment">// …realの配列</SPAN>
+  <SPAN Class="source_reserve">let</SPAN> str = <SPAN Class="source_string">"文字列"</SPAN>;<SPAN Class="source_comment">// …charの配列</SPAN>
+ </PRE>
+ 以下に配列の使用例を示します。<BR>
+ <DIV Class="source"><PRE class="source">
+	<SPAN Class="source_comment">//配列の宣言</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> a = [<SPAN Class="source_number">2</SPAN>, <SPAN Class="source_number">3</SPAN>, <SPAN Class="source_number">5</SPAN>];<SPAN Class="source_comment">//配列aを[2,3,5]で初期化</SPAN>
+	
+	
+	<SPAN Class="source_comment">//配列へのアクセス</SPAN>
+	<SPAN Class="source_comment">//[x]で配列のx番目の値にアクセスします</SPAN>
+	<SPAN Class="source_comment">//添え字は0からです。</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> b = a[<SPAN Class="source_number">0</SPAN>];<SPAN Class="source_comment">//bは2になります</SPAN>
+	a[<SPAN Class="source_number">0</SPAN>] = <SPAN Class="source_number">9</SPAN>;<SPAN Class="source_comment">//配列aは[9, 3, 5]になります。</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> str = <SPAN Class="source_string">"あいうえお"</SPAN>[<SPAN Class="source_number">2</SPAN>];<SPAN Class="source_comment">//strは'う'になります。</SPAN>
+	
+	
+	<SPAN Class="source_comment">//配列の結合</SPAN>
+	<SPAN Class="source_comment">//「~」演算子で配列の結合を行えます</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> c = [<SPAN Class="source_number">32</SPAN>, <SPAN Class="source_number">64</SPAN>, <SPAN Class="source_number">96</SPAN>];
+	a = a ~ c;<SPAN Class="source_comment">//aは[9, 3, 5, 32, 64, 96]になります。 </SPAN>
+	
+	
+	<SPAN Class="source_comment">//配列のテーブルをループで作成する場合</SPAN>
+	<SPAN Class="source_comment">//配列を結合しながらテーブルを作成できます</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> d = [];<SPAN Class="source_comment">//dは配列</SPAN>
+	<SPAN Class="source_reserve">ascent</SPAN>(i <SPAN Class="source_reserve">in</SPAN> <SPAN Class="source_number">0.</SPAN>.<SPAN Class="source_number">100</SPAN>)
+	{<SPAN Class="source_comment">//配列dを[0　1　2　…　98　99]で初期化</SPAN>
+		d = d ~ [i];<SPAN Class="source_comment">//配列の結合</SPAN>
+		i++;
+	}
+	
+	
+	<SPAN Class="source_comment">//配列のスライシング</SPAN>
+	<SPAN Class="source_comment">//配列に対して[x..y]のようにかくと、</SPAN>
+	<SPAN Class="source_comment">//要素のx番目からy番目を切り出します</SPAN>
+	<SPAN Class="source_comment">//ただしy番目の要素は含みません</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> e = [<SPAN Class="source_number">0</SPAN>, <SPAN Class="source_number">1</SPAN>, <SPAN Class="source_number">2</SPAN>, <SPAN Class="source_number">3</SPAN>, <SPAN Class="source_number">4</SPAN>];
+	<SPAN Class="source_reserve">let</SPAN> f = e[<SPAN Class="source_number">2.</SPAN>.<SPAN Class="source_number">4</SPAN>];<SPAN Class="source_comment">//fは[2,3]になります</SPAN>
+	
+	
+	<SPAN Class="source_comment">//配列を三項演算子の代わりに使う</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> g = [<SPAN Class="source_number">7</SPAN>, -<SPAN Class="source_number">5</SPAN>][b == <SPAN Class="source_number">10</SPAN>];<SPAN Class="source_comment">//bが10ならgは-5になります</SPAN>
+
+	<SPAN Class="source_comment">//配列のサイズを取得する	</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> h = [<SPAN Class="source_number">1</SPAN>, <SPAN Class="source_number">2</SPAN>, <SPAN Class="source_number">3</SPAN>, <SPAN Class="source_number">4</SPAN>, <SPAN Class="source_number">5</SPAN>];
+	<SPAN Class="source_reserve">let</SPAN> i = length(h);<SPAN Class="source_comment">//iは5になります		</SPAN>
+
+	<SPAN Class="source_comment">//配列要素の削除</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> j = [<SPAN Class="source_number">10</SPAN>, <SPAN Class="source_number">20</SPAN>, <SPAN Class="source_number">30</SPAN>, <SPAN Class="source_number">40</SPAN>];
+	j = erase(j, <SPAN Class="source_number">0</SPAN>);<SPAN Class="source_comment">//最初の要素を削除します</SPAN>
+	                 <SPAN Class="source_comment">//j = [20, 30, 40]になります</SPAN>
+ </PRE></DIV>
+ <P>
+    配列のコンストラクタは定数に限りません。 <BR>
+	if(a == 0){ b = c }else if(a == 1){ b = d }のような記述は、<BR>
+	aが0と1しか取らない場合に限り、b = [c, d][a]のように書けます。 <BR>
+	突然"["を始めた時は配列の作成で、何かの後に続けた時は要素へのアクセスです。<BR>
+	<BR>
+    JavaScript等は"+"演算子で結合も行いますが、<BR>
+	このスクリプトでは配列同士を足し算すると、<BR>
+	[1, 2, 3] + [4, 5, 6] == [5, 7, 9]のような演算になります。<BR>
+ </P>
+ <BR><HR>
+
+ <SPAN class = "section_sub"><A name="LocalScope"">■ローカルスコープ(ローカル変数)</A></SPAN><BR>
+ <P>全ての中括弧(「{...}」)はローカルスコープを導入します。<BR>
+    全ての中括弧において、中で宣言したものは外では使えません。<BR>
+    純粋にローカルスコープ「のみ」を利用したい場合にlocal文を用います。<BR>
+    いわば、何もしない制御文です。<BR>
+    (このスクリプトでは、C言語のように、突然中括弧を開始することはできません)<BR>
+    同名の変数を宣言しない限り、親の変数は全て触れます。<BR>
+	<DIV Class="source"><PRE class="source">
+	<SPAN Class="source_comment">//ここで宣言した変数は全域で有効</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> a;<SPAN Class="source_comment">//変数aは全ての「@～」内で有効」</SPAN>
+	@Initialize
+	{
+		a = <SPAN Class="source_number">2</SPAN>;<SPAN Class="source_comment">//変数aにはアクセスできる</SPAN>
+		<SPAN Class="source_reserve">let</SPAN> x = <SPAN Class="source_number">1</SPAN>;<SPAN Class="source_comment">//ここで宣言すると@Initializeの最後まで有効</SPAN>
+		<SPAN Class="source_reserve">local</SPAN>
+		{
+			<SPAN Class="source_comment">//ここで宣言したxはlocal文最後の「}」まで有効</SPAN>
+			<SPAN Class="source_reserve">let</SPAN> x = <SPAN Class="source_number">3</SPAN>;
+			<SPAN Class="source_comment">//ここではxは3</SPAN>
+			a = x;<SPAN Class="source_comment">//aには3が入る</SPAN>
+		}
+		<SPAN Class="source_comment">//ここではxは1</SPAN>
+		<SPAN Class="source_reserve">let</SPAN> c = x;<SPAN Class="source_comment">//cには1が入る</SPAN>
+	}
+		
+	@MainLoop
+	{
+		a = <SPAN Class="source_number">5</SPAN>;<SPAN Class="source_comment">//変数aにはアクセスできる</SPAN>
+		<SPAN Class="source_comment">//ここでは変数xにアクセスできない</SPAN>
+	}
+		
+	@Finalize
+	{
+		<SPAN Class="source_comment">//while、loop、ifの「{...}」も同様にローカルスコープが導入される</SPAN>
+		<SPAN Class="source_reserve">let</SPAN> d = <SPAN Class="source_number">10</SPAN>;
+		<SPAN Class="source_reserve">loop</SPAN>(<SPAN Class="source_number">5</SPAN>)
+		{
+			<SPAN Class="source_reserve">let</SPAN> e = d;<SPAN Class="source_comment">//dにはアクセス可能 </SPAN>
+		}
+		<SPAN Class="source_comment">//ここではeにアクセスできない</SPAN>
+	}
+	</PRE></DIV>
+ </P>
+ <BR><HR>
+
+ <SPAN class = "section_sub"><A name="Operator"">■式と演算子</A></SPAN><BR>
+ <P>変数に値を代入したり、式を記述するときには下記の記号が使えます。<BR>
+    なお「=」は比較ではなく、代入を表します。例えば<BR>
+	　a = 2;<BR>
+	は「aは2に等しい」のではなく、「aに2を代入する」という意味です。<BR>
+<DIV Class="source"><PRE class="source">
+	<SPAN Class="source_reserve">let</SPAN> a;
+	<SPAN Class="source_reserve">let</SPAN> b;
+	
+	a = <SPAN Class="source_number">32</SPAN> + <SPAN Class="source_number">2</SPAN>;	<SPAN Class="source_comment">//「+」で和を表します。aは34になります。</SPAN>
+	b = a - <SPAN Class="source_number">30</SPAN>;	<SPAN Class="source_comment">//「-」で差を表します。bは4になります。</SPAN>
+	a = <SPAN Class="source_number">2</SPAN> * <SPAN Class="source_number">3</SPAN>; 	<SPAN Class="source_comment">//「*」で積を表します。aは6になります。</SPAN>
+	b = <SPAN Class="source_number">72</SPAN> / a;	<SPAN Class="source_comment">//「/」で商を表します。bは12になります。</SPAN>
+	
+	a = <SPAN Class="source_number">32</SPAN> % <SPAN Class="source_number">3</SPAN>;	<SPAN Class="source_comment">//「%」は商の余りです。aに32を3で割った余りを代入という意味になります。aは2になります。</SPAN>
+	b = a ^ <SPAN Class="source_number">4</SPAN>;	<SPAN Class="source_comment">//「^」は累乗です。bにaの4乗を代入という意味になります。bは16になります。</SPAN>
+	b = <SPAN Class="source_number">3</SPAN> ^ <SPAN Class="source_number">3</SPAN> ^ <SPAN Class="source_number">3</SPAN>;	<SPAN Class="source_comment">//「^」だけ、右結合の演算子です。3^3^3は3^(3^3)と解釈され729ではなく19683になります</SPAN>
+	<SPAN Class="source_comment">/*
+	演算子の優先順位は、
+	  「( ... )」 &gt; 「^」「[]」&gt;「!」「+」「-」 (単項)  &gt;「*」「/」「%」 &gt; 「~」「+」 「-」 (二項) 
+	です。
+	*/</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> c = ((b * <SPAN Class="source_number">3</SPAN> - <SPAN Class="source_number">2</SPAN>)%(a + <SPAN Class="source_number">2</SPAN> ^ <SPAN Class="source_number">2</SPAN>)) / <SPAN Class="source_number">2</SPAN>;<SPAN Class="source_comment">//cは2になります。</SPAN>
+	
+	<SPAN Class="source_comment">//以下のような書き方もできます</SPAN>
+	a++;<SPAN Class="source_comment">//a = a + 1と同じ</SPAN>
+	a+=<SPAN Class="source_number">5</SPAN>;<SPAN Class="source_comment">//a = a + 5と同じ</SPAN>
+</PRE></DIV>
+ </P>
+ <BR><HR>
+
+ <SPAN class = "section_sub"><A name="LogicFormula"">■比較式、論理式</A></SPAN><BR>
+ <P>比較式は、「==」 「!=」 「>」 「>=」 「<」 「<=」が使えます。<BR>
+    ただし、異なる型同士を比較した場合エラーになります。<BR>
+	<BR>
+    論理式は、「!」 「&&」 「||」が使えます。<BR>
+    「&&」と「||」はショートサーキット評価がなされます。<BR>
+	左辺だけで結果が確定した場合右辺は計算されません。<BR>
+    たとえば、0 == 1 && func(x)とすると、<BR>
+	0 == 1だけで真偽の偽なのは確定しますのでfuncは呼ばれません。<BR>
+    「!」は否定です。真なら偽、偽なら真を返します。<BR>
+ </P>
+ <BR><HR>
+
+ <SPAN class = "section_sub"><A name="if"">■分岐「if、alternative」</A></SPAN><BR>
+ <P>
+ 条件分岐です。与えられた条件によって処理を変えたいときに使います。<BR>
+<DIV Class="source"><PRE class="source">
+	<SPAN Class="source_comment">/*
+	基本的な条件式の記述
+	「a == b」	：aがbと等しい
+	「a &gt; b」	：aがbより大きい
+	「a &gt;= b」	：aがb以上
+	「a &lt; b」	：aがbより小さい
+	「a &lt;= b」	：aがb以下
+	*/</SPAN>
+	
+	<SPAN Class="source_comment">//ifの使い方</SPAN>
+	<SPAN Class="source_reserve">if</SPAN>(a == <SPAN Class="source_number">2</SPAN> + b * <SPAN Class="source_number">5</SPAN>)
+	{
+	<SPAN Class="source_comment">//aが「2 + b * 5」であれば実行される部分</SPAN>
+	}
+	
+	<SPAN Class="source_comment">//「&&amp;」は論理積を表します。</SPAN>
+	<SPAN Class="source_reserve">if</SPAN>(a &gt; <SPAN Class="source_number">50</SPAN> &amp;&amp; b &lt; <SPAN Class="source_number">30</SPAN>)
+	{
+	<SPAN Class="source_comment">//aが50より大きく、bが30より小さいときに実行される</SPAN>
+	}
+	
+	<SPAN Class="source_comment">//「||」は論理和を表します。</SPAN>
+	<SPAN Class="source_reserve">if</SPAN>(c &gt;= <SPAN Class="source_number">2</SPAN> || b &lt;= <SPAN Class="source_number">30</SPAN>)
+	{
+	<SPAN Class="source_comment">//cが2以上またはbが30以下のときに実行される</SPAN>
+	}
+	
+	<SPAN Class="source_comment">//else は「でなければ」といったような意味です</SPAN>
+	<SPAN Class="source_reserve">if</SPAN>(c == <SPAN Class="source_number">4</SPAN>)
+	{
+	<SPAN Class="source_comment">//cが4であれば実行される</SPAN>
+	}
+	<SPAN Class="source_reserve">else</SPAN> <SPAN Class="source_reserve">if</SPAN>(d == <SPAN Class="source_number">6</SPAN>)
+	{
+	<SPAN Class="source_comment">//cが4ではなく、dが6の時実行される</SPAN>
+	}
+	
+	
+	<SPAN Class="source_comment">//alternativeの使い方</SPAN>
+	<SPAN Class="source_comment">//C言語のswitchに似た分岐構文です</SPAN>
+	<SPAN Class="source_reserve">alternative</SPAN>(a)
+	<SPAN Class="source_reserve">case</SPAN>(<SPAN Class="source_number">0</SPAN>)
+	{
+		<SPAN Class="source_comment">//aが0の時に実行される</SPAN>
+	}
+	<SPAN Class="source_reserve">case</SPAN>(<SPAN Class="source_number">3</SPAN>, <SPAN Class="source_number">5</SPAN>)
+	{
+		<SPAN Class="source_comment">//aが3もしくは5の時に実行される</SPAN>
+	}
+	<SPAN Class="source_reserve">others</SPAN>
+	{
+		<SPAN Class="source_comment">//それ以外の時実行される</SPAN>
+	}
+		
+	<SPAN Class="source_comment">//C言語と違いステートメントが1つでも「{」「}」の省略はできません。</SPAN>
+	<SPAN Class="source_comment">//必ず「{」「}」で囲む必要があります。</SPAN>
+</PRE></DIV>
+ </P>
+ <BR><HR>
+
+ <SPAN class = "section_sub"><A name="while"">■ループ「loop、times、while、ascent、descent」</A></SPAN><BR>
+ <P>処理を繰り返したいときに使います。<BR>
+    ループは予約語loopで構成し、while, times, ascent, descentなどのループ条件を付加できます。<BR>
+ 	構文は<BR>
+	loop(n){ }<BR>
+	times(n) loop{ }<BR>
+	while(条件) loop{ }<BR>
+	ascent(let i in x..y) loop{ }<BR>
+	descent(let i in x..y) loop{ }<BR>
+	です。times、while、ascent、descentのloopは省略できます。<BR>
+<DIV Class="source"><PRE class="source">
+	<SPAN Class="source_comment">//loopは、()の中に繰り返したい回数を記述します。</SPAN>
+	<SPAN Class="source_reserve">loop</SPAN>(<SPAN Class="source_number">10</SPAN>)
+	{
+	<SPAN Class="source_comment">//10回繰り返します。</SPAN>
+	} 
+
+	<SPAN Class="source_comment">//回数を省略すると無限ループします。</SPAN>
+	<SPAN Class="source_comment">//必ずbreak、returnで抜けてください。</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> a = <SPAN Class="source_number">5</SPAN>;
+	<SPAN Class="source_reserve">loop</SPAN>
+	{
+		<SPAN Class="source_reserve">if</SPAN>(a == <SPAN Class="source_number">5</SPAN>)
+		{
+			   <SPAN Class="source_reserve">break</SPAN>;
+		}
+		a++;
+	}
+
+	<SPAN Class="source_comment">//timesも()の中に繰り返したい回数を記述します。</SPAN>
+	times(<SPAN Class="source_number">5</SPAN>)
+	{
+	<SPAN Class="source_comment">//5回繰り返します。</SPAN>
+	} 
+	
+	<SPAN Class="source_comment">//whileは与えられた条件が真の間、範囲を繰り返し実行します。</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> a = <SPAN Class="source_number">0</SPAN>;
+	<SPAN Class="source_reserve">while</SPAN>(a &lt; <SPAN Class="source_number">360</SPAN>)
+	{<SPAN Class="source_comment">//aが360より小さい間繰り返す。</SPAN>
+		a++;
+	};
+	
+	<SPAN Class="source_comment">//while中が無限ループになると</SPAN>
+	<SPAN Class="source_comment">//アプリケーションが動かなくなるので注意してください。</SPAN>
+	<SPAN Class="source_reserve">while</SPAN>(<SPAN Class="source_reserve">true</SPAN>)
+	{
+	<SPAN Class="source_comment">//常に条件が真になり、無限ループになるので危険</SPAN>
+	}
+	
+	<SPAN Class="source_comment">//インデックス付きのループもつくれます</SPAN>
+	<SPAN Class="source_comment">//ascent(let i in x..y) loop{}</SPAN>
+	<SPAN Class="source_comment">//descent(let i in x..y) loop{}</SPAN>
+	<SPAN Class="source_comment">//i が x から y まで変化します。ただし y は含みません。</SPAN>
+	<SPAN Class="source_comment">//ascentは値が増加、descentは減少します。</SPAN>
+	<SPAN Class="source_reserve">ascent</SPAN>( <SPAN Class="source_reserve">let</SPAN> a <SPAN Class="source_reserve">in</SPAN> <SPAN Class="source_number">0.</SPAN>.<SPAN Class="source_number">10</SPAN>) <SPAN Class="source_reserve">loop</SPAN> 
+	{
+		<SPAN Class="source_comment">//array[a] = xxx;配列にアクセスしたりするとき便利です</SPAN>
+	}
+	
+	<SPAN Class="source_comment">//ascent、descentともにlet とloopは省略可能です。</SPAN>
+	<SPAN Class="source_reserve">descent</SPAN>(a <SPAN Class="source_reserve">in</SPAN> <SPAN Class="source_number">0.</SPAN>.<SPAN Class="source_number">10</SPAN>)
+	{
+		
+	}
+</PRE></DIV>
+ </P>
+ <BR><HR>
+
+ <SPAN class = "section_sub"><A name="break"">■脱出「break、return」</A></SPAN><BR>
+ <P>breakは最も内側のwhile、loopから脱出します。<BR>
+	returnで最も内側のsub, function, taskから脱出します。<BR>
+	functionの中から以外では、値を伴うreturnはエラーになります。<BR>
+<DIV Class="source"><PRE class="source">
+	<SPAN Class="source_reserve">let</SPAN> a = <SPAN Class="source_number">0</SPAN>;
+	<SPAN Class="source_reserve">while</SPAN>(<SPAN Class="source_reserve">true</SPAN>)
+	{<SPAN Class="source_comment">//aが5になったらループを抜ける</SPAN>
+		<SPAN Class="source_reserve">if</SPAN>(a==<SPAN Class="source_number">5</SPAN>){<SPAN Class="source_reserve">break</SPAN>;};
+		a++;
+	}
+</PRE></DIV>
+ </P>
+ <BR><HR>
+
+ <SPAN class = "section_sub"><A name="SubRoutine"">■サブルーチン</A></SPAN><BR>
+ <P>特定の動作をまとめるときに使います。<BR>
+    引数などは取れません。<BR>
+    BASICで言うGOSUB～RETURNに相当します。<BR>
+    他の制御文と同様に、必要なだけ入れ子にできます。<BR>
+    sub xxx(xxxは任意の文字)でサブルーチン部分を記述します。<BR>
+<DIV Class="source"><PRE class="source">
+	<SPAN Class="source_comment">//サブルーチンのかき方例</SPAN>
+	sub Shot5Way
+	{<SPAN Class="source_comment">//5WAYサブルーチン</SPAN>
+		<SPAN Class="source_reserve">let</SPAN> ex = ObjMove_GetX(objEnemy);
+		<SPAN Class="source_reserve">let</SPAN> ey = ObjMove_GetY(objEnemy);
+		<SPAN Class="source_reserve">let</SPAN> angle=-<SPAN Class="source_number">30</SPAN>;
+		<SPAN Class="source_reserve">while</SPAN>(angle&lt;=<SPAN Class="source_number">30</SPAN>)
+		{<SPAN Class="source_comment">//(angle=-30, -15, 0, 15, 30)</SPAN>
+			CreateShotA1(ex, ey, <SPAN Class="source_number">3</SPAN>, angle, DS_RICE_S_BLUE, <SPAN Class="source_number">30</SPAN>);
+			angle+=<SPAN Class="source_number">15</SPAN>;
+		}
+	}
+	
+	
+	<SPAN Class="source_comment">//サブルーチン呼び出し例</SPAN>
+	@MainLoop()
+	{
+		<SPAN Class="source_reserve">if</SPAN>(timer == <SPAN Class="source_number">0</SPAN>)
+		{
+			Shot5Way;<SPAN Class="source_comment">//5WAYサブルーチン呼び出し</SPAN>
+		}
+	}
+</PRE></DIV>
+ </P>
+ <BR><HR>
+
+ <SPAN class = "section_sub"><A name="Function"">■ユーザー定義関数</A></SPAN><BR>
+ <P>ユーザー定義関数を導入します。<BR>
+	subとよく似ていますが、違いは、引数によって値を渡し、返値によって結果を返せることです。<BR>
+	返り値は「retuen 値;」で記述します。<BR>
+	もしくは「result」という名前の変数に特別な代入してください。<BR>
+	「result」変数は予め用意されていますので宣言の必要はありません。<BR>
+	やはり、他の制御文と同様に、必要なだけ入れ子にできます。<BR>
+	引数の無い関数を呼ぶ時は、括弧は付けても付けなくてもよいです。<BR>
+	仮引数のletは省略可能です。<BR>
+<DIV Class="source"><PRE class="source">
+	<SPAN Class="source_comment">//関数のかき方例</SPAN>
+	<SPAN Class="source_reserve">function</SPAN> nWayToPlayer(<SPAN Class="source_reserve">let</SPAN> nWayNum,<SPAN Class="source_reserve">let</SPAN> nWayInterval,<SPAN Class="source_reserve">let</SPAN> nWaySpeed,<SPAN Class="source_reserve">let</SPAN> nWayGraphic)
+	{<SPAN Class="source_comment">//自機方向へのnWay関数</SPAN>
+		<SPAN Class="source_comment">//nWayNum：nWay</SPAN>
+		<SPAN Class="source_comment">//nWayInterval：弾の間隔</SPAN>
+		<SPAN Class="source_comment">//nWaySpeed：弾の速度</SPAN>
+		<SPAN Class="source_comment">//nWayGraphic：弾の画像</SPAN>
+
+		<SPAN Class="source_reserve">let</SPAN> ex = ObjMove_GetX(objEnemy);
+		<SPAN Class="source_reserve">let</SPAN> ey = ObjMove_GetY(objEnemy);
+		<SPAN Class="source_reserve">let</SPAN> sAngle =- nWayInterval*<SPAN Class="source_reserve">int</SPAN>(nWayNum/<SPAN Class="source_number">2</SPAN>);
+		<SPAN Class="source_reserve">let</SPAN> eAngle = nWayInterval*<SPAN Class="source_reserve">int</SPAN>(nWayNum/<SPAN Class="source_number">2</SPAN>);
+		<SPAN Class="source_reserve">while</SPAN>(sAngle &lt;= eAngle)
+		{
+			CreateShotA1(ex, ey, nWaySpeed, sAngle, nWayGraphic, <SPAN Class="source_number">30</SPAN>);
+			sAngle+=nWayInterval;
+		}
+	}
+	
+	<SPAN Class="source_comment">//関数の呼び出し例</SPAN>
+	@MainLoop()
+	{
+		<SPAN Class="source_reserve">if</SPAN>(timer == <SPAN Class="source_number">0</SPAN>)
+		{<SPAN Class="source_comment">//関数呼び出し</SPAN>
+			<SPAN Class="source_comment">//5Way、弾間隔10°、弾速5、画像BLUE11</SPAN>
+			nWayToPlayer(<SPAN Class="source_number">5</SPAN>, <SPAN Class="source_number">10</SPAN>, <SPAN Class="source_number">5</SPAN>, DS_RICE_S_RED);
+		}
+	}
+</PRE></DIV>
+<DIV Class="source"><PRE class="source">
+	<SPAN Class="source_comment">//返り値の例</SPAN>
+	<SPAN Class="source_reserve">function</SPAN> Double(<SPAN Class="source_reserve">let</SPAN> x)
+	{
+		<SPAN Class="source_reserve">return</SPAN> x * <SPAN Class="source_number">2</SPAN>;
+	}
+	
+	<SPAN Class="source_comment">//～～～</SPAN>
+	
+	a = Double(<SPAN Class="source_number">10</SPAN>); <SPAN Class="source_comment">//a = 20</SPAN>
+</PRE></DIV>
+ </P>
+ <BR><HR>
+
+ <SPAN class = "section_sub"><A name="MicroThread"">■マイクロスレッド</A></SPAN><BR>
+ <P>functionに似ていますが、途中で戻ってくることができます。<BR>
+	複数のマイクロスレッドを並列して存在させ、順次yieldによって切り替える事で、<BR>
+	あたかも同時に複数のスクリプトが走っているような記述ができます。<BR>
+<DIV Class="source"><PRE class="source">
+	@Initialize
+	{
+		TWork();
+	}
+
+	@MainLoop
+	{
+		<SPAN Class="source_comment">//毎ループタスクを実行</SPAN>
+		<SPAN Class="source_reserve">yield</SPAN>;
+	}
+
+	<SPAN Class="source_comment">//----------------------------------------------------</SPAN>
+	<SPAN Class="source_comment">//敵動作</SPAN>
+	<SPAN Class="source_comment">//----------------------------------------------------</SPAN>
+	<SPAN Class="source_reserve">task</SPAN> TWork
+	{
+		<SPAN Class="source_reserve">let</SPAN> frame = <SPAN Class="source_number">0</SPAN>;
+		<SPAN Class="source_reserve">while</SPAN>(!Obj_IsDeleted(objEnemy))
+		{
+			<SPAN Class="source_comment">//敵が削除されるまで8フレーム毎に弾をだす。</SPAN>
+			<SPAN Class="source_reserve">let</SPAN> ex = ObjMove_GetX(objEnemy);
+			<SPAN Class="source_reserve">let</SPAN> ey = ObjMove_GetY(objEnemy);
+			<SPAN Class="source_reserve">if</SPAN>(frame % <SPAN Class="source_number">8</SPAN> == <SPAN Class="source_number">0</SPAN>)
+			{
+				<SPAN Class="source_reserve">let</SPAN> i=<SPAN Class="source_number">0</SPAN>;
+				<SPAN Class="source_reserve">while</SPAN>(i&lt;<SPAN Class="source_number">360</SPAN>)
+				{
+					CreateShotA2(ex, ey, <SPAN Class="source_number">7</SPAN>, i+frame,-<SPAN Class="source_number">0.4</SPAN>,<SPAN Class="source_number">4</SPAN>,DS_RICE_S_BLUE, <SPAN Class="source_number">0</SPAN>);<SPAN Class="source_comment">//弾を発射</SPAN>
+					i+=<SPAN Class="source_number">30</SPAN>;
+				}
+			}
+
+			frame++;
+
+			<SPAN Class="source_comment">//他のタスクに制御を渡す。</SPAN>
+			<SPAN Class="source_reserve">yield</SPAN>;
+		}
+	}
+</PRE></DIV>
+ </P>
+ <BR><HR>
+
+ <SPAN class = "section_sub"><A name="Comment"">■コメント</A></SPAN><BR>
+ <P>コメント部分のスクリプトは、実行時に無視されます。<BR>
+    「//」は行末までコメントアウト、<BR>
+	また、「/*」～「*/」では、その間がコメントアウトされます。
+<DIV Class="source"><PRE class="source">
+	<SPAN Class="source_comment">//←行末までコメントアウト</SPAN>
+	
+	
+	<SPAN Class="source_comment">/*
+	この部分は実行されない
+	*/</SPAN>
+</PRE></DIV>
+ </P>
+ <BR><HR>
+
+ <SPAN class = "section_sub"><A name="Include"">■ファイル取り込み「#include」</A></SPAN><BR>
+ <P>他のスクリプトを読みこんで、他のスクリプトの記述したルーチンを呼び出せるようにする機能です。<BR>
+    「#include"～～～"」で別のスクリプトを取り込みます。<BR>
+<DIV Class="source"><PRE class="source">
+	<SPAN Class="source_comment">//----TestA.txt----------------------------</SPAN>
+	<SPAN Class="source_reserve">let</SPAN> valueA = <SPAN Class="source_number">0</SPAN>;
+	<SPAN Class="source_reserve">function</SPAN> FuncA()
+	{
+		<SPAN Class="source_comment">//～～～</SPAN>
+	}
+
+
+	<SPAN Class="source_comment">//----TestB.txt----------------------------</SPAN>
+	<SPAN Class="source_comment">//TestA.txtを取り込みます。</SPAN>
+	<SPAN Class="source_comment">//「./」ではじめたパスはこのスクリプトからの相対パスになります。</SPAN>
+	<SPAN Class="source_comment">//「./」がない場合は、実行ファイルディレクトリからの相対パスになります。</SPAN>
+	<SPAN Class="source_reserve">#include</SPAN><SPAN Class="source_string">"./TestA.txt"</SPAN>
+
+	<SPAN Class="source_reserve">function</SPAN> FuncB()
+	{
+		<SPAN Class="source_comment">//#includeでTestA.txtを取り込んでいるため</SPAN>
+		<SPAN Class="source_comment">//valueAにアクセスできる。</SPAN>
+		<SPAN Class="source_reserve">let</SPAN> valueB = valueA;
+
+		<SPAN Class="source_comment">//TestA.txtを取り込んでいるため</SPAN>
+		<SPAN Class="source_comment">//FuncAを呼び出せる。</SPAN>
+		FuncA();
+	}
+</PRE></DIV>
+ </P>
+ <BR><HR>
+
+
+ </DIV></BODY>
+</HTML>
