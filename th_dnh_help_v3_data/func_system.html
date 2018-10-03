@@ -1,7 +1,7 @@
 <HTML>
  <HEAD>
-  <TITLE>�V�X�e���X�N���v�g��p�֐�</TITLE>
-  <META HTTP-EQUIV="Content-Type"CONTENT="text/html;charset=Shift_JIS">
+  <TITLE>システムスクリプト専用関数</TITLE>
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/html;charset=UTF-8">
   <META HTTP-EQUIV="Content-Type"CONTENT="text/css">
   <LINK rel="stylesheet" href="style.css" type="text/css">
  </HEAD>
@@ -13,36 +13,36 @@
  <DIV class="allbody">
 
  <HR>
- <SPAN class = "section_title"><A name="sec_system">���V�X�e���X�N���v�g��p�֐�</A></SPAN><BR>
-  �V�X�e���X�N���v�g��p�̊֐��ł��B
+ <SPAN class = "section_title"><A name="sec_system">■システムスクリプト専用関数</A></SPAN><BR>
+  システムスクリプト専用の関数です。
  <BR><HR>
 
  <P>
-  <SPAN class = "function_name"><A name="SetPauseScriptPath">SetPauseScriptPath(�����F1)</A></SPAN><BR>
-  <SPAN class = "function_arg">�@1) char:�ꎞ��~���X�N���v�g�ւ̃p�X</SPAN><BR>
-  �ꎞ��~���ɌĂяo����郁�j���[�n�X�N���v�g��ݒ肵�܂��B<BR>
-  <A href = "description.html#MenuScript">���j���[�n�X�N���v�g</A>���Q�Ƃ��肢���܂��B<BR>
+  <SPAN class = "function_name"><A name="SetPauseScriptPath">SetPauseScriptPath(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:一時停止中スクリプトへのパス</SPAN><BR>
+  一時停止中に呼び出されるメニュー系スクリプトを設定します。<BR>
+  <A href = "description.html#MenuScript">メニュー系スクリプト</A>を参照お願いします。<BR>
  </P><HR>
 
  <P>
-  <SPAN class = "function_name"><A name="SetEndSceneScriptPath">SetEndSceneScriptPath(�����F1)</A></SPAN><BR>
-  <SPAN class = "function_arg">�@1) char:STG�V�[���I�����X�N���v�g�ւ̃p�X</SPAN><BR>
-  STG�V�[���I�����ɌĂяo����郁�j���[�n�X�N���v�g��ݒ肵�܂��B<BR>
-  <A href = "description.html#MenuScript">���j���[�n�X�N���v�g</A>���Q�Ƃ��肢���܂��B<BR>
+  <SPAN class = "function_name"><A name="SetEndSceneScriptPath">SetEndSceneScriptPath(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:STGシーン終了時スクリプトへのパス</SPAN><BR>
+  STGシーン終了時に呼び出されるメニュー系スクリプトを設定します。<BR>
+  <A href = "description.html#MenuScript">メニュー系スクリプト</A>を参照お願いします。<BR>
  </P><HR>
 
  <P>
-  <SPAN class = "function_name"><A name="SetReplaySaveSceneScriptPath">SetReplaySaveSceneScriptPath(�����F1)</A></SPAN><BR>
-  <SPAN class = "function_arg">�@1) char:���v���C�ۑ��V�[���X�N���v�g�ւ̃p�X</SPAN><BR>
-  ���v���C�ۑ��V�[�����ɌĂяo����郁�j���[�n�X�N���v�g��ݒ肵�܂��B<BR>
-  <A href = "description.html#MenuScript">���j���[�n�X�N���v�g</A>���Q�Ƃ��肢���܂��B<BR>
+  <SPAN class = "function_name"><A name="SetReplaySaveSceneScriptPath">SetReplaySaveSceneScriptPath(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:リプレイ保存シーンスクリプトへのパス</SPAN><BR>
+  リプレイ保存シーン時に呼び出されるメニュー系スクリプトを設定します。<BR>
+  <A href = "description.html#MenuScript">メニュー系スクリプト</A>を参照お願いします。<BR>
  </P><HR>
 
  <P>
-  <SPAN class = "function_name"><A name="GetTransitionRenderTargetName">GetTransitionRenderTargetName(�����F0)</A></SPAN><BR>
-  ���j���[�n�X�N���v�g��p�ł��B<BR>
-  ���j���[�n�X�N���v�g���Ăяo����钼�O�̃V�[���̉摜�e�N�X�`�����擾���܂��B<BR>
-  ��ɒ��O�V�[����w�i�Ƃ��Ďg�p�������ꍇ�Ɏg���܂��B<BR>
+  <SPAN class = "function_name"><A name="GetTransitionRenderTargetName">GetTransitionRenderTargetName(引数：0)</A></SPAN><BR>
+  メニュー系スクリプト専用です。<BR>
+  メニュー系スクリプトが呼び出される直前のシーンの画像テクスチャを取得します。<BR>
+  主に直前シーンを背景として使用したい場合に使います。<BR>
  </P><HR>
 
  </DIV></BODY>

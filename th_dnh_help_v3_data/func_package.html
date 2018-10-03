@@ -1,7 +1,7 @@
 <HTML>
  <HEAD>
-  <TITLE>�p�b�P�[�W�X�N���v�g��p�֐�</TITLE>
-  <META HTTP-EQUIV="Content-Type"CONTENT="text/html;charset=Shift_JIS">
+  <TITLE>パッケージスクリプト専用関数</TITLE>
+  <META HTTP-EQUIV="Content-Type"CONTENT="text/html;charset=UTF-8">
   <META HTTP-EQUIV="Content-Type"CONTENT="text/css">
   <LINK rel="stylesheet" href="style.css" type="text/css">
  </HEAD>
@@ -13,165 +13,165 @@
  <DIV class="allbody">
 
  <HR>
- <SPAN class = "section_title"><A name="sec_package">���p�b�P�[�W�X�N���v�g��p�֐�</A></SPAN><BR>
-  �p�b�P�[�W�X�N���v�g��p�̊֐��ł��B
+ <SPAN class = "section_title"><A name="sec_package">■パッケージスクリプト専用関数</A></SPAN><BR>
+  パッケージスクリプト専用の関数です。
  <BR><HR>
 
  <P>
-  <SPAN class = "function_name"><A name="ClosePackage">ClosePackage(�����F0)</A></SPAN><BR>
-  �p�b�P�[�W�X�N���v�g���I�����܂��B<BR>
+  <SPAN class = "function_name"><A name="ClosePackage">ClosePackage(引数：0)</A></SPAN><BR>
+  パッケージスクリプトを終了します。<BR>
  </P><HR>
 
  <P>
-  <SPAN class = "function_name"><A name="InitializeStageScene">InitializeStageScene(�����F0)</A></SPAN><BR>
-  �X�e�[�W�̘A���Đ��J�n�O��1�񂾂��Ăяo���܂��B<BR>
-  �Ăяo�����ƂŃX�e�[�W�p�̏������������s���܂��B<BR>
+  <SPAN class = "function_name"><A name="InitializeStageScene">InitializeStageScene(引数：0)</A></SPAN><BR>
+  ステージの連続再生開始前に1回だけ呼び出します。<BR>
+  呼び出すことでステージ用の初期化処理が行われます。<BR>
  </P><HR>
 
  <P>
-  <SPAN class = "function_name"><A name="FinalizeStageScene">FinalizeStageScene(�����F0)</A></SPAN><BR>
-  �X�e�[�W�̘A���Đ��I������1�񂾂��Ăяo���܂��B<BR>
-  �Ăяo�����ƂŃX�e�[�W�p�̏I���������s���܂��B<BR>
-  (��Ƀ��v���C�̍쐬�������s���Ă��܂��B)<BR>
+  <SPAN class = "function_name"><A name="FinalizeStageScene">FinalizeStageScene(引数：0)</A></SPAN><BR>
+  ステージの連続再生終了時に1回だけ呼び出します。<BR>
+  呼び出すことでステージ用の終了処理が行われます。<BR>
+  (主にリプレイの作成処理を行っています。)<BR>
  </P><HR>
 
  <P>
-  <SPAN class = "function_name"><A name="StartStageScene">StartStageScene(�����F0)</A></SPAN><BR>
-  �X�e�[�W�V�[�����J�n���܂��B<BR>
+  <SPAN class = "function_name"><A name="StartStageScene">StartStageScene(引数：0)</A></SPAN><BR>
+  ステージシーンを開始します。<BR>
  </P><HR>
 
  <P>
-  <SPAN class = "function_name"><A name="SetStageIndex">SetStageIndex(�����F1)</A></SPAN><BR>
-  <SPAN class = "function_arg">�@1) real:�X�e�[�W�̃C���f�b�N�X</SPAN><BR>
-  ���Ɏ��s����X�e�[�W�̃C���f�b�N�X���w�肵�܂��B<BR>
-  ���łɎw�肵���C���f�b�N�X���w�肷��ƃG���[�ɂȂ�܂��B<BR>
-  �C�ӂ̒l���w��ł��܂��B�A�ԂłȂ��Ă���肠��܂���B<BR>
+  <SPAN class = "function_name"><A name="SetStageIndex">SetStageIndex(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:ステージのインデックス</SPAN><BR>
+  次に実行するステージのインデックスを指定します。<BR>
+  すでに指定したインデックスを指定するとエラーになります。<BR>
+  任意の値を指定できます。連番でなくても問題ありません。<BR>
  </P><HR>
 
  <P>
-  <SPAN class = "function_name"><A name="SetStageMainScript">SetStageMainScript(�����F1)</A></SPAN><BR>
-  <SPAN class = "function_arg">�@1) char:�X�e�[�W�X�N���v�g�̃t�@�C���p�X</SPAN><BR>
-  ���Ɏ��s����X�e�[�W�X�N���v�g�̃p�X���w�肵�܂��B<BR>
+  <SPAN class = "function_name"><A name="SetStageMainScript">SetStageMainScript(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:ステージスクリプトのファイルパス</SPAN><BR>
+  次に実行するステージスクリプトのパスを指定します。<BR>
  </P><HR>
 
  <P>
-  <SPAN class = "function_name"><A name="SetStagePlayerScript">SetStagePlayerScript(�����F1)</A></SPAN><BR>
-  <SPAN class = "function_arg">�@1) char:���@�X�N���v�g�̃t�@�C���p�X</SPAN><BR>
-  ���Ɏ��s����X�e�[�W�̎��@�X�N���v�g�̃p�X���w�肵�܂��B<BR>
-  �w��\�Ȃ̂́A�p�b�P�[�W�X�N���v�g��#Player�Őݒ肳��Ă��鎩�@�݂̂ł��B<BR>
-  #Player����̏ꍇ�́A/script/player/�t�H���_���̑S���@���w��\�ł��B<BR>
+  <SPAN class = "function_name"><A name="SetStagePlayerScript">SetStagePlayerScript(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:自機スクリプトのファイルパス</SPAN><BR>
+  次に実行するステージの自機スクリプトのパスを指定します。<BR>
+  指定可能なのは、パッケージスクリプトの#Playerで設定されている自機のみです。<BR>
+  #Playerが空の場合は、/script/player/フォルダ下の全自機を指定可能です。<BR>
  </P><HR>
 
  <P>
-  <SPAN class = "function_name"><A name="SetStageReplayFile">SetStageReplayFile(�����F1)</A></SPAN><BR>
-  <SPAN class = "function_arg">�@1) char:���v���C�t�@�C���p�X</SPAN><BR>
-  ���v���C�t�@�C���̃p�X���w�肵�܂��B<BR>
-  InitializeStageScene�̂��Ƃ�1�񂾂����s���܂��B<BR>
-  ���̊֐������s�����ꍇ�́A�X�e�[�W�X�N���v�g�����v���C�Đ��ɂȂ�܂��B<BR>
+  <SPAN class = "function_name"><A name="SetStageReplayFile">SetStageReplayFile(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) char:リプレイファイルパス</SPAN><BR>
+  リプレイファイルのパスを指定します。<BR>
+  InitializeStageSceneのあとに1回だけ実行します。<BR>
+  この関数を実行した場合は、ステージスクリプトがリプレイ再生になります。<BR>
   <BR>
-  ���v���C�t�@�C���̓X�e�[�W���Ƃɏ���ێ����邽�߁A<BR>
-  �ŏ��̃X�e�[�W������s���Ȃ��Ă��A�r���X�e�[�W���烊�v���C�Đ��ł��܂��B<BR>
+  リプレイファイルはステージごとに情報を保持するため、<BR>
+  最初のステージから実行しなくても、途中ステージからリプレイ再生できます。<BR>
  </P><HR>
 
  <P>
-  <SPAN class = "function_name"><A name="GetStageSceneState">GetStageSceneState(�����F0�A�Ԃ�l�Freal)</A></SPAN><BR>
-  ���s���̃X�e�[�W��Ԃ�Ԃ��܂��B<BR>
-  �@STAGE_STATE_FINISHED�F�X�e�[�W�I��<BR>
+  <SPAN class = "function_name"><A name="GetStageSceneState">GetStageSceneState(引数：0、返り値：real)</A></SPAN><BR>
+  実行中のステージ状態を返します。<BR>
+  　STAGE_STATE_FINISHED：ステージ終了<BR>
  </P><HR>
 
  <P>
-  <SPAN class = "function_name"><A name="GetStageSceneResult">GetStageSceneResult(�����F0�A�Ԃ�l�Freal)</A></SPAN><BR>
-  �X�e�[�W���I�������v�����擾���܂��B<BR>
-  �@STAGE_RESULT_CLEARED�F�X�e�[�W�N���A<BR>
-  �@STAGE_RESULT_PLAYER_DOWN�F���@�c�@0<BR>
-  �@STAGE_RESULT_BREAK_OFF�F�X�e�[�W�̓r���I��<BR>
+  <SPAN class = "function_name"><A name="GetStageSceneResult">GetStageSceneResult(引数：0、返り値：real)</A></SPAN><BR>
+  ステージが終了した要因を取得します。<BR>
+  　STAGE_RESULT_CLEARED：ステージクリア<BR>
+  　STAGE_RESULT_PLAYER_DOWN：自機残機0<BR>
+  　STAGE_RESULT_BREAK_OFF：ステージの途中終了<BR>
  </P><HR>
 
  <P>
-  <SPAN class = "function_name"><A name="PauseStageScene">PauseStageScene(�����F1)</A></SPAN><BR>
-  <SPAN class = "function_arg">�@1) bool:true/�ꎞ��~�Afalse:�ĊJ</SPAN><BR>
-  ���s���̃X�e�[�W�V�[�����ꎞ��~���܂��B<BR>
+  <SPAN class = "function_name"><A name="PauseStageScene">PauseStageScene(引数：1)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) bool:true/一時停止、false:再開</SPAN><BR>
+  実行中のステージシーンを一時停止します。<BR>
  </P><HR>
 
  <P>
-  <SPAN class = "function_name"><A name="TerminateStageScene">TerminateStageScene(�����F0)</A></SPAN><BR>
-  �X�e�[�W�V�[����r���I�����܂��B<BR>
+  <SPAN class = "function_name"><A name="TerminateStageScene">TerminateStageScene(引数：0)</A></SPAN><BR>
+  ステージシーンを途中終了します。<BR>
  </P><HR>
 
  <P>
-  <SPAN class = "function_name"><A name="GetLoadFreePlayerScriptList">GetLoadFreePlayerScriptList(�����F0)</A></SPAN><BR>
-  /script/player/�t�H���_���̎��@�X�N���v�g�������[�h���܂��B<BR>
+  <SPAN class = "function_name"><A name="GetLoadFreePlayerScriptList">GetLoadFreePlayerScriptList(引数：0)</A></SPAN><BR>
+  /script/player/フォルダ下の自機スクリプト情報をロードします。<BR>
  </P><HR>
 
  <P>
-  <SPAN class = "function_name"><A name="GetFreePlayerScriptCount">GetFreePlayerScriptCount(�����F0)</A></SPAN><BR>
-  ���[�h����/script/player/�t�H���_���̎��@�X�N���v�g��񐔂��擾���܂��B<BR>
+  <SPAN class = "function_name"><A name="GetFreePlayerScriptCount">GetFreePlayerScriptCount(引数：0)</A></SPAN><BR>
+  ロードした/script/player/フォルダ下の自機スクリプト情報数を取得します。<BR>
  </P><HR>
 
  <P>
-  <SPAN class = "function_name"><A name="GetFreePlayerScriptInfo">GetFreePlayerScriptInfo(�����F2�A�Ԃ�l�F��)</A></SPAN><BR>
-  <SPAN class = "function_arg">�@1) real:���@�X�N���v�g�̃C���f�b�N�X(GetFreePlayerScriptCount�����̒l)</SPAN><BR>
-  <SPAN class = "function_arg">�@2) real:�����<BR>
-  �@�@INFO_SCRIPT_PATH�@�@�@ �F�X�N���v�g�p�X(char)<BR>
-  �@�@INFO_SCRIPT_ID�@�@�@�@ �F#ID ���(char)<BR>
-  �@�@INFO_SCRIPT_TITLE�@�@�@�F#Title ���(char)<BR>
-  �@�@INFO_SCRIPT_TEXT�@�@�@ �F#Text ���(char)<BR>
-  �@�@INFO_SCRIPT_IMAGE�@�@�@�F#Image ���(char)<BR>
-  �@�@INFO_SCRIPT_REPLAY_NAME�F#ReplayName ���(char)<BR>
+  <SPAN class = "function_name"><A name="GetFreePlayerScriptInfo">GetFreePlayerScriptInfo(引数：2、返り値：可変)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:自機スクリプトのインデックス(GetFreePlayerScriptCount未満の値)</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:情報種別<BR>
+  　　INFO_SCRIPT_PATH　　　 ：スクリプトパス(char)<BR>
+  　　INFO_SCRIPT_ID　　　　 ：#ID 情報(char)<BR>
+  　　INFO_SCRIPT_TITLE　　　：#Title 情報(char)<BR>
+  　　INFO_SCRIPT_TEXT　　　 ：#Text 情報(char)<BR>
+  　　INFO_SCRIPT_IMAGE　　　：#Image 情報(char)<BR>
+  　　INFO_SCRIPT_REPLAY_NAME：#ReplayName 情報(char)<BR>
   </SPAN>
-  ���@�X�N���v�g�����擾���܂��B<BR>
+  自機スクリプト情報を取得します。<BR>
  </P><HR>
 
  <P>
-  <SPAN class = "function_name"><A name="LoadReplayList">LoadReplayList(�����F0)</A></SPAN><BR>
-  ���v���C�������[�h���܂��B<BR>
+  <SPAN class = "function_name"><A name="LoadReplayList">LoadReplayList(引数：0)</A></SPAN><BR>
+  リプレイ情報をロードします。<BR>
  </P><HR>
 
  <P>
-  <SPAN class = "function_name"><A name="GetValidReplayIndices">GetValidReplayIndices(�����F0�A�Ԃ�l�Freal�z��)</A></SPAN><BR>
-  ���[�h�������v���C���̗L���ȃC���f�b�N�X���X�g��Ԃ��܂��B<BR>
+  <SPAN class = "function_name"><A name="GetValidReplayIndices">GetValidReplayIndices(引数：0、返り値：real配列)</A></SPAN><BR>
+  ロードしたリプレイ情報の有効なインデックスリストを返します。<BR>
  </P><HR>
 
  <P>
-  <SPAN class = "function_name"><A name="IsValidReplayIndex">IsValidReplayIndex(�����F1�A�Ԃ�l�Fbool)</A></SPAN><BR>
-  <SPAN class = "function_arg">�@1) real:���v���C�̃C���f�b�N�X</SPAN><BR>
-  ���[�h�������v���C���ŁA�w�肵���C���f�b�N�X���L�����𒲂ׂ܂��B<BR>
+  <SPAN class = "function_name"><A name="IsValidReplayIndex">IsValidReplayIndex(引数：1、返り値：bool)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:リプレイのインデックス</SPAN><BR>
+  ロードしたリプレイ情報で、指定したインデックスが有効かを調べます。<BR>
  </P><HR>
 
  <P>
-  <SPAN class = "function_name"><A name="GetReplayInfo">GetReplayInfo(�����F2�A�Ԃ�l�F��)</A></SPAN><BR>
-  <SPAN class = "function_arg">�@1) real:���v���C�̃C���f�b�N�X(GetValidReplayIndices�Ŏ擾�ł����l�̂ݗL��)</SPAN><BR>
-  <SPAN class = "function_arg">�@2) real:�����<BR>
-  �@�@REPLAY_FILE_PATH�@�F���v���C�t�@�C���p�X(char)<BR>
-  �@�@REPLAY_DATE_TIME�@�F���v���C�ۑ�����(char)<BR>
-  �@�@REPLAY_USER_NAME�@�F�o�^���[�U��(char)<BR>
-  �@�@REPLAY_TOTAL_SCORE�F�����X�R�A(real)<BR>
-  �@�@REPLAY_FPS_AVERAGE�F����fps(real)<BR>
-  �@�@REPLAY_PLAYER_NAME�F���@����(char)<BR>
-  �@�@REPLAY_STAGE_INDEX_LIST�F�L���ȃX�e�[�W�C���f�b�N�X���X�g(real�z��)<BR>
-  �@�@REPLAY_STAGE_START_SCORE_LIST�F�X�e�[�W�J�n���̃X�R�A���X�g<BR>
-  �@�@�@(REPLAY_STAGE_INDEX_LIST�̏��ɕێ�)(real�z��)<BR>
-  �@�@REPLAY_STAGE_LAST_SCORE_LIST�F�X�e�[�W�I�����̃X�R�A���X�g<BR>
-  �@�@�@(REPLAY_STAGE_INDEX_LIST�̏��ɕێ�)(real�z��)<BR>
-  �@�@REPLAY_COMMENT�F���v���C�ۑ����Ɏw�肵���C�ӂ̕�����(char)<BR>
+  <SPAN class = "function_name"><A name="GetReplayInfo">GetReplayInfo(引数：2、返り値：可変)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:リプレイのインデックス(GetValidReplayIndicesで取得できた値のみ有効)</SPAN><BR>
+  <SPAN class = "function_arg">　2) real:情報種別<BR>
+  　　REPLAY_FILE_PATH　：リプレイファイルパス(char)<BR>
+  　　REPLAY_DATE_TIME　：リプレイ保存時刻(char)<BR>
+  　　REPLAY_USER_NAME　：登録ユーザ名(char)<BR>
+  　　REPLAY_TOTAL_SCORE：統合スコア(real)<BR>
+  　　REPLAY_FPS_AVERAGE：平均fps(real)<BR>
+  　　REPLAY_PLAYER_NAME：自機名称(char)<BR>
+  　　REPLAY_STAGE_INDEX_LIST：有効なステージインデックスリスト(real配列)<BR>
+  　　REPLAY_STAGE_START_SCORE_LIST：ステージ開始時のスコアリスト<BR>
+  　　　(REPLAY_STAGE_INDEX_LISTの順に保持)(real配列)<BR>
+  　　REPLAY_STAGE_LAST_SCORE_LIST：ステージ終了時のスコアリスト<BR>
+  　　　(REPLAY_STAGE_INDEX_LISTの順に保持)(real配列)<BR>
+  　　REPLAY_COMMENT：リプレイ保存時に指定した任意の文字列(char)<BR>
   </SPAN>
-  ���v���C�����擾���܂��B<BR>
+  リプレイ情報を取得します。<BR>
  </P><HR>
 
  <P>
-  <SPAN class = "function_name"><A name="SetReplayInfo">SetReplayInfo(�����F2)</A></SPAN><BR>
-  <SPAN class = "function_arg">�@1) real:�����<BR>
-  �@�@REPLAY_COMMENT�F�C�ӂ̕�����(char)�A�Ⴆ�Γ�Փx���L�ڂ�����ł��܂��B<BR>�@�@�@(�������K�v�ȏꍇ�A","��؂�ŕۑ����A�ǂݍ��ݎ���SplitString�Ő؂蕪����Ȃǂ��ǂ��Ǝv���܂��B)<BR>
+  <SPAN class = "function_name"><A name="SetReplayInfo">SetReplayInfo(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:情報種別<BR>
+  　　REPLAY_COMMENT：任意の文字列(char)、例えば難易度を記載したりできます。<BR>　　　(複数情報必要な場合、","区切りで保存し、読み込み時にSplitStringで切り分けるなどが良いと思います。)<BR>
   </SPAN>
-  <SPAN class = "function_arg">�@2) ��(����ʂɂ�):�ݒ肷��l</SPAN><BR>
-  �ۑ��Ώۂ̏���ݒ肵�܂��B<BR>
+  <SPAN class = "function_arg">　2) 可変(情報種別にる):設定する値</SPAN><BR>
+  保存対象の情報を設定します。<BR>
  </P><HR>
 
  <P>
-  <SPAN class = "function_name"><A name="SaveReplay">SaveReplay(�����F2)</A></SPAN><BR>
-  <SPAN class = "function_arg">�@1) real:���v���C�̃C���f�b�N�X</SPAN><BR>
-  <SPAN class = "function_arg">�@2) char:���[�U��</SPAN><BR>
-  ���v���C�t�@�C�����w�肵���C���f�b�N�X�ŕۑ����܂��B<BR>
+  <SPAN class = "function_name"><A name="SaveReplay">SaveReplay(引数：2)</A></SPAN><BR>
+  <SPAN class = "function_arg">　1) real:リプレイのインデックス</SPAN><BR>
+  <SPAN class = "function_arg">　2) char:ユーザ名</SPAN><BR>
+  リプレイファイルを指定したインデックスで保存します。<BR>
  </P><HR>
 
  </DIV></BODY>
